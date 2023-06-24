@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{111DD03F-1239-43A1-94F2-89F76784649A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Innovation_Uniform_Editor</RootNamespace>
+    <AssemblyName>Innovation Uniform Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>150x150.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Innovation_Uniform_Editor.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Json.Net, Version=1.0.33.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Json.Net.1.0.33\lib\netstandard2.0\Json.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Group.cs" />
+    <Compile Include="Classes\MenuItem.cs" />
+    <Compile Include="Classes\JSONtoUniform.cs" />
+    <Compile Include="Classes\UniformDropDown.cs" />
+    <Compile Include="DraggablePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enums\UniformType.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BackgroundSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BackgroundSelector.Designer.cs">
+      <DependentUpon>BackgroundSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewGroup.Designer.cs">
+      <DependentUpon>NewGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SaveDialogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SaveDialogue.Designer.cs">
+      <DependentUpon>SaveDialogue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Selector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Selector.Designer.cs">
+      <DependentUpon>Selector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Uniform.cs" />
+    <EmbeddedResource Include="DraggablePanel.resx">
+      <DependentUpon>DraggablePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BackgroundSelector.resx">
+      <DependentUpon>BackgroundSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewGroup.resx">
+      <DependentUpon>NewGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SaveDialogue.resx">
+      <DependentUpon>SaveDialogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Selector.resx">
+      <DependentUpon>Selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Innovation_Uniform_Editor.Classes.Uniform.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Templates\Credit to Skyfall_Epsilon for the templates!" />
+    <None Include="Templates\TemplateInfo.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="150x150.ico" />
+    <None Include="Icons\620x300.png" />
+    <Content Include="Templates\Misc\Deletion_Template.png" />
+    <Content Include="Templates\Misc\Shading_Template.png" />
+    <Content Include="Templates\Normal\Pants\368659381\Original.png" />
+    <Content Include="Templates\Normal\Pants\368659381\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368659381\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\3933922179\Original.png" />
+    <Content Include="Templates\Normal\Pants\3933922179\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\3933922179\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\6914637973\Original.png" />
+    <Content Include="Templates\Normal\Pants\6914637973\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\6914637973\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\368728509\Original.png" />
+    <Content Include="Templates\Normal\Pants\368728509\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368728509\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\368728509\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Pants\368658944\Original.png" />
+    <Content Include="Templates\Normal\Pants\368658944\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368658944\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\368662298\Original.png" />
+    <Content Include="Templates\Normal\Pants\368662298\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368662298\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\368660897\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368660897\Original.png" />
+    <Content Include="Templates\Normal\Pants\368660897\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\1572086257\Original.png" />
+    <Content Include="Templates\Normal\Pants\1572086257\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\1572086257\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\747915880\Original.png" />
+    <Content Include="Templates\Normal\Pants\747915880\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\747915880\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\747915880\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Pants\747917741\Original.png" />
+    <Content Include="Templates\Normal\Pants\747917741\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\747917741\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\747917741\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Pants\6914640997\Original.png" />
+    <Content Include="Templates\Normal\Pants\6914640997\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\6914640997\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\6914640997\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Pants\368659714\Original.png" />
+    <Content Include="Templates\Normal\Pants\368659714\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368659714\Selection_Template.png" />
+    <Content Include="Templates\Normal\Pants\368660060\Original.png" />
+    <Content Include="Templates\Normal\Pants\368660060\Overlay.png" />
+    <Content Include="Templates\Normal\Pants\368660060\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\6914629942\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\6914629942\Original.png" />
+    <Content Include="Templates\Normal\Shirts\6914629942\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\6914629942\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Shirts\3933916736\Original.png" />
+    <Content Include="Templates\Normal\Shirts\3933916736\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\3933916736\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368717072\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368717072\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368717072\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368717072\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Shirts\368715486\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368715486\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368715486\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368664950\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368664950\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368664950\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368658202\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368658202\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368658202\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368662637\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368662637\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368662637\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\1572085245\Original.png" />
+    <Content Include="Templates\Normal\Shirts\1572085245\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\1572085245\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\747914884\Original.png" />
+    <Content Include="Templates\Normal\Shirts\747914884\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\747914884\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\747914884\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Shirts\747916816\Original.png" />
+    <Content Include="Templates\Normal\Shirts\747916816\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\747916816\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\747916816\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Shirts\368664191\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368664191\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368664191\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368665973\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368665973\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368665973\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368657559\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368657559\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368657559\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\6914634595\Original.png" />
+    <Content Include="Templates\Normal\Shirts\6914634595\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\6914634595\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\6914634595\Selection_Template_Secondary.png" />
+    <Content Include="Templates\Normal\Shirts\6914646133\Original.png" />
+    <Content Include="Templates\Normal\Shirts\6914646133\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\6914646133\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368663056\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368663056\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368663056\Selection_Template.png" />
+    <Content Include="Templates\Normal\Shirts\368666564\Original.png" />
+    <Content Include="Templates\Normal\Shirts\368666564\Overlay.png" />
+    <Content Include="Templates\Normal\Shirts\368666564\Selection_Template.png" />
+    <Content Include="Templates\TemplateInfo.xml" />
+    <Content Include="Templates\Trench\Pants\Selection Templates\Trench Shirt Selection Template.png" />
+    <Content Include="Templates\Trench\Pants\Trench Pants Overlay.png" />
+    <Content Include="Templates\Trench\Pants\Trench Pants.png" />
+    <Content Include="Templates\Trench\Shirt\Selection Templates\Trench Shirt Selection Template.png" />
+    <Content Include="Templates\Trench\Shirt\Trench Shirt Overlay.png" />
+    <Content Include="Templates\Trench\Shirt\Trench Shirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

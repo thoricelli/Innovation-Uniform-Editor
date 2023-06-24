@@ -1,0 +1,157 @@
+﻿<TemplateInfo>
+	<!--<DeletionTemplate Location="Misc/Deletion Template.png"></DeletionTemplate>-->
+
+	<!--<ShadingTemplate Location="Misc/Shading Template.png"></ShadingTemplate>-->
+
+	<Normal>
+		<Pants>
+			<Uniform id="368659381">
+				<Name>Innovation Security Holstered Pants- .40 Pistol</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="6914637973">
+				<Name>Innovation Security 2015 Remastered Pants</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="3933922179">
+				<Name>Innovation Security Advanced Tactical Pants</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="368728509">
+				<Name>Innovation Security Arctic Task Force Pants</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368658944">
+				<Name>Innovation Security Basic Pants</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368662298">
+				<Name>Chromatic's Signature Elite Pants (Guardsman+)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368660897">
+				<Name>Innovation Security Dark Pants (Premium 1)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="1572086257">
+				<Name>Innovation Security Digital Camo Uniform Pants</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="747915880">
+				<Name>Elite Tier Guardsman's Trousers</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="747917741">
+				<Name>Innovation Security Guardsman's Trousers</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="6914640997">
+				<Name>Innovation Lightweight Armour Pants</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="368659714">
+				<Name>Innovation Security Shorts</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368660060">
+				<Name>Innovation Security Standard Pants</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+		</Pants>
+
+		<Shirts>
+			<Uniform id="6914629942">
+				<Name>Innovation Security 2015 Remastered Shirt</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="3933916736">
+				<Name>Innovation Security Advanced Tactical Vest</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="368717072">
+				<Name>Innovation Security Arctic Task Force Vest</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="368715486">
+				<Name>Chromatic's Signature Elite Vest (Guardsman+)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368658202">
+				<Name>Innovation Security Longsleeved Shirt (Optional)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+			
+			<Uniform id="368664950">
+				<Name>Shortsleeve Collared shirt (Optional)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368662637">
+				<Name>Innovation Security Dark (Premium 1)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="1572085245">
+				<Name>Innovation Security Digital Camo Uniform Shirt</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="747914884">
+				<Name>Innovation Security Elite Tier Guardsman's Vest</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="747916816">
+				<Name>Innovation Security Guardsman's Vest</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368665973">
+				<Name>Innovation Security "Legacy" Vest (Optional)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368664191">
+				<Name>Security Shortsleeved "Legacy" Vest (Optional)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368657559">
+				<Name>Innovation Security Light Vest (Optional)</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="6914634595">
+				<Name>Innovation Lightweight Armour Shirt</Name>
+				<Creator>Darkboltex</Creator>
+			</Uniform>
+
+			<Uniform id="368666564">
+				<Name>Innovation Security Standard Vest 2016</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+
+			<Uniform id="368663056">
+				<Name>Innovation Security Shortsleeved Standard</Name>
+				<Creator>ChromaticDeath</Creator>
+			</Uniform>
+		</Shirts>
+	</Normal>
+	
+</TemplateInfo>
