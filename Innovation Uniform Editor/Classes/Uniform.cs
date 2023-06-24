@@ -365,16 +365,8 @@ namespace Innovation_Uniform_Editor.Classes
                 _result = null;
                 pixelsMaskPrimary = new List<int[]>();
                 shadingMasked = null;
-                RemoveSecondarySelectionTemplate();
 
                 unsavedChanges = true;
-            }
-        }
-        public void RemoveSecondarySelectionTemplate()
-        {
-            if (File.Exists(basePath + "/Selection_Template_Secondary.png"))
-            {
-                File.Delete(basePath + "/Selection_Template_Secondary.png");
             }
         }
         public void ChangeBackground(BackgroundImage bgs, bool clear)
