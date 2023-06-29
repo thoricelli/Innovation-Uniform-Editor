@@ -58,7 +58,7 @@ namespace Innovation_Uniform_Editor
         {
             //JSONtoUniform.
             Custom custom = new Custom();
-            JSONtoUniform.AddCustom(custom);
+            //JSONtoUniform.AddCustom(custom);
             custom.ChangeUniform(Handler.SelectedUniform);
             editor = new Editor(custom, parent);
             editor.Show();

@@ -178,6 +178,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BackgroundSelector.resx">
       <DependentUpon>BackgroundSelector.cs</DependentUpon>

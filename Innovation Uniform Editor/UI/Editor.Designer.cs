@@ -49,6 +49,7 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.chkElite = new System.Windows.Forms.CheckBox();
             this.saveCustom = new System.Windows.Forms.SaveFileDialog();
+            this.idLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -88,7 +89,7 @@
             this.pictureUniform.Margin = new System.Windows.Forms.Padding(2);
             this.pictureUniform.Name = "pictureUniform";
             this.pictureUniform.Size = new System.Drawing.Size(526, 535);
-            this.pictureUniform.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureUniform.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureUniform.TabIndex = 0;
             this.pictureUniform.TabStop = false;
             this.pictureUniform.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -229,11 +230,22 @@
             this.saveCustom.DefaultExt = "png";
             this.saveCustom.FileName = "Custom";
             // 
+            // idLabel
+            // 
+            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.idLabel.Location = new System.Drawing.Point(541, 110);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(103, 24);
+            this.idLabel.TabIndex = 14;
+            this.idLabel.Text = "0";
+            this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.idLabel);
             this.Controls.Add(this.chkElite);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtUsername);
@@ -282,5 +294,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.CheckBox chkElite;
         private System.Windows.Forms.SaveFileDialog saveCustom;
+        private System.Windows.Forms.Label idLabel;
     }
 }

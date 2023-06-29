@@ -314,12 +314,6 @@ namespace Innovation_Uniform_Editor.Classes
         }
         public void SaveUniform()
         {
-            //See if it's already in JSONtoUniform or not
-            if (JSONtoUniform.FindCustomFromGuid(this.Guid) == null)
-            {
-                JSONtoUniform.AddCustom(this);
-            }
-
             //Save custom class to JSON file inside folder
             Directory.CreateDirectory("./Customs/" + Guid);
 
