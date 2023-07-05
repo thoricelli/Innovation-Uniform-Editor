@@ -62,7 +62,7 @@
             this.linkLabel1.Size = new System.Drawing.Size(326, 23);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://discord.gg/eSB5rZ5S";
+            this.linkLabel1.Text = "https://discord.gg/6hmMXfgQrR";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 

@@ -33,6 +33,10 @@ namespace Innovation_Uniform_Editor
             JSONtoUniform.LoadBackgrounds("./Backgrounds/");
 
             LoadCustomsAndGroups();
+
+            bool updates = TemplateUpdater.CheckForUpdates();
+            if (updates)
+                MessageBox.Show("Templates have been updated to the latest version!", "Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void LoadCustomsAndGroups()
@@ -321,6 +325,19 @@ namespace Innovation_Uniform_Editor
         private void newGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateTemplatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Would you like to update the uniform templates?", "Template updating", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                bool updated = TemplateUpdater.CheckForUpdates();
+                if (updated)
+                    MessageBox.Show("Templates have been updated.", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Templates are already up-to-date!", "Up-to-date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

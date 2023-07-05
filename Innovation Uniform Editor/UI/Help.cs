@@ -20,7 +20,7 @@ namespace Innovation_Uniform_Editor.UI
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://discord.gg/eSB5rZ5S");
+            System.Diagnostics.Process.Start("https://discord.gg/6hmMXfgQrR");
         }
     }
 }

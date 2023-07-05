@@ -77,15 +77,13 @@
     <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
       <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
     </Reference>
-    <Reference Include="Json.Net, Version=1.0.33.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Json.Net.1.0.33\lib\netstandard2.0\Json.Net.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -101,6 +99,7 @@
     <Compile Include="Classes\Group.cs" />
     <Compile Include="Classes\MenuItem.cs" />
     <Compile Include="Classes\JSONtoUniform.cs" />
+    <Compile Include="Classes\TemplateUpdater.cs" />
     <Compile Include="Classes\UniformDropDown.cs" />
     <Compile Include="DraggablePanel.cs">
       <SubType>Component</SubType>
@@ -316,7 +315,6 @@
     <Content Include="Templates\Normal\Shirts\368666564\Original.png" />
     <Content Include="Templates\Normal\Shirts\368666564\Overlay.png" />
     <Content Include="Templates\Normal\Shirts\368666564\Selection_Template.png" />
-    <Content Include="Templates\TemplateInfo.xml" />
     <Content Include="Templates\Trench\Pants\Selection Templates\Trench Shirt Selection Template.png" />
     <Content Include="Templates\Trench\Pants\Trench Pants Overlay.png" />
     <Content Include="Templates\Trench\Pants\Trench Pants.png" />
@@ -337,4 +335,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(SolutionDir)DirHash.exe" "$(SolutionDir)Innovation Uniform Editor/Templates" -quiet -t templateshash.txt -overwrite -nowait -nologo
+copy templateshash.txt "$(SolutionDir)"
+rmdir /s /q Backgrounds
+rmdir /s /q Customs
+rmdir /s /q Templates
+xcopy "$(SolutionDir)Innovation Uniform Editor/Templates" .\Templates\ /e /q /I
+
+del "Cyotek.Windows.Forms.ColorPicker.xml"
+del "Innovation Uniform Editor.exe.config"
+del "Innovation Uniform Editor.pdb"
+del Newtonsoft.Json.xml
+
+cd "$(SolutionDir)Innovation Uniform Editor"
+del Templates.zip
+powershell Compress-Archive -Path Templates/* -CompressionLevel Optimal -DestinationPath Templates.zip
+move Templates.zip ../Templates.zip</PostBuildEvent>
+  </PropertyGroup>
 </Project>

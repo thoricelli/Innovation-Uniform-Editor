@@ -71,6 +71,7 @@ namespace Innovation_Uniform_Editor
             this.label5 = new System.Windows.Forms.Label();
             this.contextMenuGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exportCustom = new System.Windows.Forms.SaveFileDialog();
+            this.updateTemplatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.flowMain.SuspendLayout();
             this.contextMenuOverview.SuspendLayout();
@@ -94,7 +95,8 @@ namespace Innovation_Uniform_Editor
             this.newToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.updateTemplatesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -117,7 +119,7 @@ namespace Innovation_Uniform_Editor
             this.pantsToolStripMenuItem,
             this.shirtToolStripMenuItem});
             this.newRecolorToolStripMenuItem.Name = "newRecolorToolStripMenuItem";
-            this.newRecolorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newRecolorToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.newRecolorToolStripMenuItem.Text = "New recolor";
             // 
             // pantsToolStripMenuItem
@@ -137,7 +139,7 @@ namespace Innovation_Uniform_Editor
             // groupToolStripMenuItem
             // 
             this.groupToolStripMenuItem.Name = "groupToolStripMenuItem";
-            this.groupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.groupToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.groupToolStripMenuItem.Text = "Group";
             this.groupToolStripMenuItem.Visible = false;
             // 
@@ -472,6 +474,13 @@ namespace Innovation_Uniform_Editor
             this.exportCustom.DefaultExt = "png";
             this.exportCustom.FileName = "Custom";
             // 
+            // updateTemplatesToolStripMenuItem
+            // 
+            this.updateTemplatesToolStripMenuItem.Name = "updateTemplatesToolStripMenuItem";
+            this.updateTemplatesToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
+            this.updateTemplatesToolStripMenuItem.Text = "Check for updates";
+            this.updateTemplatesToolStripMenuItem.Click += new System.EventHandler(this.updateTemplatesToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +557,7 @@ namespace Innovation_Uniform_Editor
         private ToolStripMenuItem groupToolStripMenuItem;
         private ToolStripMenuItem leftToolStripMenuItem;
         private ToolStripMenuItem rightToolStripMenuItem;
+        private ToolStripMenuItem updateTemplatesToolStripMenuItem;
     }
 }
 
