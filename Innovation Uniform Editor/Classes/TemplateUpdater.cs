@@ -23,10 +23,11 @@ namespace Innovation_Uniform_Editor.Classes
             using (var content = response.GetResponseStream())
             using (var reader = new StreamReader(content))
             {
-                string hashTemplate = reader.ReadToEnd();
-                string currenthashTemplate = File.ReadAllText(hashFile);
+                string hashTemplate = reader.ReadToEnd().Replace("\n","");
+                string currenthashTemplate = File.ReadAllText(hashFile).Replace("\r\n","");
                 if (hashTemplate != currenthashTemplate)
                 {
+                    File.WriteAllText($"{hashFile}", hashTemplate);
                     DownloadZipFile($"{githubURL}{zipFile}", zipFile);
                     return true;
                 }
