@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,9 +27,60 @@ namespace Innovation_Uniform_Editor.Classes
                 newBackground.Save("./Backgrounds/" + this.backgroundGUID + ".png", ImageFormat.Png);
             }
         }
+        //JSONtoUniform.backgroundMask
         [JsonIgnore]
-        public Image background { 
-            get { return Image.FromFile("./Backgrounds/" + this.backgroundGUID + ".png"); }
+        public Image background {
+            get
+            {
+                if (_background == null)
+                {
+                    calculateBackgroundMasked();
+                }
+                return _background;
+            }
+        }
+        private Bitmap _background;
+        private void calculateBackgroundMasked()
+        {
+            _background = new Bitmap(JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height);
+            BitmapData bitmapMaskData = JSONtoUniform.backgroundMask.LockBits(
+                        new Rectangle(0, 0, JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height),
+                        ImageLockMode.ReadOnly,
+                        JSONtoUniform.backgroundMask.PixelFormat
+                    );
+            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * JSONtoUniform.backgroundMask.Height];
+            Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
+
+            JSONtoUniform.backgroundMask.UnlockBits(bitmapMaskData);
+
+            int pixelSize = Image.GetPixelFormatSize(JSONtoUniform.backgroundMask.PixelFormat);
+
+            int x = 0;
+            int y = 0;
+
+            Bitmap backgroundOGStored = backgroundOG;
+
+            for (int i = 0; i < bitmapMaskBytes.Length; i += pixelSize / 8)
+            {
+                byte[] pixelData = new byte[3];
+                Array.Copy(bitmapMaskBytes, i, pixelData, 0, 3);
+
+                if (pixelData[0] == 0)
+                {
+                    _background.SetPixel(x, y, backgroundOGStored.GetPixel(x, y));
+                }
+
+                x++;
+                if (x >= _background.Width)
+                {
+                    x = 0;
+                    y++;
+                }
+            }
+        }
+        [JsonIgnore]
+        private Bitmap backgroundOG { 
+            get { return new Bitmap(Image.FromFile("./Backgrounds/" + this.backgroundGUID + ".png")); }
         }
         public Guid backgroundGUID;
     }
@@ -66,7 +118,7 @@ namespace Innovation_Uniform_Editor.Classes
         private Color OldPrimary { get; set; }
         public Color Secondary { get; set; }
         private Color OldSecondary { get; set; }
-        public BackgroundImage BackgroundImage
+        public BackgroundImage backgroundImage
         {
             get
             {
@@ -131,8 +183,8 @@ namespace Innovation_Uniform_Editor.Classes
 
                     using (Graphics g = Graphics.FromImage(fullResult))
                     {
-                        if (this.BackgroundImage != null)
-                            g.DrawImage(this.BackgroundImage.background, Point.Empty);
+                        if (this.backgroundImage != null)
+                            g.DrawImage(this.backgroundImage.background, Point.Empty);
 
                         Bitmap Colored = CreateMask(Primary, Secondary, SelectionTemplate, SecondarySelectionTemplate);
 
@@ -192,7 +244,7 @@ namespace Innovation_Uniform_Editor.Classes
 
         private Bitmap CreateMask(Color colorPrimary, Color colorSecondary, Image maskPrimary, Image maskSecondary)
         {
-            Bitmap Colored = null;
+            Bitmap Colored;
 
             bool calculateMask = false;
 

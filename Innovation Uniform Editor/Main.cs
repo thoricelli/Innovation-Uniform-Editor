@@ -34,9 +34,9 @@ namespace Innovation_Uniform_Editor
 
             LoadCustomsAndGroups();
 
-            bool updates = TemplateUpdater.CheckForUpdates();
+            /*bool updates = TemplateUpdater.CheckForUpdates();
             if (updates)
-                MessageBox.Show("Templates have been updated to the latest version!", "Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Templates have been updated to the latest version!", "Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
         }
 
         public void LoadCustomsAndGroups()

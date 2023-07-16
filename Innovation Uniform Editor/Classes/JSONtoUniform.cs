@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Innovation_Uniform_Editor.Classes
         public static List<Uniform> Shirts { get; set; }
         public static List<BackgroundImage> Backgrounds { get; set; } = new List<BackgroundImage>();
         public static List<MenuItem> MenuItems = new List<MenuItem>();
+        public static Bitmap backgroundMask = new Bitmap(Image.FromFile("./Templates/Misc/Background_Mask.png"));
         //This should be done when the class is loaded, not outside of it!
         public static void LoadMenuItems(string path)
         {

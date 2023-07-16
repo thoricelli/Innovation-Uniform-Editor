@@ -17,6 +17,7 @@ namespace Innovation_Uniform_Editor.Classes
 
         public static bool CheckForUpdates()
         {
+            string currenthashTemplate = File.ReadAllText(hashFile).Replace("\r\n", "");
             WebRequest webRequest = WebRequest.Create($"{githubURL}{hashFile}");
 
             using (var response = webRequest.GetResponse())
@@ -24,7 +25,6 @@ namespace Innovation_Uniform_Editor.Classes
             using (var reader = new StreamReader(content))
             {
                 string hashTemplate = reader.ReadToEnd().Replace("\n","");
-                string currenthashTemplate = File.ReadAllText(hashFile).Replace("\r\n","");
                 if (hashTemplate != currenthashTemplate)
                 {
                     File.WriteAllText($"{hashFile}", hashTemplate);
