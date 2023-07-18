@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -184,12 +185,13 @@ namespace Innovation_Uniform_Editor.Classes
                     using (Graphics g = Graphics.FromImage(fullResult))
                     {
                         if (this.backgroundImage != null)
-                            g.DrawImage(this.backgroundImage.background, Point.Empty);
+                            g.DrawImage(this.backgroundImage.background, fullImage);
 
                         Bitmap Colored = CreateMask(Primary, Secondary, SelectionTemplate, SecondarySelectionTemplate);
 
                         g.DrawImage(Colored, fullImage);
                         g.DrawImage(overlay, fullImage);
+                        g.DrawImage(Image.FromFile("./Templates/Misc/Watermark.png"), fullImage);
                     }
 
                     _result = fullResult;
