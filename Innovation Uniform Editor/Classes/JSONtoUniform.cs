@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -200,5 +201,14 @@ namespace Innovation_Uniform_Editor.Classes
 
             MenuItems.Sort();
         }*/
+        public static System.Drawing.Image resizeImage(System.Drawing.Image imgToResize, Size size)
+        {
+            Bitmap b = new Bitmap(size.Width, size.Height);
+            Graphics g = Graphics.FromImage((System.Drawing.Image)b);
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.DrawImage(imgToResize, 0, 0, size.Width, size.Height);
+            g.Dispose();
+            return (System.Drawing.Image)b;
+        }
     }
 }

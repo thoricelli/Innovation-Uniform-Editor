@@ -189,7 +189,7 @@ namespace Innovation_Uniform_Editor.Classes
                         Bitmap Colored = CreateMask(Primary, Secondary, SelectionTemplate, SecondarySelectionTemplate);
 
                         g.DrawImage(Colored, fullImage);
-                        g.DrawImage(overlay, Point.Empty);
+                        g.DrawImage(overlay, fullImage);
                     }
 
                     _result = fullResult;
@@ -384,8 +384,8 @@ namespace Innovation_Uniform_Editor.Classes
             {
                 serializer.Serialize(writer, this);
             }
-            //TODO: Save lowered result for faster loading!
-            Result.Save("./Customs/" + Guid + "/result.png", ImageFormat.Png);
+            Image downSized = JSONtoUniform.resizeImage(Result, new Size(293, 280));
+            downSized.Save("./Customs/" + Guid + "/result.png", ImageFormat.Png);
             unsavedChanges = false;
         }
 
