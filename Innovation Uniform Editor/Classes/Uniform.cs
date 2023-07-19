@@ -191,7 +191,7 @@ namespace Innovation_Uniform_Editor.Classes
 
                         g.DrawImage(Colored, fullImage);
                         g.DrawImage(overlay, fullImage);
-                        g.DrawImage(Image.FromFile("./Templates/Misc/Watermark.png"), fullImage);
+                        g.DrawImage(JSONtoUniform.waterMark, fullImage);
                     }
 
                     _result = fullResult;
