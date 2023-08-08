@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
-            this.btnPrimary = new System.Windows.Forms.Button();
-            this.btnSecondary = new System.Windows.Forms.Button();
             this.pictureUniform = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,35 +48,13 @@
             this.chkElite = new System.Windows.Forms.CheckBox();
             this.saveCustom = new System.Windows.Forms.SaveFileDialog();
             this.idLabel = new System.Windows.Forms.Label();
+            this.buttonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
             this.menuEditor.SuspendLayout();
+            this.buttonsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnPrimary
-            // 
-            this.btnPrimary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrimary.Location = new System.Drawing.Point(541, 25);
-            this.btnPrimary.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPrimary.Name = "btnPrimary";
-            this.btnPrimary.Size = new System.Drawing.Size(188, 24);
-            this.btnPrimary.TabIndex = 3;
-            this.btnPrimary.Text = "Primary color";
-            this.btnPrimary.UseVisualStyleBackColor = true;
-            this.btnPrimary.Click += new System.EventHandler(this.btnPrimary_Click);
-            // 
-            // btnSecondary
-            // 
-            this.btnSecondary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSecondary.Location = new System.Drawing.Point(541, 53);
-            this.btnSecondary.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSecondary.Name = "btnSecondary";
-            this.btnSecondary.Size = new System.Drawing.Size(188, 24);
-            this.btnSecondary.TabIndex = 4;
-            this.btnSecondary.Text = "Secondary color";
-            this.btnSecondary.UseVisualStyleBackColor = true;
-            this.btnSecondary.Click += new System.EventHandler(this.btnSecondary_Click);
             // 
             // pictureUniform
             // 
@@ -185,7 +161,7 @@
             // btnBackgroundImage
             // 
             this.btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackgroundImage.Location = new System.Drawing.Point(541, 81);
+            this.btnBackgroundImage.Location = new System.Drawing.Point(2, 2);
             this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackgroundImage.Name = "btnBackgroundImage";
             this.btnBackgroundImage.Size = new System.Drawing.Size(188, 24);
@@ -217,7 +193,7 @@
             // chkElite
             // 
             this.chkElite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkElite.Location = new System.Drawing.Point(650, 110);
+            this.chkElite.Location = new System.Drawing.Point(540, 487);
             this.chkElite.Name = "chkElite";
             this.chkElite.Size = new System.Drawing.Size(74, 24);
             this.chkElite.TabIndex = 13;
@@ -232,27 +208,36 @@
             // 
             // idLabel
             // 
-            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.idLabel.Location = new System.Drawing.Point(541, 110);
+            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.idLabel.Location = new System.Drawing.Point(541, 515);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(103, 24);
+            this.idLabel.Size = new System.Drawing.Size(189, 24);
             this.idLabel.TabIndex = 14;
             this.idLabel.Text = "0";
             this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonsLayoutPanel
+            // 
+            this.buttonsLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonsLayoutPanel.AutoSize = true;
+            this.buttonsLayoutPanel.Controls.Add(this.btnBackgroundImage);
+            this.buttonsLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.buttonsLayoutPanel.Location = new System.Drawing.Point(540, 27);
+            this.buttonsLayoutPanel.Name = "buttonsLayoutPanel";
+            this.buttonsLayoutPanel.Size = new System.Drawing.Size(192, 63);
+            this.buttonsLayoutPanel.TabIndex = 15;
             // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.buttonsLayoutPanel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.chkElite);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.btnBackgroundImage);
             this.Controls.Add(this.dropdownUniforms);
-            this.Controls.Add(this.btnSecondary);
-            this.Controls.Add(this.btnPrimary);
             this.Controls.Add(this.pictureUniform);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -269,14 +254,13 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).EndInit();
             this.menuEditor.ResumeLayout(false);
+            this.buttonsLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnPrimary;
-        private System.Windows.Forms.Button btnSecondary;
         private System.Windows.Forms.PictureBox pictureUniform;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
@@ -295,5 +279,6 @@
         private System.Windows.Forms.CheckBox chkElite;
         private System.Windows.Forms.SaveFileDialog saveCustom;
         private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.FlowLayoutPanel buttonsLayoutPanel;
     }
 }

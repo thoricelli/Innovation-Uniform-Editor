@@ -28,9 +28,7 @@ namespace Innovation_Uniform_Editor.UI
         private UniformDropDown Handler;
 
         private Main parent;
-        ColorPickerDialog colorPrimary = new ColorPickerDialog();
-        ColorPickerDialog colorSecondary = new ColorPickerDialog();
-
+        List<ColorPickerDialog> colors = new List<ColorPickerDialog>();
         private bool doneLoading = false;
         public Editor(Custom OG, Main main)
         {
@@ -46,12 +44,11 @@ namespace Innovation_Uniform_Editor.UI
                     index = i;
             }
 
+            InitializeComponent();
+
             //int savedIndex = handler.currentUniform;
 
-            colorPrimary.PreviewColorChanged += UpdateColorPrimary;
-            colorSecondary.PreviewColorChanged += UpdateColorSecondary;
-
-            InitializeComponent();
+            SetupColors();
 
             dropdownUniforms.DataSource = Handler.uniforms;
             dropdownUniforms.SelectedIndex = index;
@@ -64,31 +61,55 @@ namespace Innovation_Uniform_Editor.UI
             doneLoading = true;
         }
 
-        public void UpdateColorPrimary(object sender, EventArgs e)
+        private ColorPickerDialog CreateDialog(string name)
         {
-            custom.ChangePrimaryColor(colorPrimary.Color);
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            ColorPickerDialog cd = new ColorPickerDialog();
+            cd.Name = name;
+            cd.PreviewColorChanged += UpdateColor;
+            return cd;
         }
-        public void UpdateColorSecondary(object sender, EventArgs e)
+
+        public void UpdateColor(object sender, EventArgs e)
         {
-            custom.ChangeSecondaryColor(colorSecondary.Color);
+            ColorPickerDialog cd = (ColorPickerDialog)sender;
+            custom.ChangeColorAtIndex(
+                Convert.ToInt32(
+                    cd.Name.
+                    Replace("color_", "")
+                ), cd.Color
+            );
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
         }
 
-        private void btnPrimary_Click(object sender, EventArgs e)
+        private Button CreateButton(int index)
         {
-            colorPrimary.ShowDialog();
-            custom.ChangePrimaryColor(colorPrimary.Color);
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            Button button = new Button();
+
+            button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            button.Location = new System.Drawing.Point(2, 2);
+            button.Margin = new System.Windows.Forms.Padding(2);
+            button.Name = "color_" + index;
+            button.Size = new System.Drawing.Size(188, 24);
+            button.TabIndex = 11;
+            button.Text = "Color " + index;
+            button.UseVisualStyleBackColor = true;
+
+            button.MouseClick += btnColor_Click;
+
+            return button;
         }
 
-        private void btnSecondary_Click(object sender, EventArgs e)
+        private void btnColor_Click(object sender, EventArgs e)
         {
-            colorSecondary.ShowDialog();
-            custom.ChangeSecondaryColor(colorSecondary.Color);
+            Button button = (Button)sender;
+            int colorIndex = Convert.ToInt32(button.Name.Replace("color_", ""));
+
+            ColorPickerDialog cd = CreateDialog(colors[colorIndex].Name);
+            cd.Color = colors[colorIndex].Color;
+            colors[colorIndex] = cd;
+            cd.Show();
+
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
         }
@@ -118,6 +139,7 @@ namespace Innovation_Uniform_Editor.UI
             {
                 Handler.UniformFromIndex(((ComboBox)sender).SelectedIndex);
                 custom.ChangeUniform(Handler.SelectedUniform);
+                SetupColors();
 
                 //InitializeCustom();
 
@@ -171,6 +193,31 @@ namespace Innovation_Uniform_Editor.UI
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SetupColors()
+        {
+            colors = new List<ColorPickerDialog>();
+            int indexStart = 0;
+            for (int i = buttonsLayoutPanel.Controls.Count-1; i >= 1; i--)
+            {
+                if (i > custom.SelectionTemplates.Count)
+                    buttonsLayoutPanel.Controls.RemoveAt(i);
+                else
+                    if (indexStart == 0)
+                        indexStart = i;
+
+            }
+            //Setting up colordialogs
+            for (int i = 0; i < custom.SelectionTemplates.Count; i++)
+            {
+                colors.Add(CreateDialog("color_" + i));
+            }
+            //Setting up the buttons.
+            for (int i = indexStart; i < custom.SelectionTemplates.Count; i++)
+            {
+                buttonsLayoutPanel.Controls.Add(CreateButton(i));
+            }
         }
     }
 }

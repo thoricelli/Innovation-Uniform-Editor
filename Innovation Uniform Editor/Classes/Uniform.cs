@@ -8,11 +8,13 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
@@ -115,10 +117,8 @@ namespace Innovation_Uniform_Editor.Classes
         public ulong UniformBasedOnId { get; set; }
         #endregion
         #region CUSTOM_SETTINGS
-        public Color Primary { get; set; }
-        private Color OldPrimary { get; set; }
-        public Color Secondary { get; set; }
-        private Color OldSecondary { get; set; }
+        public List<Color> Colors { get; set; } = new List<Color>();
+        private List<Color> OldColors { get; set; } = new List<Color>();
         public BackgroundImage backgroundImage
         {
             get
@@ -142,16 +142,7 @@ namespace Innovation_Uniform_Editor.Classes
         [JsonIgnore]
         public Image overlay { get { return Image.FromFile(basePath + "/Overlay.png"); } }
         [JsonIgnore]
-        public Image SelectionTemplate { get { return Image.FromFile(basePath + "/Selection_Template.png"); } }
-        [JsonIgnore]
-        public Image SecondarySelectionTemplate { 
-        get 
-            { 
-                return File.Exists(basePath + "/Selection_Template_Secondary.png") == true 
-                    ? Image.FromFile(basePath + "/Selection_Template_Secondary.png") 
-                    : null; 
-            } 
-        }
+        public List<Image> SelectionTemplates;
         #endregion
         #region DRAWING
         [JsonIgnore]
@@ -159,7 +150,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                if (_result == null || (OldPrimary != Primary || OldSecondary != Secondary))
+                if (_result == null || HasColorsChanged())
                 {
                     /*
                      Images to be loaded in this order:
@@ -174,8 +165,6 @@ namespace Innovation_Uniform_Editor.Classes
                     - Masked shading primary
 
                     - Overlay
-
-                    There is a problem with some of the pixels, FIX THIS!!
                     */
 
                     Bitmap fullResult = new Bitmap(585, 559);
@@ -187,7 +176,7 @@ namespace Innovation_Uniform_Editor.Classes
                         if (this.backgroundImage != null)
                             g.DrawImage(this.backgroundImage.background, fullImage);
 
-                        Bitmap Colored = CreateMask(Primary, Secondary, SelectionTemplate, SecondarySelectionTemplate);
+                        Bitmap Colored = CreateMask(Colors, SelectionTemplates);
 
                         g.DrawImage(Colored, fullImage);
                         g.DrawImage(overlay, fullImage);
@@ -203,6 +192,11 @@ namespace Innovation_Uniform_Editor.Classes
                 }
             }
             set { _result = value; }
+        }
+        private bool HasColorsChanged()
+        {
+            return true;
+            //return Enumerable.SequenceEqual(Colors, OldColors);
         }
         [JsonIgnore]
         public Image PreviewImage
@@ -223,110 +217,108 @@ namespace Innovation_Uniform_Editor.Classes
         }
 
         private Image _result;
-        /*
-         OPTIONS:
-         - PRIMARY COLOR
-         - SECONDARY COLOR
-         - TEXTURE: TODO
-         - BACKGROUND IMAGE: INSIDE FOLDER.
-         - ...
-         */
 
         #region MASKING
-        /*
-         All of this to prevent it from having to recalculate the entire uniform.
-         Recalculating lots of times is very costly and resource heavy.
-         */
+        private void LoadSelectionTemplates()
+        {
+            Colors = new List<Color>();
+            SelectionTemplates = new List<Image>();
 
-        private List<int[]> pixelsMaskPrimary = new List<int[]>();
-        private List<int[]> pixelsMaskSecondary = new List<int[]>();
+            SelectionTemplates = new List<Image>() { Image.FromFile(basePath + "/Selection_Template.png") };
+            Colors.Add(new Color());
+            if (File.Exists(basePath + "/Selection_Template_Secondary.png"))
+            {
+                SelectionTemplates.Add(Image.FromFile(basePath + "/Selection_Template_Secondary.png"));
+                Colors.Add(new Color());
+            }
+
+            string[] otherSelections = Directory.GetFiles(basePath, "Selection_Template_*.png", SearchOption.TopDirectoryOnly);
+            
+            List<string> otherSelectionsList = otherSelections.ToList<string>();
+            otherSelectionsList.RemoveAll(e => e.Contains("Selection_Template_Secondary"));
+
+            foreach (string path in otherSelectionsList)
+            {
+                SelectionTemplates.Add(Image.FromFile(path));
+                Colors.Add(new Color());
+            }
+        }
 
         private Bitmap shading = new Bitmap(Image.FromFile("./Templates/Misc/Shading_Template.png"));
         private Bitmap shadingMasked;
 
-        private Bitmap CreateMask(Color colorPrimary, Color colorSecondary, Image maskPrimary, Image maskSecondary)
+        private List<Image> coloredLayers = new List<Image>();
+        private Bitmap CreateMask(List<Color> colors, List<Image> masks)
         {
+            if (coloredLayers.Count == 0)
+            {
+                for (int i = 0; i < masks.Count; i++)
+                {
+                    coloredLayers.Add(null);
+                }
+            }
+
             Bitmap Colored;
 
-            bool calculateMask = false;
+            Bitmap colorTemplate = new Bitmap(masks[0].Width, masks[0].Height);
 
-            OldPrimary = Primary;
-            OldSecondary = Secondary;
+            Colored = new Bitmap(colorTemplate.Width, colorTemplate.Height);
 
-            Bitmap colorTemplate = new Bitmap(maskPrimary.Width, maskPrimary.Height);
-
-            Bitmap bitmapMask = new Bitmap(maskPrimary);
-            Bitmap bitmapMaskSecondary = null;
-            if (maskSecondary != null)
-            {
-                bitmapMaskSecondary = new Bitmap(maskSecondary);
-            }
+            bool drawShading = false;
 
             if (shadingMasked == null)
             {
                 shadingMasked = new Bitmap(shading.Width, shading.Height);
-                calculateMask = true;
+                drawShading = true;
             }
 
-            if (pixelsMaskPrimary.Count == 0)
+            using (Graphics g = Graphics.FromImage(colorTemplate))
             {
-                #region PRIMARY
-                pixelsMaskPrimary = CreateColorDataFromMask(bitmapMask, calculateMask, colorTemplate, colorPrimary);
-                #endregion
-                #region SECONDARY
-                if (bitmapMaskSecondary != null)
+                for (int i = 0; i < masks.Count; i++)
                 {
-                    pixelsMaskSecondary = CreateColorDataFromMask(bitmapMaskSecondary, calculateMask, colorTemplate, colorSecondary);
-                }
-                #endregion
-            }
-            else
-            {
-                foreach (int[] pixels in pixelsMaskPrimary)
-                {
-                    if (calculateMask)
+                    Image mask = masks[i];
+                    Color color = colors[i];
+                    Color oldColor = OldColors.ElementAtOrDefault(i);
+                    if (color != oldColor || coloredLayers[i] == null)
                     {
-                        shadingMasked.SetPixel(pixels[0], pixels[1], shading.GetPixel(pixels[0], pixels[1]));
-                    }
-                    colorTemplate.SetPixel(pixels[0], pixels[1], colorPrimary);
-                }
-
-                if (maskSecondary != null)
-                {
-                    foreach (int[] pixels in pixelsMaskSecondary)
+                        Image layer = ColorLayer(new Bitmap(mask), color, drawShading);
+                        g.DrawImage(layer, Point.Empty);
+                        coloredLayers[i] = layer;
+                    } else
                     {
-                        colorTemplate.SetPixel(pixels[0], pixels[1], colorSecondary);
+                        g.DrawImage(coloredLayers[i], Point.Empty);
                     }
                 }
             }
 
-            Colored = new Bitmap(Math.Max(colorTemplate.Width, shadingMasked.Width),
-                             Math.Max(colorTemplate.Height, shadingMasked.Height));
             using (Graphics g = Graphics.FromImage(Colored))
             {
                 g.DrawImage(colorTemplate, Point.Empty);
                 g.DrawImage(shadingMasked, Point.Empty);
             }
+
+
+            OldColors = colors.ToList();
             return Colored;
         }
 
-        private List<int[]> CreateColorDataFromMask(Bitmap bitmapMask, bool calculateMask, Bitmap colorTemplate, Color color)
+        private Image ColorLayer(Bitmap ColorMask, Color color, bool drawShading)
         {
-            List<int[]> pixelMask = new List<int[]>();
+            Bitmap Colored = new Bitmap(ColorMask.Width, ColorMask.Height);
 
-            BitmapData bitmapMaskData = bitmapMask.LockBits(
-                        new Rectangle(0, 0, bitmapMask.Width, bitmapMask.Height),
+            BitmapData bitmapMaskData = ColorMask.LockBits(
+                        new Rectangle(0, 0, ColorMask.Width, ColorMask.Height),
                         ImageLockMode.ReadOnly,
-                        bitmapMask.PixelFormat
+                        ColorMask.PixelFormat
                     );
 
-            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * bitmapMask.Height];
+            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * ColorMask.Height];
 
             Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
 
-            bitmapMask.UnlockBits(bitmapMaskData);
+            ColorMask.UnlockBits(bitmapMaskData);
 
-            int pixelSize = Image.GetPixelFormatSize(bitmapMask.PixelFormat);
+            int pixelSize = Image.GetPixelFormatSize(ColorMask.PixelFormat);
 
             int x = 0;
             int y = 0;
@@ -338,22 +330,19 @@ namespace Innovation_Uniform_Editor.Classes
 
                 if (pixelData[0] == 0)
                 {
-                    pixelMask.Add(new int[2] { x, y });
-                    if (calculateMask)
-                    {
+                    Colored.SetPixel(x, y, color);
+                    if (drawShading)
                         shadingMasked.SetPixel(x, y, shading.GetPixel(x, y));
-                    }
-                    colorTemplate.SetPixel(x, y, color);
                 }
 
                 x++;
-                if (x >= bitmapMask.Width)
+                if (x >= ColorMask.Width)
                 {
                     x = 0;
                     y++;
                 }
             }
-            return pixelMask;
+            return Colored;
         }
         #endregion
         #endregion
@@ -390,30 +379,11 @@ namespace Innovation_Uniform_Editor.Classes
             downSized.Save("./Customs/" + Guid + "/result.png", ImageFormat.Png);
             unsavedChanges = false;
         }
-
-        private static Image ScaleImage(Image image, int height)
-        {
-            double ratio = (double)height / image.Height;
-            int newWidth = (int)(image.Width * ratio);
-            int newHeight = (int)(image.Height * ratio);
-            Bitmap newImage = new Bitmap(newWidth, newHeight);
-            using (Graphics g = Graphics.FromImage(newImage))
-            {
-                g.DrawImage(image, 0, 0, newWidth, newHeight);
-            }
-            image.Dispose();
-            return newImage;
-        }
         #endregion
         #region CHANGING_COLORS+UNIFORM
-        public void ChangePrimaryColor(Color color)
+        public void ChangeColorAtIndex(int index, Color color)
         {
-            Primary = color;
-            unsavedChanges = true;
-        }
-        public void ChangeSecondaryColor(Color color)
-        {
-            Secondary = color;
+            Colors[index] = color;
             unsavedChanges = true;
         }
         public void ChangeUniform(Uniform uniform)
@@ -423,10 +393,13 @@ namespace Innovation_Uniform_Editor.Classes
                 UniformBasedOn = uniform;
 
                 _result = null;
-                pixelsMaskPrimary = new List<int[]>();
                 shadingMasked = null;
+                OldColors = new List<Color>();
+                coloredLayers = new List<Image>();
 
                 unsavedChanges = true;
+
+                LoadSelectionTemplates();
             }
         }
         public void ChangeBackground(BackgroundImage bgs, bool clear)
