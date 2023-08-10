@@ -326,7 +326,6 @@ namespace Innovation_Uniform_Editor
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Innovation_Uniform_Editor.Properties.Resources.Original;
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -365,7 +364,6 @@ namespace Innovation_Uniform_Editor
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Image = global::Innovation_Uniform_Editor.Properties.Resources.Original;
             this.pictureBox3.Location = new System.Drawing.Point(2, 2);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.pictureBox3.Name = "pictureBox3";
@@ -404,7 +402,6 @@ namespace Innovation_Uniform_Editor
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.Image = global::Innovation_Uniform_Editor.Properties.Resources.Original;
             this.pictureBox4.Location = new System.Drawing.Point(2, 2);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.pictureBox4.Name = "pictureBox4";
@@ -443,7 +440,6 @@ namespace Innovation_Uniform_Editor
             this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.Image = global::Innovation_Uniform_Editor.Properties.Resources.Original;
             this.pictureBox5.Location = new System.Drawing.Point(2, 2);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.pictureBox5.Name = "pictureBox5";
