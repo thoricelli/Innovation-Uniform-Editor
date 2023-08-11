@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,10 @@ namespace Innovation_Uniform_Editor.Classes
 
         public Image LoadUniformPreview()
         {
-            return Image.FromFile("./Templates/Normal/" + part.ToString() + "/" + uniforms[currentUniform].Id + "/Original.png");
+            string fullpath = "./Templates/Normal/" + part.ToString() + "/" + uniforms[currentUniform].Id + "/Original.png";
+            if (!File.Exists(fullpath))
+                TemplateUpdater.CheckForUpdates(true);
+            return Image.FromFile(fullpath);
         }
 
         public Image NextUniform()

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
 {
@@ -14,10 +15,12 @@ namespace Innovation_Uniform_Editor.Classes
         private static string githubURL = "https://raw.githubusercontent.com/thoricelli/Innovation-Uniform-Editor/master/";
         private static string hashFile = "templateshash.txt";
         private static string zipFile = "Templates.zip";
-
-        public static bool CheckForUpdates()
+        private static string oldHash = "";
+        private static bool tryingToFix = false;
+        public static bool CheckForUpdates(bool ignoreHash = false)
         {
-            string currenthashTemplate = File.ReadAllText(hashFile).Replace("\r\n", "");
+            tryingToFix = ignoreHash;
+            oldHash = File.Exists(hashFile) ? File.ReadAllText(hashFile).Replace("\r\n", "") : "" ;
             WebRequest webRequest = WebRequest.Create($"{githubURL}{hashFile}");
 
             using (var response = webRequest.GetResponse())
@@ -25,7 +28,7 @@ namespace Innovation_Uniform_Editor.Classes
             using (var reader = new StreamReader(content))
             {
                 string hashTemplate = reader.ReadToEnd().Replace("\n","");
-                if (hashTemplate != currenthashTemplate)
+                if (hashTemplate != oldHash || ignoreHash)
                 {
                     File.WriteAllText($"{hashFile}", hashTemplate);
                     DownloadZipFile($"{githubURL}{zipFile}", zipFile);
@@ -52,9 +55,29 @@ namespace Innovation_Uniform_Editor.Classes
 
         private static void ExtractToFolder(string filename, string foldername)
         {
-            Directory.Delete(foldername, true);
-            ZipFile.ExtractToDirectory(filename, foldername);
-            File.Delete(filename);
+            try
+            {
+                if (Directory.Exists(foldername))
+                    Directory.Move(foldername, foldername + "_backup");
+                ZipFile.ExtractToDirectory(filename, foldername);
+                File.Delete(filename);
+                if (Directory.Exists(foldername + "_backup"))
+                    Directory.Delete(foldername + "_backup", true);
+                if (tryingToFix)
+                {
+                    MessageBox.Show("Application has tried to fix the templates folder due to corruption. Please restart the application.", "Fixing templates.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit();
+                    Environment.Exit(0);
+                }
+            } catch(Exception e)
+            {
+                if (File.Exists(filename))
+                    File.Delete(filename);
+                if (Directory.Exists(foldername + "_backup"))
+                    Directory.Move(foldername + "_backup", foldername);
+                File.WriteAllText(hashFile, oldHash);
+                MessageBox.Show("An error occured whilst trying to update, restoring files.", "Update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

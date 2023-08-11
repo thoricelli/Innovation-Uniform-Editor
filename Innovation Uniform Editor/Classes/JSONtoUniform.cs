@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
 {
@@ -18,8 +19,8 @@ namespace Innovation_Uniform_Editor.Classes
         public static List<Uniform> Shirts { get; set; }
         public static List<BackgroundImage> Backgrounds { get; set; } = new List<BackgroundImage>();
         public static List<MenuItem> MenuItems = new List<MenuItem>();
-        public static Bitmap backgroundMask = new Bitmap(Image.FromFile("./Templates/Misc/Background_Mask.png"));
-        public static Bitmap waterMark = new Bitmap(Image.FromFile("./Templates/Misc/Watermark.png"));
+        public static Bitmap backgroundMask;
+        public static Bitmap waterMark;
         //This should be done when the class is loaded, not outside of it!
         public static void LoadMenuItems(string path)
         {
@@ -76,6 +77,24 @@ namespace Innovation_Uniform_Editor.Classes
         }
         public static void LoadUniforms(string path)
         {
+            if (!File.Exists("./Templates/Misc/Background_Mask.png"))
+            {
+                FixTemplates();
+                return;
+            }
+            if (!File.Exists("./Templates/Misc/Watermark.png"))
+            {
+                FixTemplates();
+                return;
+            }
+            if (!File.Exists("./Templates/TemplateInfo.json"))
+            {
+                FixTemplates();
+                return;
+            }
+
+            backgroundMask = new Bitmap(Image.FromFile("./Templates/Misc/Background_Mask.png"));
+            waterMark = new Bitmap(Image.FromFile("./Templates/Misc/Watermark.png"));
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
@@ -114,6 +133,10 @@ namespace Innovation_Uniform_Editor.Classes
                     }
                 }
             }
+        }
+        private static void FixTemplates()
+        {
+            TemplateUpdater.CheckForUpdates(true);
         }
         public static void LoadBackgrounds(string path)
         {

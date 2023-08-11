@@ -83,7 +83,10 @@ namespace Innovation_Uniform_Editor.Classes
         }
         [JsonIgnore]
         private Bitmap backgroundOG { 
-            get { return new Bitmap(Image.FromFile("./Backgrounds/" + this.backgroundGUID + ".png")); }
+            get {
+                if (!File.Exists("./Backgrounds/" + this.backgroundGUID + ".png"))
+                    TemplateUpdater.CheckForUpdates(true);
+                return new Bitmap(Image.FromFile("./Backgrounds/" + this.backgroundGUID + ".png")); }
         }
         public Guid backgroundGUID;
     }
@@ -140,7 +143,12 @@ namespace Innovation_Uniform_Editor.Classes
         }
         
         [JsonIgnore]
-        public Image overlay { get { return Image.FromFile(basePath + "/Overlay.png"); } }
+        public Image overlay { get { 
+                if (!File.Exists(basePath  + "/Overlay.png"))
+                    TemplateUpdater.CheckForUpdates(true);
+                return Image.FromFile(basePath + "/Overlay.png"); 
+            } 
+        }
         [JsonIgnore]
         public List<Image> SelectionTemplates;
         #endregion
