@@ -92,9 +92,13 @@ namespace Innovation_Uniform_Editor.Classes
                 FixTemplates();
                 return;
             }
+            Image mask = Image.FromFile("./Templates/Misc/Background_Mask.png");
+            backgroundMask = new Bitmap(mask);
+            mask = null;
 
-            backgroundMask = new Bitmap(Image.FromFile("./Templates/Misc/Background_Mask.png"));
-            waterMark = new Bitmap(Image.FromFile("./Templates/Misc/Watermark.png"));
+            Image watermark = Image.FromFile("./Templates/Misc/Watermark.png");
+            waterMark = new Bitmap(watermark);
+            watermark = null;
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();

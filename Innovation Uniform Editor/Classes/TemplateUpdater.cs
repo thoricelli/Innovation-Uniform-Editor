@@ -32,29 +32,23 @@ namespace Innovation_Uniform_Editor.Classes
                 if (hashTemplate != oldHash || ignoreHash)
                 {
                     File.WriteAllText($"{hashFile}", hashTemplate);
-                    DownloadZipFile($"{githubURL}{zipFile}", zipFile);
-                    return true;
+                    return DownloadZipFile($"{githubURL}{zipFile}", zipFile);
                 }
 
                 return false;
             }
         }
 
-        private static void DownloadZipFile(string url, string filename)
+        private static bool DownloadZipFile(string url, string filename)
         {
             WebClient webClient = new WebClient();
             webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
             webClient.Headers.Add("User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
             webClient.DownloadFile(new Uri(url), filename);
-            webClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
+            return ExtractToFolder(zipFile, "Templates");
         }
 
-        private static void WebClient_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            ExtractToFolder(zipFile, "Templates");
-        }
-
-        private static void ExtractToFolder(string filename, string foldername)
+        private static bool ExtractToFolder(string filename, string foldername)
         {
             try
             {
@@ -70,6 +64,7 @@ namespace Innovation_Uniform_Editor.Classes
                     Application.Exit();
                     Environment.Exit(0);
                 }
+                return true;
             } catch(Exception e)
             {
                 if (File.Exists(filename))
@@ -79,6 +74,7 @@ namespace Innovation_Uniform_Editor.Classes
                 File.WriteAllText(hashFile, oldHash);
                 MessageBox.Show("An error occured whilst trying to update, restoring files.", "Update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            return true;
         }
     }
 }
