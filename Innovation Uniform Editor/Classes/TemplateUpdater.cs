@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,7 +45,7 @@ namespace Innovation_Uniform_Editor.Classes
             WebClient webClient = new WebClient();
             webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
             webClient.Headers.Add("User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
-            webClient.DownloadFileAsync(new Uri(url), filename);
+            webClient.DownloadFile(new Uri(url), filename);
             webClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
         }
 
