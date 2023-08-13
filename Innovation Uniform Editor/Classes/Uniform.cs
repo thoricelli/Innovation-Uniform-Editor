@@ -86,7 +86,8 @@ namespace Innovation_Uniform_Editor.Classes
             get {
                 if (!File.Exists("./Backgrounds/" + this.backgroundGUID + ".png"))
                     TemplateUpdater.CheckForUpdates(true);
-                return new Bitmap(Image.FromFile("./Backgrounds/" + this.backgroundGUID + ".png")); }
+                FileStream fs = File.Open("./Backgrounds/" + this.backgroundGUID + ".png", FileMode.Open, FileAccess.Read);
+                return new Bitmap(Image.FromStream(fs)); }
         }
         public Guid backgroundGUID;
     }
@@ -146,7 +147,8 @@ namespace Innovation_Uniform_Editor.Classes
         public Image overlay { get { 
                 if (!File.Exists(basePath  + "/Overlay.png"))
                     TemplateUpdater.CheckForUpdates(true);
-                return Image.FromFile(basePath + "/Overlay.png"); 
+                FileStream fs = File.Open(basePath + "/Overlay.png", FileMode.Open, FileAccess.Read);
+                return Image.FromStream(fs); 
             } 
         }
         [JsonIgnore]
@@ -232,11 +234,13 @@ namespace Innovation_Uniform_Editor.Classes
             Colors = new List<Color>();
             SelectionTemplates = new List<Image>();
 
-            SelectionTemplates = new List<Image>() { Image.FromFile(basePath + "/Selection_Template.png") };
+            FileStream fs = File.Open(basePath + "/Selection_Template.png", FileMode.Open, FileAccess.Read);
+            SelectionTemplates = new List<Image>() { Image.FromStream(fs) };
             Colors.Add(new Color());
             if (File.Exists(basePath + "/Selection_Template_Secondary.png"))
             {
-                SelectionTemplates.Add(Image.FromFile(basePath + "/Selection_Template_Secondary.png"));
+                fs = File.Open(basePath + "/Selection_Template_Secondary.png", FileMode.Open, FileAccess.Read);
+                SelectionTemplates.Add(Image.FromStream(fs));
                 Colors.Add(new Color());
             }
 
@@ -247,12 +251,13 @@ namespace Innovation_Uniform_Editor.Classes
 
             foreach (string path in otherSelectionsList)
             {
-                SelectionTemplates.Add(Image.FromFile(path));
+                fs = File.Open(path, FileMode.Open, FileAccess.Read);
+                SelectionTemplates.Add(Image.FromStream(fs));
                 Colors.Add(new Color());
             }
         }
 
-        private Bitmap shading = new Bitmap(Image.FromFile("./Templates/Misc/Shading_Template.png"));
+        private Bitmap shading = new Bitmap(Image.FromStream(File.Open("./Templates/Misc/Shading_Template.png", FileMode.Open, FileAccess.Read)));
         private Bitmap shadingMasked;
 
         private List<Image> coloredLayers = new List<Image>();

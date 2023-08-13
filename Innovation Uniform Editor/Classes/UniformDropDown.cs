@@ -29,7 +29,8 @@ namespace Innovation_Uniform_Editor.Classes
             string fullpath = "./Templates/Normal/" + part.ToString() + "/" + uniforms[currentUniform].Id + "/Original.png";
             if (!File.Exists(fullpath))
                 TemplateUpdater.CheckForUpdates(true);
-            return Image.FromFile(fullpath);
+            FileStream fs = File.Open(fullpath, FileMode.Open, FileAccess.Read);
+            return Image.FromStream(fs);
         }
 
         public Image NextUniform()
