@@ -30,7 +30,9 @@ namespace Innovation_Uniform_Editor.Classes
             if (!File.Exists(fullpath))
                 TemplateUpdater.CheckForUpdates(true);
             FileStream fs = File.Open(fullpath, FileMode.Open, FileAccess.Read);
-            return Image.FromStream(fs);
+            Image returnResult = Image.FromStream(fs);
+            fs.Close();
+            return returnResult;
         }
 
         public Image NextUniform()

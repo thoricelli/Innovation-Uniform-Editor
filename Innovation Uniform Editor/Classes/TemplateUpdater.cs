@@ -50,8 +50,8 @@ namespace Innovation_Uniform_Editor.Classes
 
         private static bool ExtractToFolder(string filename, string foldername)
         {
-            try
-            {
+            /*try
+            {*/
                 if (Directory.Exists(foldername))
                     Directory.Move(foldername, foldername + "_backup");
                 ZipFile.ExtractToDirectory(filename, foldername);
@@ -65,7 +65,7 @@ namespace Innovation_Uniform_Editor.Classes
                     Environment.Exit(0);
                 }
                 return true;
-            } catch(Exception e)
+            /*} catch(Exception e)
             {
                 if (File.Exists(filename))
                     File.Delete(filename);
@@ -73,7 +73,7 @@ namespace Innovation_Uniform_Editor.Classes
                     Directory.Move(foldername + "_backup", foldername);
                 File.WriteAllText(hashFile, oldHash);
                 MessageBox.Show("An error occured whilst trying to update, restoring files.", "Update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            }*/
             return true;
         }
     }

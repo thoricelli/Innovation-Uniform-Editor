@@ -91,6 +91,7 @@ namespace Innovation_Uniform_Editor.UI
             {
                 FileStream fs = File.Open(backgroundDialog.FileName, FileMode.Open, FileAccess.Read);
                 Image resizedBackground = JSONtoUniform.resizeImage(Image.FromStream(fs), new Size(585, 559));
+                fs.Close();
                 BackgroundImage bg = new BackgroundImage(null, resizedBackground);
                 JSONtoUniform.Backgrounds.Add(bg);
                 InitializeUniforms();

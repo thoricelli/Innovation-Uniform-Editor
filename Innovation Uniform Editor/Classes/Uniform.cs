@@ -87,7 +87,9 @@ namespace Innovation_Uniform_Editor.Classes
                 if (!File.Exists("./Backgrounds/" + this.backgroundGUID + ".png"))
                     TemplateUpdater.CheckForUpdates(true);
                 FileStream fs = File.Open("./Backgrounds/" + this.backgroundGUID + ".png", FileMode.Open, FileAccess.Read);
-                return new Bitmap(Image.FromStream(fs)); }
+                Bitmap returnResult = new Bitmap(Image.FromStream(fs));
+                fs.Close();
+                return returnResult; }
         }
         public Guid backgroundGUID;
     }
@@ -236,6 +238,7 @@ namespace Innovation_Uniform_Editor.Classes
 
             FileStream fs = File.Open(basePath + "/Selection_Template.png", FileMode.Open, FileAccess.Read);
             SelectionTemplates = new List<Image>() { Image.FromStream(fs) };
+            fs.Close();
             Colors.Add(new Color());
             if (File.Exists(basePath + "/Selection_Template_Secondary.png"))
             {
@@ -257,7 +260,7 @@ namespace Innovation_Uniform_Editor.Classes
             }
         }
 
-        private Bitmap shading = new Bitmap(Image.FromStream(File.Open("./Templates/Misc/Shading_Template.png", FileMode.Open, FileAccess.Read)));
+        private Bitmap shading;
         private Bitmap shadingMasked;
 
         private List<Image> coloredLayers = new List<Image>();
@@ -317,6 +320,12 @@ namespace Innovation_Uniform_Editor.Classes
 
         private Image ColorLayer(Bitmap ColorMask, Color color, bool drawShading)
         {
+            if (shading == null)
+            {
+                FileStream fs = File.Open("./Templates/Misc/Shading_Template.png", FileMode.Open, FileAccess.Read);
+                shading = new Bitmap(Image.FromStream(fs));
+                fs.Close();
+            }
             Bitmap Colored = new Bitmap(ColorMask.Width, ColorMask.Height);
 
             BitmapData bitmapMaskData = ColorMask.LockBits(
