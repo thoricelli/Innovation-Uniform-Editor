@@ -47,11 +47,13 @@ namespace Innovation_Uniform_Editor
         private void btnLeft_Click(object sender, EventArgs e)
         {
             boxPreview.Image = Handler.NextUniform();
+            dropdownUniforms.SelectedIndex = Handler.currentUniform;
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
             boxPreview.Image = Handler.PreviousUniform();
+            dropdownUniforms.SelectedIndex = Handler.currentUniform;
         }
         Editor editor;
         private void btnCreate_Click(object sender, EventArgs e)
