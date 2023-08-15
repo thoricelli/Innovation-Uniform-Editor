@@ -51,7 +51,7 @@
             this.boxPreview.Margin = new System.Windows.Forms.Padding(2);
             this.boxPreview.Name = "boxPreview";
             this.boxPreview.Size = new System.Drawing.Size(432, 436);
-            this.boxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.boxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.boxPreview.TabIndex = 0;
             this.boxPreview.TabStop = false;
             // 

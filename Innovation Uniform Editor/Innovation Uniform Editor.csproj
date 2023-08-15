@@ -96,6 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CustomColor.cs" />
     <Compile Include="Classes\Group.cs" />
     <Compile Include="Classes\MenuItem.cs" />
     <Compile Include="Classes\JSONtoUniform.cs" />

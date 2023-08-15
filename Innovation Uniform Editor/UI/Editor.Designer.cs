@@ -140,6 +140,7 @@
             // 
             // menuEditor
             // 
+            this.menuEditor.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.redrawUniformToolStripMenuItem,
             this.downloadToolStripMenuItem});
@@ -222,9 +223,9 @@
             this.buttonsLayoutPanel.AutoSize = true;
             this.buttonsLayoutPanel.Controls.Add(this.btnBackgroundImage);
             this.buttonsLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.buttonsLayoutPanel.Location = new System.Drawing.Point(540, 27);
+            this.buttonsLayoutPanel.Location = new System.Drawing.Point(539, 27);
             this.buttonsLayoutPanel.Name = "buttonsLayoutPanel";
-            this.buttonsLayoutPanel.Size = new System.Drawing.Size(192, 63);
+            this.buttonsLayoutPanel.Size = new System.Drawing.Size(193, 86);
             this.buttonsLayoutPanel.TabIndex = 15;
             // 
             // Editor
