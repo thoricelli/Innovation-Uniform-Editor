@@ -99,6 +99,8 @@ namespace Innovation_Uniform_Editor.Classes
         public string Name { get; set; }
         public string Creator { get; set; }   
         public ClothingPart part { get; set; }
+        [DefaultValue(true)]
+        public bool Shading { get; set; } = true;
     }
 
     //Result is also saved inside this folder for fast preview loading (downsized).
@@ -156,9 +158,24 @@ namespace Innovation_Uniform_Editor.Classes
             } 
         }
         [JsonIgnore]
+        public Image texture
+        {
+            get
+            {
+                if (!File.Exists(basePath + "/texture.png"))
+                    return null;
+                FileStream fs = File.Open(basePath + "/texture.png", FileMode.Open, FileAccess.Read);
+                Image img = Image.FromStream(fs);
+                fs.Close();
+                return img;
+            }
+        }
+        [JsonIgnore]
         public List<Image> SelectionTemplates;
         #endregion
         #region DRAWING
+        private Bitmap shading;
+        private Bitmap shadingMasked;
         [JsonIgnore]
         public Image Result 
         {
@@ -193,6 +210,11 @@ namespace Innovation_Uniform_Editor.Classes
                         Bitmap Colored = CreateMask(Colors, SelectionTemplates);
 
                         g.DrawImage(Colored, fullImage);
+                        if (this.texture != null) {
+                            g.DrawImage(this.texture.SetOpacity(0.8F), fullImage);
+                        }
+                        if (this.UniformBasedOn.Shading)
+                            g.DrawImage(shadingMasked, Point.Empty);
                         g.DrawImage(overlay, fullImage);
                         g.DrawImage(JSONtoUniform.waterMark, fullImage);
                     }
@@ -264,9 +286,6 @@ namespace Innovation_Uniform_Editor.Classes
             }
         }
 
-        private Bitmap shading;
-        private Bitmap shadingMasked;
-
         private List<Image> coloredLayers = new List<Image>();
         private Bitmap CreateMask(List<Color> colors, List<Image> masks)
         {
@@ -320,7 +339,6 @@ namespace Innovation_Uniform_Editor.Classes
             using (Graphics g = Graphics.FromImage(Colored))
             {
                 g.DrawImage(colorTemplate, Point.Empty);
-                g.DrawImage(shadingMasked, Point.Empty);
             }
 
 

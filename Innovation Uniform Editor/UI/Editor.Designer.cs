@@ -49,6 +49,7 @@
             this.saveCustom = new System.Windows.Forms.SaveFileDialog();
             this.idLabel = new System.Windows.Forms.Label();
             this.buttonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.chkFading = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -228,11 +229,23 @@
             this.buttonsLayoutPanel.Size = new System.Drawing.Size(193, 86);
             this.buttonsLayoutPanel.TabIndex = 15;
             // 
+            // chkFading
+            // 
+            this.chkFading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkFading.Location = new System.Drawing.Point(671, 516);
+            this.chkFading.Name = "chkFading";
+            this.chkFading.Size = new System.Drawing.Size(58, 24);
+            this.chkFading.TabIndex = 16;
+            this.chkFading.Text = "Fading";
+            this.chkFading.UseVisualStyleBackColor = true;
+            this.chkFading.Visible = false;
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.chkFading);
             this.Controls.Add(this.buttonsLayoutPanel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.chkElite);
@@ -281,5 +294,6 @@
         private System.Windows.Forms.SaveFileDialog saveCustom;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.FlowLayoutPanel buttonsLayoutPanel;
+        private System.Windows.Forms.CheckBox chkFading;
     }
 }
