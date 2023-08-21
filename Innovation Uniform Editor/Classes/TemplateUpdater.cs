@@ -72,6 +72,7 @@ namespace Innovation_Uniform_Editor.Classes
                     Directory.Move(foldername + "_backup", foldername);
                 File.WriteAllText(hashFile, oldHash);
                 MessageBox.Show("An error occured whilst trying to update, restoring files.", "Update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Error message: {e.Message}\nStacktrace: {e.StackTrace}", "Error in detail.");
                 return true;
             }
         }
