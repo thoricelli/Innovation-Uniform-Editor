@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
+using Innovation_Uniform_Editor.Helpers;
 
 namespace Innovation_Uniform_Editor.UI
 {
@@ -90,7 +91,7 @@ namespace Innovation_Uniform_Editor.UI
             if (backgroundDialog.FileName != "")
             {
                 FileStream fs = File.Open(backgroundDialog.FileName, FileMode.Open, FileAccess.Read);
-                Image resizedBackground = JSONtoUniform.resizeImage(Image.FromStream(fs), new Size(585, 559));
+                Image resizedBackground = ImageHelper.resizeImage(Image.FromStream(fs), new Size(585, 559));
                 fs.Close();
                 BackgroundImage bg = new BackgroundImage(null, resizedBackground);
                 JSONtoUniform.Backgrounds.Add(bg);

@@ -106,6 +106,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Enums\UniformType.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

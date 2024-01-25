@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
+using Innovation_Uniform_Editor.Helpers;
 
 namespace Innovation_Uniform_Editor.Classes
 {
@@ -419,7 +420,7 @@ namespace Innovation_Uniform_Editor.Classes
             {
                 serializer.Serialize(writer, this);
             }
-            Image downSized = JSONtoUniform.resizeImage(Result, new Size(293, 280));
+            Image downSized = ImageHelper.resizeImage(Result, new Size(293, 280));
             downSized.Save("./Customs/" + Guid + "/result.png", ImageFormat.Png);
             unsavedChanges = false;
         }
