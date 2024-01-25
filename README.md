@@ -1,3 +1,11 @@
+<b>!! REWORK NEEDED !!</b><br>
+Currently, this program *can* be used for simple uniforms.<br>
+I was working on a shade editor, and other features, but I lost motivation to do so.<br>
+Plus this code is quite the spaghetti code I'm NOT gonna lie.<br>
+Anyways, DO not hesitate to submit a pull request if you want to help! I could really use it...<br>
+Thank you.<br>
+Anyways, next task is to refactor this shitty code...<br><br>
+
 ![image](https://github.com/thoricelli/Innovation-Uniform-Editor/assets/29801268/3687dbcc-dcde-4e23-8454-7d5bcd69440b)
 # Innovation Uniform Editor
 Hi, currently setting up, way more features to come in the future.<br>
