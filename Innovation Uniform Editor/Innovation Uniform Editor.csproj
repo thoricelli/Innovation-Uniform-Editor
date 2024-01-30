@@ -206,7 +206,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Templates\Credit to Skyfall_Epsilon for the templates!" />
     <None Include="Templates\TemplateInfo.json" />
   </ItemGroup>
   <ItemGroup>
