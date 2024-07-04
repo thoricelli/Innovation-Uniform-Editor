@@ -1,6 +1,3 @@
-<b>THIS REPO WILL SOON BE ARCHIVED</b><br>
-<b>PLEASE CHECK <a href="https://github.com/thoricelli/Innovation-Uniform-Editor-Web">THIS</a> REPO INSTEAD FOR THE WEB VERSION</b>
-
 ![image](https://github.com/thoricelli/Innovation-Uniform-Editor/assets/29801268/3687dbcc-dcde-4e23-8454-7d5bcd69440b)
 # Innovation Uniform Editor
 Hi, currently setting up, way more features to come in the future.<br>
