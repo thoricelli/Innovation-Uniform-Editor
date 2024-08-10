@@ -1,107 +1,17 @@
-﻿using Innovation_Uniform_Editor.Enums;
+﻿using Innovation_Uniform_Editor.Classes.Images;
+using Innovation_Uniform_Editor.Classes.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using System.Xml.Serialization;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Innovation_Uniform_Editor.Classes
 {
-    public class BackgroundImage
-    {
-        public BackgroundImage(string guid = null, Image newBackground = null)
-        {
-            this.backgroundGUID = guid == null ? Guid.NewGuid() : new Guid(guid);
-            if (newBackground != null)
-            {
-                newBackground.Save("./Backgrounds/" + this.backgroundGUID + ".png", ImageFormat.Png);
-            }
-        }
-        //JSONtoUniform.backgroundMask
-        [JsonIgnore]
-        public Image background {
-            get
-            {
-                if (_background == null)
-                {
-                    calculateBackgroundMasked();
-                }
-                return _background;
-            }
-        }
-        private Bitmap _background;
-        private void calculateBackgroundMasked()
-        {
-            _background = new Bitmap(JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height);
-            BitmapData bitmapMaskData = JSONtoUniform.backgroundMask.LockBits(
-                        new Rectangle(0, 0, JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height),
-                        ImageLockMode.ReadOnly,
-                        JSONtoUniform.backgroundMask.PixelFormat
-                    );
-            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * JSONtoUniform.backgroundMask.Height];
-            Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
-
-            JSONtoUniform.backgroundMask.UnlockBits(bitmapMaskData);
-
-            int pixelSize = Image.GetPixelFormatSize(JSONtoUniform.backgroundMask.PixelFormat);
-
-            int x = 0;
-            int y = 0;
-
-            Bitmap backgroundOGStored = backgroundOG;
-
-            for (int i = 0; i < bitmapMaskBytes.Length; i += pixelSize / 8)
-            {
-                byte[] pixelData = new byte[3];
-                Array.Copy(bitmapMaskBytes, i, pixelData, 0, 3);
-
-                if (pixelData[0] == 0)
-                {
-                    _background.SetPixel(x, y, backgroundOGStored.GetPixel(x, y));
-                }
-
-                x++;
-                if (x >= _background.Width)
-                {
-                    x = 0;
-                    y++;
-                }
-            }
-        }
-        [JsonIgnore]
-        private Bitmap backgroundOG { 
-            get {
-                if (!File.Exists("./Backgrounds/" + this.backgroundGUID + ".png"))
-                    TemplateUpdater.CheckForUpdates(true);
-                FileStream fs = File.Open("./Backgrounds/" + this.backgroundGUID + ".png", FileMode.Open, FileAccess.Read);
-                Bitmap returnResult = new Bitmap(Image.FromStream(fs));
-                fs.Close();
-                return returnResult; }
-        }
-        public Guid backgroundGUID;
-    }
-    public class Uniform
-    {
-        public UInt64 Id { get; set; }
-        public string Name { get; set; }
-        public string Creator { get; set; }   
-        public ClothingPart part { get; set; }
-        [DefaultValue(true)]
-        public bool Shading { get; set; } = true;
-    }
 
     //Result is also saved inside this folder for fast preview loading (downsized).
     //Add changing logo support!
@@ -113,8 +23,10 @@ namespace Innovation_Uniform_Editor.Classes
 
         #region IDENTIFIERS+INFO
         [JsonIgnore]
-        public Uniform UniformBasedOn {
-            get {
+        public Uniform UniformBasedOn
+        {
+            get
+            {
                 return JSONtoUniform.FindFromId(this.UniformBasedOnId);
             }
             set
@@ -131,31 +43,35 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                return JSONtoUniform.FindBackgroundFromGuid(this.BackgroundImageGuid);
+                return Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
             }
         }
-        private Guid BackgroundImageGuid;
+        public Guid BackgroundImageGuid;
         #endregion
         #region ASSETS
         [JsonIgnore]
-        private string basePath { 
-            get 
-            { 
-                return UniformBasedOn != null ? 
+        private string basePath
+        {
+            get
+            {
+                return UniformBasedOn != null ?
                     "./Templates/Normal/" + UniformBasedOn.part.ToString() + "/" + this.UniformBasedOn.Id
-                    : "./Templates/Normal/ERROR"; 
-            } 
+                    : "./Templates/Normal/ERROR";
+            }
         }
-        
+
         [JsonIgnore]
-        public Image overlay { get { 
-                if (!File.Exists(basePath  + "/Overlay.png"))
+        public Image overlay
+        {
+            get
+            {
+                if (!File.Exists(basePath + "/Overlay.png"))
                     TemplateUpdater.CheckForUpdates(true);
                 FileStream fs = File.Open(basePath + "/Overlay.png", FileMode.Open, FileAccess.Read);
                 Image img = Image.FromStream(fs);
                 fs.Close();
-                return img; 
-            } 
+                return img;
+            }
         }
         [JsonIgnore]
         public Image texture
@@ -177,7 +93,7 @@ namespace Innovation_Uniform_Editor.Classes
         private Bitmap shading;
         private Bitmap shadingMasked;
         [JsonIgnore]
-        public Image Result 
+        public Image Result
         {
             get
             {
@@ -210,7 +126,8 @@ namespace Innovation_Uniform_Editor.Classes
                         Bitmap Colored = CreateMask(Colors, SelectionTemplates);
 
                         g.DrawImage(Colored, fullImage);
-                        if (this.texture != null) {
+                        if (this.texture != null)
+                        {
                             g.DrawImage(this.texture.SetOpacity(0.8F), fullImage);
                         }
                         if (this.UniformBasedOn.Shading)
@@ -222,7 +139,8 @@ namespace Innovation_Uniform_Editor.Classes
                     _result = fullResult;
 
                     return _result;
-                } else
+                }
+                else
                 {
                     return _result;
                 }
@@ -237,8 +155,8 @@ namespace Innovation_Uniform_Editor.Classes
         [JsonIgnore]
         public Image PreviewImage
         {
-            get 
-            { 
+            get
+            {
                 if (File.Exists("./Customs/" + Guid + "/result.png"))
                 {
                     Image img;
@@ -273,7 +191,7 @@ namespace Innovation_Uniform_Editor.Classes
             }
 
             string[] otherSelections = Directory.GetFiles(basePath, "Selection_Template_*.png", SearchOption.TopDirectoryOnly);
-            
+
             List<string> otherSelectionsList = otherSelections.ToList<string>();
             otherSelectionsList.RemoveAll(e => e.Contains("Selection_Template_Secondary"));
 
@@ -329,7 +247,8 @@ namespace Innovation_Uniform_Editor.Classes
                         Image layer = ColorLayer(new Bitmap(mask), color, drawShading);
                         g.DrawImage(layer, Point.Empty);
                         coloredLayers[i] = layer;
-                    } else
+                    }
+                    else
                     {
                         g.DrawImage(coloredLayers[i], Point.Empty);
                     }
@@ -449,7 +368,7 @@ namespace Innovation_Uniform_Editor.Classes
         public void ChangeBackground(BackgroundImage bgs, bool clear)
         {
             if (bgs != null)
-                BackgroundImageGuid = bgs.backgroundGUID;
+                BackgroundImageGuid = bgs.Id;
             if (clear)
                 BackgroundImageGuid = new Guid(); //Find a way to empty out the backgroundImage.
             _result = null;

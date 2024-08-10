@@ -98,8 +98,16 @@
   <ItemGroup>
     <Compile Include="Classes\CustomColor.cs" />
     <Compile Include="Classes\Group.cs" />
+    <Compile Include="Classes\Images\BackgroundImage.cs" />
+    <Compile Include="Classes\Loaders\BackgroundsLoader.cs" />
+    <Compile Include="Classes\Loaders\Interfaces\IFindable.cs" />
+    <Compile Include="Classes\Loaders\Interfaces\ISaveable.cs" />
+    <Compile Include="Classes\Loaders\Loader.cs" />
     <Compile Include="Classes\MenuItem.cs" />
     <Compile Include="Classes\JSONtoUniform.cs" />
+    <Compile Include="Classes\Models\Assets.cs" />
+    <Compile Include="Classes\Models\IIdentifier.cs" />
+    <Compile Include="Classes\Models\Uniform.cs" />
     <Compile Include="Classes\TemplateUpdater.cs" />
     <Compile Include="Classes\UniformDropDown.cs" />
     <Compile Include="DraggablePanel.cs">
@@ -214,7 +222,6 @@
   <ItemGroup>
     <Content Include="150x150.ico" />
     <None Include="Icons\620x300.png" />
-    <Content Include="Templates\Misc\Deletion_Template.png" />
     <Content Include="Templates\Misc\Shading_Template.png" />
     <Content Include="Templates\Normal\Pants\368659381\Original.png" />
     <Content Include="Templates\Normal\Pants\368659381\Overlay.png" />
@@ -334,6 +341,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)DirHash.exe" "$(SolutionDir)Innovation Uniform Editor/Templates" -quiet -t templateshash.txt -overwrite -nowait -nologo

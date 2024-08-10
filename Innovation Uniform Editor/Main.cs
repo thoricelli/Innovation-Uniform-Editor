@@ -1,4 +1,6 @@
 ﻿using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Loaders;
+using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using Innovation_Uniform_Editor.UI;
 using System;
@@ -24,13 +26,14 @@ namespace Innovation_Uniform_Editor
         }
         private void Main_Load(object sender, EventArgs e)
         {
+            Assets.BackgroundsLoader = new BackgroundsLoader("./Backgrounds/");
+
             JSONtoUniform.LoadMenuItems("./Customs/");
             JSONtoUniform.LoadUniforms("./Templates/TemplateInfo.json");
             if (!Directory.Exists("./Backgrounds/"))
             {
                 Directory.CreateDirectory("./Backgrounds/");
             }
-            JSONtoUniform.LoadBackgrounds("./Backgrounds/");
 
             LoadCustomsAndGroups();
 

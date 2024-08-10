@@ -1,15 +1,12 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Innovation_Uniform_Editor.Classes.Images;
+using Innovation_Uniform_Editor.Classes.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
 {
@@ -18,7 +15,6 @@ namespace Innovation_Uniform_Editor.Classes
         //This is terrible, please make this private and add functions!
         public static List<Uniform> Pants { get; set; }
         public static List<Uniform> Shirts { get; set; }
-        public static List<BackgroundImage> Backgrounds { get; set; } = new List<BackgroundImage>();
         public static List<MenuItem> MenuItems = new List<MenuItem>();
         public static Bitmap backgroundMask;
         public static Bitmap waterMark;
@@ -93,7 +89,7 @@ namespace Innovation_Uniform_Editor.Classes
                 FixTemplates();
                 return;
             }
-            
+
             FileStream fs = File.Open("./Templates/Misc/Background_Mask.png", FileMode.Open, FileAccess.Read);
             Image mask = Image.FromStream(fs);
             backgroundMask = new Bitmap(mask);
@@ -121,7 +117,8 @@ namespace Innovation_Uniform_Editor.Classes
                             var serializer = new JsonSerializer();
                             Pants = serializer.Deserialize<List<Uniform>>(jsonReader);
 
-                        } else if (jsonReader.TokenType == JsonToken.PropertyName
+                        }
+                        else if (jsonReader.TokenType == JsonToken.PropertyName
                             && (string)jsonReader.Path == "Shirts")
                         {
                             jsonReader.Read();
@@ -147,15 +144,6 @@ namespace Innovation_Uniform_Editor.Classes
         {
             TemplateUpdater.CheckForUpdates(true);
         }
-        public static void LoadBackgrounds(string path)
-        {
-            string[] directories = Directory.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
-            foreach (string image in directories)
-            {
-                BackgroundImage bg = new BackgroundImage(image.Replace(path,"").Replace(".png",""));
-                Backgrounds.Add(bg);
-            }
-        }
         public static Uniform FindFromId(ulong id)
         {
             foreach (Uniform pants in Pants)
@@ -175,13 +163,6 @@ namespace Innovation_Uniform_Editor.Classes
         {
             MenuItems.Add(custom);
         }
-        public static void DeleteBackgroundFromGuid(Guid guid)
-        {
-            string path = "./Backgrounds/" + guid;
-            if (File.Exists(path))
-                File.Delete(path);
-            Backgrounds.Remove(FindBackgroundFromGuid(guid));
-        }
         public static void DeleteCustomFromGuid(Guid guid)
         {
             string path = "./Customs/" + guid;
@@ -199,13 +180,6 @@ namespace Innovation_Uniform_Editor.Classes
             if (menu is Group)
                 menu = ((Group)menu).FindInGroupFromGuid(guid);
             return menu;
-        }
-        public static BackgroundImage FindBackgroundFromGuid(Guid guid)
-        {
-            return Backgrounds.Find(element =>
-            {
-                return element.backgroundGUID == guid;
-            });
         }
         public static Custom FindCustomFromGuid(Guid guid)
         {

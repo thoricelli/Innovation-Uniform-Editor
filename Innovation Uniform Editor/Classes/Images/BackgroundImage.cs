@@ -1,0 +1,98 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using Innovation_Uniform_Editor.Classes.Models;
+
+namespace Innovation_Uniform_Editor.Classes.Images
+{
+    public class BackgroundImage : IIdentifier<Guid>
+    {
+        public BackgroundImage()
+        {
+
+        }
+        public BackgroundImage(string guid)
+        {
+            this.Id = new Guid(guid);
+        }
+        public BackgroundImage(Image newBackground)
+        {
+            this.Id = Guid.NewGuid();
+            newBackground.Save("./Backgrounds/" + this.Id + ".png", ImageFormat.Png);
+        }
+        //JSONtoUniform.backgroundMask
+        [JsonIgnore]
+        public Image background
+        {
+            get
+            {
+                if (_background == null)
+                {
+                    calculateBackgroundMasked();
+                }
+                return _background;
+            }
+        }
+        private Bitmap _background;
+        private void calculateBackgroundMasked()
+        {
+            _background = new Bitmap(JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height);
+            BitmapData bitmapMaskData = JSONtoUniform.backgroundMask.LockBits(
+                        new Rectangle(0, 0, JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height),
+                        ImageLockMode.ReadOnly,
+                        JSONtoUniform.backgroundMask.PixelFormat
+                    );
+            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * JSONtoUniform.backgroundMask.Height];
+            Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
+
+            JSONtoUniform.backgroundMask.UnlockBits(bitmapMaskData);
+
+            int pixelSize = Image.GetPixelFormatSize(JSONtoUniform.backgroundMask.PixelFormat);
+
+            int x = 0;
+            int y = 0;
+
+            Bitmap backgroundOGStored = backgroundOG;
+
+            for (int i = 0; i < bitmapMaskBytes.Length; i += pixelSize / 8)
+            {
+                byte[] pixelData = new byte[3];
+                Array.Copy(bitmapMaskBytes, i, pixelData, 0, 3);
+
+                if (pixelData[0] == 0)
+                {
+                    _background.SetPixel(x, y, backgroundOGStored.GetPixel(x, y));
+                }
+
+                x++;
+                if (x >= _background.Width)
+                {
+                    x = 0;
+                    y++;
+                }
+            }
+        }
+        [JsonIgnore]
+        private Bitmap backgroundOG
+        {
+            get
+            {
+                if (!File.Exists("./Backgrounds/" + this.Id + ".png"))
+                    TemplateUpdater.CheckForUpdates(true);
+                FileStream fs = File.Open("./Backgrounds/" + this.Id + ".png", FileMode.Open, FileAccess.Read);
+                Bitmap returnResult = new Bitmap(Image.FromStream(fs));
+                fs.Close();
+                return returnResult;
+            }
+        }
+
+        public Guid Id { get; set; }
+    }
+}
