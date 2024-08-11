@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor.Classes.Models
 {
-    public class Uniform
+    public class Uniform : IIdentifier<UInt64>
     {
         public UInt64 Id { get; set; }
         public string Name { get; set; }

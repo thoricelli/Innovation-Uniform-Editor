@@ -60,7 +60,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
         public override void DeleteBy(Guid guid)
         {
-            string path = "./Backgrounds/" + guid;
+            string path = this._path + guid;
             if (File.Exists(path))
                 File.Delete(path);
             base.DeleteBy(guid);

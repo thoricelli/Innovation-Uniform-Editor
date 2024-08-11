@@ -27,7 +27,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                return JSONtoUniform.FindFromId(this.UniformBasedOnId);
+                return Assets.UniformsLoader.FindBy(this.UniformBasedOnId);
             }
             set
             {
@@ -133,7 +133,7 @@ namespace Innovation_Uniform_Editor.Classes
                         if (this.UniformBasedOn.Shading)
                             g.DrawImage(shadingMasked, Point.Empty);
                         g.DrawImage(overlay, fullImage);
-                        g.DrawImage(JSONtoUniform.waterMark, fullImage);
+                        g.DrawImage(Assets.UniformsLoader.waterMark, fullImage);
                     }
 
                     _result = fullResult;
@@ -157,10 +157,10 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                if (File.Exists("./Customs/" + Guid + "/result.png"))
+                if (File.Exists("./Customs/" + Id + "/result.png"))
                 {
                     Image img;
-                    using (var bmpTemp = new Bitmap("./Customs/" + Guid + "/result.png"))
+                    using (var bmpTemp = new Bitmap("./Customs/" + Id + "/result.png"))
                     {
                         img = new Bitmap(bmpTemp);
                     }
@@ -321,25 +321,25 @@ namespace Innovation_Uniform_Editor.Classes
         public void SaveUniform()
         {
             //See if it's already in JSONtoUniform or not
-            if (JSONtoUniform.FindCustomFromGuid(this.Guid) == null)
+            if (JSONtoUniform.FindCustomFromGuid(this.Id) == null)
             {
                 JSONtoUniform.AddCustom(this);
             }
 
             //Save custom class to JSON file inside folder
-            Directory.CreateDirectory("./Customs/" + Guid);
+            Directory.CreateDirectory("./Customs/" + Id);
 
             JsonSerializer serializer = new JsonSerializer()
             {
                 NullValueHandling = NullValueHandling.Ignore
             };
-            using (StreamWriter sw = new StreamWriter(@"./Customs/" + Guid + "/info.json"))
+            using (StreamWriter sw = new StreamWriter(@"./Customs/" + Id + "/info.json"))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, this);
             }
             Image downSized = JSONtoUniform.resizeImage(Result, new Size(293, 280));
-            downSized.Save("./Customs/" + Guid + "/result.png", ImageFormat.Png);
+            downSized.Save("./Customs/" + Id + "/result.png", ImageFormat.Png);
             unsavedChanges = false;
         }
         #endregion

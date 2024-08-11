@@ -16,13 +16,13 @@ namespace Innovation_Uniform_Editor.Classes
 
         private ClothingPart part;
         public int currentUniform = 0;
-        public List<Uniform> uniforms;
+        public List<Uniform> uniforms { get; set; }
 
         public UniformDropDown(ClothingPart cPart)
         {
             part = cPart;
 
-            uniforms = part == ClothingPart.Pants ? JSONtoUniform.Pants : JSONtoUniform.Shirts;
+            uniforms = part == ClothingPart.Pants ? Assets.UniformsLoader.GetPants() : Assets.UniformsLoader.GetShirts();
         }
 
         public Image LoadUniformPreview()

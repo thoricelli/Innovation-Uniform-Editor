@@ -19,7 +19,7 @@ namespace Innovation_Uniform_Editor.Classes
                 List<Guid> customGuids = new List<Guid>();
                 foreach (Custom custom in Customs)
                 {
-                    customGuids.Add(custom.Guid);
+                    customGuids.Add(custom.Id);
                 }
                 _customGuids = customGuids;
                 return customGuids;
@@ -38,7 +38,7 @@ namespace Innovation_Uniform_Editor.Classes
 
         public void RemoveFromGroup(Guid guid)
         {
-            int index = Customs.FindIndex((element) => element.Guid == guid);
+            int index = Customs.FindIndex((element) => element.Id == guid);
             if (index != -1)
             {
                 Customs.RemoveAt(index);
@@ -54,7 +54,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             return Customs.Find((element) =>
             {
-                return element.Guid == guid;
+                return element.Id == guid;
             });
         }
     }

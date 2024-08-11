@@ -103,9 +103,11 @@
     <Compile Include="Classes\Loaders\Interfaces\IFindable.cs" />
     <Compile Include="Classes\Loaders\Interfaces\ISaveable.cs" />
     <Compile Include="Classes\Loaders\Loader.cs" />
+    <Compile Include="Classes\Loaders\UniformsLoader.cs" />
     <Compile Include="Classes\MenuItem.cs" />
     <Compile Include="Classes\JSONtoUniform.cs" />
     <Compile Include="Classes\Models\Assets.cs" />
+    <Compile Include="Classes\Loaders\CustomLoader.cs" />
     <Compile Include="Classes\Models\IIdentifier.cs" />
     <Compile Include="Classes\Models\Uniform.cs" />
     <Compile Include="Classes\TemplateUpdater.cs" />

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor.Classes.Loaders
 {
-    public class Loader<TType, TId> : ISaveable<TType>, IFindable<TType, TId> where TType : IIdentifier<TId>
+    public abstract class Loader<TType, TId> : ISaveable<TType>, IFindable<TType, TId> where TType : IIdentifier<TId>
     {
         private List<TType> _items = new List<TType>();
         protected string _path;
@@ -22,21 +22,17 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         {
             _items.Add(item);
         }
+        public virtual void Concat(List<TType> item)
+        {
+            _items = _items.Concat(item).ToList();
+        }
         public virtual List<TType> GetAll()
         {
             return _items;
         }
+        protected abstract void Load();
 
-        protected virtual void Load()
-        {
-
-        }
-
-
-        public virtual void Save()
-        {
-
-        }
+        public abstract void Save();
 
         public virtual TType FindBy(TId id)
         {

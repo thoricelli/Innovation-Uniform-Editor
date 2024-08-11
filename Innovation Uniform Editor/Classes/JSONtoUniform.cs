@@ -12,13 +12,7 @@ namespace Innovation_Uniform_Editor.Classes
 {
     public static class JSONtoUniform
     {
-        //This is terrible, please make this private and add functions!
-        public static List<Uniform> Pants { get; set; }
-        public static List<Uniform> Shirts { get; set; }
         public static List<MenuItem> MenuItems = new List<MenuItem>();
-        public static Bitmap backgroundMask;
-        public static Bitmap waterMark;
-        //This should be done when the class is loaded, not outside of it!
         public static void LoadMenuItems(string path)
         {
             //Customs -> UUID -> info.json is the custom.
@@ -72,92 +66,10 @@ namespace Innovation_Uniform_Editor.Classes
 
             MenuItems.Sort();
         }
-        public static void LoadUniforms(string path)
-        {
-            if (!File.Exists("./Templates/Misc/Background_Mask.png"))
-            {
-                FixTemplates();
-                return;
-            }
-            if (!File.Exists("./Templates/Misc/Watermark.png"))
-            {
-                FixTemplates();
-                return;
-            }
-            if (!File.Exists("./Templates/TemplateInfo.json"))
-            {
-                FixTemplates();
-                return;
-            }
-
-            FileStream fs = File.Open("./Templates/Misc/Background_Mask.png", FileMode.Open, FileAccess.Read);
-            Image mask = Image.FromStream(fs);
-            backgroundMask = new Bitmap(mask);
-            fs.Close();
-
-            fs = File.Open("./Templates/Misc/Watermark.png", FileMode.Open, FileAccess.Read);
-            Image watermark = Image.FromStream(fs);
-            waterMark = new Bitmap(watermark);
-            fs.Close();
-
-            using (StreamReader r = new StreamReader(path))
-            {
-                string json = r.ReadToEnd();
-
-                using (var stringReader = new StringReader(json))
-                using (var jsonReader = new JsonTextReader(stringReader))
-                {
-                    while (jsonReader.Read())
-                    {
-                        if (jsonReader.TokenType == JsonToken.PropertyName
-                            && (string)jsonReader.Path == "Pants")
-                        {
-                            jsonReader.Read();
-
-                            var serializer = new JsonSerializer();
-                            Pants = serializer.Deserialize<List<Uniform>>(jsonReader);
-
-                        }
-                        else if (jsonReader.TokenType == JsonToken.PropertyName
-                            && (string)jsonReader.Path == "Shirts")
-                        {
-                            jsonReader.Read();
-
-                            var serializer = new JsonSerializer();
-                            Shirts = serializer.Deserialize<List<Uniform>>(jsonReader);
-                        }
-                    }
-
-                    foreach (Uniform pants in Pants)
-                    {
-                        pants.part = Enums.ClothingPart.Pants;
-                    }
-
-                    foreach (Uniform shirt in Shirts)
-                    {
-                        shirt.part = Enums.ClothingPart.Shirts;
-                    }
-                }
-            }
-        }
-        private static void FixTemplates()
+        
+        public static void FixTemplates()
         {
             TemplateUpdater.CheckForUpdates(true);
-        }
-        public static Uniform FindFromId(ulong id)
-        {
-            foreach (Uniform pants in Pants)
-            {
-                if (pants.Id == id)
-                    return pants;
-            }
-            foreach (Uniform shirt in Shirts)
-            {
-                if (shirt.Id == id)
-                    return shirt;
-            }
-
-            return null;
         }
         public static void AddCustom(Custom custom)
         {
@@ -174,7 +86,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             MenuItem menu = MenuItems.Find(element =>
             {
-                return element.Guid == guid;
+                return element.Id == guid;
             });
 
             if (menu is Group)
@@ -185,7 +97,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             return MenuItems.Find(element =>
             {
-                return element.Guid == guid;
+                return element.Id == guid;
             }) as Custom;
         }
         /// <summary>

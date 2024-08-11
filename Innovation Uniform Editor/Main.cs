@@ -27,13 +27,9 @@ namespace Innovation_Uniform_Editor
         private void Main_Load(object sender, EventArgs e)
         {
             Assets.BackgroundsLoader = new BackgroundsLoader("./Backgrounds/");
+            Assets.UniformsLoader = new UniformsLoader("./Templates/TemplateInfo.json");
 
             JSONtoUniform.LoadMenuItems("./Customs/");
-            JSONtoUniform.LoadUniforms("./Templates/TemplateInfo.json");
-            if (!Directory.Exists("./Backgrounds/"))
-            {
-                Directory.CreateDirectory("./Backgrounds/");
-            }
 
             LoadCustomsAndGroups();
 
@@ -217,7 +213,7 @@ namespace Innovation_Uniform_Editor
             template.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             template.Location = new System.Drawing.Point(19, 303);
             template.Margin = new System.Windows.Forms.Padding(15, 4, 4, 4);
-            template.Name = custom.Guid.ToString();
+            template.Name = custom.Id.ToString();
             template.Size = new System.Drawing.Size(220, 250);
             template.TabIndex = 4;
 
