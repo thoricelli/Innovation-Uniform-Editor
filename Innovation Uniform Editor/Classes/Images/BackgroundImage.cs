@@ -43,18 +43,18 @@ namespace Innovation_Uniform_Editor.Classes.Images
         private Bitmap _background;
         private void calculateBackgroundMasked()
         {
-            _background = new Bitmap(JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height);
-            BitmapData bitmapMaskData = JSONtoUniform.backgroundMask.LockBits(
-                        new Rectangle(0, 0, JSONtoUniform.backgroundMask.Width, JSONtoUniform.backgroundMask.Height),
+            _background = new Bitmap(Assets.UniformsLoader.backgroundMask.Width, Assets.UniformsLoader.backgroundMask.Height);
+            BitmapData bitmapMaskData = Assets.UniformsLoader.backgroundMask.LockBits(
+                        new Rectangle(0, 0, Assets.UniformsLoader.backgroundMask.Width, Assets.UniformsLoader.backgroundMask.Height),
                         ImageLockMode.ReadOnly,
-                        JSONtoUniform.backgroundMask.PixelFormat
+                        Assets.UniformsLoader.backgroundMask.PixelFormat
                     );
-            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * JSONtoUniform.backgroundMask.Height];
+            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * Assets.UniformsLoader.backgroundMask.Height];
             Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
 
-            JSONtoUniform.backgroundMask.UnlockBits(bitmapMaskData);
+            Assets.UniformsLoader.backgroundMask.UnlockBits(bitmapMaskData);
 
-            int pixelSize = Image.GetPixelFormatSize(JSONtoUniform.backgroundMask.PixelFormat);
+            int pixelSize = Image.GetPixelFormatSize(Assets.UniformsLoader.backgroundMask.PixelFormat);
 
             int x = 0;
             int y = 0;

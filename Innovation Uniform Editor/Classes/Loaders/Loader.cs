@@ -26,6 +26,10 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         {
             _items = _items.Concat(item).ToList();
         }
+        public virtual void Sort()
+        {
+            _items.Sort();
+        }
         public virtual List<TType> GetAll()
         {
             return _items;

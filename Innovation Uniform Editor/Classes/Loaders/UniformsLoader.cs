@@ -14,8 +14,8 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
     {
         //Both public temporarily
         //Please unpublicize this!!!!
-        public Image backgroundMask;
-        public Image waterMark;
+        public Bitmap backgroundMask;
+        public Bitmap waterMark;
 
         public UniformsLoader(string path) : base(path)
         {
@@ -24,17 +24,17 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         {
             if (!File.Exists("./Templates/Misc/Background_Mask.png"))
             {
-                JSONtoUniform.FixTemplates();
+                TemplateUpdater.CheckForUpdates(true);
                 return;
             }
             if (!File.Exists("./Templates/Misc/Watermark.png"))
             {
-                JSONtoUniform.FixTemplates();
+                TemplateUpdater.CheckForUpdates(true);
                 return;
             }
             if (!File.Exists("./Templates/TemplateInfo.json"))
             {
-                JSONtoUniform.FixTemplates();
+                TemplateUpdater.CheckForUpdates(true);
                 return;
             }
 

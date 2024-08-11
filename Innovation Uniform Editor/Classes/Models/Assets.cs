@@ -11,5 +11,6 @@ namespace Innovation_Uniform_Editor.Classes.Models
     {
         public static BackgroundsLoader BackgroundsLoader;
         public static UniformsLoader UniformsLoader;
+        public static CustomsLoader CustomsLoader;
     }
 }

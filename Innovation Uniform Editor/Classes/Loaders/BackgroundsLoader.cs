@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor.Classes.Images;
+﻿using Innovation_Uniform_Editor.Classes.Helpers;
+using Innovation_Uniform_Editor.Classes.Images;
 using Innovation_Uniform_Editor.Classes.Loaders.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         public void Add(string path)
         {
             FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read);
-            Image resizedBackground = JSONtoUniform.resizeImage(Image.FromStream(fs), new Size(585, 559));
+            Image resizedBackground = ImageHelper.resizeImage(Image.FromStream(fs), new Size(585, 559));
             fs.Close();
             this.Add(resizedBackground);
         }

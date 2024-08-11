@@ -29,7 +29,7 @@ namespace Innovation_Uniform_Editor
             Assets.BackgroundsLoader = new BackgroundsLoader("./Backgrounds/");
             Assets.UniformsLoader = new UniformsLoader("./Templates/TemplateInfo.json");
 
-            JSONtoUniform.LoadMenuItems("./Customs/");
+            Assets.CustomsLoader = new CustomsLoader("./Customs/");
 
             LoadCustomsAndGroups();
 
@@ -42,7 +42,7 @@ namespace Innovation_Uniform_Editor
         {
             flowMain.Controls.Clear();
 
-            foreach (MenuItem item in JSONtoUniform.MenuItems)
+            foreach (MenuItem item in Assets.CustomsLoader.GetAll())
             {
                 if (item is Group)
                 {
@@ -150,7 +150,7 @@ namespace Innovation_Uniform_Editor
             textBox.ReadOnly = true;
             textBox.BorderStyle = BorderStyle.None;
 
-            Custom custom = JSONtoUniform.FindCustomFromGuid(new Guid(textBox.Parent.Name));
+            Custom custom = Assets.CustomsLoader.FindBy(new Guid(textBox.Parent.Name));
             custom.Name = textBox.Text;
             custom.SaveUniform();
         }
@@ -247,7 +247,7 @@ namespace Innovation_Uniform_Editor
 
         private void LaunchEditor(Panel panel)
         {
-            Custom custom = JSONtoUniform.FindCustomFromGuid(new Guid(panel.Name));
+            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
 
             editor = new Editor(custom, this);
 
@@ -278,7 +278,7 @@ namespace Innovation_Uniform_Editor
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            JSONtoUniform.DeleteCustomFromGuid(new Guid(panel.Name));
+            Assets.CustomsLoader.DeleteBy(new Guid(panel.Name));
             panel.Dispose();
         }
 
@@ -292,7 +292,7 @@ namespace Innovation_Uniform_Editor
         {
             exportCustom.ShowDialog();
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = JSONtoUniform.FindCustomFromGuid(new Guid(panel.Name));
+            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
             custom.ExportUniform(exportCustom.FileName);
         }
 
@@ -302,7 +302,7 @@ namespace Innovation_Uniform_Editor
         private void leftToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = JSONtoUniform.FindCustomFromGuid(new Guid(panel.Name));
+            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
             if (custom.Position > 0)
             {
                 custom.Position--;
@@ -313,8 +313,8 @@ namespace Innovation_Uniform_Editor
         private void rightToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = JSONtoUniform.FindCustomFromGuid(new Guid(panel.Name));
-            if (custom.Position < JSONtoUniform.MenuItems.Count - 1)
+            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
+            if (custom.Position < Assets.CustomsLoader.GetAll().Count - 1)
             {
                 custom.Position++;
                 flowMain.Controls.SetChildIndex((Control)panel, custom.Position);
