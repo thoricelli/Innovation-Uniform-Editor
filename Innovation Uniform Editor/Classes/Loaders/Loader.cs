@@ -36,8 +36,6 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         }
         protected abstract void Load();
 
-        public abstract void Save();
-
         public virtual TType FindBy(TId id)
         {
             return _items.Find(e => e.Id.Equals(id));

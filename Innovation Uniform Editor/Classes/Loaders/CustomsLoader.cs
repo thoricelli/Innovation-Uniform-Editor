@@ -16,11 +16,6 @@ namespace Innovation_Uniform_Editor.Classes.Models
         {
         }
 
-        public override void Save()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override void Load()
         {
             //Customs -> UUID -> info.json is the custom.

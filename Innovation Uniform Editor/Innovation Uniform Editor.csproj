@@ -96,6 +96,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Drawers\Interfaces\IDrawable.cs" />
+    <Compile Include="Classes\Helpers\FileToBitmap.cs" />
+    <Compile Include="Classes\Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Classes\Models\CustomColor.cs" />
     <Compile Include="Classes\Models\Group.cs" />
     <Compile Include="Classes\Helpers\ImageHelper.cs" />
@@ -108,10 +111,10 @@
     <Compile Include="Classes\Models\MenuItem.cs" />
     <Compile Include="Classes\Models\Assets.cs" />
     <Compile Include="Classes\Loaders\CustomsLoader.cs" />
-    <Compile Include="Classes\Models\IIdentifier.cs" />
+    <Compile Include="Classes\Models\Interfaces\IIdentifier.cs" />
     <Compile Include="Classes\Models\Uniform.cs" />
     <Compile Include="Classes\Helpers\TemplateUpdater.cs" />
-    <Compile Include="Classes\UniformDropDown.cs" />
+    <Compile Include="Classes\Models\UniformDropDown.cs" />
     <Compile Include="DraggablePanel.cs">
       <SubType>Component</SubType>
     </Compile>

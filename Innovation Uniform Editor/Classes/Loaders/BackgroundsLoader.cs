@@ -22,8 +22,6 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         /// </summary>
         protected override void Load()
         {
-            List<BackgroundImage> backgrounds = new List<BackgroundImage>();
-
             if (!Directory.Exists(_path))
                 Directory.CreateDirectory(_path);
 
@@ -33,11 +31,6 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
                 BackgroundImage bg = new BackgroundImage(image.Replace(_path, "").Replace(".png", ""));
                 this.Add(bg);
             }
-        }
-
-        public override void Save()
-        {
-
         }
         /// <summary>
         /// Adds a new background image from an image.

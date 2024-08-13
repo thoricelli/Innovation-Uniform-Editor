@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Images;
+using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
 using Newtonsoft.Json;
 using System;
@@ -19,6 +20,8 @@ namespace Innovation_Uniform_Editor.Classes
     //Add username support!
     public class Custom : MenuItem
     {
+        [JsonIgnore]
+        private UniformAssetsLoader _loader;
         [JsonIgnore]
         public bool unsavedChanges = false;
 
@@ -206,6 +209,7 @@ namespace Innovation_Uniform_Editor.Classes
         }
 
         private List<Image> coloredLayers = new List<Image>();
+
         private Bitmap CreateMask(List<Color> colors, List<Image> masks)
         {
             if (shading == null)
@@ -363,6 +367,7 @@ namespace Innovation_Uniform_Editor.Classes
 
                 unsavedChanges = true;
 
+                _loader = new UniformAssetsLoader(UniformBasedOn);
                 LoadSelectionTemplates();
             }
         }

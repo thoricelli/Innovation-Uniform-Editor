@@ -98,10 +98,5 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         {
             return this.GetAll().FindAll(e => e.part == Enums.ClothingPart.Shirts).ToList();
         }
-
-        public override void Save()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
