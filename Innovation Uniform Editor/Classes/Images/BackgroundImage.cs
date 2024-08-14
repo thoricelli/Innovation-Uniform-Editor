@@ -25,11 +25,10 @@ namespace Innovation_Uniform_Editor.Classes.Images
         public BackgroundImage(Image newBackground)
         {
             this.Id = Guid.NewGuid();
-            newBackground.Save("./Backgrounds/" + this.Id + ".png", ImageFormat.Png);
         }
         //JSONtoUniform.backgroundMask
         [JsonIgnore]
-        public Image background
+        public Bitmap background
         {
             get
             {

@@ -1,4 +1,6 @@
-﻿using Innovation_Uniform_Editor.Classes.Helpers;
+﻿using Innovation_Uniform_Editor.Classes.Drawers;
+using Innovation_Uniform_Editor.Classes.Drawers.Interfaces;
+using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Images;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
@@ -21,7 +23,9 @@ namespace Innovation_Uniform_Editor.Classes
     public class Custom : MenuItem
     {
         [JsonIgnore]
-        private UniformAssetsLoader _loader;
+        private UniformAssets _assets;
+        [JsonIgnore]
+        private IDrawable _drawer;
         [JsonIgnore]
         public bool unsavedChanges = false;
 
@@ -43,55 +47,9 @@ namespace Innovation_Uniform_Editor.Classes
         #region CUSTOM_SETTINGS
         public List<Color> Colors { get; set; } = new List<Color>();
         private List<Color> OldColors { get; set; } = new List<Color>();
-        public BackgroundImage backgroundImage
-        {
-            get
-            {
-                return Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
-            }
-        }
+        private BackgroundImage _backgroundImage;
+        public BackgroundImage BackgroundImage { get { return _backgroundImage; } }
         public Guid BackgroundImageGuid;
-        #endregion
-        #region ASSETS
-        [JsonIgnore]
-        private string basePath
-        {
-            get
-            {
-                return UniformBasedOn != null ?
-                    "./Templates/Normal/" + UniformBasedOn.part.ToString() + "/" + this.UniformBasedOn.Id
-                    : "./Templates/Normal/ERROR";
-            }
-        }
-
-        [JsonIgnore]
-        public Image overlay
-        {
-            get
-            {
-                if (!File.Exists(basePath + "/Overlay.png"))
-                    TemplateUpdater.CheckForUpdates(true);
-                FileStream fs = File.Open(basePath + "/Overlay.png", FileMode.Open, FileAccess.Read);
-                Image img = Image.FromStream(fs);
-                fs.Close();
-                return img;
-            }
-        }
-        [JsonIgnore]
-        public Image texture
-        {
-            get
-            {
-                if (!File.Exists(basePath + "/texture.png"))
-                    return null;
-                FileStream fs = File.Open(basePath + "/texture.png", FileMode.Open, FileAccess.Read);
-                Image img = Image.FromStream(fs);
-                fs.Close();
-                return img;
-            }
-        }
-        [JsonIgnore]
-        public List<Image> SelectionTemplates;
         #endregion
         #region DRAWING
         private Bitmap shading;
@@ -118,36 +76,34 @@ namespace Innovation_Uniform_Editor.Classes
                     - Overlay
                     */
 
-                    Bitmap fullResult = new Bitmap(585, 559);
+                    /*Bitmap fullResult = new Bitmap(585, 559);
 
                     Rectangle fullImage = new Rectangle(0, 0, fullResult.Size.Width, fullResult.Size.Height);
 
                     using (Graphics g = Graphics.FromImage(fullResult))
                     {
-                        if (this.backgroundImage != null)
-                            g.DrawImage(this.backgroundImage.background, fullImage);
+                        if (this.BackgroundImage != null)
+                            g.DrawImage(this.BackgroundImage.background, fullImage);
 
-                        Bitmap Colored = CreateMask(Colors, SelectionTemplates);
+                        Bitmap Colored = CreateMask(Colors, this._loader.Selections);
 
                         g.DrawImage(Colored, fullImage);
-                        if (this.texture != null)
+                        if (this._loader.Textures.Count > 0)
                         {
-                            g.DrawImage(this.texture.SetOpacity(0.8F), fullImage);
+                            g.DrawImage(this._loader.Textures[0].SetOpacity(0.8F), fullImage);
                         }
                         if (this.UniformBasedOn.Shading)
                             g.DrawImage(shadingMasked, Point.Empty);
-                        g.DrawImage(overlay, fullImage);
+                        g.DrawImage(this._loader.Overlay, fullImage);
                         g.DrawImage(Assets.UniformsLoader.waterMark, fullImage);
                     }
 
                     _result = fullResult;
 
-                    return _result;
+                    return _result;*/
+                    _result = _drawer.Draw();
                 }
-                else
-                {
-                    return _result;
-                }
+                return _result;
             }
             set { _result = value; }
         }
@@ -177,40 +133,10 @@ namespace Innovation_Uniform_Editor.Classes
         private Image _result;
 
         #region MASKING
-        private void LoadSelectionTemplates()
-        {
-            Colors = new List<Color>();
-            SelectionTemplates = new List<Image>();
-
-            FileStream fs = File.Open(basePath + "/Selection_Template.png", FileMode.Open, FileAccess.Read);
-            SelectionTemplates = new List<Image>() { Image.FromStream(fs) };
-            fs.Close();
-            Colors.Add(new Color());
-            if (File.Exists(basePath + "/Selection_Template_Secondary.png"))
-            {
-                fs = File.Open(basePath + "/Selection_Template_Secondary.png", FileMode.Open, FileAccess.Read);
-                SelectionTemplates.Add(Image.FromStream(fs));
-                fs.Close();
-                Colors.Add(new Color());
-            }
-
-            string[] otherSelections = Directory.GetFiles(basePath, "Selection_Template_*.png", SearchOption.TopDirectoryOnly);
-
-            List<string> otherSelectionsList = otherSelections.ToList<string>();
-            otherSelectionsList.RemoveAll(e => e.Contains("Selection_Template_Secondary"));
-
-            foreach (string path in otherSelectionsList)
-            {
-                fs = File.Open(path, FileMode.Open, FileAccess.Read);
-                SelectionTemplates.Add(Image.FromStream(fs));
-                fs.Close();
-                Colors.Add(new Color());
-            }
-        }
 
         private List<Image> coloredLayers = new List<Image>();
 
-        private Bitmap CreateMask(List<Color> colors, List<Image> masks)
+        private Bitmap CreateMask(List<Color> colors, List<Bitmap> masks)
         {
             if (shading == null)
             {
@@ -367,16 +293,25 @@ namespace Innovation_Uniform_Editor.Classes
 
                 unsavedChanges = true;
 
-                _loader = new UniformAssetsLoader(UniformBasedOn);
-                LoadSelectionTemplates();
+                _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
+                this.Colors = new Color[_assets.Selections.Count].ToList();
+
+                _drawer = new CustomDrawer(_assets);
             }
         }
-        public void ChangeBackground(BackgroundImage bgs, bool clear)
+        public void ChangeBackground(BackgroundImage bgs)
         {
-            if (bgs != null)
-                BackgroundImageGuid = bgs.Id;
-            if (clear)
-                BackgroundImageGuid = new Guid(); //Find a way to empty out the backgroundImage.
+            BackgroundImageGuid = bgs.Id;
+            _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
+
+            _assets.Background = _backgroundImage.background;
+
+            _result = null;
+            unsavedChanges = true;
+        }
+        public void ClearBackground()
+        {
+            BackgroundImageGuid = new Guid();
             _result = null;
             unsavedChanges = true;
         }

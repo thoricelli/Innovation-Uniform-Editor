@@ -47,6 +47,7 @@ namespace Innovation_Uniform_Editor.Classes.Models
                 }
             }
 
+            //Unused
             /*if (File.Exists(_path + "groups.json"))
             {
                 using (StreamReader r = new StreamReader(_path + "groups.json"))

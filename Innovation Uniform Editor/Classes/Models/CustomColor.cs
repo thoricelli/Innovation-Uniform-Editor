@@ -9,7 +9,6 @@ namespace Innovation_Uniform_Editor.Classes
 {
     public class CustomColor
     {
-        public Color MainColor { get; set; }
-        public Color? ColorToFadeTo { get; set; }
+        public List<Color> colors;
     }
 }

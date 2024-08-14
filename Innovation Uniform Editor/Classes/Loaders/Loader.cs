@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor.Classes.Loaders
 {
-    public abstract class Loader<TType, TId> : ISaveable<TType>, IFindable<TType, TId> where TType : IIdentifier<TId>
+    public abstract class Loader<TType, TId> : IFindable<TType, TId> where TType : IIdentifier<TId>
     {
         private List<TType> _items = new List<TType>();
         protected string _path;

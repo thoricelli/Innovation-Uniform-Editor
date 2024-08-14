@@ -171,9 +171,14 @@ namespace Innovation_Uniform_Editor.UI
         BackgroundSelector bgs;
         private void btnBackgroundImage_Click(object sender, EventArgs e)
         {
-            bgs = new BackgroundSelector(custom.backgroundImage, Assets.BackgroundsLoader);
+            bgs = new BackgroundSelector(custom.BackgroundImage, Assets.BackgroundsLoader);
             bgs.ShowDialog();
-            custom.ChangeBackground(bgs.Background, bgs.ClearCurrent);
+            
+            if (bgs.ClearCurrent)
+                custom.ClearBackground();
+            else
+                custom.ChangeBackground(bgs.Background);
+
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
         }
@@ -202,7 +207,7 @@ namespace Innovation_Uniform_Editor.UI
             int indexStart = 0;
             for (int i = buttonsLayoutPanel.Controls.Count-1; i >= 1; i--)
             {
-                if (i > custom.SelectionTemplates.Count)
+                if (i > custom.Colors.Count)
                     buttonsLayoutPanel.Controls.RemoveAt(i);
                 else
                     if (indexStart == 0)
@@ -210,12 +215,12 @@ namespace Innovation_Uniform_Editor.UI
 
             }
             //Setting up colordialogs
-            for (int i = 0; i < custom.SelectionTemplates.Count; i++)
+            for (int i = 0; i < custom.Colors.Count; i++)
             {
                 colors.Add(CreateDialog("color_" + i));
             }
             //Setting up the buttons.
-            for (int i = indexStart; i < custom.SelectionTemplates.Count; i++)
+            for (int i = indexStart; i < custom.Colors.Count; i++)
             {
                 buttonsLayoutPanel.Controls.Add(CreateButton(i));
             }

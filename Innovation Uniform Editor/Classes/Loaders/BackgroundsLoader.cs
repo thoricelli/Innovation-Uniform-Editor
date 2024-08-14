@@ -4,6 +4,7 @@ using Innovation_Uniform_Editor.Classes.Loaders.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,9 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         /// <param name="image">The image to turn into a background image.</param>
         public void Add(Image image)
         {
-            this.Add(new BackgroundImage(image));
+            BackgroundImage newBackground = new BackgroundImage(image);
+            image.Save("./Backgrounds/" + newBackground.Id + ".png", ImageFormat.Png);
+            this.Add(newBackground);
         }
         /// <summary>
         /// Loads and adds a new background from path.

@@ -1,4 +1,5 @@
 ﻿using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Drawers;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;

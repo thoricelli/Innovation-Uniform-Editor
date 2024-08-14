@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,15 +12,14 @@ using System.Windows.Media;
 
 namespace Innovation_Uniform_Editor.Classes.Loaders
 {
-    public class UniformAssetsLoader
+    public static class UniformAssetsLoader
     {
-        private string path;
-        private readonly string EXTENSION = ".png";
-        public UniformAssetsLoader(Uniform uniform)
+        private static readonly string EXTENSION = ".png";
+        private static string pathBuilder(ClothingPart part, ulong id)
         {
             string basePath = "./Templates/Normal/";
 
-            switch (uniform.part)
+            switch (part)
             {
                 case Enums.ClothingPart.Pants:
                     basePath += "Pants";
@@ -31,22 +31,21 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
                     break;
             }
 
-            basePath += "/" + uniform.Id + "/";
+            basePath += "/" + id + "/";
 
-            this.path = basePath;
+            return basePath;
         }
-
-        private Bitmap getOverlay()
-        {
-            return FileToBitmap.Convert($"{path}/Original{EXTENSION}");
-        }
-
-        private Bitmap getOriginal()
+        private static Bitmap getOverlay(string path)
         {
             return FileToBitmap.Convert($"{path}/Overlay{EXTENSION}");
         }
 
-        private List<Bitmap> getSelectionTemplates()
+        private static Bitmap getOriginal(string path)
+        {
+            return FileToBitmap.Convert($"{path}/Original{EXTENSION}");
+        }
+
+        private static List<Bitmap> getSelectionTemplates(string path)
         {
             List<Bitmap> selections = new List<Bitmap>()
             {
@@ -61,69 +60,29 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
             otherSelections.RemoveAll(e => e.Contains("Selection_Template_Secondary"));
 
-            foreach (string path in otherSelections)
+            foreach (string otherPath in otherSelections)
             {
-                selections.Add(FileToBitmap.Convert(path));
+                selections.Add(FileToBitmap.Convert(otherPath));
             }
 
             return selections;
         }
-        private List<Bitmap> getTextures()
+        private static List<Bitmap> getTextures(string path)
         {
             List<Bitmap> textures = new List<Bitmap>();
 
             return textures;
         }
-        #region ASSETS
-        private Bitmap _original;
-        private Bitmap _overlay;
-        private List<Bitmap> _selections;
-        private List<Bitmap> _textures;
-
-        /// <summary>
-        /// Original uniform used as preview.
-        /// </summary>
-        public Bitmap Original { 
-            get {
-                if (_original == null)
-                    _original = getOriginal();
-                return _original;
-            } 
-        }
-        /// <summary>
-        /// Overlay (vest, boots, etc)
-        /// </summary>
-        public Bitmap Overlay
+        public static UniformAssets GetAssetsForUniform(Uniform uniform)
         {
-            get
-            {
-                if (_overlay == null)
-                    _overlay = getOverlay();
-                return _overlay;
-            }
+            string basePath = pathBuilder(uniform.part, uniform.Id);
+
+            return new UniformAssets(
+                getOriginal(basePath),
+                getOverlay(basePath),
+                getSelectionTemplates(basePath),
+                getTextures(basePath)
+            );
         }
-        /// <summary>
-        /// A list of selection templates for coloring.
-        /// </summary>
-        public List<Bitmap> Selections {
-            get
-            {
-                if (_selections == null)
-                    _selections = getSelectionTemplates();
-                return _selections;
-            }
-        }
-        /// <summary>
-        /// Textures used on the uniform (no shading)
-        /// </summary>
-        public List<Bitmap> Textures {
-            get
-            {
-                if (_textures == null)
-                    _textures = getTextures();
-                return _textures;
-            }
-        }
-        #endregion
     }
 }
