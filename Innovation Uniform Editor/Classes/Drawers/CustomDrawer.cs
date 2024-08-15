@@ -51,7 +51,11 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
             }
             return _result;
         }
-        
+        private void DrawColorsMasked(Graphics graphics, List<CustomColor> colors, List<Bitmap> masks)
+        {
+            //Graphics colored = Graphics.
+
+        }
         private void DrawBackground(Graphics graphics)
         {
             DrawImageToGraphics(graphics, _assets.Background);

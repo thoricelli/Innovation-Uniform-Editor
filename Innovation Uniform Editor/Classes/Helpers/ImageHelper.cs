@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Innovation_Uniform_Editor.Classes.Helpers
 {
@@ -44,6 +45,35 @@ namespace Innovation_Uniform_Editor.Classes.Helpers
                     imageAttributes);
             }
             return output;
+        }
+        public unsafe static List<bool[]> BitmapToBoolean(List<Bitmap> images)
+        {
+            List<bool[]> bools = new List<bool[]>();
+
+            foreach (Bitmap item in images)
+            {
+                BitmapData bitmapData = item.LockBits(new Rectangle(0, 0, item.Width, item.Height), ImageLockMode.ReadOnly, item.PixelFormat);
+
+                byte* scan0Base = (byte*)bitmapData.Scan0.ToPointer();
+
+                int pixelSize = Image.GetPixelFormatSize(item.PixelFormat);
+
+                bool[] alphas = new bool[bitmapData.Stride * item.Height];
+
+                int index = 0;
+                for (int i = 0; i < bitmapData.Stride * item.Height; i += pixelSize / 8)
+                {
+                    //Blue, Green, Red, Alpha
+                    index++;
+                    if (item.PixelFormat == PixelFormat.Format32bppArgb)
+                        alphas[index] = scan0Base[i+3] == 255;
+                }
+
+                bools.Add(alphas);
+
+                item.UnlockBits(bitmapData);
+            }
+            return bools;
         }
     }
 }

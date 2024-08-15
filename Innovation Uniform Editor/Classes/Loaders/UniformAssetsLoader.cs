@@ -4,6 +4,7 @@ using Innovation_Uniform_Editor.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
             return FileToBitmap.Convert($"{path}/Original{EXTENSION}");
         }
 
-        private static List<Bitmap> getSelectionTemplates(string path)
+        private static List<bool[]> getSelectionTemplates(string path)
         {
             List<Bitmap> selections = new List<Bitmap>()
             {
@@ -65,7 +66,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
                 selections.Add(FileToBitmap.Convert(otherPath));
             }
 
-            return selections;
+            return ImageHelper.BitmapToBoolean(selections);
         }
         private static List<Bitmap> getTextures(string path)
         {
@@ -77,12 +78,13 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         {
             string basePath = pathBuilder(uniform.part, uniform.Id);
 
-            return new UniformAssets(
-                getOriginal(basePath),
-                getOverlay(basePath),
-                getSelectionTemplates(basePath),
-                getTextures(basePath)
-            );
+            return new UniformAssets()
+            {
+                Original = getOriginal(basePath),
+                Overlay = getOverlay(basePath),
+                Selections = getSelectionTemplates(basePath),
+                Textures = getTextures(basePath)
+            };
         }
     }
 }
