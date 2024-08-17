@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor.Classes.Helpers;
+using Innovation_Uniform_Editor.Classes.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         //Please unpublicize this!!!!
         public Bitmap backgroundMask;
         public Bitmap waterMark;
+        public Bitmap shading;
 
         public UniformsLoader(string path) : base(path)
         {
@@ -38,15 +40,11 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
                 return;
             }
 
-            FileStream fs = File.Open("./Templates/Misc/Background_Mask.png", FileMode.Open, FileAccess.Read);
-            Image mask = Image.FromStream(fs);
-            backgroundMask = new Bitmap(mask);
-            fs.Close();
+            backgroundMask = FileToBitmap.Convert("./Templates/Misc/Background_Mask.png");
 
-            fs = File.Open("./Templates/Misc/Watermark.png", FileMode.Open, FileAccess.Read);
-            Image watermark = Image.FromStream(fs);
-            waterMark = new Bitmap(watermark);
-            fs.Close();
+            waterMark = FileToBitmap.Convert("./Templates/Misc/Watermark.png");
+
+            shading = FileToBitmap.Convert("./Templates/Misc/Shading_Template.png");
 
             using (StreamReader r = new StreamReader(_path))
             {

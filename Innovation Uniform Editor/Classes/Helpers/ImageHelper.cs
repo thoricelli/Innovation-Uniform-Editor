@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Innovation_Uniform_Editor.Classes.Helpers
 {
@@ -46,6 +47,11 @@ namespace Innovation_Uniform_Editor.Classes.Helpers
             }
             return output;
         }
+        /// <summary>
+        /// Maps alpha values to booleans using the STRIDE width
+        /// </summary>
+        /// <param name="images"></param>
+        /// <returns>A list of alpha values mapped as boolean</returns>
         public unsafe static List<bool[]> BitmapToBoolean(List<Bitmap> images)
         {
             List<bool[]> bools = new List<bool[]>();
@@ -54,19 +60,24 @@ namespace Innovation_Uniform_Editor.Classes.Helpers
             {
                 BitmapData bitmapData = item.LockBits(new Rectangle(0, 0, item.Width, item.Height), ImageLockMode.ReadOnly, item.PixelFormat);
 
+                int stride = bitmapData.Stride;
+                int height = bitmapData.Height;
+
                 byte* scan0Base = (byte*)bitmapData.Scan0.ToPointer();
 
                 int pixelSize = Image.GetPixelFormatSize(item.PixelFormat);
 
-                bool[] alphas = new bool[bitmapData.Stride * item.Height];
+                bool[] alphas = new bool[stride * height];
 
                 int index = 0;
-                for (int i = 0; i < bitmapData.Stride * item.Height; i += pixelSize / 8)
+                for (int i = 0; i < stride * height; i += pixelSize / 8)
                 {
                     //Blue, Green, Red, Alpha
                     index++;
                     if (item.PixelFormat == PixelFormat.Format32bppArgb)
-                        alphas[index] = scan0Base[i+3] == 255;
+                        alphas[index] = scan0Base[i + 3] == 0;
+                    else
+                        throw new Exception("That's not supported!");
                 }
 
                 bools.Add(alphas);

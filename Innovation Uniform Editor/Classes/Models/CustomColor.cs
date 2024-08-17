@@ -9,6 +9,6 @@ namespace Innovation_Uniform_Editor.Classes
 {
     public class CustomColor
     {
-        public List<Color> colors;
+        public List<Color> Colors = new List<Color>();
     }
 }

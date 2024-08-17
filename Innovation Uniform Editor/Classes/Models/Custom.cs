@@ -45,8 +45,8 @@ namespace Innovation_Uniform_Editor.Classes
         public ulong UniformBasedOnId { get; set; }
         #endregion
         #region CUSTOM_SETTINGS
-        public List<Color> Colors { get; set; } = new List<Color>();
-        private List<Color> OldColors { get; set; } = new List<Color>();
+        public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
+        private List<CustomColor> OldColors { get; set; } = new List<CustomColor>();
         private BackgroundImage _backgroundImage;
         public BackgroundImage BackgroundImage { get { return _backgroundImage; } }
         public Guid BackgroundImageGuid;
@@ -136,7 +136,7 @@ namespace Innovation_Uniform_Editor.Classes
 
         private List<Image> coloredLayers = new List<Image>();
 
-        private Bitmap CreateMask(List<Color> colors, List<Bitmap> masks)
+        private Bitmap CreateMask(List<CustomColor> colors, List<Bitmap> masks)
         {
             if (shading == null)
             {
@@ -171,8 +171,8 @@ namespace Innovation_Uniform_Editor.Classes
                 for (int i = 0; i < masks.Count; i++)
                 {
                     Image mask = masks[i];
-                    Color color = colors[i];
-                    Color oldColor = OldColors.ElementAtOrDefault(i);
+                    CustomColor color = colors[i];
+                    CustomColor oldColor = OldColors.ElementAtOrDefault(i);
                     if (color != oldColor || coloredLayers[i] == null)
                     {
                         Image layer = ColorLayer(new Bitmap(mask), color, drawShading);
@@ -196,7 +196,7 @@ namespace Innovation_Uniform_Editor.Classes
             return Colored;
         }
 
-        private Image ColorLayer(Bitmap ColorMask, Color color, bool drawShading)
+        private Image ColorLayer(Bitmap ColorMask, CustomColor color, bool drawShading)
         {
             Bitmap Colored = new Bitmap(ColorMask.Width, ColorMask.Height);
 
@@ -224,7 +224,7 @@ namespace Innovation_Uniform_Editor.Classes
 
                 if (pixelData[0] == 0)
                 {
-                    Colored.SetPixel(x, y, color);
+                    Colored.SetPixel(x, y, color.Colors[0]);
                     if (drawShading)
                         shadingMasked.SetPixel(x, y, shading.GetPixel(x, y));
                 }
@@ -277,7 +277,10 @@ namespace Innovation_Uniform_Editor.Classes
         #region CHANGING_COLORS+UNIFORM
         public void ChangeColorAtIndex(int index, Color color)
         {
-            Colors[index] = color;
+            if (Colors[index].Colors.Count <= 0)
+                Colors[index].Colors.Add(color);
+            else
+                Colors[index].Colors[0] = color;
             unsavedChanges = true;
         }
         public void ChangeUniform(Uniform uniform)
@@ -288,15 +291,22 @@ namespace Innovation_Uniform_Editor.Classes
 
                 _result = null;
                 shadingMasked = null;
-                OldColors = new List<Color>();
                 coloredLayers = new List<Image>();
 
                 unsavedChanges = true;
 
                 _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
-                this.Colors = new Color[_assets.Selections.Count].ToList();
 
-                _drawer = new CustomDrawer(_assets);
+                this.Colors = new List<CustomColor>(_assets.Selections.Count);
+                OldColors = new List<CustomColor>(_assets.Selections.Count);
+
+                for (int i = 0; i < _assets.Selections.Count; i++)
+                {
+                    Colors.Add(new CustomColor());
+                    OldColors.Add(new CustomColor());
+                }
+
+                _drawer = new CustomDrawer(_assets, Colors);
             }
         }
         public void ChangeBackground(BackgroundImage bgs)
