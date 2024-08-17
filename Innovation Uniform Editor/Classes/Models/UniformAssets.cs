@@ -29,6 +29,11 @@ namespace Innovation_Uniform_Editor.Classes.Models
         /// Textures used on the uniform (no shading)
         /// </summary>
         public List<Bitmap> Textures { get; set; }
+        /// <summary>
+        /// Extra images that are drawn on top.
+        /// This can include logo's, lines, drawings, text, etc.
+        /// </summary>
+        public List<Bitmap> Top { get; set; }
         public Bitmap Background { get; set; }
     }
 }

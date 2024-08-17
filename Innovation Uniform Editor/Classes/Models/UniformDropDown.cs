@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor.Classes.Helpers;
+using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,7 @@ namespace Innovation_Uniform_Editor.Classes
         public Image LoadUniformPreview()
         {
             string fullpath = "./Templates/Normal/" + part.ToString() + "/" + uniforms[currentUniform].Id + "/Original.png";
-            if (!File.Exists(fullpath))
-                TemplateUpdater.CheckForUpdates(true);
-            FileStream fs = File.Open(fullpath, FileMode.Open, FileAccess.Read);
-            Image returnResult = Image.FromStream(fs);
-            fs.Close();
-            return returnResult;
+            return FileToBitmap.Convert(fullpath);
         }
 
         public Image NextUniform()

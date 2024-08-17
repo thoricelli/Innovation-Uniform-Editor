@@ -83,22 +83,44 @@ namespace Innovation_Uniform_Editor.UI
             pictureUniform.Refresh();
         }
 
-        private Button CreateButton(int index)
+        private FlowLayoutPanel CreateButton(int index)
         {
-            Button button = new Button();
+            FlowLayoutPanel panel = new FlowLayoutPanel();
 
-            button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            button.Location = new System.Drawing.Point(2, 2);
-            button.Margin = new System.Windows.Forms.Padding(2);
-            button.Name = "color_" + index;
-            button.Size = new System.Drawing.Size(188, 24);
-            button.TabIndex = 11;
-            button.Text = "Color " + index;
-            button.UseVisualStyleBackColor = true;
+            panel.AutoSize = true;
+            //panel.Location = new System.Drawing.Point(2,2);
+            panel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            panel.Name = "flowColor" + index;
+            panel.Size = new System.Drawing.Size(257, 30);
+            panel.TabIndex = 11;
 
-            button.MouseClick += btnColor_Click;
+            Button btnColor = new Button();
+            Button btnExtra = new Button();
 
-            return button;
+            btnColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            btnColor.Location = new System.Drawing.Point(2, 2);
+            btnColor.Margin = new System.Windows.Forms.Padding(2);
+            btnColor.Name = "color_" + index;
+            btnColor.Size = new System.Drawing.Size(137, 25);
+            btnColor.TabIndex = 11;
+            btnColor.Text = "Color " + index;
+            btnColor.UseVisualStyleBackColor = true;
+
+            btnColor.MouseClick += btnColor_Click;
+
+            btnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            btnExtra.Location = new System.Drawing.Point(209, 2);
+            btnExtra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            btnExtra.Name = "btnExtra_" + index;
+            btnExtra.Size = new System.Drawing.Size(45, 25);
+            btnExtra.TabIndex = 13;
+            btnExtra.Text = "+";
+            btnExtra.UseVisualStyleBackColor = true;
+
+            panel.Controls.Add(btnColor);
+            panel.Controls.Add(btnExtra);
+
+            return panel;
         }
 
         private void btnColor_Click(object sender, EventArgs e)

@@ -22,6 +22,11 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
         private List<CustomColor> _colors = new List<CustomColor>();
 
+        /// <summary>
+        /// Doesn't shade the color at specified index.
+        /// </summary>
+        private List<int> doNotShade = new List<int>();
+
         public CustomDrawer(UniformAssets assets, List<CustomColor> colors)
         {
             _assets = assets;
@@ -34,6 +39,7 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
         - Background
 
         - Textures (if any)
+        (Textures can be shaded already if no source exists = add no shading to color)
 
         - Color(s) as OVERLAY -> separately masked.
 
@@ -51,21 +57,29 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
                 if (_assets.Background != null)
                     DrawBackground(g);
 
+                DrawList(g, _assets.Textures);
+
                 DrawColorsMasked(g, _colors, _assets.Selections);
 
                 DrawOverlay(g);
+
+                DrawList(g, _assets.Top);
             }
             return _result;
         }
         private unsafe void DrawColorsMasked(Graphics graphics, List<CustomColor> colors, List<bool[]> masks)
         {
+            Bitmap colorsResult = new Bitmap(DIMENSIONS.X, DIMENSIONS.Y);
+            BitmapData colorsResultData = colorsResult.LockBits(new Rectangle(0, 0, colorsResult.Width, colorsResult.Height), ImageLockMode.ReadOnly, _result.PixelFormat);
+            byte* scan0PointerColorData = (byte*)colorsResultData.Scan0;
+
             Bitmap shading = Assets.UniformsLoader.shading;
             BitmapData shadingData = shading.LockBits(new Rectangle(0, 0, shading.Width, shading.Height), ImageLockMode.ReadOnly, _result.PixelFormat);
-            
-            byte* scan0ShadingPointer = (byte*)shadingData.Scan0.ToPointer();
+
+            byte* scan0ShadingPointer = (byte*)shadingData.Scan0;
 
             BitmapData resultData = _result.LockBits(new Rectangle(0, 0, _result.Width, _result.Height), ImageLockMode.ReadOnly, _result.PixelFormat);
-            byte* scan0Pointer = (byte*)resultData.Scan0.ToPointer();
+            byte* scan0Pointer = (byte*)resultData.Scan0;
 
             int pixelSize = Image.GetPixelFormatSize(resultData.PixelFormat);
 
@@ -79,24 +93,36 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
                     if (canDraw)
                     {
-                        Color fullColor = GetColorFromCustomColor(colors[maskIndex]);
-                        Color shadingColor = Color.FromArgb(scan0ShadingPointer[i+3], scan0ShadingPointer[i+2], scan0ShadingPointer[i+1], scan0ShadingPointer[i]);
+                        Color currentColor = Color.FromArgb(scan0Pointer[i + 3], scan0Pointer[i + 2], scan0Pointer[i + 1], scan0Pointer[i]);
 
-                        Color blendColor = Blend(shadingColor, fullColor);
+                        Color fullColor = GetColorFromCustomColor(colors[maskIndex]);
+
+                        Color finalColor = Overlay(fullColor, currentColor);
+
+                        if (!doNotShade.Exists(e => e == maskIndex))
+                        {
+                            Color shadingColor = Color.FromArgb(scan0ShadingPointer[i + 3], scan0ShadingPointer[i + 2], scan0ShadingPointer[i + 1], scan0ShadingPointer[i]);
+                            finalColor = Blend(shadingColor, finalColor);
+                        }
+
                         //Blue, Green, Red, Alpha
-                        scan0Pointer[i] = blendColor.B;
-                        scan0Pointer[i+1] = blendColor.G;
-                        scan0Pointer[i+2] = blendColor.R;
-                        scan0Pointer[i+3] = blendColor.A;
+                        scan0PointerColorData[i] = finalColor.B;
+                        scan0PointerColorData[i+1] = finalColor.G;
+                        scan0PointerColorData[i+2] = finalColor.R;
+                        scan0PointerColorData[i+3] = finalColor.A;
                     }
                 }
             }
 
             _result.UnlockBits(resultData);
             shading.UnlockBits(shadingData);
+            colorsResult.UnlockBits(colorsResultData);
+
+
+            DrawImageToGraphics(graphics, colorsResult);
         }
         //Took this from a stackoverflow post... it's not great, but works...
-        public Color Blend(Color ForeGround, Color BackGround)
+        private Color Blend(Color ForeGround, Color BackGround)
         {
             if (ForeGround.A == 0)
                 return BackGround;
@@ -124,12 +150,41 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
             return Color.FromArgb(Math.Abs(A), Math.Abs(R), Math.Abs(G), Math.Abs(B));
         }
-        //TODO add extra for fading.
+        private Color Overlay(Color ForeGround, Color Background)
+        {
+            if (Background.R > 0 && Background.B > 0 && Background.G > 0)
+                return Color.FromArgb(
+                        255,//OverlayPixel(ForeGround.A, Background.A),
+                        OverlayPixel(ForeGround.R, Background.R),
+                        OverlayPixel(ForeGround.G, Background.G),
+                        OverlayPixel(ForeGround.B, Background.B)
+                    );
+            return ForeGround;
+        }
+        //Help.....
+        private int OverlayPixel(int upper, int lower)
+        {
+            if (lower < 128)
+                return ClampColor(2 * upper * lower / 255);
+            return ClampColor(255 - 2 * (255 - upper) * (255 - lower) / 255);
+            //Can't be lower than 0 or higher than 255.
+        }
+        private int ClampColor(int value)
+        {
+            return value < 0 ? 0 : value > 255 ? 255 : value;
+        }
         private Color GetColorFromCustomColor(CustomColor color)
         {
             if (color.Colors.Count > 0)
                 return color.Colors[0];
             return Color.Transparent;
+        }
+        private void DrawList(Graphics graphics, List<Bitmap> images)
+        {
+            foreach (Bitmap image in images)
+            {
+                DrawImageToGraphics(graphics, image);
+            }
         }
         private void DrawBackground(Graphics graphics)
         {

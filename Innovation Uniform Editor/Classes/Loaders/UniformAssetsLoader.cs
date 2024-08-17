@@ -68,11 +68,18 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
             return ImageHelper.BitmapToBoolean(selections);
         }
-        private static List<Bitmap> getTextures(string path)
+        private static List<Bitmap> getListFromPath(string path, string query)
         {
-            List<Bitmap> textures = new List<Bitmap>();
+            List<Bitmap> images = new List<Bitmap>();
 
-            return textures;
+            List<string> paths = Directory.GetFiles(path, query, SearchOption.TopDirectoryOnly).ToList();
+
+            foreach (string imagePath in paths)
+            {
+                images.Add(FileToBitmap.Convert(imagePath));
+            }
+
+            return images;
         }
         public static UniformAssets GetAssetsForUniform(Uniform uniform)
         {
@@ -83,7 +90,8 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
                 Original = getOriginal(basePath),
                 Overlay = getOverlay(basePath),
                 Selections = getSelectionTemplates(basePath),
-                Textures = getTextures(basePath)
+                Textures = getListFromPath(basePath, "texture*.png"),
+                Top = getListFromPath(basePath, "top*.png")
             };
         }
     }

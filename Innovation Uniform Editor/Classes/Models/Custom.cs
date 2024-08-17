@@ -30,16 +30,20 @@ namespace Innovation_Uniform_Editor.Classes
         public bool unsavedChanges = false;
 
         #region IDENTIFIERS+INFO
+        private Uniform _uniformBasedOn;
         [JsonIgnore]
         public Uniform UniformBasedOn
         {
             get
             {
-                return Assets.UniformsLoader.FindBy(this.UniformBasedOnId);
+                if (_uniformBasedOn == null)
+                    _uniformBasedOn = Assets.UniformsLoader.FindBy(this.UniformBasedOnId);
+                return _uniformBasedOn;
             }
             set
             {
                 this.UniformBasedOnId = value.Id;
+                _uniformBasedOn = Assets.UniformsLoader.FindBy(this.UniformBasedOnId);
             }
         }
         public ulong UniformBasedOnId { get; set; }
@@ -61,46 +65,6 @@ namespace Innovation_Uniform_Editor.Classes
             {
                 if (_result == null || HasColorsChanged())
                 {
-                    /*
-                     Images to be loaded in this order:
-                    - Background image (Also probably has to be masked...)
-
-                    (Already combined)
-                    - Masked secondary
-                    - Masked shading secondary
-
-                    (Already combined)
-                    - Masked primary
-                    - Masked shading primary
-
-                    - Overlay
-                    */
-
-                    /*Bitmap fullResult = new Bitmap(585, 559);
-
-                    Rectangle fullImage = new Rectangle(0, 0, fullResult.Size.Width, fullResult.Size.Height);
-
-                    using (Graphics g = Graphics.FromImage(fullResult))
-                    {
-                        if (this.BackgroundImage != null)
-                            g.DrawImage(this.BackgroundImage.background, fullImage);
-
-                        Bitmap Colored = CreateMask(Colors, this._loader.Selections);
-
-                        g.DrawImage(Colored, fullImage);
-                        if (this._loader.Textures.Count > 0)
-                        {
-                            g.DrawImage(this._loader.Textures[0].SetOpacity(0.8F), fullImage);
-                        }
-                        if (this.UniformBasedOn.Shading)
-                            g.DrawImage(shadingMasked, Point.Empty);
-                        g.DrawImage(this._loader.Overlay, fullImage);
-                        g.DrawImage(Assets.UniformsLoader.waterMark, fullImage);
-                    }
-
-                    _result = fullResult;
-
-                    return _result;*/
                     _result = _drawer.Draw();
                 }
                 return _result;
@@ -117,16 +81,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                if (File.Exists("./Customs/" + Id + "/result.png"))
-                {
-                    Image img;
-                    using (var bmpTemp = new Bitmap("./Customs/" + Id + "/result.png"))
-                    {
-                        img = new Bitmap(bmpTemp);
-                    }
-                    return img;
-                }
-                return this.Result;
+                return FileToBitmap.Convert("./Customs/" + Id + "/result.png");
             }
         }
 
@@ -135,109 +90,6 @@ namespace Innovation_Uniform_Editor.Classes
         #region MASKING
 
         private List<Image> coloredLayers = new List<Image>();
-
-        private Bitmap CreateMask(List<CustomColor> colors, List<Bitmap> masks)
-        {
-            if (shading == null)
-            {
-                FileStream fs = File.Open("./Templates/Misc/Shading_Template.png", FileMode.Open, FileAccess.Read);
-                shading = new Bitmap(Image.FromStream(fs));
-                fs.Close();
-            }
-            if (coloredLayers.Count == 0)
-            {
-                for (int i = 0; i < masks.Count; i++)
-                {
-                    coloredLayers.Add(null);
-                }
-            }
-
-            Bitmap Colored;
-
-            Bitmap colorTemplate = new Bitmap(masks[0].Width, masks[0].Height);
-
-            Colored = new Bitmap(colorTemplate.Width, colorTemplate.Height);
-
-            bool drawShading = false;
-
-            if (shadingMasked == null)
-            {
-                shadingMasked = new Bitmap(shading.Width, shading.Height);
-                drawShading = true;
-            }
-
-            using (Graphics g = Graphics.FromImage(colorTemplate))
-            {
-                for (int i = 0; i < masks.Count; i++)
-                {
-                    Image mask = masks[i];
-                    CustomColor color = colors[i];
-                    CustomColor oldColor = OldColors.ElementAtOrDefault(i);
-                    if (color != oldColor || coloredLayers[i] == null)
-                    {
-                        Image layer = ColorLayer(new Bitmap(mask), color, drawShading);
-                        g.DrawImage(layer, Point.Empty);
-                        coloredLayers[i] = layer;
-                    }
-                    else
-                    {
-                        g.DrawImage(coloredLayers[i], Point.Empty);
-                    }
-                }
-            }
-
-            using (Graphics g = Graphics.FromImage(Colored))
-            {
-                g.DrawImage(colorTemplate, Point.Empty);
-            }
-
-
-            OldColors = colors.ToList();
-            return Colored;
-        }
-
-        private Image ColorLayer(Bitmap ColorMask, CustomColor color, bool drawShading)
-        {
-            Bitmap Colored = new Bitmap(ColorMask.Width, ColorMask.Height);
-
-            BitmapData bitmapMaskData = ColorMask.LockBits(
-                        new Rectangle(0, 0, ColorMask.Width, ColorMask.Height),
-                        ImageLockMode.ReadOnly,
-                        ColorMask.PixelFormat
-                    );
-
-            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * ColorMask.Height];
-
-            Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
-
-            ColorMask.UnlockBits(bitmapMaskData);
-
-            int pixelSize = Image.GetPixelFormatSize(ColorMask.PixelFormat);
-
-            int x = 0;
-            int y = 0;
-
-            for (int i = 0; i < bitmapMaskBytes.Length; i += pixelSize / 8)
-            {
-                byte[] pixelData = new byte[3];
-                Array.Copy(bitmapMaskBytes, i, pixelData, 0, 3);
-
-                if (pixelData[0] == 0)
-                {
-                    Colored.SetPixel(x, y, color.Colors[0]);
-                    if (drawShading)
-                        shadingMasked.SetPixel(x, y, shading.GetPixel(x, y));
-                }
-
-                x++;
-                if (x >= ColorMask.Width)
-                {
-                    x = 0;
-                    y++;
-                }
-            }
-            return Colored;
-        }
         #endregion
         #endregion
         #region SAVING
@@ -311,10 +163,16 @@ namespace Innovation_Uniform_Editor.Classes
         }
         public void ChangeBackground(BackgroundImage bgs)
         {
-            BackgroundImageGuid = bgs.Id;
-            _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
+            if (bgs != null)
+            {
+                BackgroundImageGuid = bgs.Id;
+                _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
 
-            _assets.Background = _backgroundImage.background;
+                _assets.Background = _backgroundImage.background;
+            } else
+            {
+                _backgroundImage = null;
+            }
 
             _result = null;
             unsavedChanges = true;
