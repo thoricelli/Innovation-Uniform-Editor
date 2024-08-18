@@ -130,9 +130,15 @@ namespace Innovation_Uniform_Editor.Classes
         public void ChangeColorAtIndex(int index, Color color)
         {
             if (Colors[index].Colors.Count <= 0)
+            {
                 Colors[index].Colors.Add(color);
+                Colors[index].Colors.Add(Color.Red);
+            }
             else
+            {
                 Colors[index].Colors[0] = color;
+                Colors[index].Colors[1] = Color.Red;
+            }
             unsavedChanges = true;
         }
         public void ChangeUniform(Uniform uniform)

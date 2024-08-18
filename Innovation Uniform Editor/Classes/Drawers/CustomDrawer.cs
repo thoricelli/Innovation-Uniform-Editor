@@ -84,7 +84,7 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
             int pixelSize = Image.GetPixelFormatSize(resultData.PixelFormat);
 
             int index = 0;
-            for (int i = 0; i < resultData.Stride * resultData.Width; i += pixelSize / 8)
+            for (int i = 0; i < resultData.Stride * resultData.Height; i += pixelSize / 8)
             {
                 index++;
                 for (int maskIndex = 0; maskIndex < masks.Count; maskIndex++)
@@ -95,7 +95,7 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
                     {
                         Color currentColor = Color.FromArgb(scan0Pointer[i + 3], scan0Pointer[i + 2], scan0Pointer[i + 1], scan0Pointer[i]);
 
-                        Color fullColor = GetColorFromCustomColor(colors[maskIndex]);
+                        Color fullColor = FadePixel(colors[maskIndex], (double)i / (resultData.Stride * resultData.Height));//GetColorFromCustomColor(colors[maskIndex]);
 
                         Color finalColor = Overlay(fullColor, currentColor);
 
@@ -120,6 +120,30 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
 
             DrawImageToGraphics(graphics, colorsResult);
+        }
+        private Color FadePixel(CustomColor color, double progress)
+        {
+            if (progress < 1 && color.Colors.Count > 1)
+            {
+                //More colors = less time for each color to fade
+                double colorProgress = progress == 0 ? 0 : progress / (1 / (color.Colors.Count / 2));
+                
+                int currentIndex = Convert.ToInt32(Math.Floor(colorProgress));
+                double currentFadeAmount = progress;//colorProgress - Math.Truncate(colorProgress);
+                
+                Color currentColor = color.Colors[currentIndex];
+                Color fadeToColor = color.Colors[currentIndex + 1];
+
+                return Blend(currentColor, fadeToColor, currentFadeAmount);
+            }
+            return Color.Green;
+        }
+        private Color Blend(Color color, Color backColor, double amount)
+        {
+            byte r = (byte)(color.R * amount + backColor.R * (1 - amount));
+            byte g = (byte)(color.G * amount + backColor.G * (1 - amount));
+            byte b = (byte)(color.B * amount + backColor.B * (1 - amount));
+            return Color.FromArgb(255, r, g, b);
         }
         //Took this from a stackoverflow post... it's not great, but works...
         private Color Blend(Color ForeGround, Color BackGround)
