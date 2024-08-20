@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Classes\Drawers\CustomDrawer.cs" />
     <Compile Include="Classes\Drawers\Interfaces\IDrawable.cs" />
+    <Compile Include="Classes\Helpers\NamePressHelper.cs" />
     <Compile Include="Classes\Helpers\FileToBitmap.cs" />
     <Compile Include="Classes\Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Classes\Models\CustomColor.cs" />

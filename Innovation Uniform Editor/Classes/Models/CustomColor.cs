@@ -4,12 +4,34 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
 {
     public class CustomColor
     {
-        public List<Color> Colors { get; set; } = new List<Color>();
+        public CustomColor()
+        {
+            Colors = new List<Color>() { Color.Transparent };
+        }
+
+        public void ChangeFirstColor(Color color)
+        {
+            ChangeColorAtIndex(0, color);
+        }
+
+        public void ChangeColorAtIndex(int colorIndex, Color color)
+        {
+            //Swagiform :)
+            if (color == Color.FromArgb(255, 255, 174, 201))
+            {
+                MessageBox.Show("You are NOT making the swagiform.");
+                return;
+            }
+            Colors[colorIndex] = color;
+        }
+
+        public List<Color> Colors { get; set; }
         /// <summary>
         /// How many times to repeat the fade.
         /// </summary>

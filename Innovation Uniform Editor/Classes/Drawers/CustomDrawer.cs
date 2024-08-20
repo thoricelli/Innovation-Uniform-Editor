@@ -95,7 +95,11 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
                     {
                         Color currentColor = Color.FromArgb(scan0Pointer[i + 3], scan0Pointer[i + 2], scan0Pointer[i + 1], scan0Pointer[i]);
 
-                        Color fullColor = FadePixel(colors[maskIndex], (double)i / (resultData.Stride * resultData.Height));//GetColorFromCustomColor(colors[maskIndex]);
+                        Color fullColor;
+                        if (colors[maskIndex].Colors.Count > 1)
+                            fullColor = FadePixel(colors[maskIndex], ((double)i / resultData.Stride) / resultData.Height);
+                        else
+                            fullColor = GetColorFromCustomColor(colors[maskIndex]);
 
                         Color finalColor = Overlay(fullColor, currentColor);
 
@@ -125,18 +129,25 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
         {
             if (progress < 1 && color.Colors.Count > 1)
             {
+                //For every repeat, we want the progress to restart back to zero.
+                double progressRepeat = progress * color.Repeat;
+                double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
+
                 //More colors = less time for each color to fade
-                double colorProgress = progress == 0 ? 0 : progress / (1 / (color.Colors.Count / 2));
+                double colorProgress =
+                    progressWithRepeat == 0 ? 
+                    0 : progressWithRepeat / ((double)1 / (color.Colors.Count-1));
                 
+                //First number is the index, everything beyond the decimal is the fade progress.
                 int currentIndex = Convert.ToInt32(Math.Floor(colorProgress));
-                double currentFadeAmount = progress;//colorProgress - Math.Truncate(colorProgress);
+                double currentFadeAmount = colorProgress - Math.Truncate(colorProgress);
                 
                 Color currentColor = color.Colors[currentIndex];
                 Color fadeToColor = color.Colors[currentIndex + 1];
 
-                return Blend(currentColor, fadeToColor, currentFadeAmount);
+                return Blend(fadeToColor, currentColor, currentFadeAmount);
             }
-            return Color.Green;
+            return Color.Transparent;
         }
         private Color Blend(Color color, Color backColor, double amount)
         {

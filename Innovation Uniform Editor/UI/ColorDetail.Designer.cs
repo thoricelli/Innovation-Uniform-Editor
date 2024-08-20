@@ -29,102 +29,176 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorDetail));
-            this.btnBackgroundImage = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.btnColor_0 = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.flowColors = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowColorRemove = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lblFade = new System.Windows.Forms.Label();
+            this.lblRepeat = new System.Windows.Forms.Label();
+            this.repeatNumeric = new System.Windows.Forms.NumericUpDown();
+            this.flowColors.SuspendLayout();
+            this.flowColorRemove.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repeatNumeric)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnBackgroundImage
+            // btnColor_0
             // 
-            this.btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackgroundImage.Location = new System.Drawing.Point(3, 2);
-            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBackgroundImage.Name = "btnBackgroundImage";
-            this.btnBackgroundImage.Size = new System.Drawing.Size(251, 30);
-            this.btnBackgroundImage.TabIndex = 11;
-            this.btnBackgroundImage.Text = "Color 1";
-            this.btnBackgroundImage.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnColor_0.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(12, 262);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(258, 30);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Done";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnColor_0.AutoSize = true;
+            this.btnColor_0.Location = new System.Drawing.Point(2, 2);
+            this.btnColor_0.Margin = new System.Windows.Forms.Padding(2);
+            this.btnColor_0.Name = "btnColor_0";
+            this.btnColor_0.Size = new System.Drawing.Size(187, 24);
+            this.btnColor_0.TabIndex = 11;
+            this.btnColor_0.Text = "Color 1";
+            this.btnColor_0.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnDone
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(3, 36);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(251, 30);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDone.Location = new System.Drawing.Point(9, 228);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(216, 24);
+            this.btnDone.TabIndex = 12;
+            this.btnDone.Text = "Done";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
-            // flowLayoutPanel1
+            // btnPlus
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnPlus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlus.AutoSize = true;
+            this.btnPlus.Location = new System.Drawing.Point(2, 35);
+            this.btnPlus.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(215, 24);
+            this.btnPlus.TabIndex = 13;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            // 
+            // flowColors
+            // 
+            this.flowColors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.btnBackgroundImage);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 35);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(258, 222);
-            this.flowLayoutPanel1.TabIndex = 14;
+            this.flowColors.AutoScroll = true;
+            this.flowColors.Controls.Add(this.flowColorRemove);
+            this.flowColors.Controls.Add(this.btnPlus);
+            this.flowColors.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowColors.Location = new System.Drawing.Point(9, 28);
+            this.flowColors.Margin = new System.Windows.Forms.Padding(2);
+            this.flowColors.Name = "flowColors";
+            this.flowColors.Size = new System.Drawing.Size(219, 170);
+            this.flowColors.TabIndex = 14;
             // 
-            // label1
+            // flowColorRemove
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.flowColorRemove.Controls.Add(this.btnColor_0);
+            this.flowColorRemove.Controls.Add(this.btnRemove);
+            this.flowColorRemove.Location = new System.Drawing.Point(0, 3);
+            this.flowColorRemove.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.flowColorRemove.Name = "flowColorRemove";
+            this.flowColorRemove.Size = new System.Drawing.Size(219, 30);
+            this.flowColorRemove.TabIndex = 14;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(19, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 23);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Add another color to create a fade effect.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnRemove.AutoSize = true;
+            this.btnRemove.Location = new System.Drawing.Point(193, 2);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(24, 24);
+            this.btnRemove.TabIndex = 12;
+            this.btnRemove.Text = "X";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // lblFade
+            // 
+            this.lblFade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFade.Location = new System.Drawing.Point(14, 7);
+            this.lblFade.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFade.Name = "lblFade";
+            this.lblFade.Size = new System.Drawing.Size(210, 19);
+            this.lblFade.TabIndex = 15;
+            this.lblFade.Text = "Add another color to create a fade effect.";
+            this.lblFade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRepeat
+            // 
+            this.lblRepeat.Location = new System.Drawing.Point(6, 203);
+            this.lblRepeat.Name = "lblRepeat";
+            this.lblRepeat.Size = new System.Drawing.Size(53, 20);
+            this.lblRepeat.TabIndex = 16;
+            this.lblRepeat.Text = "Repeat:";
+            this.lblRepeat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // repeatNumeric
+            // 
+            this.repeatNumeric.Location = new System.Drawing.Point(54, 203);
+            this.repeatNumeric.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.repeatNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repeatNumeric.Name = "repeatNumeric";
+            this.repeatNumeric.Size = new System.Drawing.Size(174, 20);
+            this.repeatNumeric.TabIndex = 17;
+            this.repeatNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repeatNumeric.ValueChanged += new System.EventHandler(this.repeatNumeric_ValueChanged);
             // 
             // ColorDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 303);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(234, 261);
+            this.Controls.Add(this.repeatNumeric);
+            this.Controls.Add(this.lblRepeat);
+            this.Controls.Add(this.lblFade);
+            this.Controls.Add(this.flowColors);
+            this.Controls.Add(this.btnDone);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ColorDetail";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Color detail";
-            this.TopMost = true;
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flowColors.ResumeLayout(false);
+            this.flowColors.PerformLayout();
+            this.flowColorRemove.ResumeLayout(false);
+            this.flowColorRemove.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repeatNumeric)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnBackgroundImage;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnColor_0;
+        private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.FlowLayoutPanel flowColors;
+        private System.Windows.Forms.Label lblFade;
+        private System.Windows.Forms.FlowLayoutPanel flowColorRemove;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblRepeat;
+        private System.Windows.Forms.NumericUpDown repeatNumeric;
     }
 }

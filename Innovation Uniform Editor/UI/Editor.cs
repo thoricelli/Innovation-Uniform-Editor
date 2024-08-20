@@ -1,5 +1,6 @@
 ﻿using Cyotek.Windows.Forms;
 using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using Newtonsoft.Json;
@@ -18,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Innovation_Uniform_Editor.UI
@@ -29,7 +31,9 @@ namespace Innovation_Uniform_Editor.UI
         private UniformDropDown Handler;
 
         private Main parent;
-        List<ColorPickerDialog> colors = new List<ColorPickerDialog>();
+
+        private int _currentIndex;
+        private ColorPickerDialog _pickerDialogue;
         private bool doneLoading = false;
         public Editor(Custom OG, Main main)
         {
@@ -51,6 +55,8 @@ namespace Innovation_Uniform_Editor.UI
 
             SetupColors();
 
+            _pickerDialogue = CreateDialog();
+
             dropdownUniforms.DataSource = Handler.uniforms;
             dropdownUniforms.SelectedIndex = index;
 
@@ -62,22 +68,20 @@ namespace Innovation_Uniform_Editor.UI
             doneLoading = true;
         }
 
-        private ColorPickerDialog CreateDialog(string name)
+        private ColorPickerDialog CreateDialog()
         {
             ColorPickerDialog cd = new ColorPickerDialog();
-            cd.Name = name;
             cd.PreviewColorChanged += UpdateColor;
+            cd.Validated += UpdateColor;
             return cd;
         }
 
         public void UpdateColor(object sender, EventArgs e)
         {
             ColorPickerDialog cd = (ColorPickerDialog)sender;
-            custom.ChangeColorAtIndex(
-                Convert.ToInt32(
-                    cd.Name.
-                    Replace("color_", "")
-                ), cd.Color
+
+            custom.ChangeFirstColorAtIndex(
+                _currentIndex, cd.Color
             );
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
@@ -101,7 +105,7 @@ namespace Innovation_Uniform_Editor.UI
             btnColor.Location = new System.Drawing.Point(2, 2);
             btnColor.Margin = new System.Windows.Forms.Padding(2);
             btnColor.Name = "color_" + index;
-            btnColor.Size = new System.Drawing.Size(137, 25);
+            btnColor.Size = new System.Drawing.Size(157, 25);
             btnColor.TabIndex = 11;
             btnColor.Text = "Color " + index;
             btnColor.UseVisualStyleBackColor = true;
@@ -112,10 +116,12 @@ namespace Innovation_Uniform_Editor.UI
             btnExtra.Location = new System.Drawing.Point(209, 2);
             btnExtra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
             btnExtra.Name = "btnExtra_" + index;
-            btnExtra.Size = new System.Drawing.Size(45, 25);
+            btnExtra.Size = new System.Drawing.Size(25, 25);
             btnExtra.TabIndex = 13;
             btnExtra.Text = "+";
             btnExtra.UseVisualStyleBackColor = true;
+
+            btnExtra.MouseClick += btnExtra_Click;
 
             panel.Controls.Add(btnColor);
             panel.Controls.Add(btnExtra);
@@ -125,13 +131,24 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnColor_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            int colorIndex = Convert.ToInt32(button.Name.Replace("color_", ""));
+            int colorIndex = NamePressHelper.Get(sender, "color");
 
-            ColorPickerDialog cd = CreateDialog(colors[colorIndex].Name);
-            cd.Color = colors[colorIndex].Color;
-            colors[colorIndex] = cd;
-            cd.Show();
+            _currentIndex = colorIndex;
+
+            _pickerDialogue = CreateDialog();
+
+            _pickerDialogue.Color = custom.Colors[colorIndex].Colors[0];
+
+            _pickerDialogue.Show();
+        }
+
+        private void btnExtra_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int colorIndex = Convert.ToInt32(button.Name.Replace("btnExtra_", ""));
+
+            ColorDetail detail = new ColorDetail(custom.Colors[colorIndex]);
+            detail.ShowDialog();
 
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
@@ -225,7 +242,6 @@ namespace Innovation_Uniform_Editor.UI
 
         private void SetupColors()
         {
-            colors = new List<ColorPickerDialog>();
             int indexStart = 0;
             for (int i = buttonsLayoutPanel.Controls.Count-1; i >= 1; i--)
             {
@@ -235,11 +251,6 @@ namespace Innovation_Uniform_Editor.UI
                     if (indexStart == 0)
                         indexStart = i;
 
-            }
-            //Setting up colordialogs
-            for (int i = 0; i < custom.Colors.Count; i++)
-            {
-                colors.Add(CreateDialog("color_" + i));
             }
             //Setting up the buttons.
             for (int i = indexStart; i < custom.Colors.Count; i++)

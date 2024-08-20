@@ -64,10 +64,10 @@ namespace Innovation_Uniform_Editor.UI
             this.pictureUniform.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureUniform.Location = new System.Drawing.Point(12, 33);
-            this.pictureUniform.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureUniform.Location = new System.Drawing.Point(9, 27);
+            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureUniform.Name = "pictureUniform";
-            this.pictureUniform.Size = new System.Drawing.Size(701, 658);
+            this.pictureUniform.Size = new System.Drawing.Size(526, 535);
             this.pictureUniform.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureUniform.TabIndex = 0;
             this.pictureUniform.TabStop = false;
@@ -81,8 +81,8 @@ namespace Innovation_Uniform_Editor.UI
             this.exportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(981, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(736, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -92,20 +92,20 @@ namespace Innovation_Uniform_Editor.UI
             this.saveToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.projectToolStripMenuItem.Text = "Project";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -114,13 +114,13 @@ namespace Innovation_Uniform_Editor.UI
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.downloadToolStripMenuItem1});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // downloadToolStripMenuItem1
             // 
             this.downloadToolStripMenuItem1.Name = "downloadToolStripMenuItem1";
-            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(161, 26);
+            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.downloadToolStripMenuItem1.Text = "Download";
             this.downloadToolStripMenuItem1.Click += new System.EventHandler(this.downloadToolStripMenuItem1_Click);
             // 
@@ -130,10 +130,9 @@ namespace Innovation_Uniform_Editor.UI
             this.dropdownUniforms.DataSource = this.uniformBindingSource;
             this.dropdownUniforms.DisplayMember = "Name";
             this.dropdownUniforms.FormattingEnabled = true;
-            this.dropdownUniforms.Location = new System.Drawing.Point(721, 666);
-            this.dropdownUniforms.Margin = new System.Windows.Forms.Padding(4);
+            this.dropdownUniforms.Location = new System.Drawing.Point(541, 541);
             this.dropdownUniforms.Name = "dropdownUniforms";
-            this.dropdownUniforms.Size = new System.Drawing.Size(251, 24);
+            this.dropdownUniforms.Size = new System.Drawing.Size(189, 21);
             this.dropdownUniforms.TabIndex = 9;
             this.dropdownUniforms.ValueMember = "Id";
             this.dropdownUniforms.SelectedIndexChanged += new System.EventHandler(this.dropdownUniforms_SelectedIndexChanged);
@@ -149,27 +148,27 @@ namespace Innovation_Uniform_Editor.UI
             this.redrawUniformToolStripMenuItem,
             this.downloadToolStripMenuItem});
             this.menuEditor.Name = "menuEditor";
-            this.menuEditor.Size = new System.Drawing.Size(221, 52);
+            this.menuEditor.Size = new System.Drawing.Size(189, 48);
             // 
             // redrawUniformToolStripMenuItem
             // 
             this.redrawUniformToolStripMenuItem.Name = "redrawUniformToolStripMenuItem";
-            this.redrawUniformToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.redrawUniformToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.redrawUniformToolStripMenuItem.Text = "Force redraw uniform";
             // 
             // downloadToolStripMenuItem
             // 
             this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.downloadToolStripMenuItem.Text = "Download";
             // 
             // btnBackgroundImage
             // 
             this.btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackgroundImage.Location = new System.Drawing.Point(3, 2);
-            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBackgroundImage.Location = new System.Drawing.Point(2, 2);
+            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBackgroundImage.Name = "btnBackgroundImage";
-            this.btnBackgroundImage.Size = new System.Drawing.Size(251, 30);
+            this.btnBackgroundImage.Size = new System.Drawing.Size(188, 24);
             this.btnBackgroundImage.TabIndex = 10;
             this.btnBackgroundImage.Text = "Select background image";
             this.btnBackgroundImage.UseVisualStyleBackColor = true;
@@ -178,10 +177,9 @@ namespace Innovation_Uniform_Editor.UI
             // lblUsername
             // 
             this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUsername.Location = new System.Drawing.Point(721, 633);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsername.Location = new System.Drawing.Point(541, 514);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(77, 25);
+            this.lblUsername.Size = new System.Drawing.Size(58, 20);
             this.lblUsername.TabIndex = 12;
             this.lblUsername.Text = "Username:";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -190,20 +188,18 @@ namespace Innovation_Uniform_Editor.UI
             // txtUsername
             // 
             this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsername.Location = new System.Drawing.Point(796, 634);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsername.Location = new System.Drawing.Point(597, 515);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(175, 22);
+            this.txtUsername.Size = new System.Drawing.Size(132, 20);
             this.txtUsername.TabIndex = 11;
             this.txtUsername.Visible = false;
             // 
             // chkElite
             // 
             this.chkElite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkElite.Location = new System.Drawing.Point(720, 599);
-            this.chkElite.Margin = new System.Windows.Forms.Padding(4);
+            this.chkElite.Location = new System.Drawing.Point(540, 487);
             this.chkElite.Name = "chkElite";
-            this.chkElite.Size = new System.Drawing.Size(99, 30);
+            this.chkElite.Size = new System.Drawing.Size(74, 24);
             this.chkElite.TabIndex = 13;
             this.chkElite.Text = "Elite Logo";
             this.chkElite.UseVisualStyleBackColor = true;
@@ -217,10 +213,9 @@ namespace Innovation_Uniform_Editor.UI
             // idLabel
             // 
             this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.idLabel.Location = new System.Drawing.Point(721, 634);
-            this.idLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.idLabel.Location = new System.Drawing.Point(541, 515);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(252, 30);
+            this.idLabel.Size = new System.Drawing.Size(189, 24);
             this.idLabel.TabIndex = 14;
             this.idLabel.Text = "0";
             this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -231,29 +226,27 @@ namespace Innovation_Uniform_Editor.UI
             this.buttonsLayoutPanel.AutoSize = true;
             this.buttonsLayoutPanel.Controls.Add(this.btnBackgroundImage);
             this.buttonsLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.buttonsLayoutPanel.Location = new System.Drawing.Point(717, 33);
-            this.buttonsLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonsLayoutPanel.Location = new System.Drawing.Point(538, 27);
             this.buttonsLayoutPanel.Name = "buttonsLayoutPanel";
-            this.buttonsLayoutPanel.Size = new System.Drawing.Size(259, 106);
+            this.buttonsLayoutPanel.Size = new System.Drawing.Size(194, 86);
             this.buttonsLayoutPanel.TabIndex = 15;
             // 
             // chkFading
             // 
             this.chkFading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFading.Location = new System.Drawing.Point(895, 635);
-            this.chkFading.Margin = new System.Windows.Forms.Padding(4);
+            this.chkFading.Location = new System.Drawing.Point(653, 516);
             this.chkFading.Name = "chkFading";
-            this.chkFading.Size = new System.Drawing.Size(77, 30);
+            this.chkFading.Size = new System.Drawing.Size(76, 24);
             this.chkFading.TabIndex = 16;
-            this.chkFading.Text = "Fading";
+            this.chkFading.Text = "One color";
             this.chkFading.UseVisualStyleBackColor = true;
             this.chkFading.Visible = false;
             // 
             // Editor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 703);
+            this.ClientSize = new System.Drawing.Size(736, 571);
             this.Controls.Add(this.chkFading);
             this.Controls.Add(this.buttonsLayoutPanel);
             this.Controls.Add(this.idLabel);
@@ -265,7 +258,7 @@ namespace Innovation_Uniform_Editor.UI
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor";
