@@ -60,7 +60,7 @@ namespace Innovation_Uniform_Editor.UI
             dropdownUniforms.DataSource = Handler.uniforms;
             dropdownUniforms.SelectedIndex = index;
 
-            idLabel.Text = $"ID: {OG.UniformBasedOnId}";
+            idLabel.Text = $"ID: {OG.UniformBasedOn.Id}";
 
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
@@ -137,7 +137,7 @@ namespace Innovation_Uniform_Editor.UI
 
             _pickerDialogue = CreateDialog();
 
-            _pickerDialogue.Color = custom.Colors[colorIndex].Colors[0];
+            _pickerDialogue.Color = custom.Colors[colorIndex].GetColorAtIndex(0);
 
             _pickerDialogue.Show();
         }
@@ -192,7 +192,7 @@ namespace Innovation_Uniform_Editor.UI
         SaveDialogue saveDialogue;
         private void Editor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (custom.unsavedChanges)
+            if (custom.UnsavedChanges)
             {
                 saveDialogue = new SaveDialogue();
                 saveDialogue.ShowDialog();

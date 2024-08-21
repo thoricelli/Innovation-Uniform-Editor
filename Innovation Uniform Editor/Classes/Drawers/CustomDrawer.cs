@@ -96,7 +96,7 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
                         Color currentColor = Color.FromArgb(scan0Pointer[i + 3], scan0Pointer[i + 2], scan0Pointer[i + 1], scan0Pointer[i]);
 
                         Color fullColor;
-                        if (colors[maskIndex].Colors.Count > 1)
+                        if (colors[maskIndex].Colors == null || colors[maskIndex].Colors.Count > 1)
                             fullColor = FadePixel(colors[maskIndex], ((double)i / resultData.Stride) / resultData.Height);
                         else
                             fullColor = GetColorFromCustomColor(colors[maskIndex]);
@@ -122,12 +122,11 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
             shading.UnlockBits(shadingData);
             colorsResult.UnlockBits(colorsResultData);
 
-
             DrawImageToGraphics(graphics, colorsResult);
         }
         private Color FadePixel(CustomColor color, double progress)
         {
-            if (progress < 1 && color.Colors.Count > 1)
+            if (progress < 1 && color.Colors != null && color.Colors.Count > 1)
             {
                 //For every repeat, we want the progress to restart back to zero.
                 double progressRepeat = progress * color.Repeat;
@@ -210,9 +209,7 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
         }
         private Color GetColorFromCustomColor(CustomColor color)
         {
-            if (color.Colors.Count > 0)
-                return color.Colors[0];
-            return Color.Transparent;
+            return color.GetColorAtIndex(0);
         }
         private void DrawList(Graphics graphics, List<Bitmap> images)
         {

@@ -14,7 +14,7 @@
       "Id": 3933922179,
       "Name": "Innovation Security Advanced Tactical Pants",
       "Creator": "Darkboltex",
-	  "Shading": false
+      "Shading": false
     },
     {
       "Id": 368728509,
@@ -65,6 +65,16 @@
       "Id": 368660060,
       "Name": "Innovation Security Standard Pants",
       "Creator": "ChromaticDeath"
+    },
+    {
+      "Id": 17402073986,
+      "Name": "Innovation Security Tactical Skirt",
+      "Creator": "Skyfall_Epsilon"
+    },
+    {
+      "Id": 17402068132,
+      "Name": "Innovation Security Energized Pistol Holster",
+      "Creator": "Skyfall_Epsilon"
     }
   ],
   "Shirts": [
@@ -77,7 +87,7 @@
       "Id": 3933916736,
       "Name": "Innovation Security Advanced Tactical Vest",
       "Creator": "Darkboltex",
-	  "Shading": false
+      "Shading": false
     },
     {
       "Id": 368717072,
@@ -87,7 +97,7 @@
     {
       "Id": 368715486,
       "Name": "Chromatic's Signature Elite Vest (Guardsman+)",
-      "Creator": "ChromaticDeath",
+      "Creator": "ChromaticDeath"
     },
     {
       "Id": 368658202,
@@ -149,10 +159,20 @@
       "Name": "Innovation Security Shortsleeved Standard",
       "Creator": "ChromaticDeath"
     },
-	{
-	  "Id": 6914646133,
-	  "Name": "Innovation Security Satchel Uniform",
-	  "Creator": "SardiTime"
-	}
+    {
+      "Id": 6914646133,
+      "Name": "Innovation Security Satchel Uniform",
+      "Creator": "SardiTime"
+    },
+    {
+      "Id": 17402056919,
+      "Name": "Innovation Security Zip-Up Tactical Vest",
+      "Creator": "Skyfall_Epsilon"
+    },
+    {
+      "Id": 17402029336,
+      "Name": "Innovation Security Early Response Unit Vest",
+      "Creator": "SardiTime"
+    }
   ]
 }

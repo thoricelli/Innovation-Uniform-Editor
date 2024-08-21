@@ -27,7 +27,7 @@ namespace Innovation_Uniform_Editor.Classes
         [JsonIgnore]
         private IDrawable _drawer;
         [JsonIgnore]
-        public bool unsavedChanges = false;
+        public bool UnsavedChanges { get; set; } = false;
 
         #region IDENTIFIERS+INFO
         private Uniform _uniformBasedOn;
@@ -50,7 +50,7 @@ namespace Innovation_Uniform_Editor.Classes
         #endregion
         #region CUSTOM_SETTINGS
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
-        private List<CustomColor> OldColors { get; set; } = new List<CustomColor>();
+        //private List<CustomColor> OldColors { get; set; } = new List<CustomColor>();
         private BackgroundImage _backgroundImage;
         public BackgroundImage BackgroundImage { get { return _backgroundImage; } }
         public Guid BackgroundImageGuid;
@@ -61,6 +61,9 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
+                if (this._drawer == null)
+                    Initialize();
+
                 if (_result == null || HasColorsChanged())
                 {
                     _result = _drawer.Draw();
@@ -116,14 +119,14 @@ namespace Innovation_Uniform_Editor.Classes
             }
             Image downSized = ImageHelper.resizeImage(Result, new Size(293, 280));
             downSized.Save("./Customs/" + Id + "/result.png", ImageFormat.Png);
-            unsavedChanges = false;
+            UnsavedChanges = false;
         }
         #endregion
         #region CHANGING_COLORS+UNIFORM
         public void ChangeFirstColorAtIndex(int index, Color color)
         {
             Colors[index].ChangeColorAtIndex(0, color);
-            unsavedChanges = true;
+            UnsavedChanges = true;
         }
         public void ChangeUniform(Uniform uniform)
         {
@@ -131,21 +134,9 @@ namespace Innovation_Uniform_Editor.Classes
             {
                 UniformBasedOn = uniform;
 
-                _result = null;
-                unsavedChanges = true;
+                UnsavedChanges = true;
 
-                _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
-
-                this.Colors = new List<CustomColor>(_assets.Selections.Count);
-                OldColors = new List<CustomColor>(_assets.Selections.Count);
-
-                for (int i = 0; i < _assets.Selections.Count; i++)
-                {
-                    Colors.Add(new CustomColor());
-                    OldColors.Add(new CustomColor());
-                }
-
-                _drawer = new CustomDrawer(_assets, Colors);
+                Initialize();
             }
         }
         public void ChangeBackground(BackgroundImage bgs)
@@ -162,14 +153,32 @@ namespace Innovation_Uniform_Editor.Classes
             }
 
             _result = null;
-            unsavedChanges = true;
+            UnsavedChanges = true;
         }
         public void ClearBackground()
         {
             BackgroundImageGuid = new Guid();
             _result = null;
-            unsavedChanges = true;
+            UnsavedChanges = true;
         }
         #endregion
+        private void Initialize()
+        {
+            _result = null;
+            
+            _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
+
+            if (this.Colors.Count != _assets.Selections.Count)
+            {
+                Colors = new List<CustomColor>(_assets.Selections.Count);
+
+                for (int i = 0; i < _assets.Selections.Count; i++)
+                {
+                    Colors.Add(new CustomColor());
+                }
+            }
+
+            _drawer = new CustomDrawer(_assets, Colors);
+        }
     }
 }

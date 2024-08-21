@@ -10,13 +10,16 @@ namespace Innovation_Uniform_Editor.Classes
 {
     public class CustomColor
     {
-        public CustomColor()
+        public Color GetColorAtIndex(int colorIndex)
         {
-            Colors = new List<Color>() { Color.Transparent };
-        }
+            CheckIfEmpty();
 
+            return Colors[colorIndex];
+        }
         public void ChangeFirstColor(Color color)
         {
+            CheckIfEmpty();
+
             ChangeColorAtIndex(0, color);
         }
 
@@ -31,6 +34,13 @@ namespace Innovation_Uniform_Editor.Classes
             Colors[colorIndex] = color;
         }
 
+        private void CheckIfEmpty()
+        {
+            if (Colors == null)
+            {
+                Colors = new List<Color>() { Color.Transparent };
+            }
+        }
         public List<Color> Colors { get; set; }
         /// <summary>
         /// How many times to repeat the fade.
