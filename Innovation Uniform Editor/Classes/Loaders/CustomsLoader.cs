@@ -39,7 +39,7 @@ namespace Innovation_Uniform_Editor.Classes.Models
                         {
                             while (jsonReader.Read())
                             {
-                                var serializer = new JsonSerializer() { ObjectCreationHandling = ObjectCreationHandling.Replace };
+                                var serializer = new JsonSerializer();
                                 this.Add(serializer.Deserialize<Custom>(jsonReader));
                             }
                         }

@@ -12,15 +12,21 @@ namespace Innovation_Uniform_Editor.Classes
     {
         public Color GetColorAtIndex(int colorIndex)
         {
+            CheckForEmpty();
+
             return Colors[colorIndex];
         }
         public void ChangeFirstColor(Color color)
         {
+            CheckForEmpty();
+
             ChangeColorAtIndex(0, color);
         }
 
         public void ChangeColorAtIndex(int colorIndex, Color color)
         {
+            CheckForEmpty();
+
             //Swagiform :)
             if (color == Color.FromArgb(255, 255, 174, 201))
             {
@@ -29,11 +35,23 @@ namespace Innovation_Uniform_Editor.Classes
             }
             Colors[colorIndex] = color;
         }
-        private List<Color> _colors;
+
+        public int GetColorCount()
+        {
+            CheckForEmpty();
+
+            return Colors.Count;
+        }
+
+        //This bug has me pulling my hairs!!
+        private void CheckForEmpty()
+        {
+            if (_colors.Count <= 0)
+                _colors = new List<Color>() { Color.Transparent };
+        }
+        private List<Color> _colors = new List<Color>();
         public List<Color> Colors { 
             get {
-                if (_colors == null)
-                    _colors = new List<Color>() { Color.Transparent };
                 return _colors;
             }
         }

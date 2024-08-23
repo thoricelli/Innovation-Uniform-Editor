@@ -49,7 +49,7 @@ namespace Innovation_Uniform_Editor.UI
         {
             this.flowColors.Controls.Clear();
 
-            for (int i = 0; i < _color.Colors.Count; i++)
+            for (int i = 0; i < _color.GetColorCount(); i++)
             {
                 this.flowColors.Controls.Add(CreateColorButton(i, i != 0));
             }
