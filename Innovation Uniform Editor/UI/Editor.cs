@@ -1,5 +1,7 @@
 ﻿using Cyotek.Windows.Forms;
 using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Helpers;
+using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using Newtonsoft.Json;
 using System;
@@ -17,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Innovation_Uniform_Editor.UI
@@ -28,7 +31,9 @@ namespace Innovation_Uniform_Editor.UI
         private UniformDropDown Handler;
 
         private Main parent;
-        List<ColorPickerDialog> colors = new List<ColorPickerDialog>();
+
+        private int _currentIndex;
+        private ColorPickerDialog _pickerDialogue;
         private bool doneLoading = false;
         public Editor(Custom OG, Main main)
         {
@@ -50,66 +55,109 @@ namespace Innovation_Uniform_Editor.UI
 
             SetupColors();
 
+            _pickerDialogue = CreateDialog();
+
             dropdownUniforms.DataSource = Handler.uniforms;
             dropdownUniforms.SelectedIndex = index;
 
-            idLabel.Text = $"ID: {OG.UniformBasedOnId}";
+            idLabel.Text = $"ID: {OG.UniformBasedOn.Id}";
 
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            RefreshImage();
 
             doneLoading = true;
         }
 
-        private ColorPickerDialog CreateDialog(string name)
+        private ColorPickerDialog CreateDialog()
         {
             ColorPickerDialog cd = new ColorPickerDialog();
-            cd.Name = name;
             cd.PreviewColorChanged += UpdateColor;
+            cd.Validated += UpdateColor;
             return cd;
         }
 
         public void UpdateColor(object sender, EventArgs e)
         {
             ColorPickerDialog cd = (ColorPickerDialog)sender;
-            custom.ChangeColorAtIndex(
-                Convert.ToInt32(
-                    cd.Name.
-                    Replace("color_", "")
-                ), cd.Color
+
+            custom.ChangeFirstColorAtIndex(
+                _currentIndex, cd.Color
             );
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            RefreshImage();
         }
 
-        private Button CreateButton(int index)
+        private FlowLayoutPanel CreateButton(int index)
         {
-            Button button = new Button();
+            FlowLayoutPanel panel = new FlowLayoutPanel();
 
-            button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            button.Location = new System.Drawing.Point(2, 2);
-            button.Margin = new System.Windows.Forms.Padding(2);
-            button.Name = "color_" + index;
-            button.Size = new System.Drawing.Size(188, 24);
-            button.TabIndex = 11;
-            button.Text = "Color " + index;
-            button.UseVisualStyleBackColor = true;
+            panel.AutoSize = true;
+            //panel.Location = new System.Drawing.Point(2,2);
+            panel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            panel.Name = "flowColor" + index;
+            panel.Size = new System.Drawing.Size(257, 30);
+            panel.TabIndex = 11;
 
-            button.MouseClick += btnColor_Click;
+            Button btnColor = new Button();
+            Button btnExtra = new Button();
 
-            return button;
+            btnColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            btnColor.Location = new System.Drawing.Point(2, 2);
+            btnColor.Margin = new System.Windows.Forms.Padding(2);
+            btnColor.Name = "color_" + index;
+            btnColor.Size = new System.Drawing.Size(157, 25);
+            btnColor.TabIndex = 11;
+            btnColor.Text = "Color " + index;
+            btnColor.UseVisualStyleBackColor = true;
+
+            btnColor.MouseClick += btnColor_Click;
+
+            btnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            btnExtra.Location = new System.Drawing.Point(209, 2);
+            btnExtra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            btnExtra.Name = "btnExtra_" + index;
+            btnExtra.Size = new System.Drawing.Size(25, 25);
+            btnExtra.TabIndex = 13;
+            btnExtra.Text = "+";
+            btnExtra.UseVisualStyleBackColor = true;
+
+            btnExtra.MouseClick += btnExtra_Click;
+
+            panel.Controls.Add(btnColor);
+            panel.Controls.Add(btnExtra);
+
+            return panel;
         }
 
         private void btnColor_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            int colorIndex = Convert.ToInt32(button.Name.Replace("color_", ""));
+            int colorIndex = NamePressHelper.Get(sender, "color");
 
-            ColorPickerDialog cd = CreateDialog(colors[colorIndex].Name);
-            cd.Color = colors[colorIndex].Color;
-            colors[colorIndex] = cd;
-            cd.Show();
+            _currentIndex = colorIndex;
 
+            _pickerDialogue = CreateDialog();
+
+            _pickerDialogue.Color = custom.Colors[colorIndex].GetColorAtIndex(0);
+
+            _pickerDialogue.Show();
+        }
+
+        private void btnExtra_Click(object sender, EventArgs e)
+        {
+            int colorIndex = NamePressHelper.Get(sender, "btnExtra");
+
+            ColorDetail detail = new ColorDetail(custom.Colors[colorIndex]);
+            detail.ColorChanged += Detail_ColorChanged;
+            detail.ShowDialog();
+
+            RefreshImage();
+        }
+
+        private void Detail_ColorChanged(object sender, EventArgs e)
+        {
+            RefreshImage();
+        }
+
+        private void RefreshImage()
+        {
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
         }
@@ -145,14 +193,13 @@ namespace Innovation_Uniform_Editor.UI
 
                 idLabel.Text = $"ID: {Handler.SelectedUniform.Id}";
 
-                pictureUniform.Image = custom.Result;
-                pictureUniform.Refresh();
+                RefreshImage();
             }
         }
         SaveDialogue saveDialogue;
         private void Editor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (custom.unsavedChanges)
+            if (custom.UnsavedChanges)
             {
                 saveDialogue = new SaveDialogue();
                 saveDialogue.ShowDialog();
@@ -170,11 +217,15 @@ namespace Innovation_Uniform_Editor.UI
         BackgroundSelector bgs;
         private void btnBackgroundImage_Click(object sender, EventArgs e)
         {
-            bgs = new BackgroundSelector(custom.backgroundImage);
+            bgs = new BackgroundSelector(custom.BackgroundImage, Assets.BackgroundsLoader);
             bgs.ShowDialog();
-            custom.ChangeBackground(bgs.Background, bgs.ClearCurrent);
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            
+            if (bgs.ClearCurrent)
+                custom.ClearBackground();
+            else
+                custom.ChangeBackground(bgs.Background);
+
+            RefreshImage();
         }
 
         private void downloadToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -197,24 +248,18 @@ namespace Innovation_Uniform_Editor.UI
 
         private void SetupColors()
         {
-            colors = new List<ColorPickerDialog>();
             int indexStart = 0;
             for (int i = buttonsLayoutPanel.Controls.Count-1; i >= 1; i--)
             {
-                if (i > custom.SelectionTemplates.Count)
+                if (i > custom.Colors.Count)
                     buttonsLayoutPanel.Controls.RemoveAt(i);
                 else
                     if (indexStart == 0)
                         indexStart = i;
 
             }
-            //Setting up colordialogs
-            for (int i = 0; i < custom.SelectionTemplates.Count; i++)
-            {
-                colors.Add(CreateDialog("color_" + i));
-            }
             //Setting up the buttons.
-            for (int i = indexStart; i < custom.SelectionTemplates.Count; i++)
+            for (int i = indexStart; i < custom.Colors.Count; i++)
             {
                 buttonsLayoutPanel.Controls.Add(CreateButton(i));
             }

@@ -1,4 +1,6 @@
-﻿namespace Innovation_Uniform_Editor
+﻿using Innovation_Uniform_Editor.Classes.Models;
+
+namespace Innovation_Uniform_Editor
 {
     partial class Selector
     {
@@ -132,7 +134,7 @@
             // 
             // uniformBindingSource
             // 
-            this.uniformBindingSource.DataSource = typeof(Innovation_Uniform_Editor.Classes.Uniform);
+            this.uniformBindingSource.DataSource = typeof(Uniform);
             // 
             // Selector
             // 

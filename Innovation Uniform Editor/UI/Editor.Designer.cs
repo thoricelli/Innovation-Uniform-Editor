@@ -1,4 +1,6 @@
-﻿namespace Innovation_Uniform_Editor.UI
+﻿using Innovation_Uniform_Editor.Classes.Models;
+
+namespace Innovation_Uniform_Editor.UI
 {
     partial class Editor
     {
@@ -63,7 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureUniform.Location = new System.Drawing.Point(9, 27);
-            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureUniform.Name = "pictureUniform";
             this.pictureUniform.Size = new System.Drawing.Size(526, 535);
             this.pictureUniform.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -137,7 +139,7 @@
             // 
             // uniformBindingSource
             // 
-            this.uniformBindingSource.DataSource = typeof(Innovation_Uniform_Editor.Classes.Uniform);
+            this.uniformBindingSource.DataSource = typeof(Innovation_Uniform_Editor.Classes.Models.Uniform);
             // 
             // menuEditor
             // 
@@ -164,7 +166,7 @@
             // 
             this.btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackgroundImage.Location = new System.Drawing.Point(2, 2);
-            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBackgroundImage.Name = "btnBackgroundImage";
             this.btnBackgroundImage.Size = new System.Drawing.Size(188, 24);
             this.btnBackgroundImage.TabIndex = 10;
@@ -224,19 +226,19 @@
             this.buttonsLayoutPanel.AutoSize = true;
             this.buttonsLayoutPanel.Controls.Add(this.btnBackgroundImage);
             this.buttonsLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.buttonsLayoutPanel.Location = new System.Drawing.Point(539, 27);
+            this.buttonsLayoutPanel.Location = new System.Drawing.Point(538, 27);
             this.buttonsLayoutPanel.Name = "buttonsLayoutPanel";
-            this.buttonsLayoutPanel.Size = new System.Drawing.Size(193, 86);
+            this.buttonsLayoutPanel.Size = new System.Drawing.Size(194, 86);
             this.buttonsLayoutPanel.TabIndex = 15;
             // 
             // chkFading
             // 
             this.chkFading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFading.Location = new System.Drawing.Point(671, 516);
+            this.chkFading.Location = new System.Drawing.Point(653, 516);
             this.chkFading.Name = "chkFading";
-            this.chkFading.Size = new System.Drawing.Size(58, 24);
+            this.chkFading.Size = new System.Drawing.Size(76, 24);
             this.chkFading.TabIndex = 16;
-            this.chkFading.Text = "Fading";
+            this.chkFading.Text = "One color";
             this.chkFading.UseVisualStyleBackColor = true;
             this.chkFading.Visible = false;
             // 
@@ -256,7 +258,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor";

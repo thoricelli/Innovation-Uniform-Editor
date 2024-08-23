@@ -1,4 +1,6 @@
 ﻿using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Images;
+using Innovation_Uniform_Editor.Classes.Loaders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,8 +21,10 @@ namespace Innovation_Uniform_Editor.UI
         private bool KeepCurrent = false;
         public bool ClearCurrent = false;
         public BackgroundImage Background;
-        public BackgroundSelector(BackgroundImage background)
+        private BackgroundsLoader _loader;
+        public BackgroundSelector(BackgroundImage background, BackgroundsLoader loader)
         {
+            this._loader = loader;
             Background = background;
             InitializeComponent();
             InitializeUniforms();
@@ -28,12 +32,12 @@ namespace Innovation_Uniform_Editor.UI
         private void InitializeUniforms()
         {
             this.flowLayoutBackgrounds.Controls.Clear();
-            foreach (BackgroundImage bg in JSONtoUniform.Backgrounds)
+            foreach (BackgroundImage bg in _loader.GetAll())
             {
                 PictureBox picture = new PictureBox();
                 picture.Location = new System.Drawing.Point(10, 10);
                 picture.Margin = new System.Windows.Forms.Padding(10);
-                picture.Name = bg.backgroundGUID.ToString();
+                picture.Name = bg.Id.ToString();
                 picture.Size = new System.Drawing.Size(200, 210);
                 picture.TabIndex = 0;
                 picture.TabStop = false;
@@ -46,7 +50,7 @@ namespace Innovation_Uniform_Editor.UI
 
                 picture.Image = bg.background;
 
-                if (Background != null && bg.backgroundGUID == Background.backgroundGUID)
+                if (Background != null && bg.Id == Background.Id)
                     picture.BorderStyle = BorderStyle.Fixed3D;
 
                 this.flowLayoutBackgrounds.Controls.Add(picture);
@@ -71,7 +75,7 @@ namespace Innovation_Uniform_Editor.UI
                 }
 
                 bg.BorderStyle = BorderStyle.Fixed3D;
-                Background = JSONtoUniform.FindBackgroundFromGuid(new Guid(bg.Name));
+                Background = _loader.FindBy(new Guid(bg.Name));
             }
             
         }
@@ -79,7 +83,7 @@ namespace Innovation_Uniform_Editor.UI
         private void backgroundPicture_DoubleClick(object sender, EventArgs e)
         {
             PictureBox bg = (PictureBox)sender;
-            Background.backgroundGUID = new Guid(bg.Name);
+            Background.Id = new Guid(bg.Name);
             this.Close();
         }
 
@@ -89,11 +93,7 @@ namespace Innovation_Uniform_Editor.UI
 
             if (backgroundDialog.FileName != "")
             {
-                FileStream fs = File.Open(backgroundDialog.FileName, FileMode.Open, FileAccess.Read);
-                Image resizedBackground = JSONtoUniform.resizeImage(Image.FromStream(fs), new Size(585, 559));
-                fs.Close();
-                BackgroundImage bg = new BackgroundImage(null, resizedBackground);
-                JSONtoUniform.Backgrounds.Add(bg);
+                _loader.Add(backgroundDialog.FileName);
                 InitializeUniforms();
             }
         }
@@ -106,7 +106,7 @@ namespace Innovation_Uniform_Editor.UI
             background.Image.Dispose();
             background.Image = null;
 
-            JSONtoUniform.DeleteBackgroundFromGuid(new Guid(background.Name));
+            _loader.DeleteBy(new Guid(background.Name));
             File.Delete("./Backgrounds/" + background.Name + ".png");
             InitializeUniforms();
         }

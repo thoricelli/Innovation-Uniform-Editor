@@ -1,4 +1,5 @@
 ﻿using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using Innovation_Uniform_Editor.UI;
 using System;
