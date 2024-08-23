@@ -159,6 +159,7 @@ namespace Innovation_Uniform_Editor.UI
         {
             int index = NamePressHelper.Get(sender, "btnRemove");
             _color.Colors.RemoveAt(index);
+            onChanged?.Invoke(this, null);
             Initialize();
         }
 
