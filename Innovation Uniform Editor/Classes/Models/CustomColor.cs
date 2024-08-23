@@ -12,14 +12,10 @@ namespace Innovation_Uniform_Editor.Classes
     {
         public Color GetColorAtIndex(int colorIndex)
         {
-            CheckIfEmpty();
-
             return Colors[colorIndex];
         }
         public void ChangeFirstColor(Color color)
         {
-            CheckIfEmpty();
-
             ChangeColorAtIndex(0, color);
         }
 
@@ -33,15 +29,14 @@ namespace Innovation_Uniform_Editor.Classes
             }
             Colors[colorIndex] = color;
         }
-
-        private void CheckIfEmpty()
-        {
-            if (Colors == null)
-            {
-                Colors = new List<Color>() { Color.Transparent };
+        private List<Color> _colors;
+        public List<Color> Colors { 
+            get {
+                if (_colors == null)
+                    _colors = new List<Color>() { Color.Transparent };
+                return _colors;
             }
         }
-        public List<Color> Colors { get; set; }
         /// <summary>
         /// How many times to repeat the fade.
         /// </summary>

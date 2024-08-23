@@ -62,8 +62,7 @@ namespace Innovation_Uniform_Editor.UI
 
             idLabel.Text = $"ID: {OG.UniformBasedOn.Id}";
 
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            RefreshImage();
 
             doneLoading = true;
         }
@@ -83,8 +82,7 @@ namespace Innovation_Uniform_Editor.UI
             custom.ChangeFirstColorAtIndex(
                 _currentIndex, cd.Color
             );
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            RefreshImage();
         }
 
         private FlowLayoutPanel CreateButton(int index)
@@ -144,12 +142,22 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnExtra_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            int colorIndex = Convert.ToInt32(button.Name.Replace("btnExtra_", ""));
+            int colorIndex = NamePressHelper.Get(sender, "btnExtra");
 
             ColorDetail detail = new ColorDetail(custom.Colors[colorIndex]);
+            detail.ColorChanged += Detail_ColorChanged;
             detail.ShowDialog();
 
+            RefreshImage();
+        }
+
+        private void Detail_ColorChanged(object sender, EventArgs e)
+        {
+            RefreshImage();
+        }
+
+        private void RefreshImage()
+        {
             pictureUniform.Image = custom.Result;
             pictureUniform.Refresh();
         }
@@ -185,8 +193,7 @@ namespace Innovation_Uniform_Editor.UI
 
                 idLabel.Text = $"ID: {Handler.SelectedUniform.Id}";
 
-                pictureUniform.Image = custom.Result;
-                pictureUniform.Refresh();
+                RefreshImage();
             }
         }
         SaveDialogue saveDialogue;
@@ -218,8 +225,7 @@ namespace Innovation_Uniform_Editor.UI
             else
                 custom.ChangeBackground(bgs.Background);
 
-            pictureUniform.Image = custom.Result;
-            pictureUniform.Refresh();
+            RefreshImage();
         }
 
         private void downloadToolStripMenuItem1_Click(object sender, EventArgs e)

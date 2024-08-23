@@ -15,6 +15,20 @@ namespace Innovation_Uniform_Editor.UI
 {
     public partial class ColorDetail : Form
     {
+        private EventHandler onChanged;
+
+        public event EventHandler ColorChanged
+        {
+            add
+            {
+                onChanged += value;
+            }
+            remove
+            {
+                onChanged -= value;
+            }
+        }
+
         private int _currentColorIndex = 0;
 
         private CustomColor _color;
@@ -128,6 +142,7 @@ namespace Innovation_Uniform_Editor.UI
         private void colorDialogueChanged(object sender, EventArgs e)
         {
             _color.ChangeColorAtIndex(_currentColorIndex, _pickerDialog.Color);
+            onChanged?.Invoke(this, null);
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -150,6 +165,7 @@ namespace Innovation_Uniform_Editor.UI
         private void btnPlus_Click(object sender, EventArgs e)
         {
             _color.Colors.Add(Color.Transparent);
+            onChanged?.Invoke(this, null);
             Initialize();
         }
 
@@ -161,6 +177,7 @@ namespace Innovation_Uniform_Editor.UI
         private void repeatNumeric_ValueChanged(object sender, EventArgs e)
         {
             _color.Repeat = Convert.ToInt32(((NumericUpDown)sender).Value);
+            onChanged?.Invoke(this, null);
         }
     }
 }
