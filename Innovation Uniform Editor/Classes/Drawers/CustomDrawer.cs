@@ -64,6 +64,8 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
                 DrawOverlay(g);
 
                 DrawList(g, _assets.Top);
+
+                DrawImageToGraphics(g, Assets.UniformsLoader.waterMark);
             }
             return _result;
         }
