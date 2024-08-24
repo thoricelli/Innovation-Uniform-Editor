@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
@@ -21,14 +16,14 @@ namespace Innovation_Uniform_Editor.Classes
         public static bool CheckForUpdates(bool ignoreHash = false)
         {
             tryingToFix = ignoreHash;
-            oldHash = File.Exists(hashFile) ? File.ReadAllText(hashFile).Replace("\r\n", "") : "" ;
+            oldHash = File.Exists(hashFile) ? File.ReadAllText(hashFile).Replace("\r\n", "") : "";
             WebRequest webRequest = WebRequest.Create($"{githubURL}{hashFile}");
 
             using (var response = webRequest.GetResponse())
             using (var content = response.GetResponseStream())
             using (var reader = new StreamReader(content))
             {
-                string hashTemplate = reader.ReadToEnd().Replace("\n","");
+                string hashTemplate = reader.ReadToEnd().Replace("\n", "");
                 if (hashTemplate != oldHash || ignoreHash)
                 {
                     File.WriteAllText($"{hashFile}", hashTemplate);
@@ -54,7 +49,9 @@ namespace Innovation_Uniform_Editor.Classes
             {
                 if (Directory.Exists(foldername))
                     Directory.Move(foldername, foldername + "_backup");
+
                 ZipFile.ExtractToDirectory(filename, foldername);
+
                 File.Delete(filename);
                 if (Directory.Exists(foldername + "_backup"))
                     Directory.Delete(foldername + "_backup", true);
@@ -65,7 +62,9 @@ namespace Innovation_Uniform_Editor.Classes
                     Environment.Exit(0);
                 }
                 return true;
-            } catch(Exception e) {
+            }
+            catch (Exception e)
+            {
                 if (File.Exists(filename))
                     File.Delete(filename);
                 if (Directory.Exists(foldername + "_backup"))

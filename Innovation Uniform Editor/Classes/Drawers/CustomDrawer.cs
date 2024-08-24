@@ -1,14 +1,9 @@
 ﻿using Innovation_Uniform_Editor.Classes.Drawers.Interfaces;
-using Innovation_Uniform_Editor.Classes.Images;
-using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor.Classes.Drawers
 {
@@ -113,9 +108,9 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
                         //Blue, Green, Red, Alpha
                         scan0PointerColorData[i] = finalColor.B;
-                        scan0PointerColorData[i+1] = finalColor.G;
-                        scan0PointerColorData[i+2] = finalColor.R;
-                        scan0PointerColorData[i+3] = finalColor.A;
+                        scan0PointerColorData[i + 1] = finalColor.G;
+                        scan0PointerColorData[i + 2] = finalColor.R;
+                        scan0PointerColorData[i + 3] = finalColor.A;
                     }
                 }
             }
@@ -136,13 +131,13 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
                 //More colors = less time for each color to fade
                 double colorProgress =
-                    progressWithRepeat == 0 ? 
-                    0 : progressWithRepeat / ((double)1 / (color.Colors.Count-1));
-                
+                    progressWithRepeat == 0 ?
+                    0 : progressWithRepeat / ((double)1 / (color.Colors.Count - 1));
+
                 //First number is the index, everything beyond the decimal is the fade progress.
                 int currentIndex = Convert.ToInt32(Math.Floor(colorProgress));
                 double currentFadeAmount = colorProgress - Math.Truncate(colorProgress);
-                
+
                 Color currentColor = color.Colors[currentIndex];
                 Color fadeToColor = color.Colors[currentIndex + 1];
 
@@ -173,7 +168,7 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
             int B = Alpha * ForeGround.B + (255 - Alpha) * BackGround.B >> 8;
             int G = Alpha * ForeGround.G + (255 - Alpha) * BackGround.G >> 8;
             int R = Alpha * ForeGround.R + (255 - Alpha) * BackGround.R >> 8;
-            
+
 
             if (BackGround.A == 255)
                 A = 255;

@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor.Classes.Loaders
 {
@@ -62,9 +60,9 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
                             var serializer = new JsonSerializer();
                             List<Uniform> Pants = serializer.Deserialize<List<Uniform>>(jsonReader);
-                            
+
                             Pants.ForEach(e => e.part = Enums.ClothingPart.Pants);
-                            
+
                             this.Concat(Pants);
                         }
                         else if (jsonReader.TokenType == JsonToken.PropertyName
@@ -74,9 +72,9 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
                             var serializer = new JsonSerializer();
                             List<Uniform> Shirts = serializer.Deserialize<List<Uniform>>(jsonReader);
-                            
+
                             Shirts.ForEach(e => e.part = Enums.ClothingPart.Shirts);
-                            
+
                             this.Concat(Shirts);
                         }
                     }

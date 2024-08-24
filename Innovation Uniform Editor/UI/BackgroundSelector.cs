@@ -1,18 +1,8 @@
-﻿using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Classes.Images;
+﻿using Innovation_Uniform_Editor.Classes.Images;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Innovation_Uniform_Editor.UI
 {
@@ -65,7 +55,8 @@ namespace Innovation_Uniform_Editor.UI
                 bg.BorderStyle = BorderStyle.None;
                 Background = null;
                 ClearCurrent = true;
-            } else
+            }
+            else
             {
                 ClearCurrent = false;
                 //Fix flicker!
@@ -77,7 +68,7 @@ namespace Innovation_Uniform_Editor.UI
                 bg.BorderStyle = BorderStyle.Fixed3D;
                 Background = _loader.FindBy(new Guid(bg.Name));
             }
-            
+
         }
 
         private void backgroundPicture_DoubleClick(object sender, EventArgs e)

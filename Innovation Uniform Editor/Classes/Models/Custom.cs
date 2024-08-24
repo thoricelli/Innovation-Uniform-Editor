@@ -10,8 +10,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
@@ -147,7 +145,8 @@ namespace Innovation_Uniform_Editor.Classes
                 _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
 
                 _assets.Background = _backgroundImage.background;
-            } else
+            }
+            else
             {
                 _backgroundImage = null;
             }
@@ -165,7 +164,7 @@ namespace Innovation_Uniform_Editor.Classes
         private void Initialize()
         {
             _result = null;
-            
+
             _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
 
             if (this.Colors.Count != _assets.Selections.Count)

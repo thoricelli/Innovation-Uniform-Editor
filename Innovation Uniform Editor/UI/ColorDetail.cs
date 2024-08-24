@@ -2,13 +2,7 @@
 using Innovation_Uniform_Editor.Classes;
 using Innovation_Uniform_Editor.Classes.Helpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI
@@ -130,7 +124,8 @@ namespace Innovation_Uniform_Editor.UI
                 removePanel.TabIndex = 14;
 
                 result = removePanel;
-            } else
+            }
+            else
             {
                 result = btnColor;
                 btnColor.Size = new System.Drawing.Size(215, 24);

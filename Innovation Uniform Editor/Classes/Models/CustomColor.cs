@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
@@ -50,8 +46,10 @@ namespace Innovation_Uniform_Editor.Classes
                 _colors = new List<Color>() { Color.Transparent };
         }
         private List<Color> _colors = new List<Color>();
-        public List<Color> Colors { 
-            get {
+        public List<Color> Colors
+        {
+            get
+            {
                 return _colors;
             }
         }
