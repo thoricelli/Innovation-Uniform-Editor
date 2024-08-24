@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Innovation_Uniform_Editor</RootNamespace>
     <AssemblyName>Innovation Uniform Editor</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -75,7 +75,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>150x150.ico</ApplicationIcon>
+    <ApplicationIcon>XP_150.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Innovation_Uniform_Editor.Program</StartupObject>
@@ -266,6 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="150x150.ico" />
+    <None Include="Icons\XP_150.png" />
     <Content Include="XP_150.ico" />
     <None Include="Icons\620x300.png" />
     <Content Include="Templates\Misc\Shading_Template.png" />

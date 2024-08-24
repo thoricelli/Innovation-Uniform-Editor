@@ -17,7 +17,7 @@ namespace Innovation_Uniform_Editor.Classes.Helpers
             g.Dispose();
             return (System.Drawing.Image)b;
         }
-        public static Image SetOpacity(this Image image, float opacity)
+        public static Image SetOpacity(Image image, float opacity)
         {
             var colorMatrix = new ColorMatrix();
             colorMatrix.Matrix33 = opacity;
