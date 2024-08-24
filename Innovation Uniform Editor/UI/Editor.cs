@@ -203,7 +203,7 @@ namespace Innovation_Uniform_Editor.UI
             bgs = new BackgroundSelector(custom.BackgroundImage, Assets.BackgroundsLoader);
             bgs.ShowDialog();
 
-            if (bgs.ClearCurrent)
+            if (bgs.ClearCurrent || bgs.Background == null)
                 custom.ClearBackground();
             else
                 custom.ChangeBackground(bgs.Background);
