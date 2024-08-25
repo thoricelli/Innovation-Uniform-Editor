@@ -2,13 +2,7 @@
 using Innovation_Uniform_Editor.Classes;
 using Innovation_Uniform_Editor.Classes.Helpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI
@@ -49,7 +43,7 @@ namespace Innovation_Uniform_Editor.UI
         {
             this.flowColors.Controls.Clear();
 
-            for (int i = 0; i < _color.Colors.Count; i++)
+            for (int i = 0; i < _color.GetColorCount(); i++)
             {
                 this.flowColors.Controls.Add(CreateColorButton(i, i != 0));
             }
@@ -130,7 +124,8 @@ namespace Innovation_Uniform_Editor.UI
                 removePanel.TabIndex = 14;
 
                 result = removePanel;
-            } else
+            }
+            else
             {
                 result = btnColor;
                 btnColor.Size = new System.Drawing.Size(215, 24);
@@ -159,6 +154,7 @@ namespace Innovation_Uniform_Editor.UI
         {
             int index = NamePressHelper.Get(sender, "btnRemove");
             _color.Colors.RemoveAt(index);
+            onChanged?.Invoke(this, null);
             Initialize();
         }
 

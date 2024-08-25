@@ -1,19 +1,9 @@
 ﻿using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Classes.Drawers;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using Innovation_Uniform_Editor.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MenuItem = Innovation_Uniform_Editor.Classes.MenuItem;
 
@@ -81,7 +71,7 @@ namespace Innovation_Uniform_Editor
 
         private void pantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            selector = new Selector(ClothingPart.Pants, this); 
+            selector = new Selector(ClothingPart.Pants, this);
 
             selector.Show();
 
@@ -225,7 +215,7 @@ namespace Innovation_Uniform_Editor
         {
             RenameHandler((Panel)(sender as TextBox).Parent);
         }
-        
+
         private void Picture_MouseClick(object sender, MouseEventArgs e)
         {
             //throw new NotImplementedException();

@@ -1,15 +1,10 @@
 ﻿using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace Innovation_Uniform_Editor.Classes.Loaders
 {

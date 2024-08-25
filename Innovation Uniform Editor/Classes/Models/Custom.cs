@@ -10,8 +10,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.Classes
@@ -52,8 +50,12 @@ namespace Innovation_Uniform_Editor.Classes
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
         //private List<CustomColor> OldColors { get; set; } = new List<CustomColor>();
         private BackgroundImage _backgroundImage;
-        public BackgroundImage BackgroundImage { get { return _backgroundImage; } }
-        public Guid BackgroundImageGuid;
+        public BackgroundImage BackgroundImage { 
+            get {
+                return _backgroundImage; 
+            } 
+        }
+        public Guid BackgroundImageGuid { get; set; }
         #endregion
         #region DRAWING
         [JsonIgnore]
@@ -141,23 +143,25 @@ namespace Innovation_Uniform_Editor.Classes
         }
         public void ChangeBackground(BackgroundImage bgs)
         {
-            if (bgs != null)
-            {
-                BackgroundImageGuid = bgs.Id;
-                _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
+            BackgroundImageGuid = bgs.Id;
 
-                _assets.Background = _backgroundImage.background;
-            } else
-            {
-                _backgroundImage = null;
-            }
+            UpdateBackground();
 
             _result = null;
             UnsavedChanges = true;
         }
+        private void UpdateBackground()
+        {
+            _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
+            if (_backgroundImage != null)
+                _assets.Background = _backgroundImage.background;
+        }
         public void ClearBackground()
         {
+            _backgroundImage = null;
             BackgroundImageGuid = new Guid();
+            _assets.Background = null;
+
             _result = null;
             UnsavedChanges = true;
         }
@@ -165,8 +169,9 @@ namespace Innovation_Uniform_Editor.Classes
         private void Initialize()
         {
             _result = null;
-            
+
             _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
+            UpdateBackground();
 
             if (this.Colors.Count != _assets.Selections.Count)
             {

@@ -96,6 +96,7 @@
             this.flowColors.Name = "flowColors";
             this.flowColors.Size = new System.Drawing.Size(219, 170);
             this.flowColors.TabIndex = 14;
+            this.flowColors.WrapContents = false;
             // 
             // flowColorRemove
             // 
@@ -134,6 +135,8 @@
             // 
             // lblRepeat
             // 
+            this.lblRepeat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRepeat.Location = new System.Drawing.Point(6, 203);
             this.lblRepeat.Name = "lblRepeat";
             this.lblRepeat.Size = new System.Drawing.Size(53, 20);
@@ -143,6 +146,8 @@
             // 
             // repeatNumeric
             // 
+            this.repeatNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.repeatNumeric.Location = new System.Drawing.Point(54, 203);
             this.repeatNumeric.Maximum = new decimal(new int[] {
             999,

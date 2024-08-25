@@ -2,25 +2,8 @@
 using Innovation_Uniform_Editor.Classes;
 using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor.Enums;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Innovation_Uniform_Editor.UI
 {
@@ -164,7 +147,7 @@ namespace Innovation_Uniform_Editor.UI
 
         private void Editor_Load(object sender, EventArgs e)
         {
-            
+
         }
         private void Editor_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -219,8 +202,8 @@ namespace Innovation_Uniform_Editor.UI
         {
             bgs = new BackgroundSelector(custom.BackgroundImage, Assets.BackgroundsLoader);
             bgs.ShowDialog();
-            
-            if (bgs.ClearCurrent)
+
+            if (bgs.ClearCurrent || bgs.Background == null)
                 custom.ClearBackground();
             else
                 custom.ChangeBackground(bgs.Background);
@@ -249,13 +232,13 @@ namespace Innovation_Uniform_Editor.UI
         private void SetupColors()
         {
             int indexStart = 0;
-            for (int i = buttonsLayoutPanel.Controls.Count-1; i >= 1; i--)
+            for (int i = buttonsLayoutPanel.Controls.Count - 1; i >= 1; i--)
             {
                 if (i > custom.Colors.Count)
                     buttonsLayoutPanel.Controls.RemoveAt(i);
                 else
                     if (indexStart == 0)
-                        indexStart = i;
+                    indexStart = i;
 
             }
             //Setting up the buttons.
