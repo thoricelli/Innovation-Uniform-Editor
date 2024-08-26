@@ -188,6 +188,12 @@
     <Compile Include="UI\Editor.Designer.cs">
       <DependentUpon>Editor.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Issues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Issues.Designer.cs">
+      <DependentUpon>Issues.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Editor.resx">
       <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Issues.resx">
+      <DependentUpon>Issues.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NewGroup.resx">
       <DependentUpon>NewGroup.cs</DependentUpon>

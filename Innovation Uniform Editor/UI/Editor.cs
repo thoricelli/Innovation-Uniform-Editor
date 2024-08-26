@@ -247,5 +247,10 @@ namespace Innovation_Uniform_Editor.UI
                 buttonsLayoutPanel.Controls.Add(CreateButton(i));
             }
         }
+        private void btnWarnings_Click(object sender, EventArgs e)
+        {
+            Issues issues = new Issues();
+            issues.Show();
+        }
     }
 }
