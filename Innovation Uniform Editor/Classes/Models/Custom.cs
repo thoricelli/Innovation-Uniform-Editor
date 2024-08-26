@@ -23,7 +23,7 @@ namespace Innovation_Uniform_Editor.Classes
         [JsonIgnore]
         private UniformAssets _assets;
         [JsonIgnore]
-        private IDrawable _drawer;
+        private IDrawable<Bitmap> _drawer;
         [JsonIgnore]
         public bool UnsavedChanges { get; set; } = false;
 

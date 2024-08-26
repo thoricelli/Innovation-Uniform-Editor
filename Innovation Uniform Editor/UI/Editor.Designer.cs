@@ -1,4 +1,5 @@
 ﻿using Innovation_Uniform_Editor.Classes.Models;
+using System.Drawing;
 
 namespace Innovation_Uniform_Editor.UI
 {
@@ -52,6 +53,7 @@ namespace Innovation_Uniform_Editor.UI
             this.idLabel = new System.Windows.Forms.Label();
             this.buttonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.chkFading = new System.Windows.Forms.CheckBox();
+            this.btnWarnings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -65,7 +67,7 @@ namespace Innovation_Uniform_Editor.UI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureUniform.Location = new System.Drawing.Point(9, 27);
-            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2);
             this.pictureUniform.Name = "pictureUniform";
             this.pictureUniform.Size = new System.Drawing.Size(526, 535);
             this.pictureUniform.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -166,7 +168,7 @@ namespace Innovation_Uniform_Editor.UI
             // 
             this.btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackgroundImage.Location = new System.Drawing.Point(2, 2);
-            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackgroundImage.Name = "btnBackgroundImage";
             this.btnBackgroundImage.Size = new System.Drawing.Size(188, 24);
             this.btnBackgroundImage.TabIndex = 10;
@@ -234,7 +236,7 @@ namespace Innovation_Uniform_Editor.UI
             // chkFading
             // 
             this.chkFading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFading.Location = new System.Drawing.Point(653, 516);
+            this.chkFading.Location = new System.Drawing.Point(648, 488);
             this.chkFading.Name = "chkFading";
             this.chkFading.Size = new System.Drawing.Size(76, 24);
             this.chkFading.TabIndex = 16;
@@ -242,11 +244,24 @@ namespace Innovation_Uniform_Editor.UI
             this.chkFading.UseVisualStyleBackColor = true;
             this.chkFading.Visible = false;
             // 
+            // btnWarnings
+            // 
+            this.btnWarnings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnWarnings.Location = new System.Drawing.Point(644, 516);
+            this.btnWarnings.Name = "btnWarnings";
+            this.btnWarnings.Size = new System.Drawing.Size(88, 23);
+            this.btnWarnings.TabIndex = 17;
+            this.btnWarnings.Text = "Warnings: (1)";
+            this.btnWarnings.UseVisualStyleBackColor = true;
+            this.btnWarnings.Visible = false;
+            this.btnWarnings.Click += new System.EventHandler(this.btnWarnings_Click);
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.btnWarnings);
             this.Controls.Add(this.chkFading);
             this.Controls.Add(this.buttonsLayoutPanel);
             this.Controls.Add(this.idLabel);
@@ -258,7 +273,7 @@ namespace Innovation_Uniform_Editor.UI
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor";
@@ -297,5 +312,6 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.FlowLayoutPanel buttonsLayoutPanel;
         private System.Windows.Forms.CheckBox chkFading;
+        private System.Windows.Forms.Button btnWarnings;
     }
 }
