@@ -131,6 +131,7 @@
     <Compile Include="Classes\Helpers\FileToBitmap.cs" />
     <Compile Include="Classes\Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Classes\Models\CustomColor.cs" />
+    <Compile Include="Classes\Models\Enums\Code.cs" />
     <Compile Include="Classes\Models\Group.cs" />
     <Compile Include="Classes\Helpers\ImageHelper.cs" />
     <Compile Include="Classes\Images\BackgroundImage.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Classes\Loaders\Interfaces\IFindable.cs" />
     <Compile Include="Classes\Loaders\Loader.cs" />
     <Compile Include="Classes\Loaders\UniformsLoader.cs" />
+    <Compile Include="Classes\Models\IssuesRepo.cs" />
     <Compile Include="Classes\Models\MenuItem.cs" />
     <Compile Include="Classes\Models\Assets.cs" />
     <Compile Include="Classes\Loaders\CustomsLoader.cs" />

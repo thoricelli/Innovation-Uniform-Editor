@@ -93,10 +93,20 @@ namespace Innovation_Uniform_Editor.Classes
         #region SAVING
         public void ExportUniform(string path)
         {
-            if (path != "")
+            if (path != string.Empty)
             {
-                this.Result.Save(path, ImageFormat.Png);
-                MessageBox.Show("Your custom has successfully been exported!", "Export successful.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Check if there are remaining issues? Should that even be here?
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.Result.Save(path, ImageFormat.Png);
+                    MessageBox.Show("Your custom has successfully been exported!", "Export successful.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+
             }
         }
         public void SaveUniform()
