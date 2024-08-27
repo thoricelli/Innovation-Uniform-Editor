@@ -2,6 +2,7 @@
 using Innovation_Uniform_Editor.Classes;
 using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor.Enums;
 using System;
 using System.Windows.Forms;
 
@@ -24,11 +25,24 @@ namespace Innovation_Uniform_Editor.UI
             custom = OG;
             Handler = new UniformDropDown(custom.UniformBasedOn.part);
 
+            Initialize();
+        }
+
+        public Editor(Custom OG)
+        {
+            custom = OG;
+            Handler = new UniformDropDown(custom.UniformBasedOn.part);
+
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             int index = 0;
 
             for (int i = 0; i < Handler.uniforms.Count; i++)
             {
-                if (Handler.uniforms[i].Id == OG.UniformBasedOn.Id)
+                if (Handler.uniforms[i].Id == custom.UniformBasedOn.Id)
                     index = i;
             }
 
@@ -43,7 +57,7 @@ namespace Innovation_Uniform_Editor.UI
             dropdownUniforms.DataSource = Handler.uniforms;
             dropdownUniforms.SelectedIndex = index;
 
-            idLabel.Text = $"ID: {OG.UniformBasedOn.Id}";
+            idLabel.Text = $"ID: {custom.UniformBasedOn.Id}";
 
             RefreshImage();
 
@@ -151,7 +165,8 @@ namespace Innovation_Uniform_Editor.UI
         }
         private void Editor_FormClosed(object sender, FormClosedEventArgs e)
         {
-            parent.ShowWLoad();
+            if (parent != null)
+                parent.ShowWLoad();
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -251,6 +266,30 @@ namespace Innovation_Uniform_Editor.UI
         {
             Issues issues = new Issues();
             issues.Show();
+        }
+
+        private void btnSwitchType_Click(object sender, EventArgs e)
+        {
+            Selector selector = new Selector(ClothingPart.Pants, parent);
+            selector.Show();
+        }
+
+        private void btnDrawDetail_Click(object sender, EventArgs e)
+        {
+            Builder builder = new Builder();
+            builder.Show();
+        }
+
+        private void pantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Selector selector = new Selector(ClothingPart.Pants);
+            selector.Show();
+        }
+
+        private void shirtsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Selector selector = new Selector(ClothingPart.Shirts);
+            selector.Show();
         }
     }
 }

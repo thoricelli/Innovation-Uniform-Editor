@@ -160,6 +160,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Builder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Builder.Designer.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ColorDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,12 @@
     <Compile Include="UI\Issues.Designer.cs">
       <DependentUpon>Issues.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MainSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainSettings.Designer.cs">
+      <DependentUpon>MainSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +243,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Builder.resx">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ColorDetail.resx">
       <DependentUpon>ColorDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Issues.resx">
       <DependentUpon>Issues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainSettings.resx">
+      <DependentUpon>MainSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NewGroup.resx">
       <DependentUpon>NewGroup.cs</DependentUpon>

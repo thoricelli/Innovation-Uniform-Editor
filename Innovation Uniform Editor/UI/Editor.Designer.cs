@@ -40,6 +40,9 @@ namespace Innovation_Uniform_Editor.UI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shirtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownUniforms = new System.Windows.Forms.ComboBox();
             this.uniformBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuEditor = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -54,11 +57,16 @@ namespace Innovation_Uniform_Editor.UI
             this.buttonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.chkFading = new System.Windows.Forms.CheckBox();
             this.btnWarnings = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNewTab = new System.Windows.Forms.Button();
+            this.btnDrawDetail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
             this.menuEditor.SuspendLayout();
             this.buttonsLayoutPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureUniform
@@ -80,7 +88,8 @@ namespace Innovation_Uniform_Editor.UI
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projectToolStripMenuItem,
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.newTabToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -126,6 +135,29 @@ namespace Innovation_Uniform_Editor.UI
             this.downloadToolStripMenuItem1.Text = "Download";
             this.downloadToolStripMenuItem1.Click += new System.EventHandler(this.downloadToolStripMenuItem1_Click);
             // 
+            // newTabToolStripMenuItem
+            // 
+            this.newTabToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pantsToolStripMenuItem,
+            this.shirtsToolStripMenuItem});
+            this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.newTabToolStripMenuItem.Text = "New tab";
+            // 
+            // pantsToolStripMenuItem
+            // 
+            this.pantsToolStripMenuItem.Name = "pantsToolStripMenuItem";
+            this.pantsToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.pantsToolStripMenuItem.Text = "Pants";
+            this.pantsToolStripMenuItem.Click += new System.EventHandler(this.pantsToolStripMenuItem_Click);
+            // 
+            // shirtsToolStripMenuItem
+            // 
+            this.shirtsToolStripMenuItem.Name = "shirtsToolStripMenuItem";
+            this.shirtsToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.shirtsToolStripMenuItem.Text = "Shirts";
+            this.shirtsToolStripMenuItem.Click += new System.EventHandler(this.shirtsToolStripMenuItem_Click);
+            // 
             // dropdownUniforms
             // 
             this.dropdownUniforms.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -167,8 +199,8 @@ namespace Innovation_Uniform_Editor.UI
             // btnBackgroundImage
             // 
             this.btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackgroundImage.Location = new System.Drawing.Point(2, 2);
-            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBackgroundImage.Location = new System.Drawing.Point(0, 2);
+            this.btnBackgroundImage.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.btnBackgroundImage.Name = "btnBackgroundImage";
             this.btnBackgroundImage.Size = new System.Drawing.Size(188, 24);
             this.btnBackgroundImage.TabIndex = 10;
@@ -228,9 +260,10 @@ namespace Innovation_Uniform_Editor.UI
             this.buttonsLayoutPanel.AutoSize = true;
             this.buttonsLayoutPanel.Controls.Add(this.btnBackgroundImage);
             this.buttonsLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.buttonsLayoutPanel.Location = new System.Drawing.Point(538, 27);
+            this.buttonsLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.buttonsLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 3, 3, 3);
             this.buttonsLayoutPanel.Name = "buttonsLayoutPanel";
-            this.buttonsLayoutPanel.Size = new System.Drawing.Size(194, 86);
+            this.buttonsLayoutPanel.Size = new System.Drawing.Size(190, 28);
             this.buttonsLayoutPanel.TabIndex = 15;
             // 
             // chkFading
@@ -253,17 +286,58 @@ namespace Innovation_Uniform_Editor.UI
             this.btnWarnings.TabIndex = 17;
             this.btnWarnings.Text = "Warnings: (1)";
             this.btnWarnings.UseVisualStyleBackColor = true;
-            this.btnWarnings.Visible = false;
             this.btnWarnings.Click += new System.EventHandler(this.btnWarnings_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.buttonsLayoutPanel);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.btnNewTab);
+            this.flowLayoutPanel1.Controls.Add(this.btnDrawDetail);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(538, 27);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 100);
+            this.flowLayoutPanel1.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(3, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(190, 2);
+            this.label1.TabIndex = 18;
+            // 
+            // btnNewTab
+            // 
+            this.btnNewTab.Location = new System.Drawing.Point(3, 39);
+            this.btnNewTab.Name = "btnNewTab";
+            this.btnNewTab.Size = new System.Drawing.Size(189, 23);
+            this.btnNewTab.TabIndex = 16;
+            this.btnNewTab.Text = "New tab";
+            this.btnNewTab.UseVisualStyleBackColor = true;
+            this.btnNewTab.Click += new System.EventHandler(this.btnSwitchType_Click);
+            // 
+            // btnDrawDetail
+            // 
+            this.btnDrawDetail.Location = new System.Drawing.Point(3, 68);
+            this.btnDrawDetail.Name = "btnDrawDetail";
+            this.btnDrawDetail.Size = new System.Drawing.Size(188, 23);
+            this.btnDrawDetail.TabIndex = 17;
+            this.btnDrawDetail.Text = "Manage drawing";
+            this.btnDrawDetail.UseVisualStyleBackColor = true;
+            this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
             // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnWarnings);
             this.Controls.Add(this.chkFading);
-            this.Controls.Add(this.buttonsLayoutPanel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.chkElite);
             this.Controls.Add(this.lblUsername);
@@ -286,6 +360,8 @@ namespace Innovation_Uniform_Editor.UI
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).EndInit();
             this.menuEditor.ResumeLayout(false);
             this.buttonsLayoutPanel.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +389,12 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.FlowLayoutPanel buttonsLayoutPanel;
         private System.Windows.Forms.CheckBox chkFading;
         private System.Windows.Forms.Button btnWarnings;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnNewTab;
+        private System.Windows.Forms.Button btnDrawDetail;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pantsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shirtsToolStripMenuItem;
     }
 }

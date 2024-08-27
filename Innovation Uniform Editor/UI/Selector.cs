@@ -23,6 +23,13 @@ namespace Innovation_Uniform_Editor
             InitializeComponent();
         }
 
+        public Selector(ClothingPart cPart)
+        {
+            part = cPart;
+            Handler = new UniformDropDown(part);
+            InitializeComponent();
+        }
+
         private void Selector_Load(object sender, EventArgs e)
         {
             dropdownUniforms.DataSource = Handler.uniforms;
@@ -67,7 +74,7 @@ namespace Innovation_Uniform_Editor
         }
         private void Selector_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (showParent)
+            if (showParent && parent != null)
             {
                 parent.Show();
             }

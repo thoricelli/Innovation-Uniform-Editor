@@ -9,6 +9,8 @@ namespace Innovation_Uniform_Editor.Classes.Models.Enums
     public enum Code
     {
         DL_11,
+        DL_11_NEON,
+        DL_11_DARK,
         DL_21,
         DL_22,
         DL_31,
