@@ -1,6 +1,8 @@
-﻿using Innovation_Uniform_Editor.Classes.Helpers;
+﻿using Innovation_Uniform_Editor.Classes.Globals;
+using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -13,7 +15,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         private static readonly string EXTENSION = ".png";
         private static string pathBuilder(ClothingPart part, ulong id)
         {
-            string basePath = "./Templates/Normal/";
+            string basePath = $"{EditorPaths.TemplatePath}/Normal/";
 
             switch (part)
             {

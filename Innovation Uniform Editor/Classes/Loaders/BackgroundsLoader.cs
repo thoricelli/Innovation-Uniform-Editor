@@ -34,7 +34,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         public void Add(Image image)
         {
             BackgroundImage newBackground = new BackgroundImage(image);
-            image.Save("./Backgrounds/" + newBackground.Id + ".png", ImageFormat.Png);
+            image.Save(_path + "/" + newBackground.Id + ".png", ImageFormat.Png);
             this.Add(newBackground);
         }
         /// <summary>

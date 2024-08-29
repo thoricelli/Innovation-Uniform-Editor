@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor.Classes.Drawers;
 using Innovation_Uniform_Editor.Classes.Drawers.Interfaces;
+using Innovation_Uniform_Editor.Classes.Globals;
 using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Images;
 using Innovation_Uniform_Editor.Classes.Loaders;
@@ -84,7 +85,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                return FileToBitmap.Convert("./Customs/" + Id + "/result.png");
+                return FileToBitmap.Convert($"{EditorPaths.CustomsPath}/" + Id + "/result.png");
             }
         }
 
@@ -118,19 +119,19 @@ namespace Innovation_Uniform_Editor.Classes
             }
 
             //Save custom class to JSON file inside folder
-            Directory.CreateDirectory("./Customs/" + Id);
+            Directory.CreateDirectory($"{EditorPaths.CustomsPath}/" + Id);
 
             JsonSerializer serializer = new JsonSerializer()
             {
                 NullValueHandling = NullValueHandling.Ignore
             };
-            using (StreamWriter sw = new StreamWriter(@"./Customs/" + Id + "/info.json"))
+            using (StreamWriter sw = new StreamWriter($"{EditorPaths.CustomsPath}/" + Id + "/info.json"))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, this);
             }
             Image downSized = ImageHelper.resizeImage(Result, new Size(293, 280));
-            downSized.Save("./Customs/" + Id + "/result.png", ImageFormat.Png);
+            downSized.Save($"{EditorPaths.CustomsPath}/" + Id + "/result.png", ImageFormat.Png);
             UnsavedChanges = false;
         }
         #endregion
@@ -194,6 +195,11 @@ namespace Innovation_Uniform_Editor.Classes
             }
 
             _drawer = new CustomDrawer(_assets, Colors);
+        }
+        public void Clear()
+        {
+            _result = null;
+            _drawer = null;
         }
     }
 }
