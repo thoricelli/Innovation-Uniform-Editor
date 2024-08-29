@@ -65,5 +65,13 @@ namespace Innovation_Uniform_Editor.Classes.Models
 
             this.Sort();
         }
+
+        public override Custom FindBy(Guid id)
+        {
+            Custom custom = base.FindBy(id);
+
+            custom.Clear();
+            return custom;
+        }
     }
 }

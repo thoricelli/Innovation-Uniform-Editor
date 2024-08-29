@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,10 +28,9 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -127,6 +127,9 @@
   <ItemGroup>
     <Compile Include="Classes\Drawers\CustomDrawer.cs" />
     <Compile Include="Classes\Drawers\Interfaces\IDrawable.cs" />
+    <Compile Include="Classes\EditorMain.cs" />
+    <Compile Include="Classes\Globals\EditorPaths.cs" />
+    <Compile Include="Classes\Helpers\Enums\TemplateUpdateStatus.cs" />
     <Compile Include="Classes\Helpers\NamePressHelper.cs" />
     <Compile Include="Classes\Helpers\FileToBitmap.cs" />
     <Compile Include="Classes\Loaders\UniformAssetsLoader.cs" />
@@ -403,15 +406,6 @@
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)DirHash.exe" "$(SolutionDir)Innovation Uniform Editor/Templates" -quiet -t templateshash.txt -overwrite -nowait -nologo
 copy templateshash.txt "$(SolutionDir)"
-rmdir /s /q Backgrounds
-rmdir /s /q Customs
-rmdir /s /q Templates
-xcopy "$(SolutionDir)Innovation Uniform Editor/Templates" .\Templates\ /e /q /I
-
-del "Cyotek.Windows.Forms.ColorPicker.xml"
-del "Innovation Uniform Editor.exe.config"
-del "Innovation Uniform Editor.pdb"
-del Newtonsoft.Json.xml
 
 cd "$(SolutionDir)Innovation Uniform Editor"
 del Templates.zip

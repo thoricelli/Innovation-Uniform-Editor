@@ -1,9 +1,12 @@
 ﻿using Innovation_Uniform_Editor.Classes;
+using Innovation_Uniform_Editor.Classes.Globals;
+using Innovation_Uniform_Editor.Classes.Helpers.Enums;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
 using Innovation_Uniform_Editor.Enums;
 using Innovation_Uniform_Editor.UI;
 using System;
+using System.IO;
 using System.Windows.Forms;
 using MenuItem = Innovation_Uniform_Editor.Classes.MenuItem;
 
@@ -17,10 +20,9 @@ namespace Innovation_Uniform_Editor
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            Assets.BackgroundsLoader = new BackgroundsLoader("./Backgrounds/");
-            Assets.UniformsLoader = new UniformsLoader("./Templates/TemplateInfo.json");
+            //This should be in a startup class but eh late
 
-            Assets.CustomsLoader = new CustomsLoader("./Customs/");
+            EditorMain.Initialize();
 
             LoadCustomsAndGroups();
 
@@ -322,11 +324,17 @@ namespace Innovation_Uniform_Editor
             DialogResult dialogResult = MessageBox.Show("Would you like to update the uniform templates?", "Template updating", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                bool updated = TemplateUpdater.CheckForUpdates();
-                if (updated)
-                    MessageBox.Show("Templates have been updated.", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("Templates are already up-to-date!", "Up-to-date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TemplateUpdateStatus result = TemplateUpdater.CheckForUpdates();
+
+                switch (result)
+                {
+                    case TemplateUpdateStatus.SUCCESS:
+                        MessageBox.Show("Templates have been updated.", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case TemplateUpdateStatus.UP_TO_DATE:
+                        MessageBox.Show("Templates are already up-to-date!", "Up-to-date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                }
             }
         }
     }
