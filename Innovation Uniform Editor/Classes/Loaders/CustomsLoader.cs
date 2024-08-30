@@ -70,7 +70,9 @@ namespace Innovation_Uniform_Editor.Classes.Models
         {
             Custom custom = base.FindBy(id);
 
-            custom.Clear();
+            if (custom != null)
+                custom.Clear();
+
             return custom;
         }
     }
