@@ -22,13 +22,18 @@ namespace Innovation_Uniform_Editor.Classes
             string freshInstallFile = $"{EditorPaths.DataPath}/freshinstall";
             string failedInstallFile = $"{EditorPaths.DataPath}/failedupdate";
 
-            if (File.Exists(freshInstallFile))
+            if (File.Exists(freshInstallFile) && Convert.ToBoolean(File.ReadAllText(freshInstallFile)))
             {
-                File.Delete(freshInstallFile);
+                File.WriteAllText(freshInstallFile, "false");
                 File.Delete(EditorPaths.HashPath);
 
                 CheckForUpdates();
-            } else if (File.Exists(failedInstallFile))
+            }
+            else if (!Directory.Exists(EditorPaths.TemplatePath))
+            {
+                CheckForUpdates();
+            }
+            else if (File.Exists(failedInstallFile))
             {
                 File.Delete(failedInstallFile);
 
@@ -149,7 +154,8 @@ namespace Innovation_Uniform_Editor.Classes
         {
             ZipFile.ExtractToDirectory(zipPath, templatePath);
 
-            File.Delete(zipPath);
+            //Untill I find a way to fix the MSI auto repair stuff.
+            //File.Delete(zipPath);
         }
 
         private static void BackupCreate(string templatePath)

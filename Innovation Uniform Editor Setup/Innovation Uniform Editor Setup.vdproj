@@ -39,13 +39,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8E80A93F08B649238E48281DA9E66525"
+        "MsmKey" = "8:_8F6AB0378C5C480AA56EDD065ED22522"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8F6AB0378C5C480AA56EDD065ED22522"
+        "MsmKey" = "8:_973CA3C3C67C4E2ABD3D19C219731A74"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -311,12 +311,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E80A93F08B649238E48281DA9E66525"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F6AB0378C5C480AA56EDD065ED22522"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\freshinstall"
-            "TargetName" = "8:freshinstall"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\150x150.ico"
+            "TargetName" = "8:150x150.ico"
             "Tag" = "8:"
-            "Folder" = "8:_CEE4617C93094F539CB78A4E1E5F3BFE"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -331,12 +331,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F6AB0378C5C480AA56EDD065ED22522"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_973CA3C3C67C4E2ABD3D19C219731A74"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\150x150.ico"
-            "TargetName" = "8:150x150.ico"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\freshinstall"
+            "TargetName" = "8:freshinstall"
             "Tag" = "8:"
-            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Folder" = "8:_CEE4617C93094F539CB78A4E1E5F3BFE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -491,15 +491,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
-        "ProductCode" = "8:{7E2594EF-357F-457D-B0DE-A49E64911727}"
-        "PackageCode" = "8:{59409FBA-CDC2-41E7-8C0A-5E55DF652032}"
+        "ProductCode" = "8:{D15FBCB3-B80A-42DA-880B-565F1AA2A95F}"
+        "PackageCode" = "8:{7AFC2BE1-28C7-46AE-B5A1-402F087BB4BA}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.6.0"
+        "ProductVersion" = "8:0.6.1"
         "Manufacturer" = "8:Thoricelli"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
