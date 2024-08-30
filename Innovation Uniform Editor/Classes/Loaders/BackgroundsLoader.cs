@@ -23,7 +23,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
             string[] directories = Directory.GetFiles(_path, "*", SearchOption.TopDirectoryOnly);
             foreach (string image in directories)
             {
-                BackgroundImage bg = new BackgroundImage(image.Replace(_path, "").Replace(".png", ""));
+                BackgroundImage bg = new BackgroundImage(Path.GetFileName(image).Replace(".png", ""));
                 this.Add(bg);
             }
         }

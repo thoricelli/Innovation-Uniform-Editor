@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor.Classes.Globals;
+using Innovation_Uniform_Editor.Classes.Models;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
@@ -79,9 +80,9 @@ namespace Innovation_Uniform_Editor.Classes.Images
         {
             get
             {
-                if (!File.Exists("./Backgrounds/" + this.Id + ".png"))
+                if (!File.Exists($"{EditorPaths.BackgroundsPath}/" + this.Id + ".png"))
                     TemplateUpdater.CheckForUpdates(true);
-                FileStream fs = File.Open("./Backgrounds/" + this.Id + ".png", FileMode.Open, FileAccess.Read);
+                FileStream fs = File.Open($"{EditorPaths.BackgroundsPath}/" + this.Id + ".png", FileMode.Open, FileAccess.Read);
                 Bitmap returnResult = new Bitmap(Image.FromStream(fs));
                 fs.Close();
                 return returnResult;
