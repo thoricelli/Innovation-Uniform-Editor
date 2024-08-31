@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor.Classes.Images;
+﻿using Innovation_Uniform_Editor.Classes.Globals;
+using Innovation_Uniform_Editor.Classes.Images;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using System;
 using System.IO;
@@ -97,8 +98,13 @@ namespace Innovation_Uniform_Editor.UI
             background.Image.Dispose();
             background.Image = null;
 
-            _loader.DeleteBy(new Guid(background.Name));
-            File.Delete("./Backgrounds/" + background.Name + ".png");
+            Guid backgroundId = new Guid(background.Name);
+
+            _loader.DeleteBy(backgroundId);
+
+            if (Background != null && Background.Id == backgroundId)
+                ClearCurrent = true;
+
             InitializeUniforms();
         }
 
