@@ -20,8 +20,6 @@ namespace Innovation_Uniform_Editor
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            //This should be in a startup class but eh late
-
             EditorMain.Initialize();
 
             LoadCustomsAndGroups();

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7AD02BD-D1FA-40E4-8A54-38EB64ADA461}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Innovation_Uniform_Editor_Backend</RootNamespace>
+    <AssemblyName>Innovation Uniform Editor Backend</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Drawers\CustomDrawer.cs" />
+    <Compile Include="Classes\Drawers\Interfaces\IDrawable.cs" />
+    <Compile Include="Classes\EditorMain.cs" />
+    <Compile Include="Classes\Globals\EditorPaths.cs" />
+    <Compile Include="Classes\Helpers\Enums\TemplateUpdateStatus.cs" />
+    <Compile Include="Classes\Helpers\FileToBitmap.cs" />
+    <Compile Include="Classes\Helpers\ImageHelper.cs" />
+    <Compile Include="Classes\Helpers\NamePressHelper.cs" />
+    <Compile Include="Classes\Helpers\TemplateUpdater.cs" />
+    <Compile Include="Classes\Images\BackgroundImage.cs" />
+    <Compile Include="Classes\Loaders\BackgroundsLoader.cs" />
+    <Compile Include="Classes\Loaders\CustomsLoader.cs" />
+    <Compile Include="Classes\Loaders\Interfaces\IFindable.cs" />
+    <Compile Include="Classes\Loaders\Loader.cs" />
+    <Compile Include="Classes\Loaders\UniformAssetsLoader.cs" />
+    <Compile Include="Classes\Loaders\UniformsLoader.cs" />
+    <Compile Include="Classes\Models\Assets.cs" />
+    <Compile Include="Classes\Models\Custom.cs" />
+    <Compile Include="Classes\Models\CustomColor.cs" />
+    <Compile Include="Classes\Models\Enums\Code.cs" />
+    <Compile Include="Classes\Models\Group.cs" />
+    <Compile Include="Classes\Models\Interfaces\IIdentifier.cs" />
+    <Compile Include="Classes\Models\IssuesRepo.cs" />
+    <Compile Include="Classes\Models\MenuItem.cs" />
+    <Compile Include="Classes\Models\Uniform.cs" />
+    <Compile Include="Classes\Models\UniformAssets.cs" />
+    <Compile Include="Classes\Models\UniformDropDown.cs" />
+    <Compile Include="Enums\UniformType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
