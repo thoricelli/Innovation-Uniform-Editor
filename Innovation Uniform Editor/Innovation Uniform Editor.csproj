@@ -271,6 +271,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="StartBatFiles\StartMenuShortcut.bat" />
+    <None Include="StartBatFiles\StartShortcut.bat" />
     <None Include="Templates\TemplateInfo.json" />
   </ItemGroup>
   <ItemGroup>
