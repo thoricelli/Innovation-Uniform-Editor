@@ -1,11 +1,11 @@
-﻿using Innovation_Uniform_Editor.Classes.Helpers;
-using Innovation_Uniform_Editor.Classes.Images;
+﻿using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Images;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Innovation_Uniform_Editor.Classes.Loaders
+namespace Innovation_Uniform_Editor_Backend.Loaders
 {
     public class BackgroundsLoader : Loader<BackgroundImage, Guid>
     {
@@ -24,7 +24,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
             foreach (string image in directories)
             {
                 BackgroundImage bg = new BackgroundImage(Path.GetFileName(image).Replace(".png", ""));
-                this.Add(bg);
+                Add(bg);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         {
             BackgroundImage newBackground = new BackgroundImage(image);
             image.Save(_path + "/" + newBackground.Id + ".png", ImageFormat.Png);
-            this.Add(newBackground);
+            Add(newBackground);
         }
         /// <summary>
         /// Loads and adds a new background from path.
@@ -46,12 +46,12 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
             FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read);
             Image resizedBackground = ImageHelper.resizeImage(Image.FromStream(fs), new Size(585, 559));
             fs.Close();
-            this.Add(resizedBackground);
+            Add(resizedBackground);
         }
 
         public override void DeleteBy(Guid guid)
         {
-            string path = $"{this._path}/{guid}.png";
+            string path = $"{_path}/{guid}.png";
             if (File.Exists(path))
                 File.Delete(path);
             base.DeleteBy(guid);

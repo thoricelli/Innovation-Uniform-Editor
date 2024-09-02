@@ -1,5 +1,7 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
@@ -7,7 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Innovation_Uniform_Editor.Classes.Images
+namespace Innovation_Uniform_Editor_Backend.Images
 {
     public class BackgroundImage : IIdentifier<Guid>
     {
@@ -17,11 +19,11 @@ namespace Innovation_Uniform_Editor.Classes.Images
         }
         public BackgroundImage(string guid)
         {
-            this.Id = new Guid(guid);
+            Id = new Guid(guid);
         }
         public BackgroundImage(Image newBackground)
         {
-            this.Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         //JSONtoUniform.backgroundMask
         [JsonIgnore]
@@ -80,9 +82,9 @@ namespace Innovation_Uniform_Editor.Classes.Images
         {
             get
             {
-                if (!File.Exists($"{EditorPaths.BackgroundsPath}/" + this.Id + ".png"))
+                if (!File.Exists($"{EditorPaths.BackgroundsPath}/" + Id + ".png"))
                     TemplateUpdater.CheckForUpdates(true);
-                FileStream fs = File.Open($"{EditorPaths.BackgroundsPath}/" + this.Id + ".png", FileMode.Open, FileAccess.Read);
+                FileStream fs = File.Open($"{EditorPaths.BackgroundsPath}/" + Id + ".png", FileMode.Open, FileAccess.Read);
                 Bitmap returnResult = new Bitmap(Image.FromStream(fs));
                 fs.Close();
                 return returnResult;

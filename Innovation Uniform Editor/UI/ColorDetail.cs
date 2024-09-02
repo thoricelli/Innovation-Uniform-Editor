@@ -1,6 +1,6 @@
 ﻿using Cyotek.Windows.Forms;
-using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Classes.Helpers;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

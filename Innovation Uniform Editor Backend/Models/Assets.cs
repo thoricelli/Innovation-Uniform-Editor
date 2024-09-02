@@ -1,4 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Loaders;
+﻿using Innovation_Uniform_Editor_Backend.Loaders;
 
 namespace Innovation_Uniform_Editor.Classes.Models
 {

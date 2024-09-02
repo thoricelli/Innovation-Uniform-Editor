@@ -1,4 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor_Backend.Models;
 using System.Drawing;
 
 namespace Innovation_Uniform_Editor.UI
@@ -173,7 +173,7 @@ namespace Innovation_Uniform_Editor.UI
             // 
             // uniformBindingSource
             // 
-            this.uniformBindingSource.DataSource = typeof(Innovation_Uniform_Editor.Classes.Models.Uniform);
+            this.uniformBindingSource.DataSource = typeof(Uniform);
             // 
             // menuEditor
             // 

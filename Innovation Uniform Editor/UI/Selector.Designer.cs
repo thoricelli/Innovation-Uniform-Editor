@@ -1,4 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor_Backend.Models;
 
 namespace Innovation_Uniform_Editor
 {

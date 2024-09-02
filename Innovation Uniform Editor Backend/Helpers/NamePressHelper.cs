@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Innovation_Uniform_Editor.Classes.Helpers
+namespace Innovation_Uniform_Editor_Backend.Helpers
 {
     public static class NamePressHelper
     {

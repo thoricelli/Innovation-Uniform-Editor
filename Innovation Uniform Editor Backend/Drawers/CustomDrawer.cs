@@ -1,11 +1,11 @@
-﻿using Innovation_Uniform_Editor.Classes.Drawers.Interfaces;
-using Innovation_Uniform_Editor.Classes.Models;
-using System;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers;
+using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Interfaces;
+using Innovation_Uniform_Editor_Backend.Drawers.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 
-namespace Innovation_Uniform_Editor.Classes.Drawers
+namespace Innovation_Uniform_Editor_Backend.Drawers
 {
     public class CustomDrawer : IDrawable<Bitmap>
     {
@@ -17,6 +17,8 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
         private List<CustomColor> _colors = new List<CustomColor>();
 
+        private List<IGraphicsDrawer> graphicsDrawers;
+
         /// <summary>
         /// Doesn't shade the color at specified index.
         /// </summary>
@@ -27,8 +29,9 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
             _assets = assets;
             _result = new Bitmap(DIMENSIONS.X, DIMENSIONS.Y);
             _colors = colors;
-        }
 
+            Initialize();
+        }
         /*
         How a custom is built up: (back to front)
         - Background
@@ -43,13 +46,26 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
         - Overlay
         */
+        private void Initialize()
+        {
+            graphicsDrawers = new List<IGraphicsDrawer>()
+            {
+                new BackgroundDrawer(_assets.Background),
+                new TextureDrawer(_assets.Textures),
+            };
+        }
         public Bitmap Draw()
         {
             using (Graphics g = Graphics.FromImage(_result))
             {
                 g.Clear(Color.Transparent);
 
-                if (_assets.Background != null)
+                foreach (IGraphicsDrawer drawer in graphicsDrawers)
+                {
+                    drawer.DrawToGraphics(g);
+                }
+
+                /*if (_assets.Background != null)
                     DrawBackground(g);
 
                 DrawList(g, _assets.Textures);
@@ -60,13 +76,13 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
 
                 DrawList(g, _assets.Top);
 
-                DrawImageToGraphics(g, Assets.UniformsLoader.waterMark);
+                DrawImageToGraphics(g, Assets.UniformsLoader.waterMark);*/
             }
             return _result;
         }
         private unsafe void DrawColorsMasked(Graphics graphics, List<CustomColor> colors, List<bool[]> masks)
         {
-            Bitmap colorsResult = new Bitmap(DIMENSIONS.X, DIMENSIONS.Y);
+            /*Bitmap colorsResult = new Bitmap(DIMENSIONS.X, DIMENSIONS.Y);
             BitmapData colorsResultData = colorsResult.LockBits(new Rectangle(0, 0, colorsResult.Width, colorsResult.Height), ImageLockMode.ReadOnly, _result.PixelFormat);
             byte* scan0PointerColorData = (byte*)colorsResultData.Scan0;
 
@@ -119,113 +135,11 @@ namespace Innovation_Uniform_Editor.Classes.Drawers
             shading.UnlockBits(shadingData);
             colorsResult.UnlockBits(colorsResultData);
 
-            DrawImageToGraphics(graphics, colorsResult);
-        }
-        private Color FadePixel(CustomColor color, double progress)
-        {
-            if (progress < 1 && color.Colors != null && color.Colors.Count > 1)
-            {
-                //For every repeat, we want the progress to restart back to zero.
-                double progressRepeat = progress * color.Repeat;
-                double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
-
-                //More colors = less time for each color to fade
-                double colorProgress =
-                    progressWithRepeat == 0 ?
-                    0 : progressWithRepeat / ((double)1 / (color.Colors.Count - 1));
-
-                //First number is the index, everything beyond the decimal is the fade progress.
-                int currentIndex = Convert.ToInt32(Math.Floor(colorProgress));
-                double currentFadeAmount = colorProgress - Math.Truncate(colorProgress);
-
-                Color currentColor = color.Colors[currentIndex];
-                Color fadeToColor = color.Colors[currentIndex + 1];
-
-                return Blend(fadeToColor, currentColor, currentFadeAmount);
-            }
-            return Color.Transparent;
-        }
-        private Color Blend(Color color, Color backColor, double amount)
-        {
-            byte r = (byte)(color.R * amount + backColor.R * (1 - amount));
-            byte g = (byte)(color.G * amount + backColor.G * (1 - amount));
-            byte b = (byte)(color.B * amount + backColor.B * (1 - amount));
-            return Color.FromArgb(255, r, g, b);
-        }
-        //Took this from a stackoverflow post... it's not great, but works...
-        private Color Blend(Color ForeGround, Color BackGround)
-        {
-            if (ForeGround.A == 0)
-                return BackGround;
-            if (BackGround.A == 0)
-                return ForeGround;
-            if (ForeGround.A == 255)
-                return ForeGround;
-
-            int Alpha = ForeGround.A + 1;
-            int A = ForeGround.A;
-
-            int B = Alpha * ForeGround.B + (255 - Alpha) * BackGround.B >> 8;
-            int G = Alpha * ForeGround.G + (255 - Alpha) * BackGround.G >> 8;
-            int R = Alpha * ForeGround.R + (255 - Alpha) * BackGround.R >> 8;
-
-
-            if (BackGround.A == 255)
-                A = 255;
-            if (R > 255)
-                R = 255;
-            if (G > 255)
-                G = 255;
-            if (B > 255)
-                B = 255;
-
-            return Color.FromArgb(Math.Abs(A), Math.Abs(R), Math.Abs(G), Math.Abs(B));
-        }
-        private Color Overlay(Color ForeGround, Color Background)
-        {
-            if (Background.R > 0 && Background.B > 0 && Background.G > 0)
-                return Color.FromArgb(
-                        255,//OverlayPixel(ForeGround.A, Background.A),
-                        OverlayPixel(ForeGround.R, Background.R),
-                        OverlayPixel(ForeGround.G, Background.G),
-                        OverlayPixel(ForeGround.B, Background.B)
-                    );
-            return ForeGround;
-        }
-        //Help.....
-        private int OverlayPixel(int upper, int lower)
-        {
-            if (lower < 128)
-                return ClampColor(2 * upper * lower / 255);
-            return ClampColor(255 - 2 * (255 - upper) * (255 - lower) / 255);
-            //Can't be lower than 0 or higher than 255.
-        }
-        private int ClampColor(int value)
-        {
-            return value < 0 ? 0 : value > 255 ? 255 : value;
+            DrawImageToGraphics(graphics, colorsResult);*/
         }
         private Color GetColorFromCustomColor(CustomColor color)
         {
             return color.GetColorAtIndex(0);
-        }
-        private void DrawList(Graphics graphics, List<Bitmap> images)
-        {
-            foreach (Bitmap image in images)
-            {
-                DrawImageToGraphics(graphics, image);
-            }
-        }
-        private void DrawBackground(Graphics graphics)
-        {
-            DrawImageToGraphics(graphics, _assets.Background);
-        }
-        private void DrawOverlay(Graphics graphics)
-        {
-            DrawImageToGraphics(graphics, _assets.Overlay);
-        }
-        private void DrawImageToGraphics(Graphics graphics, Bitmap image)
-        {
-            graphics.DrawImage(image, new Rectangle(0, 0, DIMENSIONS.X, DIMENSIONS.Y));
         }
     }
 }

@@ -4,18 +4,18 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace Innovation_Uniform_Editor.Classes.Helpers
+namespace Innovation_Uniform_Editor_Backend.Helpers
 {
     public static class ImageHelper
     {
-        public static System.Drawing.Image resizeImage(System.Drawing.Image imgToResize, Size size)
+        public static Image resizeImage(Image imgToResize, Size size)
         {
             Bitmap b = new Bitmap(size.Width, size.Height);
-            Graphics g = Graphics.FromImage((System.Drawing.Image)b);
+            Graphics g = Graphics.FromImage(b);
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             g.DrawImage(imgToResize, 0, 0, size.Width, size.Height);
             g.Dispose();
-            return (System.Drawing.Image)b;
+            return b;
         }
         public static Image SetOpacity(this Image image, float opacity)
         {

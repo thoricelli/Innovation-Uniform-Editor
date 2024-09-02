@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend.Models
 {
     public class CustomColor
     {

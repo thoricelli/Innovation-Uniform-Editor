@@ -1,13 +1,11 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Helpers;
-using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor.Enums;
-using System;
+﻿using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend.Models
 {
     public class UniformDropDown
     {

@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drawers\CustomDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\BackgroundDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Bases\BaseAssetDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Bases\BaseGraphicsDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Bases\BasePixelDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\TextureDrawer.cs" />
     <Compile Include="Drawers\Interfaces\IDrawable.cs" />
     <Compile Include="EditorMain.cs" />
     <Compile Include="Globals\EditorPaths.cs" />

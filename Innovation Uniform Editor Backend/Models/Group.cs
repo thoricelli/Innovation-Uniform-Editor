@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend.Models
 {
     public class Group : MenuItem
     {

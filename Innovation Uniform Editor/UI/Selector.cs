@@ -1,6 +1,6 @@
-﻿using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Enums;
-using Innovation_Uniform_Editor.UI;
+﻿using Innovation_Uniform_Editor.UI;
+using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Windows.Forms;
 

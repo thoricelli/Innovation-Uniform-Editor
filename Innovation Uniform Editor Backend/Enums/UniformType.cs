@@ -1,4 +1,4 @@
-﻿namespace Innovation_Uniform_Editor.Enums
+﻿namespace Innovation_Uniform_Editor_Backend.Enums
 {
     public enum UniformType
     {

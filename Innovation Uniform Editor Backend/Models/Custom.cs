@@ -1,10 +1,10 @@
-﻿using Innovation_Uniform_Editor.Classes.Drawers;
-using Innovation_Uniform_Editor.Classes.Drawers.Interfaces;
-using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Helpers;
-using Innovation_Uniform_Editor.Classes.Images;
-using Innovation_Uniform_Editor.Classes.Loaders;
-using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor_Backend.Drawers;
+using Innovation_Uniform_Editor_Backend.Drawers.Interfaces;
+using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Images;
+using Innovation_Uniform_Editor_Backend.Loaders;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend.Models
 {
 
     //Result is also saved inside this folder for fast preview loading (downsized).
@@ -36,13 +36,13 @@ namespace Innovation_Uniform_Editor.Classes
             get
             {
                 if (_uniformBasedOn == null)
-                    _uniformBasedOn = Assets.UniformsLoader.FindBy(this.UniformBasedOnId);
+                    _uniformBasedOn = Assets.UniformsLoader.FindBy(UniformBasedOnId);
                 return _uniformBasedOn;
             }
             set
             {
-                this.UniformBasedOnId = value.Id;
-                _uniformBasedOn = Assets.UniformsLoader.FindBy(this.UniformBasedOnId);
+                UniformBasedOnId = value.Id;
+                _uniformBasedOn = Assets.UniformsLoader.FindBy(UniformBasedOnId);
             }
         }
         public ulong UniformBasedOnId { get; set; }
@@ -51,10 +51,12 @@ namespace Innovation_Uniform_Editor.Classes
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
         //private List<CustomColor> OldColors { get; set; } = new List<CustomColor>();
         private BackgroundImage _backgroundImage;
-        public BackgroundImage BackgroundImage { 
-            get {
-                return _backgroundImage; 
-            } 
+        public BackgroundImage BackgroundImage
+        {
+            get
+            {
+                return _backgroundImage;
+            }
         }
         public Guid BackgroundImageGuid { get; set; }
         #endregion
@@ -64,7 +66,7 @@ namespace Innovation_Uniform_Editor.Classes
         {
             get
             {
-                if (this._drawer == null)
+                if (_drawer == null)
                     Initialize();
 
                 if (_result == null || HasColorsChanged())
@@ -100,7 +102,7 @@ namespace Innovation_Uniform_Editor.Classes
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    this.Result.Save(path, ImageFormat.Png);
+                    Result.Save(path, ImageFormat.Png);
                     MessageBox.Show("Your custom has successfully been exported!", "Export successful.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (dialogResult == DialogResult.No)
@@ -163,7 +165,7 @@ namespace Innovation_Uniform_Editor.Classes
         }
         private void UpdateBackground()
         {
-            _backgroundImage = Assets.BackgroundsLoader.FindBy(this.BackgroundImageGuid);
+            _backgroundImage = Assets.BackgroundsLoader.FindBy(BackgroundImageGuid);
             if (_backgroundImage != null)
                 _assets.Background = _backgroundImage.background;
         }
@@ -181,10 +183,10 @@ namespace Innovation_Uniform_Editor.Classes
         {
             _result = null;
 
-            _assets = UniformAssetsLoader.GetAssetsForUniform(this.UniformBasedOn);
+            _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
             UpdateBackground();
 
-            if (this.Colors.Count != _assets.Selections.Count)
+            if (Colors.Count != _assets.Selections.Count)
             {
                 Colors = new List<CustomColor>(_assets.Selections.Count);
 

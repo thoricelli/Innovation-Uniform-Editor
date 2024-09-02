@@ -1,14 +1,16 @@
-﻿using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Helpers.Enums;
+﻿using Innovation_Uniform_Editor.Classes.Globals;
 using Innovation_Uniform_Editor.Classes.Loaders;
 using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor.Enums;
 using Innovation_Uniform_Editor.UI;
+using Innovation_Uniform_Editor_Backend;
+using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Helpers.Enums;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.IO;
 using System.Windows.Forms;
-using MenuItem = Innovation_Uniform_Editor.Classes.MenuItem;
+using MenuItem = Innovation_Uniform_Editor_Backend.Models.MenuItem;
 
 namespace Innovation_Uniform_Editor
 {

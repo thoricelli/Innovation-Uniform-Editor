@@ -1,9 +1,9 @@
-﻿using Innovation_Uniform_Editor.Classes.Loaders.Interfaces;
-using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor_Backend.Loaders.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Innovation_Uniform_Editor.Classes.Loaders
+namespace Innovation_Uniform_Editor_Backend.Loaders
 {
     public abstract class Loader<TType, TId> : IFindable<TType, TId> where TType : IIdentifier<TId>
     {
@@ -13,7 +13,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         protected Loader(string path)
         {
             _path = path;
-            this.Load();
+            Load();
         }
         public virtual void Add(TType item)
         {

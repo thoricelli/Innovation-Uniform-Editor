@@ -1,9 +1,9 @@
-﻿using Innovation_Uniform_Editor.Classes.Loaders;
+﻿using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 
-namespace Innovation_Uniform_Editor.Classes.Models
+namespace Innovation_Uniform_Editor_Backend.Loaders
 {
     public class CustomsLoader : Loader<Custom, Guid>
     {
@@ -35,7 +35,7 @@ namespace Innovation_Uniform_Editor.Classes.Models
                             while (jsonReader.Read())
                             {
                                 var serializer = new JsonSerializer();
-                                this.Add(serializer.Deserialize<Custom>(jsonReader));
+                                Add(serializer.Deserialize<Custom>(jsonReader));
                             }
                         }
                     }
@@ -63,7 +63,7 @@ namespace Innovation_Uniform_Editor.Classes.Models
                 }
             }*/
 
-            this.Sort();
+            Sort();
         }
 
         public override Custom FindBy(Guid id)

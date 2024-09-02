@@ -1,14 +1,13 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Helpers;
-using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor.Enums;
-using System;
+﻿using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Models;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace Innovation_Uniform_Editor.Classes.Loaders
+namespace Innovation_Uniform_Editor_Backend.Loaders
 {
     public static class UniformAssetsLoader
     {
@@ -19,10 +18,10 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
             switch (part)
             {
-                case Enums.ClothingPart.Pants:
+                case ClothingPart.Pants:
                     basePath += "Pants";
                     break;
-                case Enums.ClothingPart.Shirts:
+                case ClothingPart.Shirts:
                     basePath += "Shirts";
                     break;
                 default:

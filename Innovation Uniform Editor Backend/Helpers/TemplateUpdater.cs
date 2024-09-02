@@ -1,14 +1,12 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Helpers.Enums;
+﻿using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers.Enums;
 using System;
-using System.Data;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
-using System.Threading;
 using System.Windows.Forms;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend.Helpers
 {
     public static class TemplateUpdater
     {
@@ -66,13 +64,13 @@ namespace Innovation_Uniform_Editor.Classes
                 }
 
                 return TemplateUpdateStatus.UP_TO_DATE;
-            } 
-            catch(IOException e)
+            }
+            catch (IOException e)
             {
                 Failure(EditorPaths.TemplatePath);
                 return TemplateUpdateStatus.FAILURE;
-            } 
-            catch(WebException e)
+            }
+            catch (WebException e)
             {
                 return OfflineSetup();
             }
@@ -95,7 +93,7 @@ namespace Innovation_Uniform_Editor.Classes
         private static TemplateUpdateStatus OfflineSetup()
         {
             try
-            { 
+            {
                 if (File.Exists(EditorPaths.ZipPath))
                 {
                     BackupCreate(EditorPaths.TemplatePath);
@@ -114,7 +112,8 @@ namespace Innovation_Uniform_Editor.Classes
                 MessageBox.Show("You are offline, please connect to the internet.", "Offline.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return TemplateUpdateStatus.FAILURE;
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Failure(EditorPaths.TemplatePath);
                 return TemplateUpdateStatus.FAILURE;
@@ -142,7 +141,7 @@ namespace Innovation_Uniform_Editor.Classes
                     Environment.Exit(0);
                 }
                 return TemplateUpdateStatus.SUCCESS;
-             }
+            }
             catch (Exception e)
             {
                 Failure(templatePath);
@@ -180,7 +179,8 @@ namespace Innovation_Uniform_Editor.Classes
                     Directory.Move(templatePath + "_backup", templatePath);
                 }
 
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
             }
 
@@ -188,7 +188,7 @@ namespace Innovation_Uniform_Editor.Classes
 
             File.WriteAllText(EditorPaths.HashPath, oldHash);
             MessageBox.Show("The application will now be closed and the update will be completed on the next startup.", "Regular update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+
             Environment.Exit(0);
             Application.Exit();
         }

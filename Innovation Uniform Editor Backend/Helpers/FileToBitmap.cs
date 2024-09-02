@@ -1,8 +1,8 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
+﻿using Innovation_Uniform_Editor_Backend.Globals;
 using System.Drawing;
 using System.IO;
 
-namespace Innovation_Uniform_Editor.Classes.Helpers
+namespace Innovation_Uniform_Editor_Backend.Helpers
 {
     public static class FileToBitmap
     {

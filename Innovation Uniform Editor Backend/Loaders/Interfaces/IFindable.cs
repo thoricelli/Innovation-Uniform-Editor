@@ -1,4 +1,4 @@
-﻿namespace Innovation_Uniform_Editor.Classes.Loaders.Interfaces
+﻿namespace Innovation_Uniform_Editor_Backend.Loaders.Interfaces
 {
     public interface IFindable<TType, TId>
     {

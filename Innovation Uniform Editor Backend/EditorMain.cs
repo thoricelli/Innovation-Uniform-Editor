@@ -1,15 +1,10 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Loaders;
-using Innovation_Uniform_Editor.Classes.Models;
-using System;
-using System.Collections.Generic;
+﻿using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Loaders;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend
 {
     public static class EditorMain
     {

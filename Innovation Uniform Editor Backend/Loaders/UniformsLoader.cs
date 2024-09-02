@@ -1,16 +1,16 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Helpers;
-using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace Innovation_Uniform_Editor.Classes.Loaders
+namespace Innovation_Uniform_Editor_Backend.Loaders
 {
-    public class UniformsLoader : Loader<Uniform, UInt64>
+    public class UniformsLoader : Loader<Uniform, ulong>
     {
         //Both public temporarily
         //Please unpublicize this!!!!
@@ -54,28 +54,28 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
                     while (jsonReader.Read())
                     {
                         if (jsonReader.TokenType == JsonToken.PropertyName
-                            && (string)jsonReader.Path == "Pants")
+                            && jsonReader.Path == "Pants")
                         {
                             jsonReader.Read();
 
                             var serializer = new JsonSerializer();
                             List<Uniform> Pants = serializer.Deserialize<List<Uniform>>(jsonReader);
 
-                            Pants.ForEach(e => e.part = Enums.ClothingPart.Pants);
+                            Pants.ForEach(e => e.part = ClothingPart.Pants);
 
-                            this.Concat(Pants);
+                            Concat(Pants);
                         }
                         else if (jsonReader.TokenType == JsonToken.PropertyName
-                            && (string)jsonReader.Path == "Shirts")
+                            && jsonReader.Path == "Shirts")
                         {
                             jsonReader.Read();
 
                             var serializer = new JsonSerializer();
                             List<Uniform> Shirts = serializer.Deserialize<List<Uniform>>(jsonReader);
 
-                            Shirts.ForEach(e => e.part = Enums.ClothingPart.Shirts);
+                            Shirts.ForEach(e => e.part = ClothingPart.Shirts);
 
-                            this.Concat(Shirts);
+                            Concat(Shirts);
                         }
                     }
                 }
@@ -88,11 +88,11 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         */
         public List<Uniform> GetPants()
         {
-            return this.GetAll().FindAll(e => e.part == Enums.ClothingPart.Pants).ToList();
+            return GetAll().FindAll(e => e.part == ClothingPart.Pants).ToList();
         }
         public List<Uniform> GetShirts()
         {
-            return this.GetAll().FindAll(e => e.part == Enums.ClothingPart.Shirts).ToList();
+            return GetAll().FindAll(e => e.part == ClothingPart.Shirts).ToList();
         }
     }
 }

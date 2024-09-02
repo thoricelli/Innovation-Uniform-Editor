@@ -1,6 +1,6 @@
 ﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor.Classes.Images;
-using Innovation_Uniform_Editor.Classes.Loaders;
+using Innovation_Uniform_Editor_Backend.Images;
+using Innovation_Uniform_Editor_Backend.Loaders;
 using System;
 using System.IO;
 using System.Windows.Forms;

@@ -1,7 +1,7 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
+﻿using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System;
 
-namespace Innovation_Uniform_Editor.Classes
+namespace Innovation_Uniform_Editor_Backend.Models
 {
     public abstract class MenuItem : IIdentifier<Guid>, IComparable<MenuItem>
     {

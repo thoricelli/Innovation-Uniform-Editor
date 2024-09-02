@@ -1,8 +1,8 @@
 ﻿using Cyotek.Windows.Forms;
-using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor.Enums;
+using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Windows.Forms;
 
