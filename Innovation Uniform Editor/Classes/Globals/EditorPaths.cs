@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor.Classes.Globals
 {
@@ -17,7 +12,7 @@ namespace Innovation_Uniform_Editor.Classes.Globals
 
         public static string ZipName = "Templates.zip";
         public static string ZipPath = $"{DataPath}/{ZipName}";
-        
+
         public static string TemplateName = "Templates";
         public static string TemplatePath = $"{DataPath}/{TemplateName}";
 
