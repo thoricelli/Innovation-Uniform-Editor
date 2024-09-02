@@ -2,8 +2,8 @@
 
 namespace Innovation_Uniform_Editor.Classes.Drawers.Interfaces
 {
-    public interface IDrawable
+    public interface IDrawable<T>
     {
-        Bitmap Draw();
+        T Draw();
     }
 }

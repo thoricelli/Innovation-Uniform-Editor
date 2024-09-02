@@ -23,7 +23,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
             string[] directories = Directory.GetFiles(_path, "*", SearchOption.TopDirectoryOnly);
             foreach (string image in directories)
             {
-                BackgroundImage bg = new BackgroundImage(image.Replace(_path, "").Replace(".png", ""));
+                BackgroundImage bg = new BackgroundImage(Path.GetFileName(image).Replace(".png", ""));
                 this.Add(bg);
             }
         }
@@ -34,7 +34,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         public void Add(Image image)
         {
             BackgroundImage newBackground = new BackgroundImage(image);
-            image.Save("./Backgrounds/" + newBackground.Id + ".png", ImageFormat.Png);
+            image.Save(_path + "/" + newBackground.Id + ".png", ImageFormat.Png);
             this.Add(newBackground);
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
 
         public override void DeleteBy(Guid guid)
         {
-            string path = this._path + guid;
+            string path = $"{this._path}/{guid}.png";
             if (File.Exists(path))
                 File.Delete(path);
             base.DeleteBy(guid);

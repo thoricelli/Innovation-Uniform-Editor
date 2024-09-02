@@ -7,7 +7,7 @@ using System.Drawing.Imaging;
 
 namespace Innovation_Uniform_Editor.Classes.Drawers
 {
-    public class CustomDrawer : IDrawable
+    public class CustomDrawer : IDrawable<Bitmap>
     {
         private readonly Point DIMENSIONS = new Point(585, 559);
 

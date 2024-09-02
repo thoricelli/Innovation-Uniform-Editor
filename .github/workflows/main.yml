@@ -2,14 +2,12 @@ name: .NET Framework build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-
   build:
-
     strategy:
       matrix:
         configuration: [Release]
@@ -17,42 +15,42 @@ jobs:
     runs-on: windows-2019
 
     env:
-      Solution_Name: 'Innovation Uniform Editor.sln'
+      Solution_Name: "Innovation Uniform Editor.sln"
       Test_Project_Path: 'Innovation Uniform Editor\Innovation Uniform Editor.csproj'
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3
 
-    - name: Restore packages
-      run: MSBuild.exe -t:restore -p:RestorePackagesConfig=true
-      
-    - name: Execute unit tests
-      run: dotnet test
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v2
 
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+      - name: Restore packages
+        run: MSBuild.exe -t:restore -p:RestorePackagesConfig=true
 
-    - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64
-        Appx_Package_Build_Mode: StoreUpload
-        Configuration: ${{ matrix.configuration }}
+      - name: Execute unit tests
+        run: dotnet test
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: Automatic release build
-        path: Innovation Uniform Editor\bin\${{ matrix.configuration }}
+      - name: Restore the application
+        run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+        env:
+          Configuration: ${{ matrix.configuration }}
+
+      - name: Create the app package
+        run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle
+        env:
+          Appx_Bundle: Always
+          Appx_Bundle_Platforms: x64
+          Appx_Package_Build_Mode: StoreUpload
+          Configuration: ${{ matrix.configuration }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Automatic release build
+          path: Innovation Uniform Editor\bin\${{ matrix.configuration }}

@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor.Classes.Helpers;
+﻿using Innovation_Uniform_Editor.Classes.Globals;
+using Innovation_Uniform_Editor.Classes.Helpers;
 using Innovation_Uniform_Editor.Classes.Models;
 using Newtonsoft.Json;
 using System;
@@ -16,33 +17,32 @@ namespace Innovation_Uniform_Editor.Classes.Loaders
         public Bitmap backgroundMask;
         public Bitmap waterMark;
         public Bitmap shading;
-
         public UniformsLoader(string path) : base(path)
         {
         }
         protected override void Load()
         {
-            if (!File.Exists("./Templates/Misc/Background_Mask.png"))
+            if (!File.Exists($"{EditorPaths.TemplateMiscPath}/Background_Mask.png"))
             {
                 TemplateUpdater.CheckForUpdates(true);
                 return;
             }
-            if (!File.Exists("./Templates/Misc/Watermark.png"))
+            if (!File.Exists($"{EditorPaths.TemplateMiscPath}/Watermark.png"))
             {
                 TemplateUpdater.CheckForUpdates(true);
                 return;
             }
-            if (!File.Exists("./Templates/TemplateInfo.json"))
+            if (!File.Exists($"{EditorPaths.TemplatePath}/TemplateInfo.json"))
             {
                 TemplateUpdater.CheckForUpdates(true);
                 return;
             }
 
-            backgroundMask = FileToBitmap.Convert("./Templates/Misc/Background_Mask.png");
+            backgroundMask = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Background_Mask.png");
 
-            waterMark = FileToBitmap.Convert("./Templates/Misc/Watermark.png");
+            waterMark = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Watermark.png");
 
-            shading = FileToBitmap.Convert("./Templates/Misc/Shading_Template.png");
+            shading = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Shading_Template.png");
 
             using (StreamReader r = new StreamReader(_path))
             {
