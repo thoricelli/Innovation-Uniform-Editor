@@ -12,10 +12,14 @@ namespace Innovation_Uniform_Editor.Classes
 {
     public static class TemplateUpdater
     {
-        public static bool CheckOnStartup(bool ignoreHash = false)
+        public static TemplateUpdateStatus CheckOnStartup()
+        {
+            return CheckForUpdates(false);
+        }
+        public static TemplateUpdateStatus CheckForUpdates(bool ignoreHash = false)
         {
             MessageBox.Show("Sorry but updating uniforms is not supported on Windows XP.");
-            return true;
+            return TemplateUpdateStatus.FAILURE;
         }
     }
 }

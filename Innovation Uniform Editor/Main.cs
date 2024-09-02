@@ -324,7 +324,7 @@ namespace Innovation_Uniform_Editor
             DialogResult dialogResult = MessageBox.Show("Would you like to update the uniform templates?", "Template updating", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                TemplateUpdateStatus result = TemplateUpdater.CheckForUpdates();
+                TemplateUpdateStatus result = TemplateUpdater.CheckOnStartup();
 
                 switch (result)
                 {
