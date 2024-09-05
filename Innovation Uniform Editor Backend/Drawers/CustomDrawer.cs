@@ -76,7 +76,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
                 DrawList(g, _assets.Top);
 
-                DrawImageToGraphics(g, Assets.UniformsLoader.waterMark);*/
+                DrawImageToGraphics(g, EditorMain.Uniforms.waterMark);*/
             }
             return _result;
         }
@@ -86,7 +86,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             BitmapData colorsResultData = colorsResult.LockBits(new Rectangle(0, 0, colorsResult.Width, colorsResult.Height), ImageLockMode.ReadOnly, _result.PixelFormat);
             byte* scan0PointerColorData = (byte*)colorsResultData.Scan0;
 
-            Bitmap shading = Assets.UniformsLoader.shading;
+            Bitmap shading = EditorMain.Uniforms.shading;
             BitmapData shadingData = shading.LockBits(new Rectangle(0, 0, shading.Width, shading.Height), ImageLockMode.ReadOnly, _result.PixelFormat);
 
             byte* scan0ShadingPointer = (byte*)shadingData.Scan0;

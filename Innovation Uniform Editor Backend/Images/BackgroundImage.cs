@@ -1,5 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor_Backend.Globals;
+﻿using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Newtonsoft.Json;
@@ -41,18 +40,18 @@ namespace Innovation_Uniform_Editor_Backend.Images
         private Bitmap _background;
         private void calculateBackgroundMasked()
         {
-            _background = new Bitmap(Assets.UniformsLoader.backgroundMask.Width, Assets.UniformsLoader.backgroundMask.Height);
-            BitmapData bitmapMaskData = Assets.UniformsLoader.backgroundMask.LockBits(
-                        new Rectangle(0, 0, Assets.UniformsLoader.backgroundMask.Width, Assets.UniformsLoader.backgroundMask.Height),
+            _background = new Bitmap(EditorMain.Uniforms.backgroundMask.Width, EditorMain.Uniforms.backgroundMask.Height);
+            BitmapData bitmapMaskData = EditorMain.Uniforms.backgroundMask.LockBits(
+                        new Rectangle(0, 0, EditorMain.Uniforms.backgroundMask.Width, EditorMain.Uniforms.backgroundMask.Height),
                         ImageLockMode.ReadOnly,
-                        Assets.UniformsLoader.backgroundMask.PixelFormat
+                        EditorMain.Uniforms.backgroundMask.PixelFormat
                     );
-            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * Assets.UniformsLoader.backgroundMask.Height];
+            byte[] bitmapMaskBytes = new byte[bitmapMaskData.Stride * EditorMain.Uniforms.backgroundMask.Height];
             Marshal.Copy(bitmapMaskData.Scan0, bitmapMaskBytes, 0, bitmapMaskBytes.Length);
 
-            Assets.UniformsLoader.backgroundMask.UnlockBits(bitmapMaskData);
+            EditorMain.Uniforms.backgroundMask.UnlockBits(bitmapMaskData);
 
-            int pixelSize = Image.GetPixelFormatSize(Assets.UniformsLoader.backgroundMask.PixelFormat);
+            int pixelSize = Image.GetPixelFormatSize(EditorMain.Uniforms.backgroundMask.PixelFormat);
 
             int x = 0;
             int y = 0;

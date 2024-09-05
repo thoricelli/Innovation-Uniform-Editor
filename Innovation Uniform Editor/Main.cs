@@ -1,12 +1,10 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor.UI;
+﻿using Innovation_Uniform_Editor.UI;
 using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Helpers.Enums;
 using Innovation_Uniform_Editor_Backend.Models;
 using System;
-using System.IO;
 using System.Windows.Forms;
 using MenuItem = Innovation_Uniform_Editor_Backend.Models.MenuItem;
 
@@ -33,7 +31,7 @@ namespace Innovation_Uniform_Editor
         {
             flowMain.Controls.Clear();
 
-            foreach (MenuItem item in Assets.CustomsLoader.GetAll())
+            foreach (MenuItem item in EditorMain.Customs.GetAll())
             {
                 if (item is Group)
                 {
@@ -141,7 +139,7 @@ namespace Innovation_Uniform_Editor
             textBox.ReadOnly = true;
             textBox.BorderStyle = BorderStyle.None;
 
-            Custom custom = Assets.CustomsLoader.FindBy(new Guid(textBox.Parent.Name));
+            Custom custom = EditorMain.Customs.FindBy(new Guid(textBox.Parent.Name));
             custom.Name = textBox.Text;
             custom.SaveUniform();
         }
@@ -238,7 +236,7 @@ namespace Innovation_Uniform_Editor
 
         private void LaunchEditor(Panel panel)
         {
-            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
+            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
 
             editor = new Editor(custom, this);
 
@@ -269,7 +267,7 @@ namespace Innovation_Uniform_Editor
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Assets.CustomsLoader.DeleteBy(new Guid(panel.Name));
+            EditorMain.Customs.DeleteBy(new Guid(panel.Name));
             panel.Dispose();
         }
 
@@ -283,7 +281,7 @@ namespace Innovation_Uniform_Editor
         {
             exportCustom.ShowDialog();
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
+            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
             custom.ExportUniform(exportCustom.FileName);
         }
 
@@ -293,7 +291,7 @@ namespace Innovation_Uniform_Editor
         private void leftToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
+            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
             if (custom.Position > 0)
             {
                 custom.Position--;
@@ -304,8 +302,8 @@ namespace Innovation_Uniform_Editor
         private void rightToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = Assets.CustomsLoader.FindBy(new Guid(panel.Name));
-            if (custom.Position < Assets.CustomsLoader.GetAll().Count - 1)
+            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
+            if (custom.Position < EditorMain.Customs.GetAll().Count - 1)
             {
                 custom.Position++;
                 flowMain.Controls.SetChildIndex((Control)panel, custom.Position);

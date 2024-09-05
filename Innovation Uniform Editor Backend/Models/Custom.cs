@@ -1,5 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor_Backend.Drawers;
+﻿using Innovation_Uniform_Editor_Backend.Drawers;
 using Innovation_Uniform_Editor_Backend.Drawers.Interfaces;
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
@@ -36,13 +35,13 @@ namespace Innovation_Uniform_Editor_Backend.Models
             get
             {
                 if (_uniformBasedOn == null)
-                    _uniformBasedOn = Assets.UniformsLoader.FindBy(UniformBasedOnId);
+                    _uniformBasedOn = EditorMain.Uniforms.FindBy(UniformBasedOnId);
                 return _uniformBasedOn;
             }
             set
             {
                 UniformBasedOnId = value.Id;
-                _uniformBasedOn = Assets.UniformsLoader.FindBy(UniformBasedOnId);
+                _uniformBasedOn = EditorMain.Uniforms.FindBy(UniformBasedOnId);
             }
         }
         public ulong UniformBasedOnId { get; set; }
@@ -115,9 +114,9 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public void SaveUniform()
         {
             //See if it's already in JSONtoUniform or not
-            if (Assets.CustomsLoader.FindBy(this.Id) == null)
+            if (EditorMain.Customs.FindBy(this.Id) == null)
             {
-                Assets.CustomsLoader.Add(this);
+                EditorMain.Customs.Add(this);
             }
 
             //Save custom class to JSON file inside folder
@@ -165,7 +164,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         }
         private void UpdateBackground()
         {
-            _backgroundImage = Assets.BackgroundsLoader.FindBy(BackgroundImageGuid);
+            _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid);
             if (_backgroundImage != null)
                 _assets.Background = _backgroundImage.background;
         }

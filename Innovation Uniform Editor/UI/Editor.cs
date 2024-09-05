@@ -1,5 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
-using Innovation_Uniform_Editor.Classes.Models;
+using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
@@ -215,7 +215,7 @@ namespace Innovation_Uniform_Editor.UI
         BackgroundSelector bgs;
         private void btnBackgroundImage_Click(object sender, EventArgs e)
         {
-            bgs = new BackgroundSelector(custom.BackgroundImage, Assets.BackgroundsLoader);
+            bgs = new BackgroundSelector(custom.BackgroundImage, EditorMain.Backgrounds);
             bgs.ShowDialog();
 
             if (bgs.ClearCurrent || bgs.Background == null)

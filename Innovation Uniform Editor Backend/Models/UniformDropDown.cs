@@ -1,5 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Models;
-using Innovation_Uniform_Editor_Backend.Enums;
+﻿using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             part = cPart;
 
-            uniforms = part == ClothingPart.Pants ? Assets.UniformsLoader.GetPants() : Assets.UniformsLoader.GetShirts();
+            uniforms = part == ClothingPart.Pants ? EditorMain.Uniforms.GetPants() : EditorMain.Uniforms.GetShirts();
         }
         public Image LoadUniformPreview()
         {
