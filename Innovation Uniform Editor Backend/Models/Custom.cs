@@ -23,7 +23,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         [JsonIgnore]
         private UniformAssets _assets;
         [JsonIgnore]
-        private IDrawable<Bitmap> _drawer;
+        public CustomDrawer Drawer { get; set; }
         [JsonIgnore]
         public bool UnsavedChanges { get; set; } = false;
 
@@ -65,12 +65,12 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             get
             {
-                if (_drawer == null)
+                if (Drawer == null)
                     Initialize();
 
                 if (_result == null || HasColorsChanged())
                 {
-                    _result = _drawer.Draw();
+                    _result = Drawer.Draw();
                 }
                 return _result;
             }
@@ -195,12 +195,12 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 }
             }
 
-            _drawer = new CustomDrawer(_assets, Colors);
+            Drawer = new CustomDrawer(_assets, Colors);
         }
         public void Clear()
         {
             _result = null;
-            _drawer = null;
+            Drawer = null;
         }
     }
 }

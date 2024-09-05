@@ -9,6 +9,6 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Interfaces
 {
     public interface IGraphicsDrawer
     {
-        void DrawToGraphics(Graphics graphics);
+        void DrawToGraphics(Graphics graphics, Bitmap result);
     }
 }
