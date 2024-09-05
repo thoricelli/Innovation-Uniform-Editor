@@ -1,5 +1,4 @@
-﻿using Innovation_Uniform_Editor.Classes.Globals;
-using Innovation_Uniform_Editor_Backend.Images;
+﻿using Innovation_Uniform_Editor_Backend.Images;
 using Innovation_Uniform_Editor_Backend.Loaders;
 using System;
 using System.IO;
