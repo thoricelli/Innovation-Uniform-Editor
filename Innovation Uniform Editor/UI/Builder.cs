@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.Drawers;
 using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases;
+using Innovation_Uniform_Editor_Backend.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,20 @@ namespace Innovation_Uniform_Editor.UI
 {
     public partial class Builder : Form
     {
+        private EventHandler onChanged;
+
+        public event EventHandler ColorChanged
+        {
+            add
+            {
+                onChanged += value;
+            }
+            remove
+            {
+                onChanged -= value;
+            }
+        }
+
         private CustomDrawer _customDrawer;
         public Builder(CustomDrawer customDrawer)
         {
@@ -25,8 +40,10 @@ namespace Innovation_Uniform_Editor.UI
         }
         private void BuildDrawerViews()
         {
-            foreach (BaseGraphicsDrawer drawer in _customDrawer.GraphicsDrawers)
+            for (int i = 0; i < _customDrawer.GraphicsDrawers.Count; i++)
             {
+                BaseGraphicsDrawer drawer = _customDrawer.GraphicsDrawers[i];
+                
                 // 
                 // lblName
                 // 
@@ -61,16 +78,18 @@ namespace Innovation_Uniform_Editor.UI
                 // 
                 CheckBox visible = new CheckBox
                 {
-                    Checked = true,
+                    Checked = drawer.Visible,
                     CheckState = System.Windows.Forms.CheckState.Checked,
                     Location = new System.Drawing.Point(5, 226),
                     Margin = new System.Windows.Forms.Padding(5, 3, 3, 3),
-                    Name = "chkVisible",
+                    Name = $"chkVisible_{i}",
                     Size = new System.Drawing.Size(190, 17),
                     TabIndex = 8,
                     Text = "Visible",
-                    UseVisualStyleBackColor = true
+                    UseVisualStyleBackColor = true,
                 };
+
+                visible.Click += Visible_Click;
 
                 // 
                 // lblOpacity
@@ -96,7 +115,7 @@ namespace Innovation_Uniform_Editor.UI
                     Size = new System.Drawing.Size(194, 45),
                     SmallChange = 5,
                     TabIndex = 9,
-                    Value = 100
+                    Value = Convert.ToInt32(drawer.Transparency * 100)
                 };
 
                 // 
@@ -136,7 +155,10 @@ namespace Innovation_Uniform_Editor.UI
                 item.Controls.Add(visible);
                 item.Controls.Add(opacity);
                 item.Controls.Add(trackBarOpacity);
-                item.Controls.Add(changeAsset);
+
+                if (drawer is BaseAssetDrawer<Bitmap>)
+                    item.Controls.Add(changeAsset);
+
                 item.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
                 item.Location = new System.Drawing.Point(3, 3);
                 item.Name = "flowItem";
@@ -161,6 +183,18 @@ namespace Innovation_Uniform_Editor.UI
 
                 picturePreview.Refresh();
             }
+        }
+
+        private void Visible_Click(object sender, EventArgs e)
+        {
+            BaseGraphicsDrawer gd = _customDrawer.GraphicsDrawers[NamePressHelper.Get(sender, "chkVisible")];
+            gd.Visible = ((CheckBox)sender).Checked;
+            RefreshImage();
+        }
+
+        private void RefreshImage()
+        {
+            onChanged.Invoke(this, null);
         }
     }
 }

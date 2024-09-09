@@ -277,6 +277,7 @@ namespace Innovation_Uniform_Editor.UI
         private void btnDrawDetail_Click(object sender, EventArgs e)
         {
             Builder builder = new Builder(custom.Drawer);
+            builder.ColorChanged += Detail_ColorChanged;
             builder.Show();
         }
 
