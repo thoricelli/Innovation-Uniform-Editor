@@ -412,6 +412,12 @@ copy templateshash.txt "$(SolutionDir)"
 cd "$(SolutionDir)Innovation Uniform Editor"
 del Templates.zip
 powershell Compress-Archive -Path Templates/* -CompressionLevel Optimal -DestinationPath Templates.zip
-move Templates.zip ../Templates.zip</PostBuildEvent>
+move Templates.zip ../Templates.zip
+
+cd %25appdata%25
+mkdir thoricelli
+cd thoricelli
+rmdir /s /q Templates
+xcopy "$(SolutionDir)Innovation Uniform Editor/Templates" Templates /e /q /I</PostBuildEvent>
   </PropertyGroup>
 </Project>
