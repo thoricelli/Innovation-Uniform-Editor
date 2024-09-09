@@ -418,8 +418,8 @@ move Templates.zip ../Templates.zip
 
 cd %25appdata%25
 mkdir thoricelli
-cd ./thoricelli/
+cd thoricelli
 rmdir /s /q Templates
-xcopy "$(SolutionDir)Innovation Uniform Editor/Templates" .\Templates\ /e /q /I</PostBuildEvent>
+xcopy "$(SolutionDir)Innovation Uniform Editor/Templates" Templates /e /q /I</PostBuildEvent>
   </PropertyGroup>
 </Project>
