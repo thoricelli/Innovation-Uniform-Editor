@@ -1,6 +1,6 @@
-﻿using Innovation_Uniform_Editor.Classes;
-using Innovation_Uniform_Editor.Enums;
-using Innovation_Uniform_Editor.UI;
+﻿using Innovation_Uniform_Editor.UI;
+using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Windows.Forms;
 
@@ -18,6 +18,13 @@ namespace Innovation_Uniform_Editor
         public Selector(ClothingPart cPart, Main main)
         {
             parent = main;
+            part = cPart;
+            Handler = new UniformDropDown(part);
+            InitializeComponent();
+        }
+
+        public Selector(ClothingPart cPart)
+        {
             part = cPart;
             Handler = new UniformDropDown(part);
             InitializeComponent();
@@ -67,7 +74,7 @@ namespace Innovation_Uniform_Editor
         }
         private void Selector_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (showParent)
+            if (showParent && parent != null)
             {
                 parent.Show();
             }

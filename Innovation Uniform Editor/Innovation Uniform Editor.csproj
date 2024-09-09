@@ -125,34 +125,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Drawers\CustomDrawer.cs" />
-    <Compile Include="Classes\Drawers\Interfaces\IDrawable.cs" />
-    <Compile Include="Classes\EditorMain.cs" />
-    <Compile Include="Classes\Globals\EditorPaths.cs" />
-    <Compile Include="Classes\Helpers\Enums\TemplateUpdateStatus.cs" />
-    <Compile Include="Classes\Helpers\NamePressHelper.cs" />
-    <Compile Include="Classes\Helpers\FileToBitmap.cs" />
-    <Compile Include="Classes\Loaders\UniformAssetsLoader.cs" />
-    <Compile Include="Classes\Models\CustomColor.cs" />
-    <Compile Include="Classes\Models\Group.cs" />
-    <Compile Include="Classes\Helpers\ImageHelper.cs" />
-    <Compile Include="Classes\Images\BackgroundImage.cs" />
-    <Compile Include="Classes\Loaders\BackgroundsLoader.cs" />
-    <Compile Include="Classes\Loaders\Interfaces\IFindable.cs" />
-    <Compile Include="Classes\Loaders\Loader.cs" />
-    <Compile Include="Classes\Loaders\UniformsLoader.cs" />
-    <Compile Include="Classes\Models\MenuItem.cs" />
-    <Compile Include="Classes\Models\Assets.cs" />
-    <Compile Include="Classes\Loaders\CustomsLoader.cs" />
-    <Compile Include="Classes\Models\Interfaces\IIdentifier.cs" />
-    <Compile Include="Classes\Models\Uniform.cs" />
-    <Compile Include="Classes\Helpers\TemplateUpdater.cs" />
-    <Compile Include="Classes\Models\UniformAssets.cs" />
-    <Compile Include="Classes\Models\UniformDropDown.cs" />
     <Compile Include="DraggablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Enums\UniformType.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +136,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Builder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Builder.Designer.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ColorDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +178,12 @@
     <Compile Include="UI\Issues.Designer.cs">
       <DependentUpon>Issues.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MainSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainSettings.Designer.cs">
+      <DependentUpon>MainSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,7 +202,12 @@
     <Compile Include="UI\Selector.Designer.cs">
       <DependentUpon>Selector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Models\Custom.cs" />
+    <Compile Include="UI\TextureCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TextureCreator.Designer.cs">
+      <DependentUpon>TextureCreator.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DraggablePanel.resx">
       <DependentUpon>DraggablePanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +224,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Builder.resx">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ColorDetail.resx">
       <DependentUpon>ColorDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Issues.resx">
       <DependentUpon>Issues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainSettings.resx">
+      <DependentUpon>MainSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NewGroup.resx">
       <DependentUpon>NewGroup.cs</DependentUpon>
@@ -401,8 +399,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Classes\Migrating\" />
+    <ProjectReference Include="..\Innovation Uniform Editor Backend\Innovation Uniform Editor Backend.csproj">
+      <Project>{d7ad02bd-d1fa-40e4-8a54-38eb64ada461}</Project>
+      <Name>Innovation Uniform Editor Backend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
