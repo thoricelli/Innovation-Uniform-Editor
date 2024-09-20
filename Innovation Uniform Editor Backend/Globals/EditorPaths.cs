@@ -5,7 +5,7 @@ namespace Innovation_Uniform_Editor_Backend.Globals
     public static class EditorPaths
     {
         public static string DataPathName = "thoricelli";
-        public static string DataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/" + DataPathName;
+        public static string DataPath = "$HOME/" + DataPathName;//Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/" + DataPathName;
 
         public static string HashName = "templateshash.txt";
         public static string HashPath = $"{DataPath}/{HashName}";

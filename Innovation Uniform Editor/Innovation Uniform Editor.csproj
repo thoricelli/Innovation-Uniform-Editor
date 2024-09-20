@@ -401,9 +401,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Innovation Uniform Editor Backend\Innovation Uniform Editor Backend.csproj">
+    <ProjectReference Include="..\Innovation Uniform Editor Legacy Backend\Innovation Uniform Editor Legacy Backend.csproj">
       <Project>{d7ad02bd-d1fa-40e4-8a54-38eb64ada461}</Project>
-      <Name>Innovation Uniform Editor Backend</Name>
+      <Name>Innovation Uniform Editor Legacy Backend</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

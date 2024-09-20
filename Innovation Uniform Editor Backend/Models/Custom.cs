@@ -97,7 +97,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             if (path != string.Empty)
             {
-                //Check if there are remaining issues? Should that even be here?
+                /*//Check if there are remaining issues? Should that even be here?
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -107,7 +107,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 else if (dialogResult == DialogResult.No)
                 {
                     //do something else
-                }
+                }*/
 
             }
         }

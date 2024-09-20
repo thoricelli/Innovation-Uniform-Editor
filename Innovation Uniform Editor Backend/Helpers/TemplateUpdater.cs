@@ -57,6 +57,7 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
                 {
                     WriteNewHash(hashTemplate);
 
+                    BackupDelete(EditorPaths.TemplatePath);
                     BackupCreate(EditorPaths.TemplatePath);
 
                     DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipPath);
@@ -103,13 +104,13 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
 
                 if (!Directory.Exists(EditorPaths.TemplatePath))
                 {
-                    MessageBox.Show("Templates not found.\nAnd there are no available resources to download from.\n\nDid you install the application correctly? ", "Cannot continue.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Templates not found.\nAnd there are no available resources to download from.\n\nDid you install the application correctly? ", "Cannot continue.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     Environment.Exit(0);
-                    Application.Exit();
+                    //Application.Exit();
                 }
 
-                MessageBox.Show("You are offline, please connect to the internet.", "Offline.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //MessageBox.Show("You are offline, please connect to the internet.", "Offline.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return TemplateUpdateStatus.FAILURE;
             }
@@ -136,8 +137,8 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
 
                 if (tryingToFix)
                 {
-                    MessageBox.Show("Application has tried to fix the templates folder due to corruption. Please restart the application.", "Fixing templates.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Application.Exit();
+                    //MessageBox.Show("Application has tried to fix the templates folder due to corruption. Please restart the application.", "Fixing templates.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Application.Exit();
                     Environment.Exit(0);
                 }
                 return TemplateUpdateStatus.SUCCESS;
@@ -187,10 +188,10 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
             File.WriteAllText(EditorPaths.DataPath + "/failedupdate", "");
 
             File.WriteAllText(EditorPaths.HashPath, oldHash);
-            MessageBox.Show("The application will now be closed and the update will be completed on the next startup.", "Regular update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("The application will now be closed and the update will be completed on the next startup.", "Regular update failed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Environment.Exit(0);
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }

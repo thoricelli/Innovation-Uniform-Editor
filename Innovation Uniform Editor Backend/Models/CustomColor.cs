@@ -26,7 +26,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
             //Swagiform :)
             if (color == Color.FromArgb(255, 255, 174, 201))
             {
-                MessageBox.Show("You are NOT making the swagiform.");
+                //MessageBox.Show("You are NOT making the swagiform.");
                 return;
             }
             Colors[colorIndex] = color;
