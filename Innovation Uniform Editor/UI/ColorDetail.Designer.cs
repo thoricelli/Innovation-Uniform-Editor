@@ -36,8 +36,8 @@
             this.flowColorRemove = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new System.Windows.Forms.Button();
             this.lblFade = new System.Windows.Forms.Label();
-            this.lblRepeat = new System.Windows.Forms.Label();
             this.repeatNumeric = new System.Windows.Forms.NumericUpDown();
+            this.lblRepeat = new System.Windows.Forms.Label();
             this.flowColors.SuspendLayout();
             this.flowColorRemove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repeatNumeric)).BeginInit();
@@ -94,7 +94,7 @@
             this.flowColors.Location = new System.Drawing.Point(9, 28);
             this.flowColors.Margin = new System.Windows.Forms.Padding(2);
             this.flowColors.Name = "flowColors";
-            this.flowColors.Size = new System.Drawing.Size(219, 170);
+            this.flowColors.Size = new System.Drawing.Size(219, 196);
             this.flowColors.TabIndex = 14;
             this.flowColors.WrapContents = false;
             // 
@@ -133,17 +133,6 @@
             this.lblFade.Text = "Add another color to create a fade effect.";
             this.lblFade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRepeat
-            // 
-            this.lblRepeat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRepeat.Location = new System.Drawing.Point(6, 203);
-            this.lblRepeat.Name = "lblRepeat";
-            this.lblRepeat.Size = new System.Drawing.Size(53, 20);
-            this.lblRepeat.TabIndex = 16;
-            this.lblRepeat.Text = "Repeat:";
-            this.lblRepeat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // repeatNumeric
             // 
             this.repeatNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -167,7 +156,20 @@
             0,
             0,
             0});
+            this.repeatNumeric.Visible = false;
             this.repeatNumeric.ValueChanged += new System.EventHandler(this.repeatNumeric_ValueChanged);
+            // 
+            // lblRepeat
+            // 
+            this.lblRepeat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRepeat.Location = new System.Drawing.Point(6, 203);
+            this.lblRepeat.Name = "lblRepeat";
+            this.lblRepeat.Size = new System.Drawing.Size(53, 20);
+            this.lblRepeat.TabIndex = 16;
+            this.lblRepeat.Text = "Repeat:";
+            this.lblRepeat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRepeat.Visible = false;
             // 
             // ColorDetail
             // 
@@ -203,7 +205,7 @@
         private System.Windows.Forms.Label lblFade;
         private System.Windows.Forms.FlowLayoutPanel flowColorRemove;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Label lblRepeat;
         private System.Windows.Forms.NumericUpDown repeatNumeric;
+        private System.Windows.Forms.Label lblRepeat;
     }
 }

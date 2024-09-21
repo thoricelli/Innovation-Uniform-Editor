@@ -1,14 +1,10 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using Innovation_Uniform_Editor_Backend.Models;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
+namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 {
     public class ColorDrawer : BasePixelDrawer
     {
@@ -57,7 +53,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 
                         Color fullColor;
                         if (_colors[maskIndex].Colors == null || _colors[maskIndex].Colors.Count > 1)
-                            fullColor = FadePixel(_colors[maskIndex], ((double)i / resultData.Stride) / resultData.Height);
+                            fullColor = FadePixel(_colors[maskIndex], (double)i / resultData.Stride / resultData.Height);
                         else
                             fullColor = GetColorFromCustomColor(_colors[maskIndex]);
 

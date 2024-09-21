@@ -178,6 +178,15 @@ namespace Innovation_Uniform_Editor_Backend.Models
             UnsavedChanges = true;
         }
         #endregion
+        public Custom()
+        {
+
+        }
+        public Custom(Uniform uniform)
+        {
+            this.ChangeUniform(uniform);
+        }
+
         private void Initialize()
         {
             _result = null;

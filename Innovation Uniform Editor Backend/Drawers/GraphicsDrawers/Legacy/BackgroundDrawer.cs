@@ -1,7 +1,6 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases;
-using System.Drawing;
+﻿using System.Drawing;
 
-namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
+namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 {
     public class BackgroundDrawer : BitmapDrawer
     {

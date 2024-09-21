@@ -1,11 +1,10 @@
 ﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases
+namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
-    public abstract class BaseGraphicsDrawer : IGraphicsDrawer
+    public abstract class BaseGraphicsDrawer : IGraphicsDrawer<Bitmap>
     {
         public abstract string Name { get; }
         public bool Visible { get; set; } = true;
@@ -18,7 +17,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases
             //TODO not to hardcode this :)
             Bitmap result = new Bitmap(585, 559);
 
-            using (Graphics g = Graphics.FromImage(result)) {
+            using (Graphics g = Graphics.FromImage(result))
+            {
                 DrawToGraphics(g, result);
             }
 

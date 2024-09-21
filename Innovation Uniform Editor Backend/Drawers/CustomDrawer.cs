@@ -1,6 +1,5 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers;
-using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases;
-using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Interfaces;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy;
+using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using Innovation_Uniform_Editor_Backend.Drawers.Interfaces;
 using Innovation_Uniform_Editor_Backend.Models;
 using System.Collections.Generic;

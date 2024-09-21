@@ -1,8 +1,8 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Bases;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
+namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 {
     public class TextureDrawer : BaseAssetDrawer<List<Bitmap>>
     {
