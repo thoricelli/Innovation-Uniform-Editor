@@ -1,4 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
+using Innovation_Uniform_Editor_Backend.ImageEditors;
+using Innovation_Uniform_Editor_Backend.ImageLooper.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,22 +27,22 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 
         public unsafe override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
+            //I've been trying to generalize this function to make it usable with literally anything,
+            //and I failed.
+
             Bitmap colorsResult = new Bitmap(result.Width, result.Height);
-            BitmapData colorsResultData = colorsResult.LockBits(new Rectangle(0, 0, colorsResult.Width, colorsResult.Height), ImageLockMode.ReadOnly, result.PixelFormat);
-            byte* scan0PointerColorData = (byte*)colorsResultData.Scan0;
+
+            BitmapEditor colorsResultLooper = new BitmapEditor(colorsResult);
 
             Bitmap shading = EditorMain.Uniforms.shading;
-            BitmapData shadingData = shading.LockBits(new Rectangle(0, 0, shading.Width, shading.Height), ImageLockMode.ReadOnly, result.PixelFormat);
+            BitmapEditor shadingLooper = new BitmapEditor(shading);
 
-            byte* scan0ShadingPointer = (byte*)shadingData.Scan0;
-
-            BitmapData resultData = result.LockBits(new Rectangle(0, 0, result.Width, result.Height), ImageLockMode.ReadOnly, result.PixelFormat);
-            byte* scan0Pointer = (byte*)resultData.Scan0;
-
-            int pixelSize = Image.GetPixelFormatSize(resultData.PixelFormat);
+            BitmapEditor resultLooper = new BitmapEditor(result);
 
             int index = 0;
-            for (int i = 0; i < resultData.Stride * resultData.Height; i += pixelSize / 8)
+            int totalSize = colorsResultLooper.GetTotalSize();
+
+            for (int i = 0; i < totalSize; i++)
             {
                 index++;
                 for (int maskIndex = 0; maskIndex < _masks.Count; maskIndex++)
@@ -49,11 +51,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 
                     if (canDraw)
                     {
-                        Color currentColor = Color.FromArgb(scan0Pointer[i + 3], scan0Pointer[i + 2], scan0Pointer[i + 1], scan0Pointer[i]);
+                        Color currentColor = resultLooper.GetPixelColorAtIndex(i);
 
                         Color fullColor;
                         if (_colors[maskIndex].Colors == null || _colors[maskIndex].Colors.Count > 1)
-                            fullColor = FadePixel(_colors[maskIndex], (double)i / resultData.Stride / resultData.Height);
+                            fullColor = FadePixel(_colors[maskIndex], (double)i / totalSize);
                         else
                             fullColor = GetColorFromCustomColor(_colors[maskIndex]);
 
@@ -61,22 +63,20 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 
                         if (!doNotShade.Exists(e => e == maskIndex))
                         {
-                            Color shadingColor = Color.FromArgb(scan0ShadingPointer[i + 3], scan0ShadingPointer[i + 2], scan0ShadingPointer[i + 1], scan0ShadingPointer[i]);
+                            Color shadingColor = shadingLooper.GetPixelColorAtIndex(i);
                             finalColor = Blend(shadingColor, finalColor);
                         }
 
-                        //Blue, Green, Red, Alpha
-                        scan0PointerColorData[i] = finalColor.B;
-                        scan0PointerColorData[i + 1] = finalColor.G;
-                        scan0PointerColorData[i + 2] = finalColor.R;
-                        scan0PointerColorData[i + 3] = finalColor.A;
+                        colorsResultLooper.ChangePixelColorAtIndex(i, finalColor);
                     }
                 }
             }
 
-            result.UnlockBits(resultData);
-            shading.UnlockBits(shadingData);
-            colorsResult.UnlockBits(colorsResultData);
+            //TEMP
+
+            colorsResultLooper.CloseImage();
+            shadingLooper.CloseImage();
+            resultLooper.CloseImage();
 
             DrawImageToGraphics(graphics, colorsResult);
         }

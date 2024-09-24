@@ -39,6 +39,7 @@
             this.btnShift = new System.Windows.Forms.Button();
             this.lblArrow = new System.Windows.Forms.Label();
             this.flowDrawers = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
             this.flowDrawerItem.SuspendLayout();
             this.flowItem.SuspendLayout();
@@ -164,14 +165,24 @@
             this.flowDrawers.Controls.Add(this.flowDrawerItem);
             this.flowDrawers.Location = new System.Drawing.Point(12, 12);
             this.flowDrawers.Name = "flowDrawers";
-            this.flowDrawers.Size = new System.Drawing.Size(752, 503);
+            this.flowDrawers.Size = new System.Drawing.Size(752, 492);
             this.flowDrawers.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 510);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Export layered images";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Builder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 522);
+            this.ClientSize = new System.Drawing.Size(776, 544);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.flowDrawers);
             this.Name = "Builder";
             this.Text = "Builder";
@@ -199,5 +210,6 @@
         private System.Windows.Forms.TrackBar trackOpacity;
         private System.Windows.Forms.FlowLayoutPanel flowDrawers;
         private System.Windows.Forms.Button btnShift;
+        private System.Windows.Forms.Button button1;
     }
 }

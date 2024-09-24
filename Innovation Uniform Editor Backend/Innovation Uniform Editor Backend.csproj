@@ -52,6 +52,7 @@
     <Compile Include="Drawers\ComponentDrawers\Bases\ComponentDrawerBase.cs" />
     <Compile Include="Drawers\ComponentDrawers\ColorComponentDrawer.cs" />
     <Compile Include="Drawers\ComponentDrawers\FadeComponentDrawer.cs" />
+    <Compile Include="Drawers\ComponentDrawers\Interfaces\IComponentInterface.cs" />
     <Compile Include="Drawers\CustomDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BackgroundDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseAssetDrawer.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\NamePressHelper.cs" />
     <Compile Include="Helpers\TemplateUpdater.cs" />
+    <Compile Include="ImageEditors\Interface\IImageEditor.cs" />
+    <Compile Include="ImageEditors\BitmapEditor.cs" />
     <Compile Include="Images\BackgroundImage.cs" />
     <Compile Include="Loaders\BackgroundsLoader.cs" />
     <Compile Include="Loaders\CustomsLoader.cs" />
