@@ -22,7 +22,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers
 
         public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress)
         {
-            Color fade = FadePixel(current, progress);
+            Color fade = Overlay(FadePixel(current, progress), lowerImage.GetPixelColorAtIndex(index));
 
             upperImage.ChangePixelColorAtIndex(index, fade);
 
