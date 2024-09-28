@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
+﻿using Innovation_Uniform_Editor_Backend.ImageEditors.Base;
+using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,10 +10,20 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.ImageEditors
 {
-    public class BitmapEditor : IImageEditor
+    public class BitmapEditor : ImageEditorBase<Bitmap>
     {
         private Bitmap original;
         private BitmapData data;
+
+        public override Bitmap Result 
+        { 
+            get 
+            {
+                CloseImage();
+                return original; 
+            } 
+        }
+
         public BitmapEditor(Bitmap result)
         {
             original = result;
@@ -20,7 +31,7 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
         }
 
         //Blue, Green, Red, Alpha
-        public unsafe void ChangePixelColorAtIndex(int index, Color color)
+        public override unsafe void ChangePixelColorAtIndex(int index, Color color)
         {
             byte* scan0Pointer = (byte*)data.Scan0;
 
@@ -32,7 +43,7 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
             scan0Pointer[index + 3] = color.A;
         }
 
-        public unsafe Color GetPixelColorAtIndex(int index)
+        public override unsafe Color GetPixelColorAtIndex(int index)
         {
             byte* scan0Pointer = (byte*)data.Scan0;
 
@@ -50,9 +61,19 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
             original.UnlockBits(data);
         }
 
-        public int GetTotalSize()
+        public override int GetTotalSize()
         {
             return data.Stride * data.Height / 4;
+        }
+
+        public override int GetWidth()
+        {
+            return data.Stride;
+        }
+
+        public override int GetHeight()
+        {
+            return data.Height;
         }
     }
 }

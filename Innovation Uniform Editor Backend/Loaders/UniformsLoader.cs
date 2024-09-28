@@ -1,6 +1,8 @@
-﻿using Innovation_Uniform_Editor_Backend.Enums;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers.Bases;
+using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -43,6 +45,10 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
             waterMark = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Watermark.png");
 
             shading = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Shading_Template.png");
+            BitmapEditor shadingLooper = new BitmapEditor(shading);
+
+            ComponentDrawerBase.shading = shadingLooper;
+            shadingLooper.CloseImage();
 
             using (StreamReader r = new StreamReader(_path))
             {

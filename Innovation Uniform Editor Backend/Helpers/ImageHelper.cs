@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Innovation_Uniform_Editor_Backend.ImageEditors;
+using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -53,31 +55,19 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
 
             foreach (Bitmap item in images)
             {
-                BitmapData bitmapData = item.LockBits(new Rectangle(0, 0, item.Width, item.Height), ImageLockMode.ReadOnly, item.PixelFormat);
+                IImageEditor editor = new BitmapEditor(item);
 
-                int stride = bitmapData.Stride;
-                int height = bitmapData.Height;
+                int totalSize = editor.GetTotalSize();
+                bool[] alphas = new bool[totalSize];
 
-                byte* scan0Base = (byte*)bitmapData.Scan0.ToPointer();
-
-                int pixelSize = Image.GetPixelFormatSize(item.PixelFormat);
-
-                bool[] alphas = new bool[stride * height];
-
-                int index = 0;
-                for (int i = 0; i < stride * height; i += pixelSize / 8)
+                for (int i = 0; i < totalSize; i++)
                 {
-                    //Blue, Green, Red, Alpha
-                    index++;
-                    if (item.PixelFormat == PixelFormat.Format32bppArgb)
-                        alphas[index] = scan0Base[i + 3] == 0;
-                    else
-                        throw new Exception("That's not supported!");
+                    alphas[i] = editor.GetPixelColorAtIndex(i).A == 0;
                 }
 
                 bools.Add(alphas);
 
-                item.UnlockBits(bitmapData);
+                ((BitmapEditor)editor).CloseImage();
             }
             return bools;
         }

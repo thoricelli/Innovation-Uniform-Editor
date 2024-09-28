@@ -51,13 +51,13 @@
   <ItemGroup>
     <Compile Include="Drawers\ComponentDrawers\Bases\ComponentDrawerBase.cs" />
     <Compile Include="Drawers\ComponentDrawers\ColorComponentDrawer.cs" />
+    <Compile Include="Drawers\ComponentDrawers\EmptyComponentDrawer.cs" />
     <Compile Include="Drawers\ComponentDrawers\FadeComponentDrawer.cs" />
     <Compile Include="Drawers\ComponentDrawers\Interfaces\IComponentInterface.cs" />
     <Compile Include="Drawers\CustomDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BackgroundDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseAssetDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseGraphicsDrawer.cs" />
-    <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BasePixelDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BitmapDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\ColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
@@ -72,6 +72,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\NamePressHelper.cs" />
     <Compile Include="Helpers\TemplateUpdater.cs" />
+    <Compile Include="ImageEditors\Base\ImageEditorBase.cs" />
     <Compile Include="ImageEditors\Interface\IImageEditor.cs" />
     <Compile Include="ImageEditors\BitmapEditor.cs" />
     <Compile Include="Images\BackgroundImage.cs" />
@@ -83,7 +84,10 @@
     <Compile Include="Loaders\UniformsLoader.cs" />
     <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\CustomColor.cs" />
+    <Compile Include="Models\Enums\BlendMode.cs" />
     <Compile Include="Models\Enums\Code.cs" />
+    <Compile Include="Models\Enums\ColorDrawerTypes.cs" />
+    <Compile Include="Models\Enums\ColorType.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Interfaces\IIdentifier.cs" />
     <Compile Include="Models\IssuesRepo.cs" />

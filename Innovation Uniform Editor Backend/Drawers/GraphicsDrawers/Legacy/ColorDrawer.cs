@@ -1,14 +1,21 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers;
+using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers.Bases;
+using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers.Interfaces;
+using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using Innovation_Uniform_Editor_Backend.ImageEditors;
-using Innovation_Uniform_Editor_Backend.ImageLooper.Interface;
+using Innovation_Uniform_Editor_Backend.ImageEditors.Base;
+using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 {
-    public class ColorDrawer : BasePixelDrawer
+    public class ColorDrawer : BaseGraphicsDrawer
     {
         public override string Name => "Colors";
 
@@ -18,11 +25,55 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
         /// Doesn't shade the color at specified index.
         /// </summary>
         private List<int> doNotShade = new List<int>();
+        private int currentDrawerIndex = 0;
+
+        private int repeat = 2;
+
+        private List<ComponentDrawerBase> colorDrawerItems = new List<ComponentDrawerBase>()
+        {
+            new ColorComponentDrawer(0.3, ColorDrawerTypes.SOLID, ColorType.FirstColor, BlendMode.Overlay),
+            new FadeComponentDrawer(0.72, ColorDrawerTypes.FADE, BlendMode.Overlay),
+            new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.Overlay),
+        };
 
         public ColorDrawer(List<CustomColor> colors, List<bool[]> masks)
         {
             _colors = colors;
             _masks = masks;
+        }
+        private ComponentDrawerBase GetCurrentComponent(double Yprogress)
+        {
+            //this code is shit.
+
+            ComponentDrawerBase drawer = null;
+
+            if (currentDrawerIndex < colorDrawerItems.Count)
+            {
+                if (Yprogress < colorDrawerItems.First().EndYPercentage)
+                    currentDrawerIndex = 0;
+
+                if (colorDrawerItems[currentDrawerIndex].EndYPercentage < Yprogress)
+                    if (currentDrawerIndex < colorDrawerItems.Count - 1)
+                        currentDrawerIndex++;
+                    else
+                        return null;
+
+                drawer = colorDrawerItems[currentDrawerIndex];
+            } 
+            
+            return drawer;
+        }
+
+        private double GetCurrentProgressForComponent(double yProgress)
+        {
+            double previousEndPercentage = 
+                currentDrawerIndex > 0 ? 
+                colorDrawerItems[currentDrawerIndex - 1].EndYPercentage 
+                : 0;
+            double currentEndPercentage = colorDrawerItems[currentDrawerIndex].EndYPercentage;
+
+            // 0 - 100% becomes a scale of X% - Y% (mainly used by fades)
+            return (yProgress - previousEndPercentage) * (1 / (currentEndPercentage - previousEndPercentage));
         }
 
         public unsafe override void DrawToGraphics(Graphics graphics, Bitmap result)
@@ -30,59 +81,49 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
             //I've been trying to generalize this function to make it usable with literally anything,
             //and I failed.
 
-            Bitmap colorsResult = new Bitmap(result.Width, result.Height);
-
-            BitmapEditor colorsResultLooper = new BitmapEditor(colorsResult);
-
-            Bitmap shading = EditorMain.Uniforms.shading;
-            BitmapEditor shadingLooper = new BitmapEditor(shading);
+            ImageEditorBase<Bitmap> colorsResultLooper = new BitmapEditor(new Bitmap(result.Width, result.Height));
 
             BitmapEditor resultLooper = new BitmapEditor(result);
 
-            int index = 0;
             int totalSize = colorsResultLooper.GetTotalSize();
+            int width = colorsResultLooper.GetWidth();
 
             for (int i = 0; i < totalSize; i++)
             {
-                index++;
                 for (int maskIndex = 0; maskIndex < _masks.Count; maskIndex++)
                 {
-                    bool canDraw = _masks[maskIndex][index];
+                    bool canDraw = _masks[maskIndex][i];
 
                     if (canDraw)
                     {
-                        Color currentColor = resultLooper.GetPixelColorAtIndex(i);
+                        double yProgress = ((double)(i / width) / (totalSize / width));
 
-                        Color fullColor;
-                        if (_colors[maskIndex].Colors == null || _colors[maskIndex].Colors.Count > 1)
-                            fullColor = FadePixel(_colors[maskIndex], (double)i / totalSize);
-                        else
-                            fullColor = GetColorFromCustomColor(_colors[maskIndex]);
+                        double progressRepeat = yProgress * repeat;
+                        double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
 
-                        Color finalColor = Overlay(fullColor, currentColor);
+                        ComponentDrawerBase currentDrawItem = GetCurrentComponent(
+                            progressWithRepeat
+                        );
 
-                        if (!doNotShade.Exists(e => e == maskIndex))
+                        if (currentDrawItem != null)
                         {
-                            Color shadingColor = shadingLooper.GetPixelColorAtIndex(i);
-                            finalColor = Blend(shadingColor, finalColor);
+                            currentDrawItem.Draw(
+                                _colors[maskIndex],
+                                colorsResultLooper,
+                                resultLooper,
+                                i,
+                                GetCurrentProgressForComponent(progressWithRepeat)
+                             );
                         }
-
-                        colorsResultLooper.ChangePixelColorAtIndex(i, finalColor);
                     }
                 }
             }
 
             //TEMP
-
-            colorsResultLooper.CloseImage();
-            shadingLooper.CloseImage();
+            currentDrawerIndex = 0;
             resultLooper.CloseImage();
 
-            DrawImageToGraphics(graphics, colorsResult);
-        }
-        private Color GetColorFromCustomColor(CustomColor color)
-        {
-            return color.GetColorAtIndex(0);
+            DrawImageToGraphics(graphics, colorsResultLooper.Result);
         }
     }
 }

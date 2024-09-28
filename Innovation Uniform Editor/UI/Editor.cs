@@ -292,5 +292,10 @@ namespace Innovation_Uniform_Editor.UI
             Selector selector = new Selector(ClothingPart.Shirts);
             selector.Show();
         }
+
+        private void exportLayersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
