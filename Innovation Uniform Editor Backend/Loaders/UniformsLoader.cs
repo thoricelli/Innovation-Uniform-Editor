@@ -22,7 +22,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         public UniformsLoader(string path) : base(path)
         {
         }
-        protected override void Load()
+        public override void Load()
         {
             if (!File.Exists($"{EditorPaths.TemplateMiscPath}/Background_Mask.png"))
             {

@@ -11,8 +11,9 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
         }
 
-        protected override void Load()
+        public override void Load()
         {
+            base.Load();
             //Customs -> UUID -> info.json is the custom.
             if (!Directory.Exists(_path))
                 Directory.CreateDirectory(_path);

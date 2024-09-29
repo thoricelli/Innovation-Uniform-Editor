@@ -31,6 +31,9 @@ namespace Innovation_Uniform_Editor
         {
             flowMain.Controls.Clear();
 
+            //TODO: This should be replaced by only loading the uniform that was changed.
+            EditorMain.Customs.Load();
+
             foreach (MenuItem item in EditorMain.Customs.GetAll())
             {
                 if (item is Group)

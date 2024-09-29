@@ -40,6 +40,7 @@ namespace Innovation_Uniform_Editor.UI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportLayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shirtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@ namespace Innovation_Uniform_Editor.UI
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewTab = new System.Windows.Forms.Button();
             this.btnDrawDetail = new System.Windows.Forms.Button();
-            this.exportLayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -133,9 +133,17 @@ namespace Innovation_Uniform_Editor.UI
             // downloadToolStripMenuItem1
             // 
             this.downloadToolStripMenuItem1.Name = "downloadToolStripMenuItem1";
-            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.downloadToolStripMenuItem1.Text = "Download";
             this.downloadToolStripMenuItem1.Click += new System.EventHandler(this.downloadToolStripMenuItem1_Click);
+            // 
+            // exportLayersToolStripMenuItem
+            // 
+            this.exportLayersToolStripMenuItem.Name = "exportLayersToolStripMenuItem";
+            this.exportLayersToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.exportLayersToolStripMenuItem.Text = "Export layers";
+            this.exportLayersToolStripMenuItem.Visible = false;
+            this.exportLayersToolStripMenuItem.Click += new System.EventHandler(this.exportLayersToolStripMenuItem_Click);
             // 
             // newTabToolStripMenuItem
             // 
@@ -145,19 +153,18 @@ namespace Innovation_Uniform_Editor.UI
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
             this.newTabToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.newTabToolStripMenuItem.Text = "New tab";
-            this.newTabToolStripMenuItem.Visible = false;
             // 
             // pantsToolStripMenuItem
             // 
             this.pantsToolStripMenuItem.Name = "pantsToolStripMenuItem";
-            this.pantsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pantsToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.pantsToolStripMenuItem.Text = "Pants";
             this.pantsToolStripMenuItem.Click += new System.EventHandler(this.pantsToolStripMenuItem_Click);
             // 
             // shirtsToolStripMenuItem
             // 
             this.shirtsToolStripMenuItem.Name = "shirtsToolStripMenuItem";
-            this.shirtsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shirtsToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.shirtsToolStripMenuItem.Text = "Shirts";
             this.shirtsToolStripMenuItem.Click += new System.EventHandler(this.shirtsToolStripMenuItem_Click);
             // 
@@ -334,14 +341,8 @@ namespace Innovation_Uniform_Editor.UI
             this.btnDrawDetail.TabIndex = 17;
             this.btnDrawDetail.Text = "Manage drawing";
             this.btnDrawDetail.UseVisualStyleBackColor = true;
+            this.btnDrawDetail.Visible = false;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
-            // 
-            // exportLayersToolStripMenuItem
-            // 
-            this.exportLayersToolStripMenuItem.Name = "exportLayersToolStripMenuItem";
-            this.exportLayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportLayersToolStripMenuItem.Text = "Export layers";
-            this.exportLayersToolStripMenuItem.Click += new System.EventHandler(this.exportLayersToolStripMenuItem_Click);
             // 
             // Editor
             // 
