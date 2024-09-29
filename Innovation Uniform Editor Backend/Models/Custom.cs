@@ -98,7 +98,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
             if (path != string.Empty)
             {
                 //Check if there are remaining issues? Should that even be here?
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult dialogResult = DialogResult.Yes;//MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Result.Save(path, ImageFormat.Png);
@@ -178,6 +178,15 @@ namespace Innovation_Uniform_Editor_Backend.Models
             UnsavedChanges = true;
         }
         #endregion
+        public Custom()
+        {
+
+        }
+        public Custom(Uniform uniform)
+        {
+            this.ChangeUniform(uniform);
+        }
+
         private void Initialize()
         {
             _result = null;

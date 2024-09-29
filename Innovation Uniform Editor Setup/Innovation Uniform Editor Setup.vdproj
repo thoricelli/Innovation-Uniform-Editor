@@ -16,7 +16,25 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_283A213B84B9A0B0591D71F7AD6B1469"
+        "MsmKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D48CCD6E4BF7AAFB842AC7A01D0E3B8"
+        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D48CCD6E4BF7AAFB842AC7A01D0E3B8"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -24,12 +42,6 @@
         {
         "MsmKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5546320FC6743D12E811776B4A3C4314"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,6 +94,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E134A454D92AC058B8B4A7D5F526FDDC"
+        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
@@ -89,13 +107,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_283A213B84B9A0B0591D71F7AD6B1469"
+        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5546320FC6743D12E811776B4A3C4314"
+        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1D48CCD6E4BF7AAFB842AC7A01D0E3B8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -211,14 +235,45 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_283A213B84B9A0B0591D71F7AD6B1469"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+                    {
+                    "Name" = "8:Cyotek.Windows.Forms.ColorPicker.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Cyotek.Windows.Forms.ColorPicker.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D48CCD6E4BF7AAFB842AC7A01D0E3B8"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_283A213B84B9A0B0591D71F7AD6B1469"
+                    "_1D48CCD6E4BF7AAFB842AC7A01D0E3B8"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -242,20 +297,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5546320FC6743D12E811776B4A3C4314"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_29A5CD7E2A732E3A535C30207ED05DE6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5546320FC6743D12E811776B4A3C4314"
+                    "_29A5CD7E2A732E3A535C30207ED05DE6"
                     {
-                    "Name" = "8:Cyotek.Windows.Forms.ColorPicker.dll"
+                    "Name" = "8:Innovation Uniform Editor Backend.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Cyotek.Windows.Forms.ColorPicker.dll"
+            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
@@ -544,15 +599,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
-        "ProductCode" = "8:{716CC679-1F4C-4309-B5EC-2891E45D7574}"
-        "PackageCode" = "8:{7CC4394A-DD33-4E47-982E-B16D45558B03}"
+        "ProductCode" = "8:{6AD6BF1F-D657-4271-9C2F-7FE6EC1D37CD}"
+        "PackageCode" = "8:{B012A3EB-483E-4583-AF20-28A15D0BEE75}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.6.2"
+        "ProductVersion" = "8:0.6.3"
         "Manufacturer" = "8:Thoricelli"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1350,7 +1405,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_34212E02F8724DDE9132776DA0AC43F5"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Debug\\Innovation Uniform Editor.exe"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Release\\Innovation Uniform Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"

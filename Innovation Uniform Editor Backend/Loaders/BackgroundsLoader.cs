@@ -15,7 +15,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         /// <summary>
         /// Loads all existing background images from disk.
         /// </summary>
-        protected override void Load()
+        public override void Load()
         {
             if (!Directory.Exists(_path))
                 Directory.CreateDirectory(_path);
