@@ -66,5 +66,16 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             }
             return _result;
         }
+        public void ExportLayered(string path)
+        {
+            for (int i = 0; i < GraphicsDrawers.Count; i++)
+            {
+                BaseGraphicsDrawer drawer = GraphicsDrawers[i];
+
+                Bitmap result = drawer.GetResult();
+
+                result.Save($"{path}/{i} - {drawer.Name}.png");
+            }
+        }
     }
 }

@@ -153,11 +153,11 @@ namespace Innovation_Uniform_Editor.UI
                 item.Controls.Add(name);
                 item.Controls.Add(picturePreview);
                 item.Controls.Add(visible);
-                item.Controls.Add(opacity);
-                item.Controls.Add(trackBarOpacity);
+                //item.Controls.Add(opacity);
+                //item.Controls.Add(trackBarOpacity);
 
-                if (drawer is BaseAssetDrawer<Bitmap>)
-                    item.Controls.Add(changeAsset);
+                //if (drawer is BaseAssetDrawer<Bitmap>)
+                    //item.Controls.Add(changeAsset);
 
                 item.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
                 item.Location = new System.Drawing.Point(3, 3);
@@ -195,6 +195,22 @@ namespace Innovation_Uniform_Editor.UI
         private void RefreshImage()
         {
             onChanged.Invoke(this, null);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportLayers_Click(object sender, EventArgs e)
+        {
+            DialogResult result = folderExportLayered.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                _customDrawer.ExportLayered(folderExportLayered.SelectedPath);
+                MessageBox.Show("Files exported!", "Export successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
