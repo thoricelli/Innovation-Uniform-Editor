@@ -48,6 +48,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 new BackgroundDrawer(_assets.Background),
                 new TextureDrawer(_assets.Textures),
                 new ColorDrawer(_colors, _assets.Selections),
+                new TopDrawer(_assets.Top),
                 new OverlayDrawer(_assets.Overlay),
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
