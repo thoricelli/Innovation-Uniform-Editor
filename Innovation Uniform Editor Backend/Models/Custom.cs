@@ -23,7 +23,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         [JsonIgnore]
         private UniformAssets _assets;
         [JsonIgnore]
-        public CustomDrawer Drawer { get; set; }
+        public CustomDrawer<Bitmap> Drawer { get; set; }
         [JsonIgnore]
         public bool UnsavedChanges { get; set; } = false;
 
@@ -204,7 +204,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 }
             }
 
-            Drawer = new CustomDrawer(_assets, Colors);
+            Drawer = new CustomDrawer<Bitmap>(_assets, Colors);
         }
         public void Clear()
         {

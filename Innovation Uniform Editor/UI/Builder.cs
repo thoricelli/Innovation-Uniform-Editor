@@ -29,8 +29,8 @@ namespace Innovation_Uniform_Editor.UI
             }
         }
 
-        private CustomDrawer _customDrawer;
-        public Builder(CustomDrawer customDrawer)
+        private CustomDrawer<Bitmap> _customDrawer;
+        public Builder(CustomDrawer<Bitmap> customDrawer)
         {
             _customDrawer = customDrawer;
             
