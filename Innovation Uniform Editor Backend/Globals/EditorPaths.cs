@@ -22,6 +22,9 @@ namespace Innovation_Uniform_Editor_Backend.Globals
 
         public static string TemplateNormalName = "Normal";
         public static string TemplateNormalPath = $"{TemplatePath}/{TemplateNormalName}";
+
+        public static string FontsName = "Fonts";
+        public static string FontsPath = $"{TemplatePath}/{FontsName}";
         #endregion
 
         #region PERSONAL

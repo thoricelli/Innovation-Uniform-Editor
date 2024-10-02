@@ -21,11 +21,14 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            var fontFamily = new FontFamily("Times New Roman");
-            var font = new Font(fontFamily, 32, FontStyle.Regular, GraphicsUnit.Pixel);
-            var solidBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 255));
+            var font = new Font(EditorMain.Neuropol, 10, FontStyle.Regular, GraphicsUnit.Pixel);
+            var solidBrush = new SolidBrush(Color.FromArgb(255, 167, 167, 167));
 
-            graphics.DrawString(text, font, solidBrush, position);
+            StringFormat format = new StringFormat();
+            format.LineAlignment = StringAlignment.Center;
+            format.Alignment = StringAlignment.Center;
+
+            graphics.DrawString(text, font, solidBrush, position, format);
         }
     }
 }
