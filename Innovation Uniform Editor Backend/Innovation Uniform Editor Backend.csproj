@@ -63,8 +63,10 @@
     <Compile Include="Drawers\GraphicsDrawers\Legacy\ColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\OverlayDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\TextDrawerBase.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\TextureDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\TopDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\UsernameDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\WatermarkDrawer.cs" />
     <Compile Include="Drawers\Interfaces\IDrawable.cs" />
     <Compile Include="EditorMain.cs" />
