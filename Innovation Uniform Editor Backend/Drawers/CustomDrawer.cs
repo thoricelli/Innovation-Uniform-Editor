@@ -64,7 +64,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 new TextureDrawer(_assets.Textures),
                 new ColorDrawer(_colors, _assets.Selections),
                 new OverlayDrawer(_assets.Overlay),
+                
+                //Logo's
+                
                 new TopDrawer(_assets.Top),
+                
+                //Armbads / Sleeves / Shoes
+                
                 //new UsernameDrawer(),
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
