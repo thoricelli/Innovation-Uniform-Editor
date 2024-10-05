@@ -31,5 +31,6 @@ namespace Innovation_Uniform_Editor_Backend.Models
         /// </summary>
         public List<Bitmap> Top { get; set; }
         public Bitmap Background { get; set; }
+        public Bitmap Bottom { get; set; }
     }
 }

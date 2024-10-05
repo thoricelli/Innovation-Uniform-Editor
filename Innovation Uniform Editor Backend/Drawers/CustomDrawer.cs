@@ -70,8 +70,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 new TopDrawer(_assets.Top),
                 
                 //Armbads / Sleeves / Shoes
+                new BottomDrawer(_assets.Bottom),
                 
                 //new UsernameDrawer(),
+
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
         }

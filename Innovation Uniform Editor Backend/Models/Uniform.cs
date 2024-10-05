@@ -18,10 +18,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
          * I don't have the textures for some of the uniforms, so, they have customization disabled!
         */
         public bool CanBeCustomized { get; set; } = true;
-        public ulong? HolsterId { get; set; }
-        public ulong? ArmbandId { get; set; }
+        public Guid? HolsterId { get; set; }
+        public Guid? ArmbandId { get; set; }
         //Shoes and gloves.
-        public ulong? BottomId { get; set; }
+        public Guid? BottomId { get; set; }
         //TODO logo's!!
 
         #region USERNAMES

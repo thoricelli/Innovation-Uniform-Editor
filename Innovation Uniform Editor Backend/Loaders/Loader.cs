@@ -31,6 +31,10 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             return _items;
         }
+        public virtual void Set(List<TType> list)
+        {
+            _items = list;
+        }
         public virtual void Load()
         {
             this._items = new List<TType>();

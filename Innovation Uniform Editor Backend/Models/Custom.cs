@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor_Backend.Models
@@ -101,6 +103,16 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 DialogResult dialogResult = DialogResult.Yes;//MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    Bitmap Capybara = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Capybara.png");
+
+                    byte[] value = Encoding.ASCII.GetBytes(EditorPaths.ToolName);
+
+                    PropertyItem prop = Capybara.GetPropertyItem(305);
+                    prop.Len = value.Length;
+                    prop.Value = value;
+
+                    Result.SetPropertyItem(prop);
+
                     Result.Save(path, ImageFormat.Png);
                     MessageBox.Show("Your custom has successfully been exported!", "Export successful.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -192,6 +204,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
             _result = null;
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
+
+            if (UniformBasedOn.BottomId.HasValue)
+                _assets.Bottom = (Bitmap)EditorMain.BottomsLoader.FindBy(UniformBasedOn.BottomId.Value).Image;
+
             UpdateBackground();
 
             if (Colors.Count != _assets.Selections.Count)

@@ -87,7 +87,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
                 Overlay = getOverlay(basePath),
                 Selections = getSelectionTemplates(basePath),
                 Textures = getListFromPath(basePath, "texture*.png"),
-                Top = getListFromPath(basePath, "top*.png")
+                Top = getListFromPath(basePath, "top*.png"),
             };
         }
     }
