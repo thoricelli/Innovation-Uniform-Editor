@@ -72,7 +72,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
                 new TopDrawer(_assets.Top),
                 
-                new UsernameDrawer(),
+                //new UsernameDrawer(),
 
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };

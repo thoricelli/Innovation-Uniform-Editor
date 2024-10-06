@@ -45,10 +45,22 @@
   },
   {
     "Id": "60a23692-a6cf-4f1b-85e1-5dc56422d577",
-    "Name": "Zip-Up Armband"
+    "Name": "Early Response Armband"
   },
   {
     "Id": "003253e9-0456-4d89-a695-40c80aee466a",
     "Name": "Security Text Armband (Less Contrast) (Low)"
+  },
+  {
+    "Id": "984fd432-85af-4e5b-8ac3-acb4fc9018fb",
+    "Name": "Elite Vest Armband"
+  },
+  {
+    "Id": "2123df52-c72c-4763-89a9-79ddcf08cdb5",
+    "Name": "Legacy Armband"
+  },
+  {
+    "Id": "e9f46544-5221-440c-9ab2-bd67b8b46611",
+    "Name": "Lightweight Armband"
   }
 ]
