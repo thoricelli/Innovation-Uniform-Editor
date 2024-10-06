@@ -60,6 +60,7 @@
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseAssetDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseGraphicsDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BitmapDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\ArmbandDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BottomDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\ColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Models\Enums\Code.cs" />
     <Compile Include="Models\Enums\ColorDrawerTypes.cs" />
     <Compile Include="Models\Enums\ColorType.cs" />
+    <Compile Include="Models\Enums\VersionType.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Holster.cs" />
     <Compile Include="Models\Interfaces\IIdentifier.cs" />

@@ -8,5 +8,14 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
         public WatermarkDrawer(Bitmap asset) : base(asset)
         {
         }
+        public override void DrawToGraphics(Graphics graphics, Bitmap result)
+        {
+            base.DrawToGraphics(graphics, result);
+
+            var font = new Font(EditorMain.SmallestPixel7, 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            var solidBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
+
+            graphics.DrawString(EditorMain.VersionString, font, solidBrush, new PointF(422, 483));
+        }
     }
 }

@@ -66,13 +66,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 new OverlayDrawer(_assets.Overlay),
                 
                 //Logo's
-                
+
+                new ArmbandDrawer(_assets.Armband),
+                new BottomDrawer(_assets.Bottom),
+
                 new TopDrawer(_assets.Top),
                 
-                //Armbads / Sleeves / Shoes
-                new BottomDrawer(_assets.Bottom),
-                
-                //new UsernameDrawer(),
+                new UsernameDrawer(),
 
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
@@ -85,6 +85,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+
                     g.Clear(Color.Transparent);
 
                     foreach (BaseGraphicsDrawer drawer in GraphicsDrawers)

@@ -131,15 +131,15 @@
       "Name": "Innovation Security Arctic Task Force Vest",
       "Creator": "Darkboltex",
       "CanBeCustomized": false,
-      //"BottomId": 9
+      "BottomId": "1436b29a-2583-4fae-818b-7c44c3999dad"
     },
     {
       "Id": 368715486,
       "Name": "Chromatic's Signature Elite Vest (Guardsman+)",
       "Creator": "ChromaticDeath",
       "CanBeCustomized": false,
-      //"BottomId": 7,
-      //"ArmbandId": 6
+      "BottomId": "f74d4091-bb02-4b86-b5eb-5e4c2c59e8f7",
+      "ArmbandId": "30a054ff-bd6e-4a79-b09d-3c374c6849d7"
     },
     {
       "Id": 368658202,

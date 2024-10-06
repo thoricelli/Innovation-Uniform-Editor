@@ -105,7 +105,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 {
                     Bitmap Capybara = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Capybara.png");
 
-                    byte[] value = Encoding.ASCII.GetBytes(EditorPaths.ToolName);
+                    byte[] value = Encoding.ASCII.GetBytes($"{EditorMain.ToolName} - {EditorMain.VersionString}");
 
                     PropertyItem prop = Capybara.GetPropertyItem(305);
                     prop.Len = value.Length;
@@ -207,6 +207,9 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             if (UniformBasedOn.BottomId.HasValue)
                 _assets.Bottom = (Bitmap)EditorMain.BottomsLoader.FindBy(UniformBasedOn.BottomId.Value).Image;
+
+            if (UniformBasedOn.ArmbandId.HasValue)
+                _assets.Armband = (Bitmap)EditorMain.ArmbandsLoader.FindBy(UniformBasedOn.ArmbandId.Value).Image;
 
             UpdateBackground();
 

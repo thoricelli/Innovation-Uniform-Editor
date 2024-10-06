@@ -4,8 +4,6 @@ namespace Innovation_Uniform_Editor_Backend.Globals
 {
     public static class EditorPaths
     {
-        public static string ToolName = "Thoricelli's Uniform Editor";
-
         public static string DataPathName = "thoricelli";
         public static string DataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/" + DataPathName;
 
