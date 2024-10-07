@@ -64,6 +64,7 @@
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BottomDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\ColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\HolsterDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\OverlayDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\TextDrawerBase.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\TextureDrawer.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Loaders\ArmbandsLoader.cs" />
     <Compile Include="Loaders\BackgroundsLoader.cs" />
     <Compile Include="Loaders\CustomsLoader.cs" />
+    <Compile Include="Loaders\HolsterLoader.cs" />
     <Compile Include="Loaders\HolstersLoader.cs" />
     <Compile Include="Loaders\Interfaces\IFindable.cs" />
     <Compile Include="Loaders\Loader.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Loaders\UniformsLoader.cs" />
     <Compile Include="Models\Armband.cs" />
     <Compile Include="Models\Base\ItemBase.cs" />
+    <Compile Include="Models\Base\ItemRecolorableBase.cs" />
     <Compile Include="Models\Bottom.cs" />
     <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\CustomColor.cs" />

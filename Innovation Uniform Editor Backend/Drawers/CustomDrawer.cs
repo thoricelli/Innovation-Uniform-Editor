@@ -69,6 +69,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
                 new ArmbandDrawer(_assets.Armband),
                 new BottomDrawer(_assets.Bottom),
+                new HolsterDrawer(_assets.Holster),
 
                 new TopDrawer(_assets.Top),
                 

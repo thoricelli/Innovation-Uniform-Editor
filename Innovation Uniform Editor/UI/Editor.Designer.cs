@@ -60,6 +60,7 @@ namespace Innovation_Uniform_Editor.UI
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewTab = new System.Windows.Forms.Button();
             this.btnDrawDetail = new System.Windows.Forms.Button();
+            this.btnManageSelections = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -74,7 +75,7 @@ namespace Innovation_Uniform_Editor.UI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureUniform.Location = new System.Drawing.Point(9, 27);
-            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureUniform.Margin = new System.Windows.Forms.Padding(2);
             this.pictureUniform.Name = "pictureUniform";
             this.pictureUniform.Size = new System.Drawing.Size(526, 535);
             this.pictureUniform.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -282,11 +283,12 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.Controls.Add(this.buttonsLayoutPanel);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.btnNewTab);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageSelections);
             this.flowLayoutPanel1.Controls.Add(this.btnDrawDetail);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(538, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 100);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 123);
             this.flowLayoutPanel1.TabIndex = 18;
             // 
             // label1
@@ -311,13 +313,22 @@ namespace Innovation_Uniform_Editor.UI
             // 
             // btnDrawDetail
             // 
-            this.btnDrawDetail.Location = new System.Drawing.Point(3, 68);
+            this.btnDrawDetail.Location = new System.Drawing.Point(3, 97);
             this.btnDrawDetail.Name = "btnDrawDetail";
             this.btnDrawDetail.Size = new System.Drawing.Size(188, 23);
             this.btnDrawDetail.TabIndex = 17;
             this.btnDrawDetail.Text = "Manage drawing";
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
+            // 
+            // btnManageSelections
+            // 
+            this.btnManageSelections.Location = new System.Drawing.Point(3, 68);
+            this.btnManageSelections.Name = "btnManageSelections";
+            this.btnManageSelections.Size = new System.Drawing.Size(189, 23);
+            this.btnManageSelections.TabIndex = 19;
+            this.btnManageSelections.Text = "Manage Selections";
+            this.btnManageSelections.UseVisualStyleBackColor = true;
             // 
             // Editor
             // 
@@ -334,7 +345,7 @@ namespace Innovation_Uniform_Editor.UI
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor";
@@ -382,5 +393,6 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.ToolStripMenuItem pantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shirtsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportLayersToolStripMenuItem;
+        private System.Windows.Forms.Button btnManageSelections;
     }
 }

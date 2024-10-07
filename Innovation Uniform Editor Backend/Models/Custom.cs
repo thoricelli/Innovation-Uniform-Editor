@@ -4,6 +4,8 @@ using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Images;
 using Innovation_Uniform_Editor_Backend.Loaders;
+using Innovation_Uniform_Editor_Backend.Loaders.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.Base;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -205,11 +207,9 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
 
-            if (UniformBasedOn.BottomId.HasValue)
-                _assets.Bottom = (Bitmap)EditorMain.BottomsLoader.FindBy(UniformBasedOn.BottomId.Value).Image;
-
-            if (UniformBasedOn.ArmbandId.HasValue)
-                _assets.Armband = (Bitmap)EditorMain.ArmbandsLoader.FindBy(UniformBasedOn.ArmbandId.Value).Image;
+            _assets.Bottom = LoadBitmapFromLoader(EditorMain.BottomsLoader, UniformBasedOn.BottomId);
+            _assets.Armband = LoadBitmapFromLoader(EditorMain.ArmbandsLoader, UniformBasedOn.ArmbandId);
+            _assets.Holster = LoadBitmapFromLoader(EditorMain.HolstersLoader, UniformBasedOn.HolsterId);
 
             UpdateBackground();
 
@@ -224,6 +224,13 @@ namespace Innovation_Uniform_Editor_Backend.Models
             }
 
             Drawer = new CustomDrawer<Bitmap>(_assets, Colors);
+        }
+
+        private Bitmap LoadBitmapFromLoader<T>(IFindable<T, Guid> loader, Guid? guid)
+        {
+            if (guid.HasValue)
+                return (Bitmap)(loader.FindBy(guid.Value) as ItemBase).Image;
+            return null;
         }
         public void Clear()
         {

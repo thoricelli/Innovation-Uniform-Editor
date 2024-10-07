@@ -17,7 +17,7 @@ namespace Innovation_Uniform_Editor_Backend.Models.Base
         [JsonIgnore]
         public abstract string Path { get; }
         [JsonIgnore]
-        public Image Image 
+        public virtual Image Image 
         {
             get
             {
@@ -27,6 +27,6 @@ namespace Innovation_Uniform_Editor_Backend.Models.Base
             }
         }
 
-        private Image _image;
+        protected Image _image;
     }
 }

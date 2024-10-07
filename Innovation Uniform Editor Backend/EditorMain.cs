@@ -43,7 +43,7 @@ namespace Innovation_Uniform_Editor_Backend
 
             ArmbandsLoader = new ArmbandsLoader(EditorPaths.ArmbandsPath);
             BottomsLoader = new BottomsLoader(EditorPaths.BottomsPath);
-            //HolstersLoader = new HolstersLoader(EditorPaths.HolstersPath);
+            HolstersLoader = new HolstersLoader(EditorPaths.HolstersPath);
 
             PrivateFontCollection collection = new PrivateFontCollection();
             collection.AddFontFile($"{EditorPaths.FontsPath}/Neuropol.otf");

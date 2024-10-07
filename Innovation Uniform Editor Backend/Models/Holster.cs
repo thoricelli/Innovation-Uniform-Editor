@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class Holster : ItemBase
+    public class Holster : ItemRecolorableBase
     {
         [JsonIgnore]
         public List<Image> SelectionTemplates { get; set; }
