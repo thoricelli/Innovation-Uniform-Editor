@@ -180,7 +180,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid);
             if (_backgroundImage != null)
-                _assets.Background = _backgroundImage.background;
+                _assets.Background = new Bitmap(_backgroundImage.Image);
         }
         public void ClearBackground()
         {

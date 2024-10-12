@@ -1,4 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
+using Innovation_Uniform_Editor.UI.OverlayAssets;
 using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Helpers;
@@ -296,6 +297,12 @@ namespace Innovation_Uniform_Editor.UI
         private void exportLayersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnManageSelections_Click(object sender, EventArgs e)
+        {
+            HolsterSelector selector = new HolsterSelector();
+            selector.Show();
         }
     }
 }

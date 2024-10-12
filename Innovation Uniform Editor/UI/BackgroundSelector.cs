@@ -38,7 +38,7 @@ namespace Innovation_Uniform_Editor.UI
                 picture.MouseDoubleClick += backgroundPicture_DoubleClick;
                 picture.MouseClick += backgroundPicture_Click;
 
-                picture.Image = bg.background;
+                picture.Image = bg.Image;
 
                 if (Background != null && bg.Id == Background.Id)
                     picture.BorderStyle = BorderStyle.Fixed3D;

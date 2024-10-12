@@ -59,8 +59,8 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewTab = new System.Windows.Forms.Button();
-            this.btnDrawDetail = new System.Windows.Forms.Button();
             this.btnManageSelections = new System.Windows.Forms.Button();
+            this.btnDrawDetail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -311,6 +311,16 @@ namespace Innovation_Uniform_Editor.UI
             this.btnNewTab.Visible = false;
             this.btnNewTab.Click += new System.EventHandler(this.btnSwitchType_Click);
             // 
+            // btnManageSelections
+            // 
+            this.btnManageSelections.Location = new System.Drawing.Point(3, 68);
+            this.btnManageSelections.Name = "btnManageSelections";
+            this.btnManageSelections.Size = new System.Drawing.Size(189, 23);
+            this.btnManageSelections.TabIndex = 19;
+            this.btnManageSelections.Text = "Manage Selections";
+            this.btnManageSelections.UseVisualStyleBackColor = true;
+            this.btnManageSelections.Click += new System.EventHandler(this.btnManageSelections_Click);
+            // 
             // btnDrawDetail
             // 
             this.btnDrawDetail.Location = new System.Drawing.Point(3, 97);
@@ -320,15 +330,6 @@ namespace Innovation_Uniform_Editor.UI
             this.btnDrawDetail.Text = "Manage drawing";
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
-            // 
-            // btnManageSelections
-            // 
-            this.btnManageSelections.Location = new System.Drawing.Point(3, 68);
-            this.btnManageSelections.Name = "btnManageSelections";
-            this.btnManageSelections.Size = new System.Drawing.Size(189, 23);
-            this.btnManageSelections.TabIndex = 19;
-            this.btnManageSelections.Text = "Manage Selections";
-            this.btnManageSelections.UseVisualStyleBackColor = true;
             // 
             // Editor
             // 

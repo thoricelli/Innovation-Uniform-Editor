@@ -148,6 +148,8 @@
     <Compile Include="UI\ColorDetail.Designer.cs">
       <DependentUpon>ColorDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Generic\GenericSelector.cs" />
+    <Compile Include="UI\Generic\GenericSelectorDesign.cs" />
     <Compile Include="UI\Help.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +191,12 @@
     </Compile>
     <Compile Include="UI\NewGroup.Designer.cs">
       <DependentUpon>NewGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OverlayAssets\HolsterSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OverlayAssets\HolsterSelector.Designer.cs">
+      <DependentUpon>HolsterSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SaveDialogue.cs">
       <SubType>Form</SubType>

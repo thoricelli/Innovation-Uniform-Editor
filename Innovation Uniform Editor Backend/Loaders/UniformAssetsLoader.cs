@@ -42,7 +42,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
             return FileToBitmap.Convert($"{path}/Original{EXTENSION}");
         }
 
-        private static List<bool[]> getSelectionTemplates(string path)
+        private static List<Bitmap> getSelectionTemplates(string path)
         {
             List<Bitmap> selections = new List<Bitmap>()
             {
@@ -62,7 +62,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
                 selections.Add(FileToBitmap.Convert(otherPath));
             }
 
-            return ImageHelper.BitmapToBoolean(selections);
+            return selections;
         }
         private static List<Bitmap> getListFromPath(string path, string query)
         {

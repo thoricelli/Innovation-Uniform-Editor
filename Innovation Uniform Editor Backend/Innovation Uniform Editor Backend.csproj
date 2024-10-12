@@ -93,6 +93,7 @@
     <Compile Include="Loaders\Interfaces\IFindable.cs" />
     <Compile Include="Loaders\Loader.cs" />
     <Compile Include="Loaders\OverlayAssetLoader.cs" />
+    <Compile Include="Loaders\RecolorableAssetLoader.cs" />
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Loaders\UniformsLoader.cs" />
     <Compile Include="Models\Armband.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Holster.cs" />
     <Compile Include="Models\Interfaces\IIdentifier.cs" />
+    <Compile Include="Models\Interfaces\IPreviewable.cs" />
+    <Compile Include="Models\Interfaces\IRecolorable.cs" />
     <Compile Include="Models\IssuesRepo.cs" />
     <Compile Include="Models\Logo.cs" />
     <Compile Include="Models\MenuItem.cs" />

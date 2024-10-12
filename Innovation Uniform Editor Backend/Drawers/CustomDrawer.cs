@@ -8,6 +8,7 @@ using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers
 {
@@ -86,6 +87,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
                     g.Clear(Color.Transparent);

@@ -49,5 +49,10 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             _items.Remove(FindBy(id));
         }
+
+        public virtual TType GetByIndex(int index)
+        {
+            return _items.ElementAt(index);
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace Innovation_Uniform_Editor_Backend.Images
 {
-    public class BackgroundImage : IIdentifier<Guid>
+    public class BackgroundImage : IIdentifier<Guid>, IPreviewable<Image>
     {
         public BackgroundImage()
         {
@@ -26,7 +26,7 @@ namespace Innovation_Uniform_Editor_Backend.Images
         }
         //JSONtoUniform.backgroundMask
         [JsonIgnore]
-        public Bitmap background
+        public Image Image
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Innovation_Uniform_Editor_Backend.Images
 
             EditorMain.Uniforms.backgroundMask.UnlockBits(bitmapMaskData);
 
-            int pixelSize = Image.GetPixelFormatSize(EditorMain.Uniforms.backgroundMask.PixelFormat);
+            int pixelSize = System.Drawing.Image.GetPixelFormatSize(EditorMain.Uniforms.backgroundMask.PixelFormat);
 
             int x = 0;
             int y = 0;
@@ -84,7 +84,7 @@ namespace Innovation_Uniform_Editor_Backend.Images
                 if (!File.Exists($"{EditorPaths.BackgroundsPath}/" + Id + ".png"))
                     TemplateUpdater.CheckForUpdates(true);
                 FileStream fs = File.Open($"{EditorPaths.BackgroundsPath}/" + Id + ".png", FileMode.Open, FileAccess.Read);
-                Bitmap returnResult = new Bitmap(Image.FromStream(fs));
+                Bitmap returnResult = new Bitmap(System.Drawing.Image.FromStream(fs));
                 fs.Close();
                 return returnResult;
             }
