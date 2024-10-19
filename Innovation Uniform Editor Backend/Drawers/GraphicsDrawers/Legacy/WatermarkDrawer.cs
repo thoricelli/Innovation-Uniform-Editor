@@ -13,11 +13,14 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
         {
             base.DrawToGraphics(graphics, result);
 
-            var font = new Font(EditorMain.SmallestPixel7, 12, FontStyle.Regular, GraphicsUnit.Pixel);
-            
-            var solidBrush = new SolidBrush(Color.FromArgb(0, 0, 0));
+            if (Visible)
+            {
+                var font = new Font(EditorMain.SmallestPixel7, 12, FontStyle.Regular, GraphicsUnit.Pixel);
 
-            graphics.DrawString(EditorMain.VersionString, font, solidBrush, new PointF(435, 487));
+                var solidBrush = new SolidBrush(Color.FromArgb(0, 0, 0));
+
+                graphics.DrawString(EditorMain.VersionString, font, solidBrush, new PointF(430, 487));
+            }
         }
     }
 }

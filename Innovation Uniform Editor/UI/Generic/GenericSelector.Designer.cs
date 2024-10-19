@@ -1,18 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Innovation_Uniform_Editor_Backend.Models.Interfaces;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI.Generic
 {
-    public partial class GenericSelector<TType, TId>
+    partial class GenericSelector<TType, TId> : Form where TType : IIdentifier<TId>, IPreviewable<Image>
     {
-        public void InitializeComponent(IContainer components)
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenericSelector<TType, TId>));
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        protected virtual void InitializeComponent()
+        {
             this.flowLayoutBackgrounds = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBGTemplate = new System.Windows.Forms.PictureBox();
             this.btnOK = new System.Windows.Forms.Button();
@@ -20,7 +39,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
             this.btnClearCurrent = new System.Windows.Forms.Button();
             this.flowLayoutBackgrounds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBGTemplate)).BeginInit();
-            original.SuspendLayout();
+            this.SuspendLayout();
             // 
             // flowLayoutBackgrounds
             // 
@@ -45,6 +64,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
             this.pictureBGTemplate.TabIndex = 0;
             this.pictureBGTemplate.TabStop = false;
             this.pictureBGTemplate.Visible = false;
+            this.pictureBGTemplate.BorderStyle = BorderStyle.FixedSingle;
             // 
             // btnOK
             // 
@@ -77,35 +97,33 @@ namespace Innovation_Uniform_Editor.UI.Generic
             this.btnClearCurrent.Text = "Clear current";
             this.btnClearCurrent.UseVisualStyleBackColor = true;
             this.btnClearCurrent.Click += new System.EventHandler(this.btnClearCurrent_Click);
+            this.btnClearCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // GenericSelector
             // 
-            original.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            original.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            original.ClientSize = new System.Drawing.Size(704, 296);
-            original.Controls.Add(this.btnClearCurrent);
-            original.Controls.Add(this.btnCancel);
-            original.Controls.Add(this.btnOK);
-            original.Controls.Add(this.flowLayoutBackgrounds);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(704, 296);
+            this.Controls.Add(this.btnClearCurrent);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.flowLayoutBackgrounds);
             //original.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            original.Name = "GenericSelector";
-            original.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            original.Text = "GenericSelector";
-            original.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BackgroundSelector_FormClosing);
+            this.Name = "GenericSelector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "GenericSelector";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BackgroundSelector_FormClosing);
             this.flowLayoutBackgrounds.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBGTemplate)).EndInit();
-            original.ResumeLayout(false);
-
-
-            InitializeUniforms();
+            this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutBackgrounds;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.PictureBox pictureBGTemplate;
-        private System.Windows.Forms.Button btnClearCurrent;
+        protected System.Windows.Forms.FlowLayoutPanel flowLayoutBackgrounds;
+        protected System.Windows.Forms.Button btnOK;
+        protected System.Windows.Forms.Button btnCancel;
+        protected System.Windows.Forms.PictureBox pictureBGTemplate;
+        protected System.Windows.Forms.Button btnClearCurrent;
 
-
+        #endregion
     }
 }

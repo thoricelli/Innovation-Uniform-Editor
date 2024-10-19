@@ -1,40 +1,38 @@
-﻿using Innovation_Uniform_Editor_Backend.Images;
-using Innovation_Uniform_Editor_Backend.Loaders;
+﻿using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI.Generic
 {
-    /// <summary>
-    /// This is a generic selector, it's purpose is to have an easy to use form to select between a list of objects
-    /// All of these objects have a preview, they follow a certain interface, and the selected will be returned (and also must be fed to this form)
-    /// 
-    /// Aka:
-    /// Simple selector (not a form in of itself).
-    /// Feed the current selection, and it'll give you the current selected back.
-    /// </summary>
-    public partial class GenericSelector<TType, TId> where TType : IIdentifier<TId>, IPreviewable<Image>
+    public partial class GenericSelector<TType, TId> : Form where TType : IIdentifier<TId>, IPreviewable<Image>
     {
         private bool KeepCurrent = false;
         public bool ClearCurrent = false;
         public TType item;
-        private Loader<TType, TId> _loader;
+        protected Loader<TType, TId> _loader;
 
-        private Form original;
-
-        public GenericSelector(Form original, Loader<TType, TId> loader)
+        public GenericSelector(Loader<TType, TId> loader)
         {
-            this.original = original;
             this._loader = loader;
+            InitializeComponent();
+            Initialize();
         }
-        protected virtual void InitializeUniforms()
+        public GenericSelector(TType item, Loader<TType, TId> loader)
+        {
+            this.item = item;
+            this._loader = loader;
+            InitializeComponent();
+            Initialize();
+        }
+        public virtual void Initialize()
         {
             this.flowLayoutBackgrounds.Controls.Clear();
 
@@ -53,6 +51,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
                 picture.TabStop = false;
                 picture.Visible = true;
                 picture.SizeMode = PictureBoxSizeMode.StretchImage;
+                picture.BorderStyle = BorderStyle.FixedSingle;
 
                 picture.MouseDoubleClick += backgroundPicture_DoubleClick;
                 picture.MouseClick += backgroundPicture_Click;
@@ -69,9 +68,9 @@ namespace Innovation_Uniform_Editor.UI.Generic
         protected virtual void backgroundPicture_Click(object sender, EventArgs e)
         {
             PictureBox bg = (PictureBox)sender;
-            if (bg.BorderStyle != BorderStyle.None)
+            if (bg.BorderStyle != BorderStyle.FixedSingle)
             {
-                bg.BorderStyle = BorderStyle.None;
+                bg.BorderStyle = BorderStyle.FixedSingle;
                 item = default;
                 ClearCurrent = true;
             }
@@ -81,7 +80,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
                 //Fix flicker!
                 foreach (PictureBox picture in this.flowLayoutBackgrounds.Controls)
                 {
-                    picture.BorderStyle = BorderStyle.None;
+                    picture.BorderStyle = BorderStyle.FixedSingle;
                 }
 
                 bg.BorderStyle = BorderStyle.Fixed3D;
@@ -94,7 +93,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
         {
             PictureBox bg = (PictureBox)sender;
             item.Id = _loader.GetByIndex(int.Parse(bg.Name)).Id;
-            original.Close();
+            this.Close();
         }
 
         protected virtual void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,19 +111,19 @@ namespace Innovation_Uniform_Editor.UI.Generic
             if (item != null && item.Id.Equals(backgroundId))
                 ClearCurrent = true;
 
-            InitializeUniforms();
+            Initialize();
         }
 
         protected virtual void btnCancel_Click(object sender, EventArgs e)
         {
             this.item = default;
-            original.Close();
+            this.Close();
         }
 
         protected virtual void btnOK_Click(object sender, EventArgs e)
         {
             KeepCurrent = true;
-            original.Close();
+            this.Close();
         }
 
         protected virtual void BackgroundSelector_FormClosing(object sender, FormClosingEventArgs e)
@@ -136,7 +135,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
         protected virtual void btnClearCurrent_Click(object sender, EventArgs e)
         {
             ClearCurrent = true;
-            original.Close();
+            this.Close();
         }
     }
 }

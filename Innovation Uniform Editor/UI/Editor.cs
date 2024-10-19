@@ -219,10 +219,10 @@ namespace Innovation_Uniform_Editor.UI
             bgs = new BackgroundSelector(custom.BackgroundImage, EditorMain.Backgrounds);
             bgs.ShowDialog();
 
-            if (bgs.ClearCurrent || bgs.Background == null)
+            if (bgs.ClearCurrent || bgs.item == null)
                 custom.ClearBackground();
             else
-                custom.ChangeBackground(bgs.Background);
+                custom.ChangeBackground(bgs.item);
 
             RefreshImage();
         }
