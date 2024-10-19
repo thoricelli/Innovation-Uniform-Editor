@@ -6,6 +6,7 @@ using Innovation_Uniform_Editor_Backend.Images;
 using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Loaders.Interfaces;
 using Innovation_Uniform_Editor_Backend.Models.Base;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
     //Result is also saved inside this folder for fast preview loading (downsized).
     //Add changing logo support!
     //Add username support!
-    public class Custom : MenuItem
+    public class Custom : MenuItem, IOverlayAssets
     {
         [JsonIgnore]
         private UniformAssets _assets;
@@ -49,6 +50,9 @@ namespace Innovation_Uniform_Editor_Backend.Models
             }
         }
         public ulong UniformBasedOnId { get; set; }
+        public Guid? HolsterId { get; set; }
+        public Guid? ArmbandId { get; set; }
+        public Guid? BottomId { get; set; }
         #endregion
         #region CUSTOM_SETTINGS
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
@@ -176,6 +180,49 @@ namespace Innovation_Uniform_Editor_Backend.Models
             _result = null;
             UnsavedChanges = true;
         }
+        //This is terrible, change this with an array please :(
+        public void ChangeHolster(Holster holster)
+        {
+            if (holster != null)
+                this.HolsterId = holster.Id;
+            else
+                ClearHolster();
+
+            Initialize();
+        }
+        public void ClearHolster()
+        {
+            this.HolsterId = null;
+            Initialize();
+        }
+        public void ChangeArmband(Armband armband)
+        {
+            if (armband != null)
+                this.ArmbandId = armband.Id;
+            else
+                ClearArmband();
+
+            Initialize();
+        }
+        public void ClearArmband()
+        {
+            this.ArmbandId = null;
+            Initialize();
+        }
+        public void ChangeBottom(Bottom bottom)
+        {
+            if (bottom != null)
+                this.BottomId = bottom.Id;
+            else
+                ClearBottom();
+
+            Initialize();
+        }
+        public void ClearBottom()
+        {
+            this.BottomId = null;
+            Initialize();
+        }
         private void UpdateBackground()
         {
             _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid);
@@ -207,9 +254,9 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
 
-            _assets.Bottom = LoadBitmapFromLoader(EditorMain.BottomsLoader, UniformBasedOn.BottomId);
-            _assets.Armband = LoadBitmapFromLoader(EditorMain.ArmbandsLoader, UniformBasedOn.ArmbandId);
-            _assets.Holster = LoadBitmapFromLoader(EditorMain.HolstersLoader, UniformBasedOn.HolsterId);
+            _assets.Bottom = LoadBitmapFromLoader(EditorMain.BottomsLoader, this.BottomId ?? UniformBasedOn.BottomId);
+            _assets.Armband = LoadBitmapFromLoader(EditorMain.ArmbandsLoader, this.ArmbandId ?? UniformBasedOn.ArmbandId);
+            _assets.Holster = LoadBitmapFromLoader(EditorMain.HolstersLoader, this.HolsterId ?? UniformBasedOn.HolsterId);
 
             UpdateBackground();
 

@@ -59,8 +59,10 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewTab = new System.Windows.Forms.Button();
-            this.btnManageSelections = new System.Windows.Forms.Button();
+            this.btnManageHolsters = new System.Windows.Forms.Button();
             this.btnDrawDetail = new System.Windows.Forms.Button();
+            this.btnManageArmbands = new System.Windows.Forms.Button();
+            this.btnManageBottoms = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -283,12 +285,14 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.Controls.Add(this.buttonsLayoutPanel);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.btnNewTab);
-            this.flowLayoutPanel1.Controls.Add(this.btnManageSelections);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageHolsters);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageArmbands);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageBottoms);
             this.flowLayoutPanel1.Controls.Add(this.btnDrawDetail);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(538, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 123);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 181);
             this.flowLayoutPanel1.TabIndex = 18;
             // 
             // label1
@@ -311,25 +315,45 @@ namespace Innovation_Uniform_Editor.UI
             this.btnNewTab.Visible = false;
             this.btnNewTab.Click += new System.EventHandler(this.btnSwitchType_Click);
             // 
-            // btnManageSelections
+            // btnManageHolsters
             // 
-            this.btnManageSelections.Location = new System.Drawing.Point(3, 68);
-            this.btnManageSelections.Name = "btnManageSelections";
-            this.btnManageSelections.Size = new System.Drawing.Size(189, 23);
-            this.btnManageSelections.TabIndex = 19;
-            this.btnManageSelections.Text = "Manage Selections";
-            this.btnManageSelections.UseVisualStyleBackColor = true;
-            this.btnManageSelections.Click += new System.EventHandler(this.btnManageSelections_Click);
+            this.btnManageHolsters.Location = new System.Drawing.Point(3, 68);
+            this.btnManageHolsters.Name = "btnManageHolsters";
+            this.btnManageHolsters.Size = new System.Drawing.Size(189, 23);
+            this.btnManageHolsters.TabIndex = 19;
+            this.btnManageHolsters.Text = "Manage Holsters";
+            this.btnManageHolsters.UseVisualStyleBackColor = true;
+            this.btnManageHolsters.Click += new System.EventHandler(this.btnManageHolsters_Click);
             // 
             // btnDrawDetail
             // 
-            this.btnDrawDetail.Location = new System.Drawing.Point(3, 97);
+            this.btnDrawDetail.Location = new System.Drawing.Point(3, 155);
             this.btnDrawDetail.Name = "btnDrawDetail";
             this.btnDrawDetail.Size = new System.Drawing.Size(188, 23);
             this.btnDrawDetail.TabIndex = 17;
             this.btnDrawDetail.Text = "Manage drawing";
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
+            // 
+            // btnManageArmbands
+            // 
+            this.btnManageArmbands.Location = new System.Drawing.Point(3, 97);
+            this.btnManageArmbands.Name = "btnManageArmbands";
+            this.btnManageArmbands.Size = new System.Drawing.Size(189, 23);
+            this.btnManageArmbands.TabIndex = 20;
+            this.btnManageArmbands.Text = "Manage Armbands";
+            this.btnManageArmbands.UseVisualStyleBackColor = true;
+            this.btnManageArmbands.Click += new System.EventHandler(this.btnManageArmbands_Click);
+            // 
+            // btnManageBottoms
+            // 
+            this.btnManageBottoms.Location = new System.Drawing.Point(3, 126);
+            this.btnManageBottoms.Name = "btnManageBottoms";
+            this.btnManageBottoms.Size = new System.Drawing.Size(189, 23);
+            this.btnManageBottoms.TabIndex = 21;
+            this.btnManageBottoms.Text = "Manage Bottoms";
+            this.btnManageBottoms.UseVisualStyleBackColor = true;
+            this.btnManageBottoms.Click += new System.EventHandler(this.btnManageBottoms_Click);
             // 
             // Editor
             // 
@@ -394,6 +418,8 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.ToolStripMenuItem pantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shirtsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportLayersToolStripMenuItem;
-        private System.Windows.Forms.Button btnManageSelections;
+        private System.Windows.Forms.Button btnManageHolsters;
+        private System.Windows.Forms.Button btnManageArmbands;
+        private System.Windows.Forms.Button btnManageBottoms;
     }
 }

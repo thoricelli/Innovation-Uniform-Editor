@@ -299,10 +299,52 @@ namespace Innovation_Uniform_Editor.UI
 
         }
 
-        private void btnManageSelections_Click(object sender, EventArgs e)
+        private void btnManageHolsters_Click(object sender, EventArgs e)
         {
-            HolsterSelector selector = new HolsterSelector();
-            selector.Show();
+            HolsterSelector selector;
+
+            if (custom.UniformBasedOn.HolsterId.HasValue)
+                selector = new HolsterSelector(custom.HolsterId ?? custom.UniformBasedOn.HolsterId.Value);
+            else
+                selector = new HolsterSelector();
+
+            selector.ShowDialog();
+
+            custom.ChangeHolster(selector.item);
+
+            RefreshImage();
+        }
+
+        private void btnManageArmbands_Click(object sender, EventArgs e)
+        {
+            ArmbandSelector selector;
+
+            if (custom.UniformBasedOn.HolsterId.HasValue)
+                selector = new ArmbandSelector(custom.ArmbandId ?? custom.UniformBasedOn.BottomId.Value);
+            else
+                selector = new ArmbandSelector();
+
+            selector.ShowDialog();
+
+            custom.ChangeArmband(selector.item);
+
+            RefreshImage();
+        }
+
+        private void btnManageBottoms_Click(object sender, EventArgs e)
+        {
+            BottomSelector selector;
+
+            if (custom.UniformBasedOn.HolsterId.HasValue)
+                selector = new BottomSelector(custom.BottomId ?? custom.UniformBasedOn.BottomId.Value);
+            else
+                selector = new BottomSelector();
+
+            selector.ShowDialog();
+
+            custom.ChangeBottom(selector.item);
+
+            RefreshImage();
         }
     }
 }

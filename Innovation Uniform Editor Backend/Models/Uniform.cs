@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class Uniform : IIdentifier<ulong>
+    public class Uniform : IIdentifier<ulong>, IOverlayAssets
     {
         public ulong Id { get; set; }
         public string Name { get; set; }
@@ -20,7 +20,6 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public bool CanBeCustomized { get; set; } = true;
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
-        //Shoes and gloves.
         public Guid? BottomId { get; set; }
         //TODO logo's!!
         #region USERNAMES

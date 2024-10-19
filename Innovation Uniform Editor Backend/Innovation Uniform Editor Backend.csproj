@@ -110,6 +110,7 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Holster.cs" />
     <Compile Include="Models\Interfaces\IIdentifier.cs" />
+    <Compile Include="Models\Interfaces\IOverlayAssets.cs" />
     <Compile Include="Models\Interfaces\IPreviewable.cs" />
     <Compile Include="Models\Interfaces\IRecolorable.cs" />
     <Compile Include="Models\IssuesRepo.cs" />

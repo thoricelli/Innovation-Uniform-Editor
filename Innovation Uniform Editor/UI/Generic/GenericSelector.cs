@@ -32,6 +32,13 @@ namespace Innovation_Uniform_Editor.UI.Generic
             InitializeComponent();
             Initialize();
         }
+        public GenericSelector(TId id, Loader<TType, TId> loader)
+        {
+            this.item = loader.FindBy(id);
+            this._loader = loader;
+            InitializeComponent();
+            Initialize();
+        }
         public virtual void Initialize()
         {
             this.flowLayoutBackgrounds.Controls.Clear();
