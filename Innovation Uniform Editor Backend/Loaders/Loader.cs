@@ -31,6 +31,10 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             return _items;
         }
+        public virtual void Set(List<TType> list)
+        {
+            _items = list;
+        }
         public virtual void Load()
         {
             this._items = new List<TType>();
@@ -44,6 +48,11 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         public virtual void DeleteBy(TId id)
         {
             _items.Remove(FindBy(id));
+        }
+
+        public virtual TType GetByIndex(int index)
+        {
+            return _items.ElementAt(index);
         }
     }
 }

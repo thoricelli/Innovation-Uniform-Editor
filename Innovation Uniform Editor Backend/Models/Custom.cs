@@ -4,12 +4,17 @@ using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Images;
 using Innovation_Uniform_Editor_Backend.Loaders;
+using Innovation_Uniform_Editor_Backend.Loaders.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.Base;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor_Backend.Models
@@ -18,12 +23,12 @@ namespace Innovation_Uniform_Editor_Backend.Models
     //Result is also saved inside this folder for fast preview loading (downsized).
     //Add changing logo support!
     //Add username support!
-    public class Custom : MenuItem
+    public class Custom : MenuItem, IOverlayAssets
     {
         [JsonIgnore]
         private UniformAssets _assets;
         [JsonIgnore]
-        public CustomDrawer Drawer { get; set; }
+        public CustomDrawer<Bitmap> Drawer { get; set; }
         [JsonIgnore]
         public bool UnsavedChanges { get; set; } = false;
 
@@ -45,6 +50,9 @@ namespace Innovation_Uniform_Editor_Backend.Models
             }
         }
         public ulong UniformBasedOnId { get; set; }
+        public Guid? HolsterId { get; set; }
+        public Guid? ArmbandId { get; set; }
+        public Guid? BottomId { get; set; }
         #endregion
         #region CUSTOM_SETTINGS
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
@@ -101,6 +109,16 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 DialogResult dialogResult = DialogResult.Yes;//MessageBox.Show("Are you sure you want to export with remaining issues?", "There are some remaining issues.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    Bitmap Capybara = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Capybara.png");
+
+                    byte[] value = Encoding.ASCII.GetBytes($"{EditorMain.ToolName} - {EditorMain.VersionString}");
+
+                    PropertyItem prop = Capybara.GetPropertyItem(305);
+                    prop.Len = value.Length;
+                    prop.Value = value;
+
+                    Result.SetPropertyItem(prop);
+
                     Result.Save(path, ImageFormat.Png);
                     MessageBox.Show("Your custom has successfully been exported!", "Export successful.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -162,11 +180,54 @@ namespace Innovation_Uniform_Editor_Backend.Models
             _result = null;
             UnsavedChanges = true;
         }
+        //This is terrible, change this with an array please :(
+        public void ChangeHolster(Holster holster)
+        {
+            if (holster != null)
+                this.HolsterId = holster.Id;
+            else
+                ClearHolster();
+
+            Initialize();
+        }
+        public void ClearHolster()
+        {
+            this.HolsterId = null;
+            Initialize();
+        }
+        public void ChangeArmband(Armband armband)
+        {
+            if (armband != null)
+                this.ArmbandId = armband.Id;
+            else
+                ClearArmband();
+
+            Initialize();
+        }
+        public void ClearArmband()
+        {
+            this.ArmbandId = null;
+            Initialize();
+        }
+        public void ChangeBottom(Bottom bottom)
+        {
+            if (bottom != null)
+                this.BottomId = bottom.Id;
+            else
+                ClearBottom();
+
+            Initialize();
+        }
+        public void ClearBottom()
+        {
+            this.BottomId = null;
+            Initialize();
+        }
         private void UpdateBackground()
         {
             _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid);
             if (_backgroundImage != null)
-                _assets.Background = _backgroundImage.background;
+                _assets.Background = new Bitmap(_backgroundImage.Image);
         }
         public void ClearBackground()
         {
@@ -192,6 +253,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
             _result = null;
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
+
+            _assets.Bottom = LoadBitmapFromLoader(EditorMain.BottomsLoader, this.BottomId ?? UniformBasedOn.BottomId);
+            _assets.Armband = LoadBitmapFromLoader(EditorMain.ArmbandsLoader, this.ArmbandId ?? UniformBasedOn.ArmbandId);
+            _assets.Holster = LoadBitmapFromLoader(EditorMain.HolstersLoader, this.HolsterId ?? UniformBasedOn.HolsterId);
+
             UpdateBackground();
 
             if (Colors.Count != _assets.Selections.Count)
@@ -204,7 +270,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 }
             }
 
-            Drawer = new CustomDrawer(_assets, Colors);
+            Drawer = new CustomDrawer<Bitmap>(_assets, Colors);
+        }
+
+        private Bitmap LoadBitmapFromLoader<T>(IFindable<T, Guid> loader, Guid? guid)
+        {
+            if (guid.HasValue)
+                return (Bitmap)(loader.FindBy(guid.Value) as ItemBase).Image;
+            return null;
         }
         public void Clear()
         {

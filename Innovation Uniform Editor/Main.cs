@@ -336,5 +336,28 @@ namespace Innovation_Uniform_Editor
                 }
             }
         }
+
+        private void newPantsTooltip_Click(object sender, EventArgs e)
+        {
+            selector = new Selector(ClothingPart.Pants, this);
+
+            selector.Show();
+
+            this.Hide();
+        }
+
+        private void newShirtsTooltip_Click(object sender, EventArgs e)
+        {
+            selector = new Selector(ClothingPart.Shirts, this);
+
+            selector.Show();
+
+            this.Hide();
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

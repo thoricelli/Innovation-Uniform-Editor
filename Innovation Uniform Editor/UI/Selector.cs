@@ -21,6 +21,7 @@ namespace Innovation_Uniform_Editor
             part = cPart;
             Handler = new UniformDropDown(part);
             InitializeComponent();
+            CheckButtonsShouldBeEnabled();
         }
 
         public Selector(ClothingPart cPart)
@@ -41,19 +42,26 @@ namespace Innovation_Uniform_Editor
         {
             Handler.UniformFromIndex((int)((ComboBox)sender).SelectedIndex);
             boxPreview.Image = Handler.LoadUniformPreview();
-
+            CheckButtonsShouldBeEnabled();
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
             boxPreview.Image = Handler.NextUniform();
             dropdownUniforms.SelectedIndex = Handler.currentUniform;
+            CheckButtonsShouldBeEnabled();
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
             boxPreview.Image = Handler.PreviousUniform();
             dropdownUniforms.SelectedIndex = Handler.currentUniform;
+        }
+
+        private void CheckButtonsShouldBeEnabled()
+        {
+            btnLeft.Enabled = !Handler.isFirst;
+            btnRight.Enabled = !Handler.isLast;
         }
         Editor editor;
         private void btnCreate_Click(object sender, EventArgs e)

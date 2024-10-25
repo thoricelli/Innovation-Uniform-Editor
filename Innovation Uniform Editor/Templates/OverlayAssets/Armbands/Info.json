@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "05d1b0f8-2585-4751-81de-8882e36f01d6",
+    "Name": "Advanced Tactical Armband"
+  },
+  {
+    "Id": "8ba5f71d-2dfb-481a-8f85-83626c1bb555",
+    "Name": "Elite Text Armband"
+  },
+  {
+    "Id": "b053b1d1-6278-4a8f-a6bb-c96223ca1182",
+    "Name": "Guardsman Text Armband"
+  },
+  {
+    "Id": "4414023a-8c1e-4541-9011-4d66a198e3d5",
+    "Name": "Innovation Text Armband"
+  },
+  {
+    "Id": "51ef14bf-3533-4ef9-86d3-91147c487422",
+    "Name": "Remastered Standard Armband"
+  },
+  {
+    "Id": "4e695282-c663-4e4f-a7cb-113bc8c3ab7e",
+    "Name": "Satchel & Zip Up Armband"
+  },
+  {
+    "Id": "30a054ff-bd6e-4a79-b09d-3c374c6849d7",
+    "Name": "Security Text Armband (Less Contrast) (High)"
+  },
+  {
+    "Id": "5cee9d71-9e16-409b-af37-3b6eea22cf7b",
+    "Name": "Security Text Armband"
+  },
+  {
+    "Id": "5443daf8-2d31-4d4e-bab1-433f830c9b20",
+    "Name": "Security Text Armband (Without Shading)"
+  },
+  {
+    "Id": "94c1a8f6-d40f-4a29-9d89-6481f299c1ce",
+    "Name": "Standard Armband"
+  },
+  {
+    "Id": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
+    "Name": "Thin Armband"
+  },
+  {
+    "Id": "60a23692-a6cf-4f1b-85e1-5dc56422d577",
+    "Name": "Early Response Armband"
+  },
+  {
+    "Id": "003253e9-0456-4d89-a695-40c80aee466a",
+    "Name": "Security Text Armband (Less Contrast) (Low)"
+  },
+  {
+    "Id": "984fd432-85af-4e5b-8ac3-acb4fc9018fb",
+    "Name": "Elite Vest Armband"
+  },
+  {
+    "Id": "2123df52-c72c-4763-89a9-79ddcf08cdb5",
+    "Name": "Legacy Armband"
+  },
+  {
+    "Id": "e9f46544-5221-440c-9ab2-bd67b8b46611",
+    "Name": "Lightweight Armband"
+  }
+]

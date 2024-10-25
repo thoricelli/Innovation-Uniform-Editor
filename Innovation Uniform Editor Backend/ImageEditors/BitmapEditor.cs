@@ -27,7 +27,12 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
         public BitmapEditor(Bitmap result)
         {
             original = result;
-            data = result.LockBits(new Rectangle(0, 0, result.Width, result.Height), ImageLockMode.ReadOnly, result.PixelFormat);
+            CreateData(result);
+        }
+
+        private void CreateData(Bitmap bitmap)
+        {
+            data = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, bitmap.PixelFormat);
         }
 
         //Blue, Green, Red, Alpha

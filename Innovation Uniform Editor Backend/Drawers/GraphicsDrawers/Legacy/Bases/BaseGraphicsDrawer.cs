@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
-    public abstract class BaseGraphicsDrawer : IGraphicsDrawer<Bitmap>
+    public abstract class BaseGraphicsDrawer : IGraphicsDrawer<Bitmap>, IResultDrawable<Bitmap>
     {
         public abstract string Name { get; }
         public bool Visible { get; set; } = true;

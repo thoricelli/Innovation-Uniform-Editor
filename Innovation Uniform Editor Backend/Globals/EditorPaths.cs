@@ -22,6 +22,26 @@ namespace Innovation_Uniform_Editor_Backend.Globals
 
         public static string TemplateNormalName = "Normal";
         public static string TemplateNormalPath = $"{TemplatePath}/{TemplateNormalName}";
+
+        public static string FontsName = "Fonts";
+        public static string FontsPath = $"{TemplatePath}/{FontsName}";
+        #endregion
+
+        #region OVERLAY_ASSETS
+        public static string OverlayAssetsName = "OverlayAssets";
+        public static string OverlayAssetsPath = $"{TemplatePath}/{OverlayAssetsName}";
+
+        public static string ArmbandsName = "Armbands";
+        public static string ArmbandsPath = $"{OverlayAssetsPath}/{ArmbandsName}";
+
+        public static string BottomsName = "Bottoms";
+        public static string BottomsPath = $"{OverlayAssetsPath}/{BottomsName}";
+
+        public static string HolstersName = "Holsters";
+        public static string HolstersPath = $"{OverlayAssetsPath}/{HolstersName}";
+
+        public static string LogosName = "Logos";
+        public static string LogosPath = $"{OverlayAssetsPath}/{LogosName}";
         #endregion
 
         #region PERSONAL

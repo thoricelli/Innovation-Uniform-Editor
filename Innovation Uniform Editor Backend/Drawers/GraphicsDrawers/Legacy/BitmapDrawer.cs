@@ -11,7 +11,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            DrawImageToGraphics(graphics, asset);
+            if (asset != null)
+                DrawImageToGraphics(graphics, asset);
         }
     }
 }

@@ -162,17 +162,18 @@
             this.flowDrawers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowDrawers.AutoSize = true;
+            this.flowDrawers.AutoScroll = true;
+            this.flowDrawers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowDrawers.Controls.Add(this.flowDrawerItem);
             this.flowDrawers.Location = new System.Drawing.Point(12, 12);
             this.flowDrawers.Name = "flowDrawers";
-            this.flowDrawers.Size = new System.Drawing.Size(1660, 394);
+            this.flowDrawers.Size = new System.Drawing.Size(563, 773);
             this.flowDrawers.TabIndex = 7;
             // 
             // btnExportLayers
             // 
             this.btnExportLayers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportLayers.Location = new System.Drawing.Point(12, 412);
+            this.btnExportLayers.Location = new System.Drawing.Point(12, 791);
             this.btnExportLayers.Name = "btnExportLayers";
             this.btnExportLayers.Size = new System.Drawing.Size(135, 23);
             this.btnExportLayers.TabIndex = 8;
@@ -188,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1684, 446);
+            this.ClientSize = new System.Drawing.Size(587, 825);
             this.Controls.Add(this.btnExportLayers);
             this.Controls.Add(this.flowDrawers);
             this.Name = "Builder";
@@ -201,7 +202,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackOpacity)).EndInit();
             this.flowDrawers.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

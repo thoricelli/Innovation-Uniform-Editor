@@ -2,6 +2,7 @@
 using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers.Bases;
 using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers.Interfaces;
 using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
+using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Base;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
@@ -36,10 +37,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
             new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.Overlay),
         };
 
-        public ColorDrawer(List<CustomColor> colors, List<bool[]> masks)
+        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections)
         {
             _colors = colors;
-            _masks = masks;
+            _masks = ImageHelper.BitmapToBoolean(Selections);
         }
         private ComponentDrawerBase GetCurrentComponent(double Yprogress)
         {
