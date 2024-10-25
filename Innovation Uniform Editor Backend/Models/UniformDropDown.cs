@@ -14,6 +14,21 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public int currentUniform = 0;
         public List<Uniform> uniforms { get; set; }
 
+        public bool isLast
+        {
+            get
+            {
+                return currentUniform >= uniforms.Count - 1;
+            }
+        }
+        public bool isFirst
+        {
+            get
+            {
+                return currentUniform <= 0;
+            }
+        }
+
         public UniformDropDown(ClothingPart cPart)
         {
             part = cPart;

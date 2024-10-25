@@ -10,6 +10,7 @@ namespace Innovation_Uniform_Editor_Backend.Models.Enums
     {
         Release,
         Bugtest,
+        Preview,
         Development
     }
 }
