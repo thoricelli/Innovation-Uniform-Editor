@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI.OverlayAssets
 {
-    public partial class HolsterSelector : GenericSelector<Holster, Guid>
+    public partial class HolsterSelector : GenericWithNameSelector<Holster, Guid>
     {
         public HolsterSelector() : base(EditorMain.HolstersLoader)
         {

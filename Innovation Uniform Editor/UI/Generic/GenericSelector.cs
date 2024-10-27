@@ -49,27 +49,34 @@ namespace Innovation_Uniform_Editor.UI.Generic
             {
                 TType bg = list[i];
 
-                PictureBox picture = new PictureBox();
-                picture.Location = new System.Drawing.Point(10, 10);
-                picture.Margin = new System.Windows.Forms.Padding(10);
-                picture.Name = i.ToString();
-                picture.Size = new System.Drawing.Size(200, 210);
-                picture.TabIndex = 0;
-                picture.TabStop = false;
-                picture.Visible = true;
-                picture.SizeMode = PictureBoxSizeMode.StretchImage;
-                picture.BorderStyle = BorderStyle.FixedSingle;
+                Control control = CreateItemControl(bg, i);
 
-                picture.MouseDoubleClick += backgroundPicture_DoubleClick;
-                picture.MouseClick += backgroundPicture_Click;
-
-                picture.Image = bg.Image;
-
-                if (item != null && bg.Id.Equals(item.Id))
-                    picture.BorderStyle = BorderStyle.Fixed3D;
-
-                this.flowLayoutBackgrounds.Controls.Add(picture);
+                this.flowLayoutBackgrounds.Controls.Add(control);
             }
+        }
+
+        protected virtual Control CreateItemControl(TType bg, int i)
+        {
+            PictureBox picture = new PictureBox();
+            picture.Location = new System.Drawing.Point(10, 10);
+            picture.Margin = new System.Windows.Forms.Padding(10);
+            picture.Name = i.ToString();
+            picture.Size = new System.Drawing.Size(200, 210);
+            picture.TabIndex = 0;
+            picture.TabStop = false;
+            picture.Visible = true;
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            picture.BorderStyle = BorderStyle.FixedSingle;
+
+            picture.MouseDoubleClick += backgroundPicture_DoubleClick;
+            picture.MouseClick += backgroundPicture_Click;
+
+            picture.Image = bg.Image;
+
+            if (item != null && bg.Id.Equals(item.Id))
+                picture.BorderStyle = BorderStyle.Fixed3D;
+
+            return picture;
         }
 
         protected virtual void backgroundPicture_Click(object sender, EventArgs e)
@@ -85,15 +92,26 @@ namespace Innovation_Uniform_Editor.UI.Generic
             {
                 ClearCurrent = false;
                 //Fix flicker!
-                foreach (PictureBox picture in this.flowLayoutBackgrounds.Controls)
-                {
-                    picture.BorderStyle = BorderStyle.FixedSingle;
-                }
+
+                ResetBorderStyle(flowLayoutBackgrounds.Controls);
 
                 bg.BorderStyle = BorderStyle.Fixed3D;
                 item = _loader.GetByIndex(int.Parse(bg.Name));
             }
 
+        }
+
+        private void ResetBorderStyle(Control.ControlCollection collection)
+        {
+            foreach (object item in collection)
+            {
+                if (item is PictureBox)
+                    ((PictureBox)item).BorderStyle = BorderStyle.FixedSingle;
+                if (item is Panel)
+                {
+                    ResetBorderStyle(((Panel)item).Controls);
+                }
+            }
         }
 
         protected virtual void backgroundPicture_DoubleClick(object sender, EventArgs e)

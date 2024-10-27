@@ -35,13 +35,18 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
             {
                 File.Delete(failedInstallFile);
 
-                string hash = GetNewHash();
-
-                WriteNewHash(hash);
-
-                DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipPath);
-                OfflineSetup();
+                FailedInstall();
             }
+        }
+
+        public static void FailedInstall()
+        {
+            string hash = GetNewHash();
+
+            WriteNewHash(hash);
+
+            //DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipPath);
+            OfflineSetup();
         }
 
         public static TemplateUpdateStatus CheckForUpdates(bool ignoreHash = false)
@@ -59,8 +64,13 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
 
                     BackupCreate(EditorPaths.TemplatePath);
 
-                    DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipPath);
-                    return ExtractToFolder(EditorPaths.ZipPath, EditorPaths.TemplatePath);
+                    DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipTempPath);
+                    
+                    TemplateUpdateStatus status = ExtractToFolder(EditorPaths.ZipTempPath, EditorPaths.TemplatePath);
+                    
+                    File.Delete(EditorPaths.ZipTempPath);
+                    
+                    return status;
                 }
 
                 return TemplateUpdateStatus.UP_TO_DATE;
@@ -109,7 +119,7 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
                     Application.Exit();
                 }
 
-                MessageBox.Show("You are offline, please connect to the internet.", "Offline.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Critical error in updating templates, please reinstall the application.", "Critical error.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return TemplateUpdateStatus.FAILURE;
             }

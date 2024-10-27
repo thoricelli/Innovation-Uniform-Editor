@@ -29,7 +29,7 @@
         protected override void InitializeComponent()
         {
             base.InitializeComponent();
-            this.Text = "HolsterSelector";
+            this.Text = "Holster Selector";
         }
 
         #endregion

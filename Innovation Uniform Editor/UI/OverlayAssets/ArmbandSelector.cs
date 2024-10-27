@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI.OverlayAssets
 {
-    public partial class ArmbandSelector : GenericSelector<Armband, Guid>
+    public partial class ArmbandSelector : GenericWithNameSelector<Armband, Guid>
     {
         public ArmbandSelector() : base(EditorMain.ArmbandsLoader)
         {

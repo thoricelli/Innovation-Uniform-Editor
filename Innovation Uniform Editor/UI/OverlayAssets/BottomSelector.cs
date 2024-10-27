@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI.OverlayAssets
 {
-    public partial class BottomSelector : GenericSelector<Bottom, Guid>
+    public partial class BottomSelector : GenericWithNameSelector<Bottom, Guid>
     {
         public BottomSelector() : base(EditorMain.BottomsLoader)
         {

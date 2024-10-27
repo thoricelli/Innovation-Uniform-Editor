@@ -1,4 +1,5 @@
-﻿using Innovation_Uniform_Editor_Backend.Models;
+﻿using Innovation_Uniform_Editor_Backend.Helpers;
+using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Base;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Newtonsoft.Json;
@@ -22,7 +23,12 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             base.Load();
 
-            using (StreamReader r = new StreamReader($"{_path}/{InfoName}"))
+            string infoPath = $"{_path}/{InfoName}";
+
+            if (!File.Exists(infoPath))
+                TemplateUpdater.FailedInstall(); //TODO: REPLACE
+
+            using (StreamReader r = new StreamReader(infoPath))
             {
                 string json = r.ReadToEnd();
 

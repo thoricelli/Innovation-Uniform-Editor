@@ -14,7 +14,7 @@ namespace Innovation_Uniform_Editor_Backend
         #region VERSIONING
         public static string ToolName { get; } = "Thoricelli's Uniform Editor";
         public static Version Version { get; } = new Version(0, 8, 0);
-        public static VersionType VersionType { get; } = VersionType.Development;
+        public static VersionType VersionType { get; } = VersionType.Preview;
         public static string VersionString { get; } = 
             VersionType == VersionType.Release ? 
             Version.ToString() : 

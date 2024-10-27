@@ -154,6 +154,9 @@
     <Compile Include="UI\Generic\GenericSelector.Designer.cs">
       <DependentUpon>GenericSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Generic\GenericWithNameSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Help.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ColorDetail.resx">
       <DependentUpon>ColorDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Generic\GenericSelector.resx">
+      <DependentUpon>GenericSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Help.resx">
       <DependentUpon>Help.cs</DependentUpon>

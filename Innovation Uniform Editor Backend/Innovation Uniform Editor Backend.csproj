@@ -88,7 +88,6 @@
     <Compile Include="Loaders\ArmbandsLoader.cs" />
     <Compile Include="Loaders\BackgroundsLoader.cs" />
     <Compile Include="Loaders\CustomsLoader.cs" />
-    <Compile Include="Loaders\HolsterLoader.cs" />
     <Compile Include="Loaders\HolstersLoader.cs" />
     <Compile Include="Loaders\Interfaces\IFindable.cs" />
     <Compile Include="Loaders\Loader.cs" />
@@ -110,6 +109,7 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Holster.cs" />
     <Compile Include="Models\Interfaces\IIdentifier.cs" />
+    <Compile Include="Models\Interfaces\INamable.cs" />
     <Compile Include="Models\Interfaces\IOverlayAssets.cs" />
     <Compile Include="Models\Interfaces\IPreviewable.cs" />
     <Compile Include="Models\Interfaces\IRecolorable.cs" />

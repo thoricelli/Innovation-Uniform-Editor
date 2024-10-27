@@ -1,7 +1,7 @@
 {
   "MinimumVersion": {
     "MajorVersion": 0,
-    "MinorVersion": 7,
+    "MinorVersion": 8,
     "PatchVersion": 0
   },
   "Pants": [

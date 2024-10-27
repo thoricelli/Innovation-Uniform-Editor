@@ -13,6 +13,9 @@ namespace Innovation_Uniform_Editor_Backend.Globals
         public static string ZipName = "Templates.zip";
         public static string ZipPath = $"{DataPath}/{ZipName}";
 
+        public static string ZipTemp = "Templates_TEMP.zip";
+        public static string ZipTempPath = $"{DataPath}/{ZipTemp}";
+
         public static string TemplateName = "Templates";
         public static string TemplatePath = $"{DataPath}/{TemplateName}";
 
