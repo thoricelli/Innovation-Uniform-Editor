@@ -29,6 +29,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             if (Visible)
                 graphics.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height));
         }
+        protected void DrawImageToGraphics(Graphics graphics, Image image)
+        {
+            if (Visible)
+                graphics.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height));
+        }
         protected void DrawList(Graphics graphics, List<Bitmap> images)
         {
             if (Visible)

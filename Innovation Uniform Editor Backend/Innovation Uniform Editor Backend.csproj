@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drawers\Base\BaseGraphicComponentDrawer.cs" />
     <Compile Include="Drawers\ComponentDrawers\Bases\ComponentDrawerBase.cs" />
     <Compile Include="Drawers\ComponentDrawers\ColorComponentDrawer.cs" />
     <Compile Include="Drawers\ComponentDrawers\EmptyComponentDrawer.cs" />
@@ -62,9 +63,12 @@
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BitmapDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\ArmbandDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\BottomDrawer.cs" />
-    <Compile Include="Drawers\GraphicsDrawers\Legacy\ColorDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\BaseDrawableDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\ColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\HolsterDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\Legacy\LogoDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\OverlayDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\Bases\TextDrawerBase.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Legacy\TextureDrawer.cs" />
@@ -91,6 +95,7 @@
     <Compile Include="Loaders\HolstersLoader.cs" />
     <Compile Include="Loaders\Interfaces\IFindable.cs" />
     <Compile Include="Loaders\Loader.cs" />
+    <Compile Include="Loaders\LogosLoader.cs" />
     <Compile Include="Loaders\OverlayAssetLoader.cs" />
     <Compile Include="Loaders\RecolorableAssetLoader.cs" />
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
