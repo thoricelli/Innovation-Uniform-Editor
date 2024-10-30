@@ -1,10 +1,11 @@
-﻿using Innovation_Uniform_Editor_Backend.Models.Interfaces;
+﻿using Innovation_Uniform_Editor_Backend.Models.Base;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System.Collections.Generic;
 using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class UniformAssets : IRecolorable
+    public class UniformAssets : BaseRecolorableAssets, IRecolorable
     {
         public void ChangeBackground(Bitmap background)
         {
@@ -14,10 +15,6 @@ namespace Innovation_Uniform_Editor_Backend.Models
         /// Original uniform used as preview.
         /// </summary>
         public Bitmap Original { get; set; }
-        /// <summary>
-        /// Overlay (vest, boots, etc)
-        /// </summary>
-        public Bitmap Overlay { get; set; }
         
         /// <summary>
         /// Textures used on the uniform (no shading)
@@ -32,6 +29,6 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public Bitmap Bottom { get; set; }
         public Bitmap Armband { get; set; }
         public Bitmap Holster { get; set; }
-        public List<Bitmap> Selections { get; set; }
+        public List<LogoAssets> Logos { get; set; }
     }
 }

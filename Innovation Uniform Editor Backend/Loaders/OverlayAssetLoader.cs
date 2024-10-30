@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Loaders
 {
-    public abstract class OverlayAssetLoader<TType> : Loader<TType, Guid> where TType : ItemBase, IIdentifier<Guid>
+    public abstract class OverlayAssetLoader<TType> : Loader<TType, Guid> where TType : ItemBase<Guid>, IIdentifier<Guid>
     {
         private const string InfoName = "Info.json";
         protected OverlayAssetLoader(string path) : base(path)

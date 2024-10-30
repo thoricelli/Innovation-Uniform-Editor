@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class Logo : ItemBase
+    public class Logo : ItemRecolorableBase<ulong>
     {
         public override string Path => EditorPaths.LogosPath;
     }

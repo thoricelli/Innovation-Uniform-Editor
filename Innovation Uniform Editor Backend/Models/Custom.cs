@@ -276,7 +276,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         private Bitmap LoadBitmapFromLoader<T>(IFindable<T, Guid> loader, Guid? guid)
         {
             if (guid.HasValue)
-                return (Bitmap)(loader.FindBy(guid.Value) as ItemBase).Image;
+                return (Bitmap)(loader.FindBy(guid.Value) as ItemBase<Guid>).Image;
             return null;
         }
         public void Clear()

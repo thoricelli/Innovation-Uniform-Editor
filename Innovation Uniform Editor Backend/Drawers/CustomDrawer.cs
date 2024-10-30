@@ -26,43 +26,43 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
         {
             _assets = assets;
             _colors = colors;
-        }
 
-        /*
-        How a custom is built up: (back to front)
-        - Background
 
-        - Textures (if any)
-        (Textures can be shaded already if no source exists = add no shading to color)
+            /*
+            How a custom is built up: (back to front)
+            - Background
 
-        - Color(s) as OVERLAY -> separately masked.
+            - Textures (if any)
+            (Textures can be shaded already if no source exists = add no shading to color)
 
-        - Shading masked on top of the colored and/or textured layers
-        (Since the vest is already shaded)
+            - Color(s) as OVERLAY -> separately masked.
 
-        - Overlay
-        */
+            - Shading masked on top of the colored and/or textured layers
+            (Since the vest is already shaded)
 
-        protected override List<BaseGraphicsDrawer> _graphicsDrawers =>
-            new List<BaseGraphicsDrawer>()
-        {
-            new BackgroundDrawer(_assets.Background),
-            new TextureDrawer(_assets.Textures),
-            new ColorDrawer(_colors, _assets.Selections),
-            new OverlayDrawer(_assets.Overlay),
+            - Overlay
+            */
 
-            //Logo's.
-            //new LogoDrawer(colors, assets.Selections),
+            GraphicsDrawers = new List<BaseGraphicsDrawer>()
+            {
+                new BackgroundDrawer(_assets.Background),
+                new TextureDrawer(_assets.Textures),
+                new ColorDrawer(_colors, _assets.Selections),
+                new OverlayDrawer(_assets.Overlay),
 
-            new ArmbandDrawer(_assets.Armband),
-            new BottomDrawer(_assets.Bottom),
-            new HolsterDrawer(_assets.Holster),
+                //Logo's.
+                //new LogoDrawer(colors, assets.Selections),
 
-            new TopDrawer(_assets.Top),
+                new ArmbandDrawer(_assets.Armband),
+                new BottomDrawer(_assets.Bottom),
+                new HolsterDrawer(_assets.Holster),
+
+                new TopDrawer(_assets.Top),
         
-            //new UsernameDrawer(),
+                //new UsernameDrawer(),
 
-            new WatermarkDrawer(EditorMain.Uniforms.waterMark)
-        };
+                new WatermarkDrawer(EditorMain.Uniforms.waterMark)
+            };
+        }
     }
 }

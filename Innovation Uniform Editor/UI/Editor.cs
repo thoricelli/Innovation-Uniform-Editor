@@ -319,8 +319,8 @@ namespace Innovation_Uniform_Editor.UI
         {
             ArmbandSelector selector;
 
-            if (custom.UniformBasedOn.HolsterId.HasValue)
-                selector = new ArmbandSelector(custom.ArmbandId ?? custom.UniformBasedOn.BottomId.Value);
+            if (custom.UniformBasedOn.ArmbandId.HasValue)
+                selector = new ArmbandSelector(custom.ArmbandId ?? custom.UniformBasedOn.ArmbandId.Value);
             else
                 selector = new ArmbandSelector();
 
@@ -335,7 +335,7 @@ namespace Innovation_Uniform_Editor.UI
         {
             BottomSelector selector;
 
-            if (custom.UniformBasedOn.HolsterId.HasValue)
+            if (custom.UniformBasedOn.BottomId.HasValue)
                 selector = new BottomSelector(custom.BottomId ?? custom.UniformBasedOn.BottomId.Value);
             else
                 selector = new BottomSelector();

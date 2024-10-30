@@ -79,7 +79,7 @@ namespace Innovation_Uniform_Editor.UI
                 CheckBox visible = new CheckBox
                 {
                     Checked = drawer.Visible,
-                    CheckState = System.Windows.Forms.CheckState.Checked,
+                    CheckState = drawer.Visible ? System.Windows.Forms.CheckState.Checked : CheckState.Unchecked,
                     Location = new System.Drawing.Point(5, 226),
                     Margin = new System.Windows.Forms.Padding(5, 3, 3, 3),
                     Name = $"chkVisible_{i}",

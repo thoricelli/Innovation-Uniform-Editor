@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class Holster : ItemRecolorableBase, IRecolorable
+    public class Holster : ItemRecolorableBase<Guid>, IRecolorable
     {
         [JsonIgnore]
         public override string Path => EditorPaths.HolstersPath;

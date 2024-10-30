@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models.Base
 {
-    public abstract class ItemBase : IIdentifier<Guid>, IPreviewable<Image>, INamable
+    public abstract class ItemBase<T> : IIdentifier<T>, IPreviewable<Image>, INamable
     {
-        public Guid Id { get; set; }
+        public T Id { get; set; }
         public string Name { get; set; }
         [JsonIgnore]
         public abstract string Path { get; }

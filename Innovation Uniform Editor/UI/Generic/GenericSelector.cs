@@ -18,7 +18,6 @@ namespace Innovation_Uniform_Editor.UI.Generic
         public bool ClearCurrent = false;
         public TType item;
         protected Loader<TType, TId> _loader;
-
         public GenericSelector(Loader<TType, TId> loader)
         {
             this._loader = loader;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class Bottom : ItemBase
+    public class Bottom : ItemBase<Guid>
     {
         public override string Path => EditorPaths.BottomsPath;
     }

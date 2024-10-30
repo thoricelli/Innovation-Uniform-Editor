@@ -25,13 +25,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
         //I hate GDI
         protected Bitmap bitmap;
 
-        protected abstract List<BaseGraphicsDrawer> _graphicsDrawers { get; }
-        public List<BaseGraphicsDrawer> GraphicsDrawers {
-            get
-            {
-                return _graphicsDrawers;
-            }
-        }
+        public List<BaseGraphicsDrawer> GraphicsDrawers;
 
         public BaseGraphicComponentDrawer()
         {
@@ -39,6 +33,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
                 bitmap = new Bitmap(DIMENSIONS.X, DIMENSIONS.Y);
 
             _result = ImageFactory.CreateImageEditor<T>(DIMENSIONS.X, DIMENSIONS.Y);
+
+            GraphicsDrawers = new List<BaseGraphicsDrawer>();
         }
         public virtual T Draw()
         {

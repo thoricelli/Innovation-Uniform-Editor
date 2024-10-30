@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
-    public class Armband : ItemBase
+    public class Armband : ItemBase<Guid>
     {
         public override string Path => EditorPaths.ArmbandsPath;
     }

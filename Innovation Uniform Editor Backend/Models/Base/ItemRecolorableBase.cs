@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models.Base
 {
-    public abstract class ItemRecolorableBase : ItemBase
+    public abstract class ItemRecolorableBase<T> : ItemBase<T>
     {
         public override Image Image
         {

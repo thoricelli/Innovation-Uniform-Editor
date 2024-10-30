@@ -9,12 +9,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Loaders
 {
-    public abstract class RecolorableAssetLoader<TType> : Loader<TType, ulong> where TType : IIdentifier<ulong>
+    public abstract class RecolorableAssetLoader<TType, TId> : Loader<TType, TId> where TType : IIdentifier<TId>
     {
         public RecolorableAssetLoader(string path) : base(path)
         {

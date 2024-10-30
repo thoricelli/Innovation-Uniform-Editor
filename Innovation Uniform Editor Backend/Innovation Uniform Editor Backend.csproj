@@ -101,6 +101,7 @@
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Loaders\UniformsLoader.cs" />
     <Compile Include="Models\Armband.cs" />
+    <Compile Include="Models\Base\BaseRecolorableAssets.cs" />
     <Compile Include="Models\Base\ItemBase.cs" />
     <Compile Include="Models\Base\ItemRecolorableBase.cs" />
     <Compile Include="Models\Bottom.cs" />
@@ -120,7 +121,9 @@
     <Compile Include="Models\Interfaces\IRecolorable.cs" />
     <Compile Include="Models\IssuesRepo.cs" />
     <Compile Include="Models\Logo.cs" />
+    <Compile Include="Models\LogoAssets.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\Uniform.cs" />
     <Compile Include="Models\UniformAssets.cs" />
     <Compile Include="Models\UniformDropDown.cs" />

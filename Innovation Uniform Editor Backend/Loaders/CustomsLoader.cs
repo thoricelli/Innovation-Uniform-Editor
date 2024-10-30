@@ -67,6 +67,13 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
             Sort();
         }
 
+        public override void DeleteBy(Guid id)
+        {
+            Directory.Delete($"{_path}/{id}", true);
+
+            base.DeleteBy(id);
+        }
+
         public override Custom FindBy(Guid id)
         {
             Custom custom = base.FindBy(id);
