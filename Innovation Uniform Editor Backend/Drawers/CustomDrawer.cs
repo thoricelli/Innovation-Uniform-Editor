@@ -6,6 +6,7 @@ using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Factory;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Models.Assets;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

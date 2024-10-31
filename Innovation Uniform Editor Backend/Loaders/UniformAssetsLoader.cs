@@ -2,6 +2,7 @@
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Models.Assets;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;

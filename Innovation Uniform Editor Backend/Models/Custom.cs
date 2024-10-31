@@ -1,19 +1,19 @@
 ﻿using Innovation_Uniform_Editor_Backend.Drawers;
-using Innovation_Uniform_Editor_Backend.Drawers.Interfaces;
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Images;
 using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Loaders.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.Assets;
 using Innovation_Uniform_Editor_Backend.Models.Base;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Forms;
 

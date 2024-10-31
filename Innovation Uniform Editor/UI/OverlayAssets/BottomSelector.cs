@@ -1,6 +1,6 @@
 ﻿using Innovation_Uniform_Editor.UI.Generic;
 using Innovation_Uniform_Editor_Backend;
-using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

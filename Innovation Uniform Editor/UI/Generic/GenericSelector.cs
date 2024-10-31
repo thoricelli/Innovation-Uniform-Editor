@@ -1,4 +1,4 @@
-﻿using Innovation_Uniform_Editor_Backend.Loaders;
+﻿using Innovation_Uniform_Editor_Backend.Loaders.Base;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System;
 using System.Collections.Generic;

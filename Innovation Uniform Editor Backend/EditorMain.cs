@@ -1,6 +1,7 @@
 ﻿using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Loaders;
+using Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets;
 using Innovation_Uniform_Editor_Backend.Models.Enums;
 using System;
 using System.Drawing;

@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Images;
+using Innovation_Uniform_Editor_Backend.Loaders.Base;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
