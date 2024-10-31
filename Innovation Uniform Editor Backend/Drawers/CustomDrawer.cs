@@ -13,15 +13,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
     /// <typeparam name="T"></typeparam>
     public class CustomDrawer<T> : BaseGraphicComponentDrawer<T>
     {
-        private UniformAssets _assets;
-        private List<CustomColor> _colors;
-
         public CustomDrawer(UniformAssets assets, List<CustomColor> colors)
         {
-            _assets = assets;
-            _colors = colors;
-
-
             /*
             How a custom is built up: (back to front)
             - Background
@@ -39,19 +32,19 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
-                new BackgroundDrawer(_assets.Background),
-                new TextureDrawer(_assets.Textures),
-                new ColorDrawer(_colors, _assets.Selections),
-                new OverlayDrawer(_assets.Overlay),
+                new BackgroundDrawer(assets.Background),
+                new TextureDrawer(assets.Textures),
+                new ColorDrawer(colors, assets.Selections),
+                new OverlayDrawer(assets.Overlay),
 
                 //Logo's.
-                //new LogoDrawer(colors, assets.Selections),
+                new LogoDrawer(colors, assets.Logos),
 
-                new ArmbandDrawer(_assets.Armband),
-                new BottomDrawer(_assets.Bottom),
-                new HolsterDrawer(_assets.Holster),
+                new ArmbandDrawer(assets.Armband),
+                new BottomDrawer(assets.Bottom),
+                new HolsterDrawer(assets.Holster),
 
-                new TopDrawer(_assets.Top),
+                new TopDrawer(assets.Top),
         
                 //new UsernameDrawer(),
 
