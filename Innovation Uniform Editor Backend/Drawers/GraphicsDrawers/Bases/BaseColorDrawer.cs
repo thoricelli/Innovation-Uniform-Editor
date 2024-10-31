@@ -1,4 +1,4 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDrawers;
 using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDrawers.Bases;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.ImageEditors;
