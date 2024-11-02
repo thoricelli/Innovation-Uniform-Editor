@@ -7,6 +7,6 @@ namespace Innovation_Uniform_Editor_Backend.Models.Interfaces
         Guid? HolsterId { get; set; }
         Guid? ArmbandId { get; set; }
         //Shoes and gloves.
-        Guid? BottomId { get; set; }
+        Guid? ShoeId { get; set; }
     }
 }

@@ -52,7 +52,8 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public ulong UniformBasedOnId { get; set; }
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
-        public Guid? BottomId { get; set; }
+        public Guid? ShoeId { get; set; }
+        public Guid? GloveId { get; set; }
         #endregion
         #region CUSTOM_SETTINGS
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
@@ -209,18 +210,33 @@ namespace Innovation_Uniform_Editor_Backend.Models
             this.ArmbandId = null;
             Initialize();
         }
-        public void ChangeBottom(Bottom bottom)
+        public void ChangeShoe(Shoe shoe)
         {
-            if (bottom != null)
-                this.BottomId = bottom.Id;
+            if (shoe != null)
+                this.ShoeId = shoe.Id;
             else
-                ClearBottom();
+                ClearShoe();
 
             Initialize();
         }
-        public void ClearBottom()
+        public void ClearShoe()
         {
-            this.BottomId = null;
+            this.ShoeId = null;
+            Initialize();
+        }
+
+        public void ChangeGlove(Glove glove)
+        {
+            if (glove != null)
+                this.GloveId = glove.Id;
+            else
+                ClearGlove();
+
+            Initialize();
+        }
+        public void ClearGlove()
+        {
+            this.GloveId = null;
             Initialize();
         }
         private void UpdateBackground()
@@ -254,7 +270,8 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
 
-            _assets.Bottom = LoadBitmapFromLoader(EditorMain.BottomsLoader, this.BottomId ?? UniformBasedOn.BottomId);
+            _assets.Glove = LoadBitmapFromLoader(EditorMain.GlovesLoader, this.GloveId ?? UniformBasedOn.GloveId);
+            _assets.Shoe = LoadBitmapFromLoader(EditorMain.ShoesLoader, this.ShoeId ?? UniformBasedOn.ShoeId);
             _assets.Armband = LoadBitmapFromLoader(EditorMain.ArmbandsLoader, this.ArmbandId ?? UniformBasedOn.ArmbandId);
             _assets.Holster = LoadBitmapFromLoader(EditorMain.HolstersLoader, this.HolsterId ?? UniformBasedOn.HolsterId);
 

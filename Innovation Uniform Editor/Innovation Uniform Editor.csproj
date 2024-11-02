@@ -193,11 +193,17 @@
     <Compile Include="UI\NewGroup.Designer.cs">
       <DependentUpon>NewGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\OverlayAssets\BottomSelector.cs">
+    <Compile Include="UI\OverlayAssets\GloveSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\OverlayAssets\BottomSelector.Designer.cs">
-      <DependentUpon>BottomSelector.cs</DependentUpon>
+    <Compile Include="UI\OverlayAssets\GloveSelector.Designer.cs">
+      <DependentUpon>GloveSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OverlayAssets\ShoeSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OverlayAssets\ShoeSelector.Designer.cs">
+      <DependentUpon>ShoeSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\OverlayAssets\ArmbandSelector.cs">
       <SubType>Form</SubType>

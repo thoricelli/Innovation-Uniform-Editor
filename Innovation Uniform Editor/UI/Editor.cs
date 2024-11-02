@@ -333,23 +333,34 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnManageShoes_Click(object sender, EventArgs e)
         {
-            BottomSelector selector;
+            ShoeSelector selector;
 
-            if (custom.UniformBasedOn.BottomId.HasValue)
-                selector = new BottomSelector(custom.BottomId ?? custom.UniformBasedOn.BottomId.Value);
+            if (custom.UniformBasedOn.ShoeId.HasValue)
+                selector = new ShoeSelector(custom.ShoeId ?? custom.UniformBasedOn.ShoeId.Value);
             else
-                selector = new BottomSelector();
+                selector = new ShoeSelector();
 
             selector.ShowDialog();
 
-            custom.ChangeBottom(selector.item);
+            custom.ChangeShoe(selector.item);
 
             RefreshImage();
         }
 
         private void btnManageGloves_Click(object sender, EventArgs e)
         {
+            GloveSelector selector;
 
+            if (custom.UniformBasedOn.GloveId.HasValue)
+                selector = new GloveSelector(custom.GloveId ?? custom.UniformBasedOn.GloveId.Value);
+            else
+                selector = new GloveSelector();
+
+            selector.ShowDialog();
+
+            custom.ChangeGlove(selector.item);
+
+            RefreshImage();
         }
     }
 }

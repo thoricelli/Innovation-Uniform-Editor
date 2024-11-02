@@ -62,7 +62,8 @@
     <Compile Include="Drawers\GraphicsDrawers\Bases\BaseGraphicsDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\BitmapDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ArmbandDrawer.cs" />
-    <Compile Include="Drawers\GraphicsDrawers\BottomDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\GloveDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\ShoeDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Bases\BaseColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Bases\BaseDrawableDrawer.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="ImageEditors\Interface\IImageEditor.cs" />
     <Compile Include="ImageEditors\BitmapEditor.cs" />
     <Compile Include="Images\BackgroundImage.cs" />
-    <Compile Include="Loaders\OverlayAssets\BottomsLoader.cs" />
+    <Compile Include="Loaders\OverlayAssets\GlovesLoader.cs" />
     <Compile Include="Loaders\OverlayAssets\ArmbandsLoader.cs" />
     <Compile Include="Loaders\BackgroundsLoader.cs" />
     <Compile Include="Loaders\CustomsLoader.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Loaders\Base\Loader.cs" />
     <Compile Include="Loaders\OverlayAssets\LogosLoader.cs" />
     <Compile Include="Loaders\OverlayAssets\Base\OverlayAssetLoader.cs" />
+    <Compile Include="Loaders\OverlayAssets\ShoesLoader.cs" />
     <Compile Include="Loaders\RecolorableAssetLoader.cs" />
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Loaders\UniformsLoader.cs" />
@@ -105,7 +107,6 @@
     <Compile Include="Models\Base\BaseRecolorableAssets.cs" />
     <Compile Include="Models\Base\ItemBase.cs" />
     <Compile Include="Models\Base\ItemRecolorableBase.cs" />
-    <Compile Include="Models\OverlayAssets\Bottom.cs" />
     <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\CustomColor.cs" />
     <Compile Include="Models\Enums\BlendMode.cs" />

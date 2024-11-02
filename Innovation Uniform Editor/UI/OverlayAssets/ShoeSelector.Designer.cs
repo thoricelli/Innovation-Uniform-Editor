@@ -1,6 +1,6 @@
 ﻿namespace Innovation_Uniform_Editor.UI.OverlayAssets
 {
-    partial class BottomSelector
+    partial class ShoeSelector
     {
         /// <summary>
         /// Required designer variable.

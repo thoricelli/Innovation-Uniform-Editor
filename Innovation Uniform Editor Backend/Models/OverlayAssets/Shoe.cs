@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Models.OverlayAssets
 {
-    public class Shoe : ItemRecolorableBase<Guid>
+    public class Shoe : ItemBase<Guid>
     {
         public override string Path => EditorPaths.ShoesPath;
     }

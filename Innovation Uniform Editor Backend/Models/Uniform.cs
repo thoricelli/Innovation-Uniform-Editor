@@ -18,7 +18,8 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public bool CanBeCustomized { get; set; } = true;
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
-        public Guid? BottomId { get; set; }
+        public Guid? ShoeId { get; set; }
+        public Guid? GloveId { get; set; }
         public ulong[] LogoIds { get; set; } 
         //TODO logo's!!
         #region USERNAMES

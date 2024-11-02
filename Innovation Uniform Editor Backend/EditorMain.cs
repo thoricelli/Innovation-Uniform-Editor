@@ -25,7 +25,8 @@ namespace Innovation_Uniform_Editor_Backend
         public static UniformsLoader Uniforms { get; set; }
         public static CustomsLoader Customs { get; set; }
         public static ArmbandsLoader ArmbandsLoader { get; set; }
-        public static BottomsLoader BottomsLoader { get; set; }
+        public static GlovesLoader GlovesLoader { get; set; }
+        public static ShoesLoader ShoesLoader { get; set; }
         public static HolstersLoader HolstersLoader { get; set; }
         public static LogosLoader LogosLoader { get; set; }
         public static FontFamily Neuropol { get; set; }
@@ -44,7 +45,10 @@ namespace Innovation_Uniform_Editor_Backend
             Customs = new CustomsLoader(EditorPaths.CustomsPath);
 
             ArmbandsLoader = new ArmbandsLoader(EditorPaths.ArmbandsPath);
-            BottomsLoader = new BottomsLoader(EditorPaths.BottomsPath);
+
+            GlovesLoader = new GlovesLoader(EditorPaths.GlovesPath);
+            ShoesLoader = new ShoesLoader(EditorPaths.ShoesPath);
+
             HolstersLoader = new HolstersLoader(EditorPaths.HolstersPath);
 
             LogosLoader = new LogosLoader(EditorPaths.LogosPath);

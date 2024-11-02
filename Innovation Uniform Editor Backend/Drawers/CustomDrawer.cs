@@ -41,8 +41,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 new LogoDrawer(colors, assets.Logos),
 
                 new ArmbandDrawer(assets.Armband),
-                new BottomDrawer(assets.Bottom),
                 new HolsterDrawer(assets.Holster),
+
+                new GloveDrawer(assets.Glove),
+                new ShoeDrawer(assets.Shoe),
 
                 new TopDrawer(assets.Top),
         

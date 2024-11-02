@@ -1,11 +1,16 @@
 ﻿using Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets.Base;
 using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets
 {
-    public class BottomsLoader : OverlayAssetLoader<Bottom>
+    public class ShoesLoader : OverlayAssetLoader<Shoe>
     {
-        public BottomsLoader(string path) : base(path)
+        public ShoesLoader(string path) : base(path)
         {
         }
     }

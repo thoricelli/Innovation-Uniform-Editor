@@ -5,12 +5,12 @@ using System;
 
 namespace Innovation_Uniform_Editor.UI.OverlayAssets
 {
-    public partial class BottomSelector : GenericWithNameSelector<Bottom, Guid>
+    public partial class GloveSelector : GenericWithNameSelector<Glove, Guid>
     {
-        public BottomSelector() : base(EditorMain.BottomsLoader)
+        public GloveSelector() : base(EditorMain.GlovesLoader)
         {
         }
-        public BottomSelector(Guid bottomId) : base(bottomId, EditorMain.BottomsLoader)
+        public GloveSelector(Guid gloveId) : base(gloveId, EditorMain.GlovesLoader)
         {
         }
     }

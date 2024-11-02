@@ -27,7 +27,8 @@ namespace Innovation_Uniform_Editor_Backend.Models.Assets
         /// </summary>
         public List<Bitmap> Top { get; set; }
         public Bitmap Background { get; set; }
-        public Bitmap Bottom { get; set; }
+        public Bitmap Glove { get; set; }
+        public Bitmap Shoe { get; set; }
         public Bitmap Armband { get; set; }
         public Bitmap Holster { get; set; }
         public List<Logo> Logos { get; set; }
