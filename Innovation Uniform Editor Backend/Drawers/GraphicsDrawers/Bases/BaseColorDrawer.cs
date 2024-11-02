@@ -15,7 +15,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
     public abstract class BaseColorDrawer : BaseGraphicsDrawer
     {
         private List<CustomColor> _colors;
-        private List<bool[]> _masks;
+        private List<MaskImage> _masks;
         /// <summary>
         /// Doesn't shade the color at specified index.
         /// </summary>
@@ -71,10 +71,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             return (yProgress - previousEndPercentage) * (1 / (currentEndPercentage - previousEndPercentage));
         }
 
-        public unsafe override void DrawToGraphics(Graphics graphics, Bitmap result)
+        public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            //I've been trying to generalize this function to make it usable with literally anything,
-            //and I failed.
+            //This thing requires a rework, cause it ain't pretty.
 
             ImageEditorBase<Bitmap> colorsResultLooper = new BitmapEditor(new Bitmap(result.Width, result.Height));
 
@@ -85,30 +84,46 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
             for (int maskIndex = 0; maskIndex < _masks.Count; maskIndex++)
             {
-                bool[] mask = _masks[maskIndex];
+                MaskImage maskImage = _masks[maskIndex];
 
-                for (int i = 0; i < mask.Length; i++)
+                for (int i = 0; i < maskImage.mask.Length; i++)
                 {
-                    bool canDraw = mask[i];
+                    bool canDraw = maskImage.mask[i];
 
                     if (canDraw)
                     {
+                        //The total progress of the image, for every Y position increase.
                         double yProgress = (double)(i / width) / (totalSize / width);
 
+                        //The amount of times it has to be repeated. Defaults to 2.
                         double progressRepeat = yProgress * repeat;
                         double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
 
+                        //progressWithRepeat is corresponds to the current index of the current drawing component.
                         ComponentDrawerBase currentDrawItem = GetCurrentComponent(
                             progressWithRepeat
                         );
 
                         if (currentDrawItem != null)
                         {
+                            /*
+                              Original image has different size than the mask images have.
+                              So, i, being the index of the current pixel will be different 
+                              (since of width and height difference).
+
+                              We just get the x and y position and just map them to the width of the image.
+                            */
+
+                            int y = i / maskImage.Width;
+                            int x = i % maskImage.Width;
+
+                            int drawIndex = x + (y * width);
+
                             currentDrawItem.Draw(
                                 _colors[maskIndex],
                                 colorsResultLooper,
                                 resultLooper,
-                                i,
+                                drawIndex,
                                 GetCurrentProgressForComponent(progressWithRepeat)
                              );
                         }
@@ -116,7 +131,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                 }
             }
 
-            //TEMP
+            //TEMP?
             currentDrawerIndex = 0;
             resultLooper.CloseImage();
 

@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
+using Innovation_Uniform_Editor_Backend.Models;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -48,9 +49,9 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
         /// </summary>
         /// <param name="images"></param>
         /// <returns>A list of alpha values mapped as boolean</returns>
-        public unsafe static List<bool[]> BitmapToBoolean(List<Bitmap> images)
+        public static List<MaskImage> BitmapToBoolean(List<Bitmap> images)
         {
-            List<bool[]> bools = new List<bool[]>();
+            List<MaskImage> bools = new List<MaskImage>();
 
             foreach (Bitmap item in images)
             {
@@ -64,7 +65,7 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
                     alphas[i] = editor.GetPixelColorAtIndex(i).A == 0;
                 }
 
-                bools.Add(alphas);
+                bools.Add(new MaskImage(editor.GetWidth(), editor.GetHeight(), alphas));
 
                 ((BitmapEditor)editor).CloseImage();
             }

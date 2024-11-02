@@ -21,7 +21,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            if (_logs != null)
+            if (_logs != null && Visible)
             {
                 foreach (Logo item in _logs)
                 {

@@ -187,12 +187,6 @@
     <Compile Include="UI\Issues.Designer.cs">
       <DependentUpon>Issues.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\MainSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\MainSettings.Designer.cs">
-      <DependentUpon>MainSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\NewGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,12 +222,6 @@
     </Compile>
     <Compile Include="UI\Selector.Designer.cs">
       <DependentUpon>Selector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TextureCreator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\TextureCreator.Designer.cs">
-      <DependentUpon>TextureCreator.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DraggablePanel.resx">
       <DependentUpon>DraggablePanel.cs</DependentUpon>
@@ -275,9 +263,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Issues.resx">
       <DependentUpon>Issues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\MainSettings.resx">
-      <DependentUpon>MainSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NewGroup.resx">
       <DependentUpon>NewGroup.cs</DependentUpon>

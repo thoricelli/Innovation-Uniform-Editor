@@ -7,5 +7,7 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors.Interface
         Color GetPixelColorAtIndex(int index);
         void ChangePixelColorAtIndex(int index, Color color);
         int GetTotalSize();
+        int GetWidth();
+        int GetHeight();
     }
 }

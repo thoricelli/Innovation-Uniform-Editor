@@ -67,7 +67,7 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
 
         public override int GetWidth()
         {
-            return data.Stride;
+            return data.Stride / 4;
         }
 
         public override int GetHeight()

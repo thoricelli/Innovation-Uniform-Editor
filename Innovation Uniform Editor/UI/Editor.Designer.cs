@@ -58,12 +58,12 @@ namespace Innovation_Uniform_Editor.UI
             this.btnWarnings = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnNewTab = new System.Windows.Forms.Button();
             this.btnManageHolsters = new System.Windows.Forms.Button();
             this.btnManageArmbands = new System.Windows.Forms.Button();
-            this.btnManageBottoms = new System.Windows.Forms.Button();
-            this.btnDrawDetail = new System.Windows.Forms.Button();
+            this.btnManageShoes = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDrawDetail = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -285,10 +285,10 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.buttonsLayoutPanel);
             this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.btnNewTab);
             this.flowLayoutPanel1.Controls.Add(this.btnManageHolsters);
             this.flowLayoutPanel1.Controls.Add(this.btnManageArmbands);
-            this.flowLayoutPanel1.Controls.Add(this.btnManageBottoms);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageShoes);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.btnDrawDetail);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -305,20 +305,9 @@ namespace Innovation_Uniform_Editor.UI
             this.label1.Size = new System.Drawing.Size(190, 2);
             this.label1.TabIndex = 18;
             // 
-            // btnNewTab
-            // 
-            this.btnNewTab.Location = new System.Drawing.Point(3, 39);
-            this.btnNewTab.Name = "btnNewTab";
-            this.btnNewTab.Size = new System.Drawing.Size(189, 23);
-            this.btnNewTab.TabIndex = 16;
-            this.btnNewTab.Text = "New tab";
-            this.btnNewTab.UseVisualStyleBackColor = true;
-            this.btnNewTab.Visible = false;
-            this.btnNewTab.Click += new System.EventHandler(this.btnSwitchType_Click);
-            // 
             // btnManageHolsters
             // 
-            this.btnManageHolsters.Location = new System.Drawing.Point(3, 68);
+            this.btnManageHolsters.Location = new System.Drawing.Point(3, 39);
             this.btnManageHolsters.Name = "btnManageHolsters";
             this.btnManageHolsters.Size = new System.Drawing.Size(189, 23);
             this.btnManageHolsters.TabIndex = 19;
@@ -328,7 +317,7 @@ namespace Innovation_Uniform_Editor.UI
             // 
             // btnManageArmbands
             // 
-            this.btnManageArmbands.Location = new System.Drawing.Point(3, 97);
+            this.btnManageArmbands.Location = new System.Drawing.Point(3, 68);
             this.btnManageArmbands.Name = "btnManageArmbands";
             this.btnManageArmbands.Size = new System.Drawing.Size(189, 23);
             this.btnManageArmbands.TabIndex = 20;
@@ -336,15 +325,23 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageArmbands.UseVisualStyleBackColor = true;
             this.btnManageArmbands.Click += new System.EventHandler(this.btnManageArmbands_Click);
             // 
-            // btnManageBottoms
+            // btnManageShoes
             // 
-            this.btnManageBottoms.Location = new System.Drawing.Point(3, 126);
-            this.btnManageBottoms.Name = "btnManageBottoms";
-            this.btnManageBottoms.Size = new System.Drawing.Size(189, 23);
-            this.btnManageBottoms.TabIndex = 21;
-            this.btnManageBottoms.Text = "Bottoms";
-            this.btnManageBottoms.UseVisualStyleBackColor = true;
-            this.btnManageBottoms.Click += new System.EventHandler(this.btnManageBottoms_Click);
+            this.btnManageShoes.Location = new System.Drawing.Point(3, 126);
+            this.btnManageShoes.Name = "btnManageShoes";
+            this.btnManageShoes.Size = new System.Drawing.Size(189, 23);
+            this.btnManageShoes.TabIndex = 21;
+            this.btnManageShoes.Text = "Shoes";
+            this.btnManageShoes.UseVisualStyleBackColor = true;
+            this.btnManageShoes.Click += new System.EventHandler(this.btnManageBottoms_Click);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(3, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(190, 2);
+            this.label2.TabIndex = 22;
             // 
             // btnDrawDetail
             // 
@@ -356,13 +353,14 @@ namespace Innovation_Uniform_Editor.UI
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
             // 
-            // label2
+            // button1
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(3, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 2);
-            this.label2.TabIndex = 22;
+            this.button1.Location = new System.Drawing.Point(3, 97);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Gloves";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Editor
             // 
@@ -420,7 +418,6 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.FlowLayoutPanel buttonsLayoutPanel;
         private System.Windows.Forms.Button btnWarnings;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnNewTab;
         private System.Windows.Forms.Button btnDrawDetail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
@@ -429,7 +426,8 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.ToolStripMenuItem exportLayersToolStripMenuItem;
         private System.Windows.Forms.Button btnManageHolsters;
         private System.Windows.Forms.Button btnManageArmbands;
-        private System.Windows.Forms.Button btnManageBottoms;
+        private System.Windows.Forms.Button btnManageShoes;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

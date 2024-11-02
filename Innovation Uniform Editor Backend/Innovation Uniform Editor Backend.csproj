@@ -100,6 +100,7 @@
     <Compile Include="Loaders\RecolorableAssetLoader.cs" />
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Loaders\UniformsLoader.cs" />
+    <Compile Include="Models\MaskImage.cs" />
     <Compile Include="Models\OverlayAssets\Armband.cs" />
     <Compile Include="Models\Base\BaseRecolorableAssets.cs" />
     <Compile Include="Models\Base\ItemBase.cs" />
