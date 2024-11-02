@@ -36,6 +36,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
         }
+
+        public override bool HasAsset()
+        {
+            return _colors.Count > 0 && _masks.Count > 0;
+        }
         private ComponentDrawerBase GetCurrentComponent(double Yprogress)
         {
             //this code is shit.

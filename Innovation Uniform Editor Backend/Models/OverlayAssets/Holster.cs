@@ -8,12 +8,9 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Models.OverlayAssets
 {
-    public class Holster : ItemRecolorableBase<Guid>, IRecolorable
+    public class Holster : ItemRecolorableBase<Guid>
     {
         [JsonIgnore]
         public override string Path => EditorPaths.HolstersPath;
-
-        [JsonIgnore]
-        public List<Bitmap> Selections { get; set; }
     }
 }

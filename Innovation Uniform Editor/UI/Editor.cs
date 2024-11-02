@@ -331,7 +331,7 @@ namespace Innovation_Uniform_Editor.UI
             RefreshImage();
         }
 
-        private void btnManageBottoms_Click(object sender, EventArgs e)
+        private void btnManageShoes_Click(object sender, EventArgs e)
         {
             BottomSelector selector;
 
@@ -345,6 +345,11 @@ namespace Innovation_Uniform_Editor.UI
             custom.ChangeBottom(selector.item);
 
             RefreshImage();
+        }
+
+        private void btnManageGloves_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

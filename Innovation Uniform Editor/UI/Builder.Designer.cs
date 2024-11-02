@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Builder));
             this.picturePreview = new System.Windows.Forms.PictureBox();
             this.flowDrawerItem = new System.Windows.Forms.FlowLayoutPanel();
             this.flowItem = new System.Windows.Forms.FlowLayoutPanel();
@@ -192,6 +193,7 @@
             this.ClientSize = new System.Drawing.Size(587, 825);
             this.Controls.Add(this.btnExportLayers);
             this.Controls.Add(this.flowDrawers);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Builder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Builder";

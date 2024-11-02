@@ -4,13 +4,14 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
+
     public abstract class BaseGraphicsDrawer : IGraphicsDrawer<Bitmap>, IResultDrawable<Bitmap>
     {
         public abstract string Name { get; }
         public bool Visible { get; set; } = true;
         public float Transparency { get; set; } = 1.0F;
         public Point Shift { get; set; } = new Point(0, 0);
-
+        public abstract bool HasAsset();
         public abstract void DrawToGraphics(Graphics graphics, Bitmap result);
         public Bitmap GetResult()
         {

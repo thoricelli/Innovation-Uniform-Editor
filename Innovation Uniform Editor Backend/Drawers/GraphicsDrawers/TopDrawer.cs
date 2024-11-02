@@ -10,6 +10,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
         {
         }
 
+        public override bool HasAsset()
+        {
+            return asset.Count > 0;
+        }
+
         public override string Name => "Top";
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)

@@ -63,7 +63,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageShoes = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDrawDetail = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnManageGloves = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -287,7 +287,7 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.btnManageHolsters);
             this.flowLayoutPanel1.Controls.Add(this.btnManageArmbands);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageGloves);
             this.flowLayoutPanel1.Controls.Add(this.btnManageShoes);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.btnDrawDetail);
@@ -333,7 +333,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageShoes.TabIndex = 21;
             this.btnManageShoes.Text = "Shoes";
             this.btnManageShoes.UseVisualStyleBackColor = true;
-            this.btnManageShoes.Click += new System.EventHandler(this.btnManageBottoms_Click);
+            this.btnManageShoes.Click += new System.EventHandler(this.btnManageShoes_Click);
             // 
             // label2
             // 
@@ -353,14 +353,15 @@ namespace Innovation_Uniform_Editor.UI
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
             // 
-            // button1
+            // btnManageGloves
             // 
-            this.button1.Location = new System.Drawing.Point(3, 97);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Gloves";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnManageGloves.Location = new System.Drawing.Point(3, 97);
+            this.btnManageGloves.Name = "btnManageGloves";
+            this.btnManageGloves.Size = new System.Drawing.Size(189, 23);
+            this.btnManageGloves.TabIndex = 23;
+            this.btnManageGloves.Text = "Gloves";
+            this.btnManageGloves.UseVisualStyleBackColor = true;
+            this.btnManageGloves.Click += new System.EventHandler(this.btnManageGloves_Click);
             // 
             // Editor
             // 
@@ -428,6 +429,6 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.Button btnManageArmbands;
         private System.Windows.Forms.Button btnManageShoes;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnManageGloves;
     }
 }

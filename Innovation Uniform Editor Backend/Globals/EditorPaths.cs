@@ -40,6 +40,12 @@ namespace Innovation_Uniform_Editor_Backend.Globals
         public static string BottomsName = "Bottoms";
         public static string BottomsPath = $"{OverlayAssetsPath}/{BottomsName}";
 
+        public static string GlovesName = "Gloves";
+        public static string GlovesPath = $"{OverlayAssetsPath}/{GlovesName}";
+
+        public static string ShoesName = "Shoes";
+        public static string ShoesPath = $"{OverlayAssetsPath}/{ShoesName}";
+
         public static string HolstersName = "Holsters";
         public static string HolstersPath = $"{OverlayAssetsPath}/{HolstersName}";
 

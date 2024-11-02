@@ -14,6 +14,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
             this.position = position;
         }
 
+        public override bool HasAsset()
+        {
+            return true;
+        }
+
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
             var font = new Font(EditorMain.Neuropol, 10, FontStyle.Regular, GraphicsUnit.Pixel);

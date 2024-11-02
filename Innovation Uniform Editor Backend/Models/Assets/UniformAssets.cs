@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Models.Assets
 {
-    public class UniformAssets : BaseRecolorableAssets, IRecolorable
+    public class UniformAssets : BaseRecolorableAssets
     {
         public void ChangeBackground(Bitmap background)
         {

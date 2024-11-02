@@ -114,15 +114,16 @@
     <Compile Include="Models\Enums\ColorType.cs" />
     <Compile Include="Models\Enums\VersionType.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\OverlayAssets\Glove.cs" />
     <Compile Include="Models\OverlayAssets\Holster.cs" />
     <Compile Include="Models\Interfaces\IIdentifier.cs" />
     <Compile Include="Models\Interfaces\INamable.cs" />
     <Compile Include="Models\Interfaces\IOverlayAssets.cs" />
     <Compile Include="Models\Interfaces\IPreviewable.cs" />
-    <Compile Include="Models\Interfaces\IRecolorable.cs" />
     <Compile Include="Models\IssuesRepo.cs" />
     <Compile Include="Models\OverlayAssets\Logo.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\OverlayAssets\Shoe.cs" />
     <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\Uniform.cs" />
     <Compile Include="Models\Assets\UniformAssets.cs" />

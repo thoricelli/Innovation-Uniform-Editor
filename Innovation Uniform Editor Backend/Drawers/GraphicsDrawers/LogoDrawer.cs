@@ -17,6 +17,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
             _customColors = colors;
         }
 
+        public override bool HasAsset()
+        {
+            return _logs != null;
+        }
+
         public override string Name => "Logo";
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
