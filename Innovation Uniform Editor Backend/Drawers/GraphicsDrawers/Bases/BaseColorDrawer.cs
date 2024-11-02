@@ -83,11 +83,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             int totalSize = colorsResultLooper.GetTotalSize();
             int width = colorsResultLooper.GetWidth();
 
-            for (int i = 0; i < totalSize; i++)
+            for (int maskIndex = 0; maskIndex < _masks.Count; maskIndex++)
             {
-                for (int maskIndex = 0; maskIndex < _masks.Count; maskIndex++)
+                bool[] mask = _masks[maskIndex];
+
+                for (int i = 0; i < mask.Length; i++)
                 {
-                    bool canDraw = _masks[maskIndex][i];
+                    bool canDraw = mask[i];
 
                     if (canDraw)
                     {

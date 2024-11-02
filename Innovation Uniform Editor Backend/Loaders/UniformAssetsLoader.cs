@@ -3,6 +3,7 @@ using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Assets;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -78,6 +79,14 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
 
             return images;
         }
+
+        private static List<Logo> getLogos(ulong[] ids)
+        {
+            if (ids != null)
+                return EditorMain.LogosLoader.FindByIds(ids.ToList());
+            return new List<Logo>();
+        }
+
         public static UniformAssets GetAssetsForUniform(Uniform uniform)
         {
             string basePath = pathBuilder(uniform.part, uniform.Id);
@@ -89,6 +98,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
                 Selections = getSelectionTemplates(basePath),
                 Textures = getListFromPath(basePath, "texture*.png"),
                 Top = getListFromPath(basePath, "top*.png"),
+                Logos = getLogos(uniform.LogoIds)
             };
         }
     }

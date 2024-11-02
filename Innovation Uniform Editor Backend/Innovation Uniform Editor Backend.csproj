@@ -121,7 +121,6 @@
     <Compile Include="Models\Interfaces\IRecolorable.cs" />
     <Compile Include="Models\IssuesRepo.cs" />
     <Compile Include="Models\OverlayAssets\Logo.cs" />
-    <Compile Include="Models\Assets\LogoAssets.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\Uniform.cs" />

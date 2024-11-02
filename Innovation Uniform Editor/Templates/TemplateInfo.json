@@ -124,7 +124,8 @@
       "Creator": "Darkboltex",
       "CanBeCustomized": false,
       "BottomId": "3c571740-e2d3-401e-9e6e-f4aa25f41b1d",
-      "ArmbandId": "05d1b0f8-2585-4751-81de-8882e36f01d6"
+      "ArmbandId": "05d1b0f8-2585-4751-81de-8882e36f01d6",
+      "LogoIds": [0]
     },
     {
       "Id": 368717072,

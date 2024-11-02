@@ -45,6 +45,11 @@ namespace Innovation_Uniform_Editor_Backend.Loaders.Base
             return _items.Find(e => e.Id.Equals(id));
         }
 
+        public virtual List<TType> FindByIds(List<TId> ids)
+        {
+            return _items.FindAll(e => ids.Contains(e.Id));
+        }
+
         public virtual void DeleteBy(TId id)
         {
             _items.Remove(FindBy(id));

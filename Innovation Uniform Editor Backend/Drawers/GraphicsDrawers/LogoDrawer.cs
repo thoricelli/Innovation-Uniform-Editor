@@ -1,6 +1,7 @@
 ﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Assets;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -9,10 +10,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
     public class LogoDrawer : BaseGraphicsDrawer
     {
         private List<CustomColor> _customColors;
-        private List<LogoAssets> _logoAssets;
-        public LogoDrawer(List<CustomColor> colors, List<LogoAssets> logoAssets)
+        private List<Logo> _logs;
+        public LogoDrawer(List<CustomColor> colors, List<Logo> logos)
         {
-            _logoAssets = logoAssets;
+            _logs = logos;
             _customColors = colors;
         }
 
@@ -20,9 +21,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            if (_logoAssets != null)
+            if (_logs != null)
             {
-                foreach (LogoAssets item in _logoAssets)
+                foreach (Logo item in _logs)
                 {
                     //Not great, oh well.
                     ColorDrawer drawer = new ColorDrawer(_customColors, item.Selections);
@@ -30,7 +31,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
                     drawer.DrawToGraphics(graphics, result);
 
                     //TODO: Position data!
-                    DrawImageToGraphics(graphics, item.Overlay);
+                    DrawImageToGraphics(graphics, item.Image);
                 }
             }
         }

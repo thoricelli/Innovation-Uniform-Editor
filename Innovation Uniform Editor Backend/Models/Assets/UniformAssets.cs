@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.Models.Base;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -29,6 +30,6 @@ namespace Innovation_Uniform_Editor_Backend.Models.Assets
         public Bitmap Bottom { get; set; }
         public Bitmap Armband { get; set; }
         public Bitmap Holster { get; set; }
-        public List<LogoAssets> Logos { get; set; }
+        public List<Logo> Logos { get; set; }
     }
 }
