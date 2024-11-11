@@ -8,5 +8,6 @@ namespace Innovation_Uniform_Editor_Backend.Models.Interfaces
         Guid? ArmbandId { get; set; }
         //Shoes and gloves.
         Guid? ShoeId { get; set; }
+        Guid? GloveId { get; set; }
     }
 }

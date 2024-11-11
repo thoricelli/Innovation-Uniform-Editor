@@ -10,8 +10,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
     public class LogoDrawer : BaseGraphicsDrawer
     {
         private List<CustomColor> _customColors;
-        private List<Logo> _logs;
-        public LogoDrawer(List<CustomColor> colors, List<Logo> logos)
+        private List<UniformDataLogo> _logs;
+        public LogoDrawer(List<CustomColor> colors, List<UniformDataLogo> logos)
         {
             _logs = logos;
             _customColors = colors;
@@ -28,15 +28,15 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
         {
             if (_logs != null && Visible)
             {
-                foreach (Logo item in _logs)
+                foreach (UniformDataLogo item in _logs)
                 {
                     //Not great, oh well.
-                    ColorDrawer drawer = new ColorDrawer(_customColors, item.Selections);
+                    ColorDrawer drawer = new ColorDrawer(_customColors, item.Logo.Selections, item.Location);
 
                     drawer.DrawToGraphics(graphics, result);
 
                     //TODO: Position data!
-                    DrawImageToGraphics(graphics, item.Image);
+                    DrawImageToGraphics(graphics, item.Logo.Image, item.Location);
                 }
             }
         }

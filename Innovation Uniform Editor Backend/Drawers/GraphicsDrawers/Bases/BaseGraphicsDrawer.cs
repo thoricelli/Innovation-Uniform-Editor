@@ -27,13 +27,20 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         }
         protected void DrawImageToGraphics(Graphics graphics, Bitmap image)
         {
+            this.DrawImageToGraphics(graphics, image, Point.Empty);
+        }
+        protected void DrawImageToGraphics(Graphics graphics, Bitmap image, Point point)
+        {
             if (Visible)
-                graphics.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height));
+                graphics.DrawImage(image, new Rectangle(point.X, point.Y, image.Width, image.Height));
         }
         protected void DrawImageToGraphics(Graphics graphics, Image image)
         {
-            if (Visible)
-                graphics.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height));
+            this.DrawImageToGraphics(graphics, (Bitmap)image);
+        }
+        protected void DrawImageToGraphics(Graphics graphics, Image image, Point point)
+        {
+            this.DrawImageToGraphics(graphics, (Bitmap)image, point);
         }
         protected void DrawList(Graphics graphics, List<Bitmap> images)
         {

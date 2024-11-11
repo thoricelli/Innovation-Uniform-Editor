@@ -80,11 +80,14 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
             return images;
         }
 
-        private static List<Logo> getLogos(ulong[] ids)
+        private static List<UniformDataLogo> getLogos(UniformDataLogo[] logos)
         {
-            if (ids != null)
-                return EditorMain.LogosLoader.FindByIds(ids.ToList());
-            return new List<Logo>();
+            foreach (UniformDataLogo logoData in logos)
+            {
+                Logo logo = EditorMain.LogosLoader.FindBy(logoData.LogoId);
+                logoData.Logo = logo;
+            }
+            return logos == null ? new List<UniformDataLogo>() : logos.ToList() ;
         }
 
         public static UniformAssets GetAssetsForUniform(Uniform uniform)

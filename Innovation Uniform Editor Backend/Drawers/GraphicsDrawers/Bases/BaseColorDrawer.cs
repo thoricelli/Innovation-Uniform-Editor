@@ -14,6 +14,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
     public abstract class BaseColorDrawer : BaseGraphicsDrawer
     {
+        private Point _location;
+
         private List<CustomColor> _colors;
         private List<MaskImage> _masks;
         /// <summary>
@@ -35,6 +37,12 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         {
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
+        }
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location)
+        {
+            _colors = colors;
+            _masks = ImageHelper.BitmapToBoolean(Selections);
+            _location = location;
         }
 
         public override bool HasAsset()
@@ -122,7 +130,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                             int y = i / maskImage.Width;
                             int x = i % maskImage.Width;
 
-                            int drawIndex = x + (y * width);
+                            int drawIndex = x + _location.X + ((y + _location.Y) * width);
 
                             currentDrawItem.Draw(
                                 _colors[maskIndex],

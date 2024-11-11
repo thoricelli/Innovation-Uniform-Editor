@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Models.Assets
 {
-    public class UniformAssets : BaseRecolorableAssets
+    public class UniformAssets : IRecolorableAssets
     {
         public void ChangeBackground(Bitmap background)
         {
@@ -31,6 +31,9 @@ namespace Innovation_Uniform_Editor_Backend.Models.Assets
         public Bitmap Shoe { get; set; }
         public Bitmap Armband { get; set; }
         public Bitmap Holster { get; set; }
-        public List<Logo> Logos { get; set; }
+        public List<UniformDataLogo> Logos { get; set; }
+
+        public Bitmap Overlay { get; set; }
+        public List<Bitmap> Selections { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public Guid? ArmbandId { get; set; }
         public Guid? ShoeId { get; set; }
         public Guid? GloveId { get; set; }
-        public ulong[] LogoIds { get; set; } 
+        public UniformDataLogo[] LogoIds { get; set; } 
         //TODO logo's!!
         #region USERNAMES
         //This should probably be presets instead.

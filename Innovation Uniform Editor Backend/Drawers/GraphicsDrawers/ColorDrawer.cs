@@ -11,6 +11,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
         {
         }
 
+        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location) : base(colors, Selections, location)
+        {
+        }
+
         public override string Name => "Colors";
     }
 }
