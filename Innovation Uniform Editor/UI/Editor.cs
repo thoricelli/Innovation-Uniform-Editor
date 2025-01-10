@@ -362,5 +362,12 @@ namespace Innovation_Uniform_Editor.UI
 
             RefreshImage();
         }
+
+        private void btnLogoColors_Click(object sender, EventArgs e)
+        {
+            ColorsView colorsView = new ColorsView();
+
+            colorsView.Show();
+        }
     }
 }

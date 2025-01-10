@@ -42,17 +42,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
         //This bug has me pulling my hairs!!
         private void CheckForEmpty()
         {
-            if (_colors.Count <= 0)
-                _colors = new List<Color>() { Color.Transparent };
+            if (Colors.Count <= 0)
+                Colors = new List<Color>() { Color.Transparent };
         }
-        private List<Color> _colors = new List<Color>();
-        public List<Color> Colors
-        {
-            get
-            {
-                return _colors;
-            }
-        }
+        public List<Color> Colors { get; set; }
         /// <summary>
         /// How many times to repeat the fade.
         /// </summary>

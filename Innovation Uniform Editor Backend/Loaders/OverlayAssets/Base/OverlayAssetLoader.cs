@@ -21,24 +21,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets.Base
 
             string infoPath = $"{_path}/{InfoName}";
 
-            if (!File.Exists(infoPath))
-                TemplateUpdater.FailedInstall(); //TODO: REPLACE
-
-            using (StreamReader r = new StreamReader(infoPath))
-            {
-                string json = r.ReadToEnd();
-
-                using (var stringReader = new StringReader(json))
-                using (var jsonReader = new JsonTextReader(stringReader))
-                {
-                    while (jsonReader.Read())
-                    {
-                        var serializer = new JsonSerializer();
-
-                        Set(serializer.Deserialize<List<TType>>(jsonReader));
-                    }
-                }
-            }
+            Set(JsonToList.LoadList<TType>(infoPath));
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Innovation_Uniform_Editor_Backend
         public static ShoesLoader ShoesLoader { get; set; }
         public static HolstersLoader HolstersLoader { get; set; }
         public static LogosLoader LogosLoader { get; set; }
+        public static PresetsLoader PresetsLoader { get; set; }
         public static FontFamily Neuropol { get; set; }
         public static FontFamily SmallestPixel7 { get; set; }
 
@@ -52,6 +53,8 @@ namespace Innovation_Uniform_Editor_Backend
             HolstersLoader = new HolstersLoader(EditorPaths.HolstersPath);
 
             LogosLoader = new LogosLoader(EditorPaths.LogosPath);
+
+            PresetsLoader = new PresetsLoader(EditorPaths.TemplatePath);
 
             PrivateFontCollection collection = new PrivateFontCollection();
             collection.AddFontFile($"{EditorPaths.FontsPath}/Neuropol.otf");

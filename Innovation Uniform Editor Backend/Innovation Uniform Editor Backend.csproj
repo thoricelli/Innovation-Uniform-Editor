@@ -82,6 +82,7 @@
     <Compile Include="Helpers\Enums\TemplateUpdateStatus.cs" />
     <Compile Include="Helpers\FileToBitmap.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\JsonToList.cs" />
     <Compile Include="Helpers\NamePressHelper.cs" />
     <Compile Include="Helpers\TemplateUpdater.cs" />
     <Compile Include="ImageEditors\Base\ImageEditorBase.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Loaders\OverlayAssets\LogosLoader.cs" />
     <Compile Include="Loaders\OverlayAssets\Base\OverlayAssetLoader.cs" />
     <Compile Include="Loaders\OverlayAssets\ShoesLoader.cs" />
+    <Compile Include="Loaders\PresetsLoader.cs" />
     <Compile Include="Loaders\RecolorableAssetLoader.cs" />
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Loaders\UniformsLoader.cs" />
