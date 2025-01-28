@@ -3,6 +3,7 @@ using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Helpers.Enums;
+using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Windows.Forms;
@@ -12,15 +13,21 @@ namespace Innovation_Uniform_Editor
 {
     public partial class Main : Form
     {
-        public Main()
+        private string _customPath;
+        public Main(string customPath = "")
         {
             InitializeComponent();
+
+            _customPath = customPath;
         }
         private void Main_Load(object sender, EventArgs e)
         {
             EditorMain.Initialize();
 
             LoadCustomsAndGroups();
+
+            if (_customPath != string.Empty)
+                PreviewFile(_customPath);
 
             /*bool updates = TemplateUpdater.CheckForUpdates();
             if (updates)
@@ -239,17 +246,14 @@ namespace Innovation_Uniform_Editor
 
         private void LaunchEditor(Panel panel)
         {
-            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
-
+            LaunchEditor(EditorMain.Customs.FindBy(new Guid(panel.Name)));
+        }
+        private void LaunchEditor(Custom custom)
+        {
             editor = new Editor(custom, this);
-
-            PictureBox picture = ((PictureBox)panel.Controls[1]);
 
             this.Hide();
             editor.Show();
-
-            picture.Image = custom.PreviewImage;
-            picture.Refresh();
         }
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -355,9 +359,21 @@ namespace Innovation_Uniform_Editor
             this.Hide();
         }
 
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void previewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openCustomDialogue.ShowDialog();
+
+            PreviewFile(openCustomDialogue.FileName);
+        }
+
+        private void PreviewFile(string path)
+        {
+            LaunchEditor(CustomsLoader.LoadFromFile(path));
         }
     }
 }

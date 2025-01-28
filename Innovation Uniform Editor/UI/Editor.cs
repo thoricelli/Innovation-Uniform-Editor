@@ -294,9 +294,11 @@ namespace Innovation_Uniform_Editor.UI
             selector.Show();
         }
 
-        private void exportLayersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportToFile_Click(object sender, EventArgs e)
         {
+            saveToFile.ShowDialog();
 
+            custom.SaveJsonToFile(saveToFile.FileName);
         }
 
         private void btnManageHolsters_Click(object sender, EventArgs e)
@@ -365,9 +367,18 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnLogoColors_Click(object sender, EventArgs e)
         {
-            ColorsView colorsView = new ColorsView();
+            ColorsView colorsView = new ColorsView(custom.LogoPreset);
+
+            colorsView.PresetChanged += ColorsView_PresetChanged;
 
             colorsView.Show();
+        }
+
+        private void ColorsView_PresetChanged(object sender, Preset e)
+        {
+            custom.ChangeLogoPreset(e.Id);
+
+            RefreshImage();
         }
     }
 }

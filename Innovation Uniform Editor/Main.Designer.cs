@@ -33,6 +33,13 @@ namespace Innovation_Uniform_Editor
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newPantsTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.newShirtsTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newRecolorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,11 +79,7 @@ namespace Innovation_Uniform_Editor
             this.label5 = new System.Windows.Forms.Label();
             this.contextMenuGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exportCustom = new System.Windows.Forms.SaveFileDialog();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.newPantsTooltip = new System.Windows.Forms.ToolStripMenuItem();
-            this.newShirtsTooltip = new System.Windows.Forms.ToolStripMenuItem();
+            this.openCustomDialogue = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.flowMain.SuspendLayout();
             this.contextMenuOverview.SuspendLayout();
@@ -110,6 +113,61 @@ namespace Innovation_Uniform_Editor
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem1,
+            this.importToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newToolStripMenuItem1
+            // 
+            this.newToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newPantsTooltip,
+            this.newShirtsTooltip});
+            this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem1.Text = "New";
+            // 
+            // newPantsTooltip
+            // 
+            this.newPantsTooltip.Name = "newPantsTooltip";
+            this.newPantsTooltip.Size = new System.Drawing.Size(103, 22);
+            this.newPantsTooltip.Text = "Pants";
+            this.newPantsTooltip.Click += new System.EventHandler(this.newPantsTooltip_Click);
+            // 
+            // newShirtsTooltip
+            // 
+            this.newShirtsTooltip.Name = "newShirtsTooltip";
+            this.newShirtsTooltip.Size = new System.Drawing.Size(103, 22);
+            this.newShirtsTooltip.Text = "Shirts";
+            this.newShirtsTooltip.Click += new System.EventHandler(this.newShirtsTooltip_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.previewToolStripMenuItem});
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // previewToolStripMenuItem
+            // 
+            this.previewToolStripMenuItem.Name = "previewToolStripMenuItem";
+            this.previewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.previewToolStripMenuItem.Text = "Preview";
+            this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
+            // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -126,27 +184,27 @@ namespace Innovation_Uniform_Editor
             this.pantsToolStripMenuItem,
             this.shirtToolStripMenuItem});
             this.newRecolorToolStripMenuItem.Name = "newRecolorToolStripMenuItem";
-            this.newRecolorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newRecolorToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.newRecolorToolStripMenuItem.Text = "New recolor";
             // 
             // pantsToolStripMenuItem
             // 
             this.pantsToolStripMenuItem.Name = "pantsToolStripMenuItem";
-            this.pantsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pantsToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.pantsToolStripMenuItem.Text = "Pants";
             this.pantsToolStripMenuItem.Click += new System.EventHandler(this.pantsToolStripMenuItem_Click);
             // 
             // shirtToolStripMenuItem
             // 
             this.shirtToolStripMenuItem.Name = "shirtToolStripMenuItem";
-            this.shirtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shirtToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.shirtToolStripMenuItem.Text = "Shirt";
             this.shirtToolStripMenuItem.Click += new System.EventHandler(this.shirtToolStripMenuItem_Click);
             // 
             // groupToolStripMenuItem
             // 
             this.groupToolStripMenuItem.Name = "groupToolStripMenuItem";
-            this.groupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.groupToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.groupToolStripMenuItem.Text = "Group";
             this.groupToolStripMenuItem.Visible = false;
             // 
@@ -484,44 +542,10 @@ namespace Innovation_Uniform_Editor
             this.exportCustom.DefaultExt = "png";
             this.exportCustom.FileName = "Custom";
             // 
-            // fileToolStripMenuItem
+            // openCustomDialogue
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem1,
-            this.importToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
-            // newToolStripMenuItem1
-            // 
-            this.newToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newPantsTooltip,
-            this.newShirtsTooltip});
-            this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.newToolStripMenuItem1.Text = "New";
-            // 
-            // newPantsTooltip
-            // 
-            this.newPantsTooltip.Name = "newPantsTooltip";
-            this.newPantsTooltip.Size = new System.Drawing.Size(180, 22);
-            this.newPantsTooltip.Text = "Pants";
-            this.newPantsTooltip.Click += new System.EventHandler(this.newPantsTooltip_Click);
-            // 
-            // newShirtsTooltip
-            // 
-            this.newShirtsTooltip.Name = "newShirtsTooltip";
-            this.newShirtsTooltip.Size = new System.Drawing.Size(180, 22);
-            this.newShirtsTooltip.Text = "Shirts";
-            this.newShirtsTooltip.Click += new System.EventHandler(this.newShirtsTooltip_Click);
+            this.openCustomDialogue.DefaultExt = "iue";
+            this.openCustomDialogue.FileName = "Custom";
             // 
             // Main
             // 
@@ -605,6 +629,9 @@ namespace Innovation_Uniform_Editor
         private ToolStripMenuItem newPantsTooltip;
         private ToolStripMenuItem newShirtsTooltip;
         private ToolStripMenuItem importToolStripMenuItem;
+        private ToolStripMenuItem addToolStripMenuItem;
+        private ToolStripMenuItem previewToolStripMenuItem;
+        private OpenFileDialog openCustomDialogue;
     }
 }
 

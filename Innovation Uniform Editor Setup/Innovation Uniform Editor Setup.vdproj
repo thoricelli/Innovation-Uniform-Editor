@@ -16,13 +16,25 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_283A213B84B9A0B0591D71F7AD6B1469"
-        "OwnerKey" = "8:_53324DFC324D8CCBA56095A89C45013D"
+        "MsmKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_283A213B84B9A0B0591D71F7AD6B1469"
+        "MsmKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
+        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
         "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -30,18 +42,6 @@
         {
         "MsmKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_53324DFC324D8CCBA56095A89C45013D"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5546320FC6743D12E811776B4A3C4314"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -95,7 +95,7 @@
         "Entry"
         {
         "MsmKey" = "8:_E134A454D92AC058B8B4A7D5F526FDDC"
-        "OwnerKey" = "8:_53324DFC324D8CCBA56095A89C45013D"
+        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -107,19 +107,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_53324DFC324D8CCBA56095A89C45013D"
+        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5546320FC6743D12E811776B4A3C4314"
+        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_283A213B84B9A0B0591D71F7AD6B1469"
+        "OwnerKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -235,45 +235,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_283A213B84B9A0B0591D71F7AD6B1469"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_283A213B84B9A0B0591D71F7AD6B1469"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_53324DFC324D8CCBA56095A89C45013D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_02F97DE712F8483F66884675818F79C9"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=0.7.0.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_53324DFC324D8CCBA56095A89C45013D"
+                    "_02F97DE712F8483F66884675818F79C9"
                     {
                     "Name" = "8:Innovation Uniform Editor Backend.dll"
                     "Attributes" = "3:512"
@@ -297,14 +266,45 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5546320FC6743D12E811776B4A3C4314"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D89C451E73C2C0F7112480848AC1DE5"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0D89C451E73C2C0F7112480848AC1DE5"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5546320FC6743D12E811776B4A3C4314"
+                    "_1553721BCDEBA6AF7E2C8EA43AFBF58D"
                     {
                     "Name" = "8:Cyotek.Windows.Forms.ColorPicker.dll"
                     "Attributes" = "3:512"
@@ -371,7 +371,7 @@
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
+            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
@@ -411,7 +411,7 @@
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
+            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
@@ -524,6 +524,29 @@
         }
         "FileType"
         {
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_01B9E39506D5476DBD6260F1D443E751"
+            {
+            "Name" = "8:Innovation Uniform Editor File"
+            "Description" = "8:A uniform editor file."
+            "Extensions" = "8:iue"
+            "MIME" = "8:"
+            "Icon" = "8:_8F6AB0378C5C480AA56EDD065ED22522"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_0EC1F064A4EB4215A4F274CE73FFCD82"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
         }
         "Folder"
         {
@@ -1221,8 +1244,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1236"
+                            "Setting" = "3:2"
+                            "Value" = "8:Associate .iue with the editor"
                             "DefaultValue" = "8:#1236"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1248,7 +1271,7 @@
                             "ContextData" = "8:Unchecked=;Checked=1"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Value" = "8:1"
                             "DefaultValue" = "8:"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1261,7 +1284,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:0"
+                            "Value" = "3:1"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1405,7 +1428,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_34212E02F8724DDE9132776DA0AC43F5"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\x64\\Release\\Innovation Uniform Editor.exe"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Debug\\Innovation Uniform Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"

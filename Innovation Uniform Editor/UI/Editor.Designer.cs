@@ -40,7 +40,7 @@ namespace Innovation_Uniform_Editor.UI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportLayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shirtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,9 +62,10 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageArmbands = new System.Windows.Forms.Button();
             this.btnManageGloves = new System.Windows.Forms.Button();
             this.btnManageShoes = new System.Windows.Forms.Button();
+            this.btnLogoColors = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDrawDetail = new System.Windows.Forms.Button();
-            this.btnLogoColors = new System.Windows.Forms.Button();
+            this.saveToFile = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -128,7 +129,7 @@ namespace Innovation_Uniform_Editor.UI
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.downloadToolStripMenuItem1,
-            this.exportLayersToolStripMenuItem});
+            this.exportToFile});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.exportToolStripMenuItem.Text = "Export";
@@ -136,17 +137,16 @@ namespace Innovation_Uniform_Editor.UI
             // downloadToolStripMenuItem1
             // 
             this.downloadToolStripMenuItem1.Name = "downloadToolStripMenuItem1";
-            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.downloadToolStripMenuItem1.Text = "Download";
             this.downloadToolStripMenuItem1.Click += new System.EventHandler(this.downloadToolStripMenuItem1_Click);
             // 
-            // exportLayersToolStripMenuItem
+            // exportToFile
             // 
-            this.exportLayersToolStripMenuItem.Name = "exportLayersToolStripMenuItem";
-            this.exportLayersToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.exportLayersToolStripMenuItem.Text = "Export layers";
-            this.exportLayersToolStripMenuItem.Visible = false;
-            this.exportLayersToolStripMenuItem.Click += new System.EventHandler(this.exportLayersToolStripMenuItem_Click);
+            this.exportToFile.Name = "exportToFile";
+            this.exportToFile.Size = new System.Drawing.Size(180, 22);
+            this.exportToFile.Text = "To file";
+            this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
             // 
             // newTabToolStripMenuItem
             // 
@@ -347,6 +347,16 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageShoes.UseVisualStyleBackColor = true;
             this.btnManageShoes.Click += new System.EventHandler(this.btnManageShoes_Click);
             // 
+            // btnLogoColors
+            // 
+            this.btnLogoColors.Location = new System.Drawing.Point(3, 155);
+            this.btnLogoColors.Name = "btnLogoColors";
+            this.btnLogoColors.Size = new System.Drawing.Size(189, 23);
+            this.btnLogoColors.TabIndex = 24;
+            this.btnLogoColors.Text = "Logo colors";
+            this.btnLogoColors.UseVisualStyleBackColor = true;
+            this.btnLogoColors.Click += new System.EventHandler(this.btnLogoColors_Click);
+            // 
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -365,15 +375,10 @@ namespace Innovation_Uniform_Editor.UI
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
             // 
-            // btnLogoColors
+            // saveToFile
             // 
-            this.btnLogoColors.Location = new System.Drawing.Point(3, 155);
-            this.btnLogoColors.Name = "btnLogoColors";
-            this.btnLogoColors.Size = new System.Drawing.Size(189, 23);
-            this.btnLogoColors.TabIndex = 24;
-            this.btnLogoColors.Text = "Logo colors";
-            this.btnLogoColors.UseVisualStyleBackColor = true;
-            this.btnLogoColors.Click += new System.EventHandler(this.btnLogoColors_Click);
+            this.saveToFile.DefaultExt = "iue";
+            this.saveToFile.FileName = "Custom";
             // 
             // Editor
             // 
@@ -436,12 +441,13 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shirtsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportLayersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToFile;
         private System.Windows.Forms.Button btnManageHolsters;
         private System.Windows.Forms.Button btnManageArmbands;
         private System.Windows.Forms.Button btnManageShoes;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnManageGloves;
         private System.Windows.Forms.Button btnLogoColors;
+        private System.Windows.Forms.SaveFileDialog saveToFile;
     }
 }
