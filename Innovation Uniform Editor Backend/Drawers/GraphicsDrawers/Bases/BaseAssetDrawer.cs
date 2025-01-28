@@ -7,9 +7,16 @@
         {
             return asset != null;
         }
+        public virtual void ChangeAsset(T newAsset)
+        {
+            asset = newAsset;
+        }
         public BaseAssetDrawer(T asset)
         {
             this.asset = asset;
+        }
+        public BaseAssetDrawer()
+        {
         }
     }
 }

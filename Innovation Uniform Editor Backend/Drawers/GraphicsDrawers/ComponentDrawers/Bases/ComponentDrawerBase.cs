@@ -24,9 +24,6 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
         {
             //Blend the shading with the current color on the image.
             Color currentColor = upperImage.GetPixelColorAtIndex(index);
-
-            //Get pixel color of shading and... blend!
-            upperImage.ChangePixelColorAtIndex(index, Blend(shading.GetPixelColorAtIndex(index), currentColor));
         }
 
         #region Blending modes & misc

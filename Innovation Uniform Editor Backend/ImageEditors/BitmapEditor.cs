@@ -74,5 +74,11 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
         {
             return data.Height;
         }
+
+        ~BitmapEditor()
+        {
+            //ugh...
+            //CloseImage();
+        }
     }
 }

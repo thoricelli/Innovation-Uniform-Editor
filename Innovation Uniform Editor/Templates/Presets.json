@@ -2,8 +2,28 @@
   {
     "Id": "ae418e5f-65ba-4f00-84f1-a69ea34d568e",
     "Name": "Innovation Security",
-    "Color": {
-      "Colors": ["111,111,111", "86,86,86", "171,171,171"]
-    }
+    "Colors": [
+      { "Colors": ["111,111,111"] },
+      { "Colors": ["171,171,171"] },
+      { "Colors": ["86,86,86"] }
+    ]
+  },
+  {
+    "Id": "b3652a2e-7a4f-4585-92f4-90b3c0f68f8c",
+    "Name": "Innovation Inc.",
+    "Colors": [
+      { "Colors": ["32,132,247"] },
+      { "Colors": ["239,160,54"] },
+      { "Colors": ["162,49,59"] }
+    ]
+  },
+  {
+    "Id": "7e31a4a6-3b6f-4069-88d7-e65d350b1aa5",
+    "Name": "Innovation Elite Tier",
+    "Colors": [
+      { "Colors": ["105,116,141"] },
+      { "Colors": ["207,169,60"] },
+      { "Colors": ["180,153,87"] }
+    ]
   }
 ]

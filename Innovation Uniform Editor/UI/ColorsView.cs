@@ -1,4 +1,5 @@
 ﻿using Innovation_Uniform_Editor_Backend;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,37 @@ namespace Innovation_Uniform_Editor.UI
 {
     public partial class ColorsView : Form
     {
-        public ColorsView()
+        private EventHandler<Preset> onChanged;
+
+        public event EventHandler<Preset> PresetChanged
+        {
+            add
+            {
+                onChanged += value;
+            }
+            remove
+            {
+                onChanged -= value;
+            }
+        }
+        public ColorsView(Preset preset)
         {
             InitializeComponent();
 
-            comboPresets.DataSource = EditorMain.PresetsLoader.GetAll();
+            List<Preset> presets = EditorMain.PresetsLoader.GetAll();
+
+            comboPresets.DataSource = presets;
+            comboPresets.SelectedIndex = presets.IndexOf(preset);
         }
 
-        private void presetBindingSource_CurrentChanged(object sender, EventArgs e)
+        private void comboPresets_SelectedIndexChanged(object sender, EventArgs e)
         {
+            onChanged?.Invoke(this, (Preset)comboPresets.SelectedValue);
+        }
 
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

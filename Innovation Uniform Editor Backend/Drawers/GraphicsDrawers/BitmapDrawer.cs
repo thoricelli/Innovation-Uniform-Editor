@@ -8,6 +8,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
         public BitmapDrawer(Bitmap asset) : base(asset)
         {
         }
+        public BitmapDrawer()
+        {
+        }
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
             if (asset != null)

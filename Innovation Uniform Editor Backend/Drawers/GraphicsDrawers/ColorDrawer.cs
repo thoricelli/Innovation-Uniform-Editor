@@ -7,11 +7,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 {
     public class ColorDrawer : BaseColorDrawer
     {
-        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections) : base(colors, Selections)
+        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading) : base(colors, Selections, shading)
         {
         }
 
-        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location) : base(colors, Selections, location)
+        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location, ShadingDrawer shading) : base(colors, Selections, location, shading)
         {
         }
 

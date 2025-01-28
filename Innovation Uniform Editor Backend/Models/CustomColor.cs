@@ -42,7 +42,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         //This bug has me pulling my hairs!!
         private void CheckForEmpty()
         {
-            if (Colors.Count <= 0)
+            if (Colors == null || Colors.Count <= 0)
                 Colors = new List<Color>() { Color.Transparent };
         }
         public List<Color> Colors { get; set; }

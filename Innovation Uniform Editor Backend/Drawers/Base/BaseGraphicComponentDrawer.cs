@@ -33,6 +33,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
         }
         public virtual T Draw()
         {
+            RefreshAssets();
+
             Type typeOfT = typeof(T);
 
             if (typeOfT == typeof(Bitmap))
@@ -54,6 +56,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
             }
 
             return default(T);
+        }
+
+        public virtual void RefreshAssets()
+        {
+
         }
         public virtual void ExportLayered(string path)
         {

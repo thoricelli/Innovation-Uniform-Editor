@@ -13,7 +13,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
     /// <typeparam name="T"></typeparam>
     public class CustomDrawer<T> : BaseGraphicComponentDrawer<T>
     {
-        public CustomDrawer(UniformAssets assets, List<CustomColor> colors)
+        private LogoDrawer _logoDrawer;
+        private Custom _custom;
+        private ShadingDrawer _shadingDrawer;
+        public CustomDrawer(UniformAssets assets, Custom custom)
         {
             /*
             How a custom is built up: (back to front)
@@ -30,15 +33,21 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             - Overlay
             */
 
+            _custom = custom;
+
+            _logoDrawer = new LogoDrawer(custom.LogoPreset, assets.Logos);
+            _shadingDrawer = new ShadingDrawer();
+
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
                 new BackgroundDrawer(assets.Background),
                 new TextureDrawer(assets.Textures),
-                new ColorDrawer(colors, assets.Selections),
+                new ColorDrawer(custom.Colors, assets.Selections, _shadingDrawer),
+                _shadingDrawer,
                 new OverlayDrawer(assets.Overlay),
 
                 //Logo's.
-                new LogoDrawer(colors, assets.Logos),
+                _logoDrawer,
 
                 new ArmbandDrawer(assets.Armband),
                 new HolsterDrawer(assets.Holster),
@@ -52,6 +61,12 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
+        }
+
+        public override void RefreshAssets()
+        {
+            _logoDrawer.ChangePreset(_custom.LogoPreset);
+            base.RefreshAssets();
         }
     }
 }

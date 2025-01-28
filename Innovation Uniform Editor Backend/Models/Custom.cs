@@ -32,6 +32,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         [JsonIgnore]
         public bool UnsavedChanges { get; set; } = false;
 
+
         #region IDENTIFIERS+INFO
         private Uniform _uniformBasedOn;
         [JsonIgnore]
@@ -50,10 +51,32 @@ namespace Innovation_Uniform_Editor_Backend.Models
             }
         }
         public ulong UniformBasedOnId { get; set; }
+        private Preset _logoPreset;
+        [JsonIgnore]
+        public Preset LogoPreset
+        {
+            get
+            {
+                if (_logoPreset == null)
+                    if (LogoPresetGuid.HasValue)
+                        _logoPreset = EditorMain.PresetsLoader.FindBy(LogoPresetGuid.Value);
+                    else
+                        _logoPreset = EditorMain.PresetsLoader.FindBy(Guid.Parse("ae418e5f-65ba-4f00-84f1-a69ea34d568e"));
+
+                return _logoPreset;
+            }
+            set
+            {
+                _logoPreset = value;
+                LogoPresetGuid = value.Id;
+            }
+        }
+        public Guid? LogoPresetGuid { get; set; }
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
         public Guid? ShoeId { get; set; }
         public Guid? GloveId { get; set; }
+        public Version MinimumVersion { get; } = new Version(0,8,0);
         #endregion
         #region CUSTOM_SETTINGS
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
@@ -140,19 +163,23 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             //Save custom class to JSON file inside folder
             Directory.CreateDirectory($"{EditorPaths.CustomsPath}/" + Id);
+            SaveJsonToFile($"{EditorPaths.CustomsPath}/{Id}info.json");
 
+            Image downSized = ImageHelper.resizeImage(Result, new Size(293, 280));
+            downSized.Save($"{EditorPaths.CustomsPath}/" + Id + "/result.png", ImageFormat.Png);
+            UnsavedChanges = false;
+        }
+        public void SaveJsonToFile(string filepath)
+        {
             JsonSerializer serializer = new JsonSerializer()
             {
                 NullValueHandling = NullValueHandling.Ignore
             };
-            using (StreamWriter sw = new StreamWriter($"{EditorPaths.CustomsPath}/" + Id + "/info.json"))
+            using (StreamWriter sw = new StreamWriter(filepath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, this);
             }
-            Image downSized = ImageHelper.resizeImage(Result, new Size(293, 280));
-            downSized.Save($"{EditorPaths.CustomsPath}/" + Id + "/result.png", ImageFormat.Png);
-            UnsavedChanges = false;
         }
         #endregion
         #region CHANGING_COLORS+UNIFORM
@@ -239,6 +266,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
             this.GloveId = null;
             Initialize();
         }
+        public void ChangeLogoPreset(Guid presetGuid)
+        {
+            this._logoPreset = null;
+            this.LogoPresetGuid = presetGuid;
+        }
         private void UpdateBackground()
         {
             _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid);
@@ -287,7 +319,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 }
             }
 
-            Drawer = new CustomDrawer<Bitmap>(_assets, Colors);
+            Drawer = new CustomDrawer<Bitmap>(_assets, this);
         }
 
         private Bitmap LoadBitmapFromLoader<T>(IFindable<T, Guid> loader, Guid? guid)

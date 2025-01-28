@@ -43,8 +43,6 @@ namespace Innovation_Uniform_Editor_Backend
             Backgrounds = new BackgroundsLoader(EditorPaths.BackgroundsPath);
             Uniforms = new UniformsLoader($"{EditorPaths.TemplatePath}/TemplateInfo.json");
 
-            Customs = new CustomsLoader(EditorPaths.CustomsPath);
-
             ArmbandsLoader = new ArmbandsLoader(EditorPaths.ArmbandsPath);
 
             GlovesLoader = new GlovesLoader(EditorPaths.GlovesPath);
@@ -55,6 +53,8 @@ namespace Innovation_Uniform_Editor_Backend
             LogosLoader = new LogosLoader(EditorPaths.LogosPath);
 
             PresetsLoader = new PresetsLoader(EditorPaths.TemplatePath);
+
+            Customs = new CustomsLoader(EditorPaths.CustomsPath);
 
             PrivateFontCollection collection = new PrivateFontCollection();
             collection.AddFontFile($"{EditorPaths.FontsPath}/Neuropol.otf");

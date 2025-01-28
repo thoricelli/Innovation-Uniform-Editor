@@ -63,6 +63,7 @@
     <Compile Include="Drawers\GraphicsDrawers\BitmapDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ArmbandDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\GloveDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\ShadingDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ShoeDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Bases\BaseColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IGraphicsDrawer.cs" />

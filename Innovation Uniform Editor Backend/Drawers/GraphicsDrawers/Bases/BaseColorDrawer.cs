@@ -3,6 +3,7 @@ using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDrawers
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Base;
+using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Enums;
 using System;
@@ -15,13 +16,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
     public abstract class BaseColorDrawer : BaseGraphicsDrawer
     {
         private Point _location;
+        private ShadingDrawer _shadingDrawer;
 
         private List<CustomColor> _colors;
         private List<MaskImage> _masks;
-        /// <summary>
-        /// Doesn't shade the color at specified index.
-        /// </summary>
-        private List<int> doNotShade = new List<int>();
         private int currentDrawerIndex = 0;
 
         private int repeat = 2;
@@ -33,18 +31,19 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.Overlay),
         };
 
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading)
         {
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
+            _shadingDrawer = shading;
         }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location, ShadingDrawer shading)
         {
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
             _location = location;
+            _shadingDrawer = shading;
         }
-
         public override bool HasAsset()
         {
             return _colors.Count > 0 && _masks.Count > 0;
@@ -92,6 +91,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
             BitmapEditor resultLooper = new BitmapEditor(result);
 
+            ImageEditorBase<Bitmap> shading = null;
+
+            if (_shadingDrawer != null)
+                shading = new BitmapEditor(new Bitmap(ComponentDrawerBase.shading.GetWidth(), ComponentDrawerBase.shading.GetHeight()));
+
             int totalSize = colorsResultLooper.GetTotalSize();
             int width = colorsResultLooper.GetWidth();
 
@@ -132,6 +136,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
                             int drawIndex = x + _location.X + ((y + _location.Y) * width);
 
+                            if (shading != null)
+                                shading.ChangePixelColorAtIndex(drawIndex, ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex));
+
                             currentDrawItem.Draw(
                                 _colors[maskIndex],
                                 colorsResultLooper,
@@ -144,8 +151,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                 }
             }
 
-            //TEMP?
             currentDrawerIndex = 0;
+
+            if (shading != null)
+                _shadingDrawer.ChangeAsset(shading.Result);
+
             resultLooper.CloseImage();
 
             DrawImageToGraphics(graphics, colorsResultLooper.Result);

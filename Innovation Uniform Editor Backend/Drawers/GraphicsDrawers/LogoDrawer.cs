@@ -9,12 +9,17 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 {
     public class LogoDrawer : BaseGraphicsDrawer
     {
-        private List<CustomColor> _customColors;
+        private List<CustomColor> _color;
         private List<UniformDataLogo> _logs;
-        public LogoDrawer(List<CustomColor> colors, List<UniformDataLogo> logos)
+        public LogoDrawer(Preset preset, List<UniformDataLogo> logos)
         {
             _logs = logos;
-            _customColors = colors;
+            ChangePreset(preset);
+        }
+
+        public void ChangePreset(Preset preset)
+        {
+            _color = preset.Colors;
         }
 
         public override bool HasAsset()
@@ -31,7 +36,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
                 foreach (UniformDataLogo item in _logs)
                 {
                     //Not great, oh well.
-                    ColorDrawer drawer = new ColorDrawer(_customColors, item.Logo.Selections, item.Location);
+                    ColorDrawer drawer = new ColorDrawer(_color, item.Logo.Selections, item.Location, null);
 
                     drawer.DrawToGraphics(graphics, result);
 

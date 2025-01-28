@@ -32,7 +32,8 @@
             this.lblColors = new System.Windows.Forms.Label();
             this.comboPresets = new System.Windows.Forms.ComboBox();
             this.presetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,26 +57,39 @@
             this.comboPresets.Name = "comboPresets";
             this.comboPresets.Size = new System.Drawing.Size(223, 21);
             this.comboPresets.TabIndex = 16;
+            this.comboPresets.SelectedIndexChanged += new System.EventHandler(this.comboPresets_SelectedIndexChanged);
             // 
             // presetBindingSource
             // 
             this.presetBindingSource.DataSource = typeof(Innovation_Uniform_Editor_Backend.Models.Preset);
             // 
-            // button1
+            // btnDone
             // 
-            this.button1.Location = new System.Drawing.Point(15, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Manage presets (TODO)";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDone.Location = new System.Drawing.Point(15, 61);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(223, 23);
+            this.btnDone.TabIndex = 17;
+            this.btnDone.Text = "Done";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(15, 90);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(223, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Manage presets (TODO)";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // ColorsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(250, 101);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDone);
             this.Controls.Add(this.comboPresets);
             this.Controls.Add(this.lblColors);
             this.Name = "ColorsView";
@@ -89,7 +103,8 @@
         #endregion
         private System.Windows.Forms.Label lblColors;
         private System.Windows.Forms.ComboBox comboPresets;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.BindingSource presetBindingSource;
+        private System.Windows.Forms.Button button2;
     }
 }

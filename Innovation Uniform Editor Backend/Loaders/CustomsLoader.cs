@@ -67,7 +67,21 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
 
             Sort();
         }
+        public static Custom LoadFromFile(string path)
+        {
+            using (StreamReader r = new StreamReader(path))
+            {
+                string json = r.ReadToEnd();
 
+                using (var stringReader = new StringReader(json))
+                using (var jsonReader = new JsonTextReader(stringReader))
+                {
+                    jsonReader.Read();
+                    var serializer = new JsonSerializer();
+                    return serializer.Deserialize<Custom>(jsonReader);
+                }
+            }
+        }
         public override void DeleteBy(Guid id)
         {
             Directory.Delete($"{_path}/{id}", true);
