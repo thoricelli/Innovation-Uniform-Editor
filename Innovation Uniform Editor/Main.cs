@@ -26,9 +26,6 @@ namespace Innovation_Uniform_Editor
 
             LoadCustomsAndGroups();
 
-            if (_customPath != string.Empty)
-                PreviewFile(_customPath);
-
             /*bool updates = TemplateUpdater.CheckForUpdates();
             if (updates)
                 MessageBox.Show("Templates have been updated to the latest version!", "Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
@@ -374,6 +371,12 @@ namespace Innovation_Uniform_Editor
         private void PreviewFile(string path)
         {
             LaunchEditor(CustomsLoader.LoadFromFile(path));
+        }
+
+        private void Main_Shown(object sender, EventArgs e)
+        {
+            if (_customPath != string.Empty)
+                PreviewFile(_customPath);
         }
     }
 }

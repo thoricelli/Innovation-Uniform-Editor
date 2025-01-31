@@ -22,8 +22,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
         }
         public virtual void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress)
         {
-            //Blend the shading with the current color on the image.
-            Color currentColor = upperImage.GetPixelColorAtIndex(index);
+            //Do nothing
         }
 
         #region Blending modes & misc

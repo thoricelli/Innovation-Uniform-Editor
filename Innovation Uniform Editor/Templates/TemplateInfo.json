@@ -1,7 +1,12 @@
 {
-  "MinimumVersion": {
+  "MinimumToolVersion": {
     "MajorVersion": 0,
     "MinorVersion": 8,
+    "PatchVersion": 0
+  },
+  "TemplateVersion": {
+    "MajorVersion": 0,
+    "MinorVersion": 0,
     "PatchVersion": 0
   },
   "Pants": [
@@ -116,7 +121,17 @@
       "Id": 6914629942,
       "Name": "Innovation Security 2015 Remastered Shirt",
       "Creator": "Darkboltex",
-      "ArmbandId": "94c1a8f6-d40f-4a29-9d89-6481f299c1ce"
+      "ArmbandId": "94c1a8f6-d40f-4a29-9d89-6481f299c1ce",
+      "LogoIds": [
+        {
+          "LogoId": 1,
+          "Location": "172, 398"
+        },
+        {
+          "LogoId": 1,
+          "Location": "395, 398"
+        }
+      ]
     },
     {
       "Id": 3933916736,
@@ -127,7 +142,7 @@
       "ArmbandId": "05d1b0f8-2585-4751-81de-8882e36f01d6",
       "LogoIds": [
         {
-          "LogoId": 0,
+          "LogoId": 1,
           "Location": "395, 366"
         }
       ]
@@ -138,7 +153,13 @@
       "Creator": "Darkboltex",
       "CanBeCustomized": false,
       "GloveId": "1436b29a-2583-4fae-818b-7c44c3999dad",
-      "ArmbandId": "e9f46544-5221-440c-9ab2-bd67b8b46611"
+      "ArmbandId": "e9f46544-5221-440c-9ab2-bd67b8b46611",
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location": "394, 380"
+        }
+      ]
     },
     {
       "Id": 368715486,
@@ -152,7 +173,13 @@
       "Id": 368658202,
       "Name": "Innovation Security Longsleeved Shirt (Optional)",
       "Creator": "ChromaticDeath",
-      "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012"
+      "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
+      "LogoIds": [
+        {
+          "LogoId": 3,
+          "Location": "321, 95"
+        }
+      ]
     },
     {
       "Id": 368664950,

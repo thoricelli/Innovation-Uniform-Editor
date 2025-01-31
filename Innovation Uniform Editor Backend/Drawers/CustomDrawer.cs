@@ -42,12 +42,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             {
                 new BackgroundDrawer(assets.Background),
                 new TextureDrawer(assets.Textures),
-                new ColorDrawer(custom.Colors, assets.Selections, _shadingDrawer),
-                _shadingDrawer,
+                new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer),
                 new OverlayDrawer(assets.Overlay),
 
                 //Logo's.
                 _logoDrawer,
+
+                _shadingDrawer,
 
                 new ArmbandDrawer(assets.Armband),
                 new HolsterDrawer(assets.Holster),

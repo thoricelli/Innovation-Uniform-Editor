@@ -75,6 +75,7 @@
     <Compile Include="Drawers\GraphicsDrawers\Bases\TextDrawerBase.cs" />
     <Compile Include="Drawers\GraphicsDrawers\TextureDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\TopDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\UniformColorDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\UsernameDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\WatermarkDrawer.cs" />
     <Compile Include="Drawers\Interfaces\IDrawable.cs" />

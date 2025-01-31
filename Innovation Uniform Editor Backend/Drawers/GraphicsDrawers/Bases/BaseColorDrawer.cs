@@ -24,25 +24,22 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
         private int repeat = 2;
 
-        private List<ComponentDrawerBase> colorDrawerItems = new List<ComponentDrawerBase>()
-        {
-            new ColorComponentDrawer(0.3, ColorDrawerTypes.SOLID, ColorType.FirstColor, BlendMode.Overlay),
-            new FadeComponentDrawer(0.72, ColorDrawerTypes.FADE, BlendMode.Overlay),
-            new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.Overlay),
-        };
+        private List<ComponentDrawerBase> colorDrawerItems;
 
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading)
         {
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
             _shadingDrawer = shading;
+            colorDrawerItems = Drawers;
         }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location, ShadingDrawer shading)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading)
         {
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
             _location = location;
             _shadingDrawer = shading;
+            colorDrawerItems = Drawers;
         }
         public override bool HasAsset()
         {

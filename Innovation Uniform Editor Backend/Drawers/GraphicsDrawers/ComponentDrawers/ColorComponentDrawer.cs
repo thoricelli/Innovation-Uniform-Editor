@@ -12,8 +12,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
     public class ColorComponentDrawer : ComponentDrawerBase
     {
         private ColorType colorType;
+        private BlendMode blendMode;
         public ColorComponentDrawer(double endPercentage, ColorDrawerTypes type, ColorType colorType, BlendMode blendMode) : base(endPercentage, type, blendMode)
         {
+            this.blendMode = blendMode;
             this.colorType = colorType;
         }
 
@@ -33,10 +35,24 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
                     break;
             }
 
-            Color resultColor = Overlay(
-                currentColor,
-                lowerImage.GetPixelColorAtIndex(index)
-            );
+            Color lowerImageColor = lowerImage.GetPixelColorAtIndex(index);
+            Color resultColor = currentColor;
+
+            switch (blendMode) 
+            {
+                case BlendMode.Overlay:
+                    resultColor = Overlay(
+                        currentColor,
+                        lowerImageColor
+                    );
+                    break;
+                case BlendMode.Blend:
+                    resultColor = Blend(
+                        currentColor, 
+                        lowerImageColor
+                    );
+                    break;
+            }
 
             // Change pixel on result image.
             upperImage.ChangePixelColorAtIndex(index, resultColor);
