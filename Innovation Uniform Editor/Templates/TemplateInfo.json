@@ -178,6 +178,10 @@
         {
           "LogoId": 3,
           "Location": "321, 95"
+        },
+        {
+          "LogoId": 4,
+          "Location": "398, 374"
         }
       ]
     },
@@ -185,20 +189,46 @@
       "Id": 368664950,
       "Name": "Shortsleeve Collared shirt (Optional)",
       "Creator": "ChromaticDeath",
-      "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012"
+      "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
+      "LogoIds": [
+        {
+          "LogoId": 3,
+          "Location": "321, 95"
+        },
+        {
+          "LogoId": 4,
+          "Location": "398, 374"
+        }
+      ]
     },
     {
       "Id": 368662637,
       "Name": "Innovation Security Dark (Premium 1)",
       "Creator": "ChromaticDeath",
-      "ArmbandId": "30a054ff-bd6e-4a79-b09d-3c374c6849d7"
+      "ArmbandId": "30a054ff-bd6e-4a79-b09d-3c374c6849d7",
+      "LogoIds": [
+        {
+          "LogoId": 5,
+          "Location": "486, 140"
+        },
+        {
+          "LogoId": 0,
+          "Location":"395, 370"
+        }
+      ]
     },
     {
       "Id": 1572085245,
       "Name": "Innovation Security Digital Camo Uniform Shirt",
       "Creator": "Darkboltex",
       "GloveId": "772c8317-ddb1-4805-a543-d65f5d422fb1",
-      "ArmbandId": "4414023a-8c1e-4541-9011-4d66a198e3d5"
+      "ArmbandId": "4414023a-8c1e-4541-9011-4d66a198e3d5",
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location":"395, 370"
+        }
+      ]
     },
     {
       "Id": 747914884,
@@ -210,19 +240,57 @@
       "Id": 747916816,
       "Name": "Innovation Security Guardsman's Vest",
       "Creator": "ChromaticDeath",
-      "ArmbandId": "b053b1d1-6278-4a8f-a6bb-c96223ca1182"
+      "ArmbandId": "b053b1d1-6278-4a8f-a6bb-c96223ca1182",
+      "LogoIds": [
+        {
+          "LogoId": 5,
+          "Location": "486, 140"
+        },
+        {
+          "LogoId": 0,
+          "Location":"395, 370"
+        }
+      ]
     },
     {
       "Id": 368665973,
       "Name": "Innovation Security \"Legacy\" Vest (Optional)",
       "Creator": "ChromaticDeath",
-      "ArmbandId": "2123df52-c72c-4763-89a9-79ddcf08cdb5"
+      "ArmbandId": "2123df52-c72c-4763-89a9-79ddcf08cdb5",
+      "LogoIds": [
+        {
+          "LogoId": 7,
+          "Location": "460, 179"
+        },
+        {
+          "LogoId": 6,
+          "Location":"399, 160"
+        },
+        {
+          "LogoId": 0,
+          "Location":"395, 370"
+        }
+      ]
     },
     {
       "Id": 368664191,
       "Name": "Security Shortsleeved \"Legacy\" Vest (Optional)",
       "Creator": "ChromaticDeath",
-      "ArmbandId": "2123df52-c72c-4763-89a9-79ddcf08cdb5"
+      "ArmbandId": "2123df52-c72c-4763-89a9-79ddcf08cdb5",
+      "LogoIds": [
+        {
+          "LogoId": 7,
+          "Location": "460, 179"
+        },
+        {
+          "LogoId": 6,
+          "Location":"399, 160"
+        },
+        {
+          "LogoId": 0,
+          "Location":"395, 370"
+        }
+      ]
     },
     {
       "Id": 368657559,
