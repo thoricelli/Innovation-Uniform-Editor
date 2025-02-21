@@ -30,8 +30,8 @@ namespace Innovation_Uniform_Editor_Backend
         public static HolstersLoader HolstersLoader { get; set; }
         public static LogosLoader LogosLoader { get; set; }
         public static PresetsLoader PresetsLoader { get; set; }
-        public static FontFamily Neuropol { get; set; }
-        public static FontFamily SmallestPixel7 { get; set; }
+        public static CreatorLoader CreatorLoader { get; set; }
+        public static FontsLoader FontsLoader { get; set; }
 
         public static void Initialize()
         {
@@ -39,6 +39,8 @@ namespace Innovation_Uniform_Editor_Backend
                 Directory.CreateDirectory(EditorPaths.DataPath);
 
             TemplateUpdater.CheckOnStartup();
+
+            FontsLoader = new FontsLoader(EditorPaths.FontsPath);
 
             Backgrounds = new BackgroundsLoader(EditorPaths.BackgroundsPath);
             Uniforms = new UniformsLoader($"{EditorPaths.TemplatePath}/TemplateInfo.json");
@@ -56,12 +58,7 @@ namespace Innovation_Uniform_Editor_Backend
 
             Customs = new CustomsLoader(EditorPaths.CustomsPath);
 
-            PrivateFontCollection collection = new PrivateFontCollection();
-            collection.AddFontFile($"{EditorPaths.FontsPath}/Neuropol.otf");
-            collection.AddFontFile($"{EditorPaths.FontsPath}/smallest_pixel-7.ttf");
-
-            Neuropol = new FontFamily("Neuropol", collection);
-            SmallestPixel7 = new FontFamily("Smallest Pixel-7", collection);
+            CreatorLoader = new CreatorLoader(EditorPaths.TemplatePath);
         }
     }
 }

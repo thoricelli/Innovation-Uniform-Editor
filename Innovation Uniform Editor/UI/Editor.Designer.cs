@@ -66,6 +66,7 @@ namespace Innovation_Uniform_Editor.UI
             this.label2 = new System.Windows.Forms.Label();
             this.btnDrawDetail = new System.Windows.Forms.Button();
             this.saveToFile = new System.Windows.Forms.SaveFileDialog();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -137,14 +138,14 @@ namespace Innovation_Uniform_Editor.UI
             // downloadToolStripMenuItem1
             // 
             this.downloadToolStripMenuItem1.Name = "downloadToolStripMenuItem1";
-            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.downloadToolStripMenuItem1.Text = "Download";
             this.downloadToolStripMenuItem1.Click += new System.EventHandler(this.downloadToolStripMenuItem1_Click);
             // 
             // exportToFile
             // 
             this.exportToFile.Name = "exportToFile";
-            this.exportToFile.Size = new System.Drawing.Size(180, 22);
+            this.exportToFile.Size = new System.Drawing.Size(128, 22);
             this.exportToFile.Text = "To file";
             this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
             // 
@@ -271,7 +272,7 @@ namespace Innovation_Uniform_Editor.UI
             // btnWarnings
             // 
             this.btnWarnings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWarnings.Location = new System.Drawing.Point(644, 516);
+            this.btnWarnings.Location = new System.Drawing.Point(642, 486);
             this.btnWarnings.Name = "btnWarnings";
             this.btnWarnings.Size = new System.Drawing.Size(88, 23);
             this.btnWarnings.TabIndex = 17;
@@ -380,11 +381,23 @@ namespace Innovation_Uniform_Editor.UI
             this.saveToFile.DefaultExt = "iue";
             this.saveToFile.FileName = "Custom";
             // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFolder.Location = new System.Drawing.Point(641, 515);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(88, 23);
+            this.btnOpenFolder.TabIndex = 19;
+            this.btnOpenFolder.Text = "Open folder";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnWarnings);
             this.Controls.Add(this.idLabel);
@@ -449,5 +462,6 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.Button btnManageGloves;
         private System.Windows.Forms.Button btnLogoColors;
         private System.Windows.Forms.SaveFileDialog saveToFile;
+        private System.Windows.Forms.Button btnOpenFolder;
     }
 }

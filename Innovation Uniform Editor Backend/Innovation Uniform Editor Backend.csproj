@@ -92,6 +92,8 @@
     <Compile Include="ImageEditors\Interface\IImageEditor.cs" />
     <Compile Include="ImageEditors\BitmapEditor.cs" />
     <Compile Include="Images\BackgroundImage.cs" />
+    <Compile Include="Loaders\CreatorLoader.cs" />
+    <Compile Include="Loaders\FontsLoader.cs" />
     <Compile Include="Loaders\OverlayAssets\GlovesLoader.cs" />
     <Compile Include="Loaders\OverlayAssets\ArmbandsLoader.cs" />
     <Compile Include="Loaders\BackgroundsLoader.cs" />
@@ -106,6 +108,8 @@
     <Compile Include="Loaders\RecolorableAssetLoader.cs" />
     <Compile Include="Loaders\UniformAssetsLoader.cs" />
     <Compile Include="Loaders\UniformsLoader.cs" />
+    <Compile Include="Models\Creator.cs" />
+    <Compile Include="Models\FontItem.cs" />
     <Compile Include="Models\Interfaces\IRecolorableAssets.cs" />
     <Compile Include="Models\MaskImage.cs" />
     <Compile Include="Models\OverlayAssets\Armband.cs" />

@@ -13,114 +13,114 @@
     {
       "Id": 368659381,
       "Name": "Innovation Security Holstered Pants- .40 Pistol",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "HolsterId": "5bd4edc4-fb80-4b23-bfcd-ce588eb21fb7"
     },
     {
       "Id": 6914637973,
       "Name": "Innovation Security 2015 Remastered Pants",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "ShoeId": "9743d2ef-0c36-47a9-bc25-1b583402e816"
     },
     {
       "Id": 3933922179,
       "Name": "Innovation Security Advanced Tactical Pants",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "ShoeId": "b081fbf3-0b51-48b7-af5c-44fcd19aeba4"
     },
     {
       "Id": 368728509,
       "Name": "Innovation Security Arctic Task Force Pants",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 368658944,
       "Name": "Innovation Security Basic Pants",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 368662298,
       "Name": "Chromatic's Signature Elite Pants (Guardsman+)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "HolsterId": "83115c76-d8a9-443a-b00f-5972b8fabd40"
     },
     {
       "Id": 368660897,
       "Name": "Innovation Security Dark Pants (Premium 1)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "HolsterId": "cae2bcdc-9512-4ade-b7e6-4831323b3abd"
     },
     {
       "Id": 1572086257,
       "Name": "Innovation Security Digital Camo Uniform Pants",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 747915880,
       "Name": "Elite Tier Guardsman's Trousers",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 747917741,
       "Name": "Innovation Security Guardsman's Trousers",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 6914640997,
       "Name": "Innovation Lightweight Armour Pants",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "ShoeId": "9743d2ef-0c36-47a9-bc25-1b583402e816"
     },
     {
       "Id": 368659714,
       "Name": "Innovation Security Shorts",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 368660060,
       "Name": "Innovation Security Standard Pants",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6"
     },
     {
       "Id": 17402073986,
       "Name": "Innovation Security Tactical Skirt",
-      "Creator": "Skyfall_Epsilon",
+      "CreatorId": 176598467,
       "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda"
     },
     {
       "Id": 17402068132,
       "Name": "Innovation Security Energized Pistol Holster",
-      "Creator": "Skyfall_Epsilon",
+      "CreatorId": 176598467,
       "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda"
     },
     {
       "Id": 17402035472,
       "Name": "Innovation Security Early Response Unit Pants",
-      "Creator": "SardiTime",
+      "CreatorId": 135955170,
       "ShoeId": "b8604baa-c52f-4a26-a503-a72dbaced017",
       "HolsterId": "d62e48f4-635c-485c-a7cb-63144b8c925f"
     },
     {
       "Id": 0,
       "Name": "[TRAINER+ ONLY] Innovation Security Trenchoat Pants",
-      "Creator": "SardiTime"
+      "CreatorId": 135955170
     }
   ],
   "Shirts": [
     {
       "Id": 6914629942,
       "Name": "Innovation Security 2015 Remastered Shirt",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "ArmbandId": "94c1a8f6-d40f-4a29-9d89-6481f299c1ce",
       "LogoIds": [
         {
@@ -136,7 +136,7 @@
     {
       "Id": 3933916736,
       "Name": "Innovation Security Advanced Tactical Vest",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "CanBeCustomized": false,
       "GloveId": "3c571740-e2d3-401e-9e6e-f4aa25f41b1d",
       "ArmbandId": "05d1b0f8-2585-4751-81de-8882e36f01d6",
@@ -150,7 +150,7 @@
     {
       "Id": 368717072,
       "Name": "Innovation Security Arctic Task Force Vest",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "CanBeCustomized": false,
       "GloveId": "1436b29a-2583-4fae-818b-7c44c3999dad",
       "ArmbandId": "e9f46544-5221-440c-9ab2-bd67b8b46611",
@@ -158,13 +158,25 @@
         {
           "LogoId": 0,
           "Location": "394, 380"
+        },
+        {
+          "LogoId": 6,
+          "Location": "399, 160"
+        },
+        {
+          "LogoId": 7,
+          "Location": "460, 179"
+        },
+        {
+          "LogoId": 7,
+          "Location": "251, 165"
         }
       ]
     },
     {
       "Id": 368715486,
       "Name": "Chromatic's Signature Elite Vest (Guardsman+)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "CanBeCustomized": false,
       "GloveId": "f74d4091-bb02-4b86-b5eb-5e4c2c59e8f7",
       "ArmbandId": "984fd432-85af-4e5b-8ac3-acb4fc9018fb"
@@ -172,7 +184,7 @@
     {
       "Id": 368658202,
       "Name": "Innovation Security Longsleeved Shirt (Optional)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
       "LogoIds": [
         {
@@ -188,7 +200,7 @@
     {
       "Id": 368664950,
       "Name": "Shortsleeve Collared shirt (Optional)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
       "LogoIds": [
         {
@@ -204,7 +216,7 @@
     {
       "Id": 368662637,
       "Name": "Innovation Security Dark (Premium 1)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "30a054ff-bd6e-4a79-b09d-3c374c6849d7",
       "LogoIds": [
         {
@@ -213,33 +225,41 @@
         },
         {
           "LogoId": 0,
-          "Location":"395, 370"
+          "Location": "395, 370"
         }
       ]
     },
     {
       "Id": 1572085245,
       "Name": "Innovation Security Digital Camo Uniform Shirt",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "GloveId": "772c8317-ddb1-4805-a543-d65f5d422fb1",
       "ArmbandId": "4414023a-8c1e-4541-9011-4d66a198e3d5",
       "LogoIds": [
         {
           "LogoId": 0,
-          "Location":"395, 370"
+          "Location": "395, 370"
+        },
+        {
+          "LogoId": 7,
+          "Location": "460, 179"
+        },
+        {
+          "LogoId": 7,
+          "Location": "251, 165"
         }
       ]
     },
     {
       "Id": 747914884,
       "Name": "Innovation Security Elite Tier Guardsman's Vest",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "8ba5f71d-2dfb-481a-8f85-83626c1bb555"
     },
     {
       "Id": 747916816,
       "Name": "Innovation Security Guardsman's Vest",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "b053b1d1-6278-4a8f-a6bb-c96223ca1182",
       "LogoIds": [
         {
@@ -248,14 +268,14 @@
         },
         {
           "LogoId": 0,
-          "Location":"395, 370"
+          "Location": "395, 370"
         }
       ]
     },
     {
       "Id": 368665973,
       "Name": "Innovation Security \"Legacy\" Vest (Optional)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "2123df52-c72c-4763-89a9-79ddcf08cdb5",
       "LogoIds": [
         {
@@ -263,19 +283,23 @@
           "Location": "460, 179"
         },
         {
+          "LogoId": 7,
+          "Location": "251, 165"
+        },
+        {
           "LogoId": 6,
-          "Location":"399, 160"
+          "Location": "399, 160"
         },
         {
           "LogoId": 0,
-          "Location":"395, 370"
+          "Location": "395, 370"
         }
       ]
     },
     {
       "Id": 368664191,
       "Name": "Security Shortsleeved \"Legacy\" Vest (Optional)",
-      "Creator": "ChromaticDeath",
+      "CreatorId": 127780,
       "ArmbandId": "2123df52-c72c-4763-89a9-79ddcf08cdb5",
       "LogoIds": [
         {
@@ -283,63 +307,149 @@
           "Location": "460, 179"
         },
         {
+          "LogoId": 7,
+          "Location": "251, 165"
+        },
+        {
           "LogoId": 6,
-          "Location":"399, 160"
+          "Location": "399, 160"
         },
         {
           "LogoId": 0,
-          "Location":"395, 370"
+          "Location": "395, 370"
         }
       ]
     },
     {
       "Id": 368657559,
       "Name": "Innovation Security Light Vest (Optional)",
-      "Creator": "ChromaticDeath",
-      "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012"
+      "CreatorId": 127780,
+      "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location": "396, 371"
+        },
+        {
+          "LogoId": 3,
+          "Location": "482, 123"
+        }
+      ]
     },
     {
       "Id": 6914634595,
       "Name": "Innovation Lightweight Armour Shirt",
-      "Creator": "Darkboltex",
+      "CreatorId": 40545786,
       "GloveId": "dbaac83d-f5e6-446e-bf2a-a205292c3bc0",
-      "ArmbandId": "e9f46544-5221-440c-9ab2-bd67b8b46611"
+      "ArmbandId": "a4239cea-dfac-4051-88fa-dc2a22dd6346",
+      "LogoIds": [
+        {
+          "LogoId": 8,
+          "Location": "395, 374"
+        },
+        {
+          "LogoId": 10,
+          "Location": "486, 143"
+        }
+      ]
     },
     {
       "Id": 368666564,
       "Name": "Innovation Security Standard Vest 2016",
-      "Creator": "ChromaticDeath",
-      "ArmbandId": "5cee9d71-9e16-409b-af37-3b6eea22cf7b"
+      "CreatorId": 127780,
+      "ArmbandId": "5cee9d71-9e16-409b-af37-3b6eea22cf7b",
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location": "395, 370"
+        },
+        {
+          "LogoId": 5,
+          "Location": "486, 140"
+        }
+      ]
     },
     {
       "Id": 368663056,
       "Name": "Innovation Security Shortsleeved Standard",
-      "Creator": "ChromaticDeath",
-      "ArmbandId": "5cee9d71-9e16-409b-af37-3b6eea22cf7b"
+      "CreatorId": 127780,
+      "ArmbandId": "5cee9d71-9e16-409b-af37-3b6eea22cf7b",
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location": "395, 370"
+        },
+        {
+          "LogoId": 5,
+          "Location": "486, 140"
+        }
+      ]
     },
     {
       "Id": 6914646133,
       "Name": "Innovation Security Satchel Uniform",
-      "Creator": "SardiTime",
-      "ArmbandId": "4e695282-c663-4e4f-a7cb-113bc8c3ab7e"
+      "CreatorId": 135955170,
+      "ArmbandId": "4e695282-c663-4e4f-a7cb-113bc8c3ab7e",
+      "LogoIds": [
+        {
+          "LogoId": 1,
+          "Location": "172, 370"
+        },
+        {
+          "LogoId": 1,
+          "Location": "395, 370"
+        }
+      ]
     },
     {
       "Id": 17402056919,
       "Name": "Innovation Security Zip-Up Tactical Vest",
-      "Creator": "Skyfall_Epsilon",
+      "CreatorId": 176598467,
       "GloveId": "66f2a684-bd12-4cd4-b9d8-f083d6ac67f6",
-      "ArmbandId": "4e695282-c663-4e4f-a7cb-113bc8c3ab7e"
+      "ArmbandId": "4e695282-c663-4e4f-a7cb-113bc8c3ab7e",
+      "LogoIds": [
+        {
+          "LogoId": 1,
+          "Location": "172, 370"
+        },
+        {
+          "LogoId": 1,
+          "Location": "395, 370"
+        },
+        {
+          "LogoId": 7,
+          "Location": "243, 141"
+        },
+        {
+          "LogoId": 7,
+          "Location": "271, 141"
+        },
+        {
+          "LogoId": 9,
+          "Location": "520, 171"
+        }
+      ]
     },
     {
       "Id": 17402029336,
       "Name": "Innovation Security Early Response Unit Vest",
-      "Creator": "SardiTime",
-      "ArmbandId": "60a23692-a6cf-4f1b-85e1-5dc56422d577"
+      "CreatorId": 135955170,
+      "ArmbandId": "60a23692-a6cf-4f1b-85e1-5dc56422d577",
+      "LogoIds": [
+        {
+          "LogoId": 2,
+          "Location": "172, 370"
+        },
+        {
+          "LogoId": 2,
+          "Location": "395, 370"
+        }
+      ]
     },
     {
       "Id": 1,
       "Name": "[TRAINER+ ONLY] Innovation Security Trenchoat Shirt",
-      "Creator": "SardiTime",
+      "CreatorId": 135955170,
       "ArmbandId": "51ef14bf-3533-4ef9-86d3-91147c487422"
     }
   ]

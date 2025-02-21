@@ -1,4 +1,5 @@
 ﻿using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System;
 
@@ -8,7 +9,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
     {
         public ulong Id { get; set; }
         public string Name { get; set; }
-        public string Creator { get; set; }
+        public int CreatorId { get; set; }
         public ClothingPart part { get; set; }
         #region Customization
         /*
@@ -30,6 +31,13 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
         #endregion
         #endregion
+        public string Path 
+        { 
+            get
+            {
+                return $"{EditorPaths.TemplateNormalPath}/{part.ToString()}/{Id}";
+            } 
+        }
 
     }
 }

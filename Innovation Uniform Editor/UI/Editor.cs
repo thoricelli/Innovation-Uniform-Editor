@@ -2,9 +2,11 @@
 using Innovation_Uniform_Editor.UI.OverlayAssets;
 using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI
@@ -379,6 +381,11 @@ namespace Innovation_Uniform_Editor.UI
             custom.ChangeLogoPreset(e.Id);
 
             RefreshImage();
+        }
+
+        private void btnOpenFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start(custom.UniformBasedOn.Path);
         }
     }
 }
