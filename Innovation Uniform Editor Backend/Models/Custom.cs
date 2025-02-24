@@ -77,6 +77,71 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public Guid? ShoeId { get; set; }
         public Guid? GloveId { get; set; }
         public Version MinimumVersion { get; } = new Version(0,8,0);
+
+        private Holster _holster;
+        [JsonIgnore]
+        public Holster Holster 
+        { 
+            get
+            {
+                Guid? holsterId = this.HolsterId.HasValue ? this.HolsterId : this.UniformBasedOn.HolsterId;
+
+                if (!holsterId.HasValue)
+                    return null;
+
+                if (_holster == null)
+                    _holster = EditorMain.HolstersLoader.FindBy(holsterId.Value);
+                return _holster;
+            } 
+        }
+        private Armband _armband;
+        [JsonIgnore]
+        public Armband Armband
+        {
+            get
+            {
+                Guid? armbandId = this.ArmbandId.HasValue ? this.ArmbandId : this.UniformBasedOn.ArmbandId;
+
+                if (!armbandId.HasValue)
+                    return null;
+
+                if (_armband == null)
+                    _armband = EditorMain.ArmbandsLoader.FindBy(armbandId.Value);
+                return _armband;
+            }
+        }
+        private Glove _glove;
+        [JsonIgnore]
+        public Glove Glove
+        {
+            get
+            {
+                Guid? gloveId = this.GloveId.HasValue ? this.GloveId : this.UniformBasedOn.GloveId;
+
+                if (!gloveId.HasValue)
+                    return null;
+
+                if (_glove == null)
+                    _glove = EditorMain.GlovesLoader.FindBy(gloveId.Value);
+                return _glove;
+            }
+        }
+        private Shoe _shoe;
+        [JsonIgnore]
+        public Shoe Shoe
+        {
+            get
+            {
+                Guid? shoeId = this.ShoeId.HasValue ? this.ShoeId : this.UniformBasedOn.ShoeId;
+
+                if (!shoeId.HasValue)
+                    return null;
+
+                if (_shoe == null)
+                    _shoe = EditorMain.ShoesLoader.FindBy(shoeId.Value);
+                return _shoe;
+            }
+        }
         #endregion
         #region CUSTOM_SETTINGS
         public List<CustomColor> Colors { get; set; } = new List<CustomColor>();
@@ -299,6 +364,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
         private void Initialize()
         {
             _result = null;
+
+            this._glove = null;
+            this._shoe = null;
+            this._armband = null;
+            this._holster = null;
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
 

@@ -22,42 +22,44 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
         public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress)
         {
             // Overlay pixel with color from lower layer.
-
-            Color currentColor = Color.Transparent;
-
-            switch (colorType)
+            if (current.Colors != null)
             {
-                case ColorType.FirstColor:
-                    currentColor = GetColorFromCustomColor(current);
-                    break;
-                case ColorType.LastColor:
-                    currentColor = current.GetColorAtIndex(current.Colors.Count - 1);
-                    break;
+                Color currentColor = Color.Transparent;
+
+                switch (colorType)
+                {
+                    case ColorType.FirstColor:
+                        currentColor = GetColorFromCustomColor(current);
+                        break;
+                    case ColorType.LastColor:
+                        currentColor = current.GetColorAtIndex(current.Colors.Count - 1);
+                        break;
+                }
+
+                Color lowerImageColor = lowerImage.GetPixelColorAtIndex(index);
+                Color resultColor = currentColor;
+
+                switch (blendMode)
+                {
+                    case BlendMode.Overlay:
+                        resultColor = Overlay(
+                            currentColor,
+                            lowerImageColor
+                        );
+                        break;
+                    case BlendMode.Blend:
+                        resultColor = Blend(
+                            currentColor,
+                            lowerImageColor
+                        );
+                        break;
+                }
+
+                // Change pixel on result image.
+                upperImage.ChangePixelColorAtIndex(index, resultColor);
+
+                base.Draw(current, upperImage, lowerImage, index, progress);
             }
-
-            Color lowerImageColor = lowerImage.GetPixelColorAtIndex(index);
-            Color resultColor = currentColor;
-
-            switch (blendMode) 
-            {
-                case BlendMode.Overlay:
-                    resultColor = Overlay(
-                        currentColor,
-                        lowerImageColor
-                    );
-                    break;
-                case BlendMode.Blend:
-                    resultColor = Blend(
-                        currentColor, 
-                        lowerImageColor
-                    );
-                    break;
-            }
-
-            // Change pixel on result image.
-            upperImage.ChangePixelColorAtIndex(index, resultColor);
-
-            base.Draw(current, upperImage, lowerImage, index, progress);
         }
     }
 }

@@ -3,7 +3,12 @@ using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers;
 using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Assets;
+using Innovation_Uniform_Editor_Backend.Models.Base;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers
 {
@@ -38,6 +43,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             _logoDrawer = new LogoDrawer(custom.LogoPreset, assets.Logos);
             _shadingDrawer = new ShadingDrawer();
 
+            List<Creator> creators = new List<Creator>() { custom.UniformBasedOn.Creator };
+
+            AddIfNotExists(custom.Holster, creators);
+            AddIfNotExists(custom.Armband, creators);
+            AddIfNotExists(custom.Glove, creators);
+            AddIfNotExists(custom.Shoe, creators);
+
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
                 new BackgroundDrawer(assets.Background),
@@ -60,8 +72,18 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
         
                 //new UsernameDrawer(),
 
+                new CreditsDrawer(creators),
+
+                new LineTemplateDrawer(2, Color.Black, DashStyle.Solid),
+
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
+        }
+
+        public void AddIfNotExists(IHasCreator item, List<Creator> creators)
+        {
+            if (item != null && !creators.Exists(x => x.Id == item.Creator.Id))
+                creators.Add(item.Creator);
         }
 
         public override void RefreshAssets()

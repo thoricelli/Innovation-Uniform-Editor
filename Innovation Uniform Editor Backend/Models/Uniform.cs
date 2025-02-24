@@ -10,6 +10,16 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public ulong Id { get; set; }
         public string Name { get; set; }
         public int CreatorId { get; set; }
+        private Creator _creator;
+        public Creator Creator
+        {
+            get
+            {
+                if (_creator == null)
+                    _creator = EditorMain.CreatorLoader.FindBy(CreatorId);
+                return _creator;
+            }
+        }
         public ClothingPart part { get; set; }
         #region Customization
         /*

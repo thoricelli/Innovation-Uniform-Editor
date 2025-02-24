@@ -54,7 +54,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders.Base
 
         public virtual TType GetByIndex(int index)
         {
-            return _items.Values.ElementAt(index);
+            return GetAll().ElementAt(index);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Innovation_Uniform_Editor_Backend
             VersionType == VersionType.Release ? 
             Version.ToString() : 
             $"{Version} ({VersionType} BUILD)";
+        public static bool Portable = VersionType == VersionType.Development ? true : false;
         #endregion
         public static BackgroundsLoader Backgrounds { get; set; }
         public static UniformsLoader Uniforms { get; set; }

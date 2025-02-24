@@ -1,11 +1,17 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 
 namespace Innovation_Uniform_Editor_Backend.Globals
 {
     public static class EditorPaths
     {
-        public static string DataPathName = "thoricelli";
-        public static string DataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/" + DataPathName;
+        private static string dataPathBaseUrl = EditorMain.Portable
+            ? Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) :
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+        public static string DataPathName = EditorMain.Portable ? String.Empty : "thoricelli";
+        public static string DataPath = dataPathBaseUrl + "/" + DataPathName;
 
         public static string HashName = "templateshash.txt";
         public static string HashPath = $"{DataPath}/{HashName}";

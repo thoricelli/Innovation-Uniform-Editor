@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 {
-    public abstract class TextDrawerBase : BaseGraphicsDrawer
+    public class TextDrawerBase : BaseGraphicsDrawer
     {
         private string text;
         private PointF position;
@@ -12,8 +12,12 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
         private Color color;
         private FontStyle fontStyle;
         private StringAlignment alignment;
+        private StringAlignment lineAlignment;
+        private string name;
 
-        protected TextDrawerBase(string text, PointF position)
+        public override string Name => "Text";
+
+        public TextDrawerBase(string text, PointF position)
         {
             this.text = text;
             this.position = position;
@@ -22,9 +26,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
             color = Color.FromArgb(255, 167, 167, 167);
             fontStyle = FontStyle.Regular;
             alignment = StringAlignment.Center;
+            lineAlignment = StringAlignment.Center;
         }
 
-        protected TextDrawerBase(string text, PointF position, FontFamily fontFamily, int size, Color color, FontStyle fontStyle, StringAlignment alignment)
+        public TextDrawerBase(string text, PointF position, FontFamily fontFamily, int size, Color color, FontStyle fontStyle, StringAlignment alignment, StringAlignment lineAlignment)
         {
             this.text = text;
             this.position = position;
@@ -33,6 +38,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
             this.color = color;
             this.fontStyle = fontStyle;
             this.alignment = alignment;
+            this.lineAlignment = lineAlignment;
         }
 
         public override bool HasAsset()
@@ -42,14 +48,17 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            var font = new Font(fontFamily, size, fontStyle, GraphicsUnit.Pixel);
-            var solidBrush = new SolidBrush(color);
+            if (Visible)
+            {
+                var font = new Font(fontFamily, size, fontStyle, GraphicsUnit.Pixel);
+                var solidBrush = new SolidBrush(color);
 
-            StringFormat format = new StringFormat();
-            format.LineAlignment = StringAlignment.Center;
-            format.Alignment = StringAlignment.Center;
+                StringFormat format = new StringFormat();
+                format.LineAlignment = lineAlignment;
+                format.Alignment = alignment;
 
-            graphics.DrawString(text, font, solidBrush, position, format);
+                graphics.DrawString(text, font, solidBrush, position, format);
+            }
         }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Drawers\GraphicsDrawers\ComponentDrawers\FadeComponentDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ComponentDrawers\Interfaces\IComponentInterface.cs" />
     <Compile Include="Drawers\CustomDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\CreditsDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Interfaces\IResultDrawable.cs" />
     <Compile Include="Drawers\GraphicsDrawers\BackgroundDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Bases\BaseAssetDrawer.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Drawers\GraphicsDrawers\BitmapDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ArmbandDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\GloveDrawer.cs" />
+    <Compile Include="Drawers\GraphicsDrawers\LineTemplateDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ShadingDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\ShoeDrawer.cs" />
     <Compile Include="Drawers\GraphicsDrawers\Bases\BaseColorDrawer.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Loaders\UniformsLoader.cs" />
     <Compile Include="Models\Creator.cs" />
     <Compile Include="Models\FontItem.cs" />
+    <Compile Include="Models\Interfaces\IHasCreator.cs" />
     <Compile Include="Models\Interfaces\IRecolorableAssets.cs" />
     <Compile Include="Models\MaskImage.cs" />
     <Compile Include="Models\OverlayAssets\Armband.cs" />

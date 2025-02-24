@@ -41,9 +41,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    g.SmoothingMode = SmoothingMode.HighSpeed;
                     g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
 
                     g.Clear(Color.Transparent);
 
