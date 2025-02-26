@@ -1,11 +1,12 @@
 ﻿using Innovation_Uniform_Editor.UI;
 using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
-using Innovation_Uniform_Editor_Backend.Helpers;
-using Innovation_Uniform_Editor_Backend.Helpers.Enums;
 using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Updater;
 using System;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 using MenuItem = Innovation_Uniform_Editor_Backend.Models.MenuItem;
 
@@ -24,11 +25,21 @@ namespace Innovation_Uniform_Editor
         {
             EditorMain.Initialize();
 
-            LoadCustomsAndGroups();
+            string updateStr = "Check for updates";
 
-            /*bool updates = TemplateUpdater.CheckForUpdates();
-            if (updates)
-                MessageBox.Show("Templates have been updated to the latest version!", "Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+
+            backgroundWorker.DoWork += new DoWorkEventHandler(
+            delegate (object o, DoWorkEventArgs args)
+            {
+                //BackgroundWorker b = o as BackgroundWorker;
+
+                updateTemplatesToolStripMenuItem.Text = EditorMain.TemplateUpdater.IsOutdated() ? updateStr + " (1)" : updateStr;
+            });
+
+            backgroundWorker.RunWorkerAsync();
+
+            LoadCustomsAndGroups();
         }
 
         public void LoadCustomsAndGroups()
@@ -324,11 +335,12 @@ namespace Innovation_Uniform_Editor
             DialogResult dialogResult = MessageBox.Show("Would you like to update the uniform templates?", "Template updating", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                TemplateUpdateStatus result = TemplateUpdater.CheckForUpdates();
+                TemplateUpdateStatus result = EditorMain.TemplateUpdater.CheckAndUpdate();
 
                 switch (result)
                 {
                     case TemplateUpdateStatus.SUCCESS:
+                        EditorMain.Initialize();
                         MessageBox.Show("Templates have been updated.", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     case TemplateUpdateStatus.UP_TO_DATE:

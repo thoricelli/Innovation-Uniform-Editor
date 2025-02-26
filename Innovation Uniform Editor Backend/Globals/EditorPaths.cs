@@ -16,6 +16,9 @@ namespace Innovation_Uniform_Editor_Backend.Globals
         public static string HashName = "templateshash.txt";
         public static string HashPath = $"{DataPath}/{HashName}";
 
+        public static string TemplateVersioningName = "TemplateVersioning.json";
+        public static string TemplateVersioningPath = $"{DataPath}/{TemplateVersioningName}";
+
         public static string ZipName = "Templates.zip";
         public static string ZipPath = $"{DataPath}/{ZipName}";
 

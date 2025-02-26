@@ -1,8 +1,9 @@
 ﻿using Innovation_Uniform_Editor_Backend.Globals;
-using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets;
+using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Enums;
+using Innovation_Uniform_Editor_Backend.Updater;
 using System;
 using System.Drawing;
 using System.Drawing.Text;
@@ -22,6 +23,7 @@ namespace Innovation_Uniform_Editor_Backend
             $"{Version} ({VersionType} BUILD)";
         public static bool Portable = VersionType == VersionType.Development ? true : false;
         #endregion
+        public static TemplateUpdater TemplateUpdater { get; set; }
         public static BackgroundsLoader Backgrounds { get; set; }
         public static UniformsLoader Uniforms { get; set; }
         public static CustomsLoader Customs { get; set; }
@@ -39,7 +41,9 @@ namespace Innovation_Uniform_Editor_Backend
             if (!Directory.Exists(EditorPaths.DataPath))
                 Directory.CreateDirectory(EditorPaths.DataPath);
 
-            TemplateUpdater.CheckOnStartup();
+            TemplateUpdater = new TemplateUpdater();
+
+            TemplateUpdater.CheckInstallationFiles();
 
             FontsLoader = new FontsLoader(EditorPaths.FontsPath);
 

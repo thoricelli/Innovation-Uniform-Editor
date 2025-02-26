@@ -82,13 +82,15 @@
     <Compile Include="Drawers\GraphicsDrawers\WatermarkDrawer.cs" />
     <Compile Include="Drawers\Interfaces\IDrawable.cs" />
     <Compile Include="EditorMain.cs" />
+    <Compile Include="Enums\UpdaterVersioningResult.cs" />
     <Compile Include="Globals\EditorPaths.cs" />
-    <Compile Include="Helpers\Enums\TemplateUpdateStatus.cs" />
+    <Compile Include="Enums\TemplateUpdateStatus.cs" />
     <Compile Include="Helpers\FileToBitmap.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
-    <Compile Include="Helpers\JsonToList.cs" />
+    <Compile Include="Helpers\JsonUtils.cs" />
     <Compile Include="Helpers\NamePressHelper.cs" />
-    <Compile Include="Helpers\TemplateUpdater.cs" />
+    <Compile Include="Models\TemplateVersioning.cs" />
+    <Compile Include="Updater\TemplateUpdater.cs" />
     <Compile Include="ImageEditors\Base\ImageEditorBase.cs" />
     <Compile Include="ImageEditors\Factory\ImageFactory.cs" />
     <Compile Include="ImageEditors\Interface\IImageEditor.cs" />
@@ -143,6 +145,10 @@
     <Compile Include="Enums\UniformType.cs" />
     <Compile Include="Models\UniformDataLogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Updater\CorruptionHandler.cs" />
+    <Compile Include="Updater\HashHandler.cs" />
+    <Compile Include="Updater\TemplateZipHandler.cs" />
+    <Compile Include="Updater\UpdaterVersioning.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

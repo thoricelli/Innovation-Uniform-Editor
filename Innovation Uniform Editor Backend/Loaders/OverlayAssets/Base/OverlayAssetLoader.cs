@@ -21,7 +21,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets.Base
 
             string infoPath = $"{_path}/{InfoName}";
 
-            Set(JsonToList.LoadList<TType>(infoPath));
+            Set(JsonUtils.LoadList<TType>(infoPath));
         }
     }
 }

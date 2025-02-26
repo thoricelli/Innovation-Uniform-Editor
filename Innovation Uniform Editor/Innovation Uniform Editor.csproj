@@ -299,7 +299,9 @@
     </Compile>
     <None Include="StartBatFiles\StartMenuShortcut.bat" />
     <None Include="StartBatFiles\StartShortcut.bat" />
-    <None Include="Templates\TemplateInfo.json" />
+    <None Include="TemplateVersioning.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -313,112 +315,6 @@
     <Content Include="150x150.ico" />
     <Content Include="XP_150.ico" />
     <None Include="Icons\620x300.png" />
-    <Content Include="Templates\Misc\Shading_Template.png" />
-    <Content Include="Templates\Normal\Pants\368659381\Original.png" />
-    <Content Include="Templates\Normal\Pants\368659381\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368659381\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\3933922179\Original.png" />
-    <Content Include="Templates\Normal\Pants\3933922179\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\3933922179\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\6914637973\Original.png" />
-    <Content Include="Templates\Normal\Pants\6914637973\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\6914637973\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Original.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\368658944\Original.png" />
-    <Content Include="Templates\Normal\Pants\368658944\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368658944\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368662298\Original.png" />
-    <Content Include="Templates\Normal\Pants\368662298\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368662298\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368660897\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368660897\Original.png" />
-    <Content Include="Templates\Normal\Pants\368660897\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\1572086257\Original.png" />
-    <Content Include="Templates\Normal\Pants\1572086257\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\1572086257\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Original.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Original.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Original.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\368659714\Original.png" />
-    <Content Include="Templates\Normal\Pants\368659714\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368659714\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368660060\Original.png" />
-    <Content Include="Templates\Normal\Pants\368660060\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368660060\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Original.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\3933916736\Original.png" />
-    <Content Include="Templates\Normal\Shirts\3933916736\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\3933916736\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\368715486\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368715486\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368715486\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368664950\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368664950\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368664950\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368658202\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368658202\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368658202\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368662637\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368662637\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368662637\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\1572085245\Original.png" />
-    <Content Include="Templates\Normal\Shirts\1572085245\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\1572085245\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Original.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Original.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\368664191\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368664191\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368664191\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368665973\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368665973\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368665973\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368657559\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368657559\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368657559\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Original.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\6914646133\Original.png" />
-    <Content Include="Templates\Normal\Shirts\6914646133\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\6914646133\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368663056\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368663056\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368663056\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368666564\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368666564\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368666564\Selection_Template.png" />
-    <Content Include="Templates\Trench\Pants\Selection Templates\Trench Shirt Selection Template.png" />
-    <Content Include="Templates\Trench\Pants\Trench Pants Overlay.png" />
-    <Content Include="Templates\Trench\Pants\Trench Pants.png" />
-    <Content Include="Templates\Trench\Shirt\Selection Templates\Trench Shirt Selection Template.png" />
-    <Content Include="Templates\Trench\Shirt\Trench Shirt Overlay.png" />
-    <Content Include="Templates\Trench\Shirt\Trench Shirt.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -445,6 +341,7 @@
 copy templateshash.txt "$(SolutionDir)"
 
 cd "$(SolutionDir)Innovation Uniform Editor"
+copy TemplateVersioning.json "$(SolutionDir)"
 del Templates.zip
 powershell Compress-Archive -Path Templates/* -CompressionLevel Optimal -DestinationPath Templates.zip
 move Templates.zip ../Templates.zip</PostBuildEvent>

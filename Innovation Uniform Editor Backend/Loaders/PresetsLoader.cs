@@ -14,7 +14,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             base.Load();
 
-            Set(JsonToList.LoadList<Preset>(_path + "/Presets.json"));
+            Set(JsonUtils.LoadList<Preset>(_path + "/Presets.json"));
         }
     }
 }

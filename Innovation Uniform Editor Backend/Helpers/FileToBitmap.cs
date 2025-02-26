@@ -1,4 +1,5 @@
 ﻿using Innovation_Uniform_Editor_Backend.Globals;
+using Innovation_Uniform_Editor_Backend.Updater;
 using System.Drawing;
 using System.IO;
 
@@ -10,7 +11,7 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
         {
             if (!File.Exists(path))
             {
-                TemplateUpdater.CheckForUpdates(true);
+                EditorMain.TemplateUpdater.CorruptionSignal();
                 return fileToBitmapBase($"{EditorPaths.TemplateNormalPath}/ERROR/Original.png");
             }
             return fileToBitmapBase(path);

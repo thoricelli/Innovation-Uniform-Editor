@@ -16,7 +16,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             base.Load();
 
-            Set(JsonToList.LoadList<Creator>(_path + "/Creators.json"));
+            Set(JsonUtils.LoadList<Creator>(_path + "/Creators.json"));
         }
     }
 }

@@ -28,6 +28,8 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
                     Id = fontName,
                     FontFamily = new FontFamily(collection.Families[0].Name, collection)
                 });
+
+                collection.Dispose();
             }
         }
     }
