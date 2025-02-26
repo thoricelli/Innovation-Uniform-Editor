@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
+using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor_Backend.Updater
 {
@@ -51,24 +52,19 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             {
                 string hashTemplate = hashHandler.GetNewHash();
 
-                if (IsOutdated())
+                TemplateUpdateStatus status = Update();
+
+                //Update the current hash.
+                if (status == TemplateUpdateStatus.SUCCESS)
                 {
-                    TemplateUpdateStatus status = Update();
+                    if (updaterVersioning.CachedNewVersioning != null)
+                        TemplateVersion = updaterVersioning.CachedNewVersioning.TemplateVersion;
 
-                    //Update the current hash.
-                    if (status == TemplateUpdateStatus.SUCCESS)
-                    {
-                        if (updaterVersioning.CachedNewVersioning != null)
-                            TemplateVersion = updaterVersioning.CachedNewVersioning.TemplateVersion;
-
-                        updaterVersioning.UpdateHash(hashTemplate);
-                        hashHandler.WriteNewHash(hashTemplate);
-                    }
-
-                    return status;
+                    updaterVersioning.UpdateHash(hashTemplate);
+                    hashHandler.WriteNewHash(hashTemplate);
                 }
 
-                return TemplateUpdateStatus.UP_TO_DATE;
+                return status;
             }
             catch (IOException e)
             {
@@ -87,7 +83,14 @@ namespace Innovation_Uniform_Editor_Backend.Updater
         /// </summary>
         public void CorruptionSignal()
         {
-            Update();
+            TemplateUpdateStatus status = Update();
+
+            if (status == TemplateUpdateStatus.UP_TO_DATE || status == TemplateUpdateStatus.FAILURE)
+            {
+                MessageBox.Show("Template files corrupted, failure to recover, please reinstall the application.", "Application exiting.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+                Application.Exit();
+            }
         }
 
         /// <summary>
@@ -96,7 +99,12 @@ namespace Innovation_Uniform_Editor_Backend.Updater
         public TemplateUpdateStatus Update()
         {
             //Download zip file from the internet.
-            zipHandler.DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipTempPath);
+            UpdaterVersioningResult result = updaterVersioning.CheckVersioning();
+
+            if (result != UpdaterVersioningResult.NOT_COMPATIBLE && result != UpdaterVersioningResult.SOMETHING_WENT_WRONG)
+                zipHandler.DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipTempPath);
+            else
+                return TemplateUpdateStatus.UP_TO_DATE;
 
             //Create backup in case of corruption
             corruptionHandler.BackupCreate(EditorPaths.TemplatePath);
