@@ -382,7 +382,9 @@ namespace Innovation_Uniform_Editor
 
         private void PreviewFile(string path)
         {
-            LaunchEditor(CustomsLoader.LoadFromFile(path));
+            Custom custom = CustomsLoader.LoadFromFile(path);
+            if (custom != null)
+                LaunchEditor(custom);
         }
 
         private void Main_Shown(object sender, EventArgs e)

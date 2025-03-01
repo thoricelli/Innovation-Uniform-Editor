@@ -1,24 +1,26 @@
 ﻿using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace Innovation_Uniform_Editor_Backend.Models.Base
 {
-    public abstract class ItemBase<T> : IIdentifier<T>, IPreviewable<Image>, INamable, IHasCreator
+    public abstract class ItemBase<T> : IIdentifier<T>, IPreviewable<Image>, INamable, IHasCreators
     {
         public T Id { get; set; }
         public string Name { get; set; }
-        public int CreatorId { get; set; }
-        private Creator _creator;
+        public int[] CreatorIds { get; set; }
+        private List<Creator> _creators;
         [JsonIgnore]
-        public Creator Creator 
+        public List<Creator> Creators
         { 
             get
             {
-                if (_creator == null)
-                    _creator = EditorMain.CreatorLoader.FindBy(CreatorId);
-                return _creator;
+                if (_creators == null)
+                    _creators = EditorMain.CreatorLoader.FindAllBy(CreatorIds.ToList());
+                return _creators;
             } 
         }
         [JsonIgnore]

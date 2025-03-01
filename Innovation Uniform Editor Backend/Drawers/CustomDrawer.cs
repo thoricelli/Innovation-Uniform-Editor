@@ -40,35 +40,36 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
             _custom = custom;
 
-            _logoDrawer = new LogoDrawer(custom.LogoPreset, assets.Logos);
+            _logoDrawer = new LogoDrawer(assets.Logos, custom);
             _shadingDrawer = new ShadingDrawer();
 
             List<Creator> creators = new List<Creator>() { custom.UniformBasedOn.Creator };
 
-            AddIfNotExists(custom.Holster, creators);
-            AddIfNotExists(custom.Armband, creators);
-            AddIfNotExists(custom.Glove, creators);
-            AddIfNotExists(custom.Shoe, creators);
+            AddIfCreditNotExists(custom.Holster, creators);
+            AddIfCreditNotExists(custom.Armband, creators);
+            AddIfCreditNotExists(custom.Glove, creators);
+            AddIfCreditNotExists(custom.Shoe, creators);
 
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
                 new BackgroundDrawer(assets.Background),
                 new TextureDrawer(assets.Textures),
                 new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer),
+
+                _shadingDrawer,
+
                 new OverlayDrawer(assets.Overlay),
 
                 //Logo's.
                 _logoDrawer,
 
-                _shadingDrawer,
+                new TopDrawer(assets.Top),
 
                 new ArmbandDrawer(assets.Armband),
                 new HolsterDrawer(assets.Holster),
 
                 new GloveDrawer(assets.Glove),
                 new ShoeDrawer(assets.Shoe),
-
-                new TopDrawer(assets.Top),
         
                 //new UsernameDrawer(),
 
@@ -80,16 +81,20 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             };
         }
 
-        public void AddIfNotExists(IHasCreator item, List<Creator> creators)
+        public void AddIfCreditNotExists(IHasCreators item, List<Creator> creators)
         {
-            if (item != null && !creators.Exists(x => x.Id == item.Creator.Id))
-                creators.Add(item.Creator);
-        }
+            if (item == null)
+                return;
 
-        public override void RefreshAssets()
-        {
-            _logoDrawer.ChangePreset(_custom.LogoPreset);
-            base.RefreshAssets();
+            //If credit already exists, ignore.
+            if (creators.Exists(x => item.Creators.Exists(y => x.Id == y.Id)))
+                return;
+
+            foreach (Creator itemCreators in item.Creators)
+            {
+                if (item != null && !creators.Exists(x => x.Id == itemCreators.Id))
+                    creators.Add(itemCreators);
+            }
         }
     }
 }

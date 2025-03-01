@@ -22,6 +22,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         private List<MaskImage> _masks;
         private int currentDrawerIndex = 0;
 
+        private float _transparency = 1f;
+
         private int repeat = 2;
 
         private List<ComponentDrawerBase> colorDrawerItems;
@@ -33,6 +35,14 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             _shadingDrawer = shading;
             colorDrawerItems = Drawers;
         }
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading, float transparency)
+        {
+            _colors = colors;
+            _masks = ImageHelper.BitmapToBoolean(Selections);
+            _shadingDrawer = shading;
+            colorDrawerItems = Drawers;
+            _transparency = transparency;
+        }
         public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading)
         {
             _colors = colors;
@@ -40,6 +50,15 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             _location = location;
             _shadingDrawer = shading;
             colorDrawerItems = Drawers;
+        }
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, float transparency)
+        {
+            _colors = colors;
+            _masks = ImageHelper.BitmapToBoolean(Selections);
+            _location = location;
+            _shadingDrawer = shading;
+            colorDrawerItems = Drawers;
+            _transparency = transparency;
         }
         public override bool HasAsset()
         {
@@ -136,12 +155,15 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                             if (shading != null)
                                 shading.ChangePixelColorAtIndex(drawIndex, ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex));
 
+                            
+
                             currentDrawItem.Draw(
                                 _colors[maskIndex],
                                 colorsResultLooper,
                                 resultLooper,
                                 drawIndex,
-                                GetCurrentProgressForComponent(progressWithRepeat)
+                                GetCurrentProgressForComponent(progressWithRepeat),
+                                _transparency
                              );
                         }
                     }

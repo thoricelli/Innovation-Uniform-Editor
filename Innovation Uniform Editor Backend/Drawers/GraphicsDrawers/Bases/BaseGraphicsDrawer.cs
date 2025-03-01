@@ -1,6 +1,7 @@
 ﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Interfaces;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
@@ -29,10 +30,31 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         {
             this.DrawImageToGraphics(graphics, image, Point.Empty);
         }
-        protected void DrawImageToGraphics(Graphics graphics, Bitmap image, Point point)
+        protected void DrawImageToGraphics(Graphics graphics, Bitmap image, Point point, float Transparency = 1f)
         {
             if (Visible)
-                graphics.DrawImage(image, new Rectangle(point.X, point.Y, image.Width, image.Height));
+            {
+                if (Transparency != 1f)
+                {
+                    using (ImageAttributes imageAttributes = new ImageAttributes())
+                    {
+                        ColorMatrix colorMatrix = new ColorMatrix();
+                        colorMatrix.Matrix33 = Transparency;
+
+                        imageAttributes.SetColorMatrix(colorMatrix);
+
+                        graphics.DrawImage(
+                            image,
+                            new Rectangle(point.X, point.Y, image.Width, image.Height),
+                            0, 0, image.Width, image.Height,
+                            GraphicsUnit.Pixel,
+                            imageAttributes);
+                    }
+                } else
+                {
+                    graphics.DrawImage(image, new Rectangle(point.X, point.Y, image.Width, image.Height));
+                }
+            }
         }
         protected void DrawImageToGraphics(Graphics graphics, Image image)
         {
@@ -41,6 +63,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         protected void DrawImageToGraphics(Graphics graphics, Image image, Point point)
         {
             this.DrawImageToGraphics(graphics, (Bitmap)image, point);
+        }
+        protected void DrawImageToGraphics(Graphics graphics, Image image, Point point, float transparency)
+        {
+            this.DrawImageToGraphics(graphics, (Bitmap)image, point, transparency);
         }
         protected void DrawList(Graphics graphics, List<Bitmap> images)
         {

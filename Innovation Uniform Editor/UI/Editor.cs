@@ -6,6 +6,7 @@ using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -369,7 +370,7 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnLogoColors_Click(object sender, EventArgs e)
         {
-            ColorsView colorsView = new ColorsView(custom.LogoPreset);
+            ColorsView colorsView = new ColorsView(custom);
 
             colorsView.PresetChanged += ColorsView_PresetChanged;
 
@@ -378,7 +379,9 @@ namespace Innovation_Uniform_Editor.UI
 
         private void ColorsView_PresetChanged(object sender, Preset e)
         {
-            custom.ChangeLogoPreset(e.Id);
+            int index = NamePressHelper.Get(sender, "comboPreset");
+
+            custom.ChangeLogoPresetAtIndex(index, e);
 
             RefreshImage();
         }

@@ -41,6 +41,13 @@ namespace Innovation_Uniform_Editor_Backend.Loaders.Base
         {
             return _items.TryGetValue(id, out var value) ? value : default(TType);
         }
+        public virtual List<TType> FindAllBy(List<TId> ids)
+        {
+            return ids
+                .Select(id => _items.FirstOrDefault(x => EqualityComparer<TId>.Default.Equals(x.Key, id)))
+                .Select(item => item.Value)
+                .ToList();
+        }
 
         public virtual void Sort()
         {

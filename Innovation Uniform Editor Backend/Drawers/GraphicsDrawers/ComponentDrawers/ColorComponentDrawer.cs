@@ -2,6 +2,7 @@
 using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Enums;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDrawers
@@ -19,47 +20,52 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
             this.colorType = colorType;
         }
 
-        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress)
+        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress, float transparency)
         {
             // Overlay pixel with color from lower layer.
-            if (current.Colors != null)
+            if (current.Colors == null)
             {
-                Color currentColor = Color.Transparent;
-
-                switch (colorType)
-                {
-                    case ColorType.FirstColor:
-                        currentColor = GetColorFromCustomColor(current);
-                        break;
-                    case ColorType.LastColor:
-                        currentColor = current.GetColorAtIndex(current.Colors.Count - 1);
-                        break;
-                }
-
-                Color lowerImageColor = lowerImage.GetPixelColorAtIndex(index);
-                Color resultColor = currentColor;
-
-                switch (blendMode)
-                {
-                    case BlendMode.Overlay:
-                        resultColor = Overlay(
-                            currentColor,
-                            lowerImageColor
-                        );
-                        break;
-                    case BlendMode.Blend:
-                        resultColor = Blend(
-                            currentColor,
-                            lowerImageColor
-                        );
-                        break;
-                }
-
-                // Change pixel on result image.
-                upperImage.ChangePixelColorAtIndex(index, resultColor);
-
-                base.Draw(current, upperImage, lowerImage, index, progress);
+                //TODO remove this
+                current.Colors = new List<Color>() { Color.Transparent };
             }
+            Color currentColor = Color.Transparent;
+
+            switch (colorType)
+            {
+                case ColorType.FirstColor:
+                    currentColor = GetColorFromCustomColor(current);
+                    break;
+                case ColorType.LastColor:
+                    currentColor = current.GetColorAtIndex(current.Colors.Count - 1);
+                    break;
+            }
+
+            Color lowerImageColor = lowerImage.GetPixelColorAtIndex(index);
+            Color resultColor = currentColor;
+
+            switch (blendMode)
+            {
+                case BlendMode.Overlay:
+                    resultColor = Overlay(
+                        currentColor,
+                        lowerImageColor
+                    );
+                    break;
+                case BlendMode.Blend:
+                    resultColor = Blend(
+                        currentColor,
+                        lowerImageColor
+                    );
+                    break;
+            }
+
+            // Change pixel on result image.
+            if (transparency != 1f)
+                resultColor = Color.FromArgb((int)(transparency * 255), resultColor.R, resultColor.G, resultColor.B);
+
+            upperImage.ChangePixelColorAtIndex(index, resultColor);
+
+            base.Draw(current, upperImage, lowerImage, index, progress, transparency);
         }
     }
 }

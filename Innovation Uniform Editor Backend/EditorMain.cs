@@ -15,12 +15,16 @@ namespace Innovation_Uniform_Editor_Backend
     {
         #region VERSIONING
         public static string ToolName { get; } = "Thoricelli's Uniform Editor";
-        public static Version Version { get; } = new Version(0, 8, 0);
+        public static Version Version { get; } = new Version(0, 8, 0, 0);
+        private static string VersionToString(Version version)
+        {
+            return $"{Version.Major}.{Version.Minor}.{Version.Build}";
+        }
         public static VersionType VersionType { get; } = VersionType.Development;
         public static string VersionString { get; } = 
-            VersionType == VersionType.Release ? 
-            Version.ToString() : 
-            $"{Version} ({VersionType} BUILD)";
+            VersionType == VersionType.Release ?
+            VersionToString(Version) : 
+            $"{VersionToString(Version)} ({VersionType} BUILD)";
         public static bool Portable = VersionType == VersionType.Development ? true : false;
         #endregion
         public static TemplateUpdater TemplateUpdater { get; set; }

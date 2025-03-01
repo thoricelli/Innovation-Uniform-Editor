@@ -13,6 +13,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
         /// <param name="lowerImage">The image below this layer.</param>
         /// <param name="index">The current pixel index.</param>
         /// <param name="progress">The current progress of this component</param>
-        void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress);
+        /// <param name="transparency">Transparency of the color.</param>
+        void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress, float transparency);
     }
 }

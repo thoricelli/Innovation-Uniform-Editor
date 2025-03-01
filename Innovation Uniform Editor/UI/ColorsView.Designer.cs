@@ -29,82 +29,88 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblColors = new System.Windows.Forms.Label();
-            this.comboPresets = new System.Windows.Forms.ComboBox();
-            this.presetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnDone = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.mainLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.presetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.presetsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mainLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblColors
-            // 
-            this.lblColors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblColors.Location = new System.Drawing.Point(12, 9);
-            this.lblColors.Name = "lblColors";
-            this.lblColors.Size = new System.Drawing.Size(226, 13);
-            this.lblColors.TabIndex = 15;
-            this.lblColors.Text = "Preset";
-            this.lblColors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboPresets
-            // 
-            this.comboPresets.DataSource = this.presetBindingSource;
-            this.comboPresets.DisplayMember = "Name";
-            this.comboPresets.FormattingEnabled = true;
-            this.comboPresets.Location = new System.Drawing.Point(15, 34);
-            this.comboPresets.Name = "comboPresets";
-            this.comboPresets.Size = new System.Drawing.Size(223, 21);
-            this.comboPresets.TabIndex = 16;
-            this.comboPresets.SelectedIndexChanged += new System.EventHandler(this.comboPresets_SelectedIndexChanged);
-            // 
-            // presetBindingSource
-            // 
-            this.presetBindingSource.DataSource = typeof(Innovation_Uniform_Editor_Backend.Models.Preset);
             // 
             // btnDone
             // 
-            this.btnDone.Location = new System.Drawing.Point(15, 61);
+            this.btnDone.Location = new System.Drawing.Point(3, 3);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(223, 23);
+            this.btnDone.Size = new System.Drawing.Size(366, 23);
             this.btnDone.TabIndex = 17;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
-            // button2
+            // mainLayoutPanel
             // 
-            this.button2.Location = new System.Drawing.Point(15, 90);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Manage presets (TODO)";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.mainLayoutPanel.AutoSize = true;
+            this.mainLayoutPanel.Controls.Add(this.presetsLayoutPanel);
+            this.mainLayoutPanel.Controls.Add(this.flowLayoutPanel1);
+            this.mainLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.mainLayoutPanel.Location = new System.Drawing.Point(12, 12);
+            this.mainLayoutPanel.Margin = new System.Windows.Forms.Padding(0, 10, 10, 10);
+            this.mainLayoutPanel.Name = "mainLayoutPanel";
+            this.mainLayoutPanel.Size = new System.Drawing.Size(378, 102);
+            this.mainLayoutPanel.TabIndex = 21;
+            // 
+            // presetBindingSource
+            // 
+            this.presetBindingSource.DataSource = typeof(Innovation_Uniform_Editor_Backend.Models.Preset);
+            // 
+            // presetsLayoutPanel
+            // 
+            this.presetsLayoutPanel.AutoSize = true;
+            this.presetsLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.presetsLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.presetsLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.presetsLayoutPanel.Name = "presetsLayoutPanel";
+            this.presetsLayoutPanel.Size = new System.Drawing.Size(0, 0);
+            this.presetsLayoutPanel.TabIndex = 18;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.btnDone);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 9);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(372, 29);
+            this.flowLayoutPanel1.TabIndex = 19;
             // 
             // ColorsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 101);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnDone);
-            this.Controls.Add(this.comboPresets);
-            this.Controls.Add(this.lblColors);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(393, 133);
+            this.Controls.Add(this.mainLayoutPanel);
             this.Name = "ColorsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ColorsView";
+            this.mainLayoutPanel.ResumeLayout(false);
+            this.mainLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblColors;
-        private System.Windows.Forms.ComboBox comboPresets;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.BindingSource presetBindingSource;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FlowLayoutPanel mainLayoutPanel;
+        private System.Windows.Forms.FlowLayoutPanel presetsLayoutPanel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

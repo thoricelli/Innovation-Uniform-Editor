@@ -12,43 +12,43 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 {
     public class LogoDrawer : BaseGraphicsDrawer
     {
-        private List<CustomColor> _color;
-        private List<UniformDataLogo> _logs;
+        private List<UniformDataLogo> _logos;
+        private Custom _custom;
+
         private static List<ComponentDrawerBase> componentDrawers = new List<ComponentDrawerBase>
         {
             new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.FirstColor, BlendMode.None)
         };
-        public LogoDrawer(Preset preset, List<UniformDataLogo> logos)
+        public LogoDrawer(List<UniformDataLogo> logos, Custom custom)
         {
-            _logs = logos;
-            ChangePreset(preset);
-        }
-
-        public void ChangePreset(Preset preset)
-        {
-            _color = preset.Colors;
+            _logos = logos;
+            _custom = custom;
         }
 
         public override bool HasAsset()
         {
-            return _logs != null;
+            return _logos != null;
         }
 
         public override string Name => "Logo";
 
         public override void DrawToGraphics(Graphics graphics, Bitmap result)
         {
-            if (_logs != null && Visible)
+            if (_logos != null && Visible)
             {
-                foreach (UniformDataLogo item in _logs)
+                for (int i = 0; i < _logos.Count; i++)
                 {
+                    UniformDataLogo item = _logos[i];
+
+                    List<CustomColor> colors = _custom.Presets[i].Colors;
+
                     //Not great, oh well.
-                    ColorDrawer drawer = new ColorDrawer(_color, item.Logo.Selections, componentDrawers, item.Location, null);
+                    ColorDrawer drawer = new ColorDrawer(colors, item.Logo.Selections, componentDrawers, item.Location, null, item.Transparency);
 
                     drawer.DrawToGraphics(graphics, result);
 
                     //TODO: Position data!
-                    DrawImageToGraphics(graphics, item.Logo.Image, item.Location);
+                    DrawImageToGraphics(graphics, item.Logo.Image, item.Location, item.Transparency);
                 }
             }
         }

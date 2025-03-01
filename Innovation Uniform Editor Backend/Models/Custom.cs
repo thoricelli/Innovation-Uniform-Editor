@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -51,33 +52,33 @@ namespace Innovation_Uniform_Editor_Backend.Models
             }
         }
         public ulong UniformBasedOnId { get; set; }
-        private Preset _logoPreset;
-        [JsonIgnore]
-        public Preset LogoPreset
-        {
-            get
-            {
-                if (_logoPreset == null)
-                    if (LogoPresetGuid.HasValue)
-                        _logoPreset = EditorMain.PresetsLoader.FindBy(LogoPresetGuid.Value);
-                    else
-                        _logoPreset = EditorMain.PresetsLoader.FindBy(Guid.Parse("ae418e5f-65ba-4f00-84f1-a69ea34d568e"));
-
-                return _logoPreset;
-            }
-            set
-            {
-                _logoPreset = value;
-                LogoPresetGuid = value.Id;
-            }
-        }
-        public Guid? LogoPresetGuid { get; set; }
+        public List<Guid> LogoPresets { get;set; }
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
         public Guid? ShoeId { get; set; }
         public Guid? GloveId { get; set; }
-        public Version MinimumVersion { get; } = new Version(0,8,0);
-
+        public Version MinimumVersion { get; set; } = EditorMain.Version;
+        private List<Preset> _presets { get; set; }
+        [JsonIgnore]
+        public List<Preset> Presets 
+        { 
+            get
+            {
+                if (_presets == null)
+                {
+                    if (UniformBasedOn.LogoIds != null)
+                    {
+                        if (LogoPresets == null)
+                            _presets = EditorMain.PresetsLoader.FindAllBy(UniformBasedOn.LogoIds.Select(x => x.Preset.Id).ToList());
+                        else
+                            _presets = EditorMain.PresetsLoader.FindAllBy(LogoPresets);
+                    }
+                    else
+                        _presets = new List<Preset>();
+                }
+                return _presets;
+            }
+        }
         private Holster _holster;
         [JsonIgnore]
         public Holster Holster 
@@ -154,7 +155,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 return _backgroundImage;
             }
         }
-        public Guid BackgroundImageGuid { get; set; }
+        public Guid? BackgroundImageGuid { get; set; }
         #endregion
         #region DRAWING
         [JsonIgnore]
@@ -273,6 +274,19 @@ namespace Innovation_Uniform_Editor_Backend.Models
             _result = null;
             UnsavedChanges = true;
         }
+        public void ChangeLogoPresetAtIndex(int index, Preset preset)
+        {
+            //
+
+            Guid security = EditorMain.PresetsLoader.FindBy(new Guid("ae418e5f-65ba-4f00-84f1-a69ea34d568e")).Id;
+
+            if (LogoPresets == null)
+                LogoPresets = UniformBasedOn.LogoIds.Select(x => x.PresetGuid.HasValue ? x.PresetGuid.Value : security).ToList();
+
+            LogoPresets[index] = preset.Id;
+
+            _presets[index] = preset;
+        }
         //This is terrible, change this with an array please :(
         public void ChangeHolster(Holster holster)
         {
@@ -331,14 +345,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
             this.GloveId = null;
             Initialize();
         }
-        public void ChangeLogoPreset(Guid presetGuid)
-        {
-            this._logoPreset = null;
-            this.LogoPresetGuid = presetGuid;
-        }
         private void UpdateBackground()
         {
-            _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid);
+            if (BackgroundImageGuid.HasValue)
+                _backgroundImage = EditorMain.Backgrounds.FindBy(BackgroundImageGuid.Value);
             if (_backgroundImage != null)
                 _assets.Background = new Bitmap(_backgroundImage.Image);
         }
@@ -365,10 +375,13 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             _result = null;
 
+            this._presets = null;
+
             this._glove = null;
             this._shoe = null;
             this._armband = null;
             this._holster = null;
+            this.LogoPresets = null;
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
 
@@ -379,13 +392,18 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             UpdateBackground();
 
-            if (Colors.Count != _assets.Selections.Count)
+            if (UniformBasedOn.Colors != null)
+                Colors = new List<CustomColor>(UniformBasedOn.Colors);
+            else
             {
-                Colors = new List<CustomColor>(_assets.Selections.Count);
-
-                for (int i = 0; i < _assets.Selections.Count; i++)
+                if (Colors.Count != _assets.Selections.Count)
                 {
-                    Colors.Add(new CustomColor());
+                    Colors = new List<CustomColor>(_assets.Selections.Count);
+
+                    for (int i = 0; i < _assets.Selections.Count; i++)
+                    {
+                        Colors.Add(new CustomColor());
+                    }
                 }
             }
 

@@ -89,6 +89,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\JsonUtils.cs" />
     <Compile Include="Helpers\NamePressHelper.cs" />
+    <Compile Include="Models\CustomVersioning.cs" />
     <Compile Include="Models\TemplateVersioning.cs" />
     <Compile Include="Updater\TemplateUpdater.cs" />
     <Compile Include="ImageEditors\Base\ImageEditorBase.cs" />
@@ -114,7 +115,7 @@
     <Compile Include="Loaders\UniformsLoader.cs" />
     <Compile Include="Models\Creator.cs" />
     <Compile Include="Models\FontItem.cs" />
-    <Compile Include="Models\Interfaces\IHasCreator.cs" />
+    <Compile Include="Models\Interfaces\IHasCreators.cs" />
     <Compile Include="Models\Interfaces\IRecolorableAssets.cs" />
     <Compile Include="Models\MaskImage.cs" />
     <Compile Include="Models\OverlayAssets\Armband.cs" />

@@ -16,6 +16,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
         {
         }
 
+        public ColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, float transparency) : base(colors, Selections, Drawers, location, shading, transparency)
+        {
+        }
+
         public override string Name => "Colors";
     }
 }
