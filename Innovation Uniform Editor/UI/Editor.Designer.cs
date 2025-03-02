@@ -57,7 +57,7 @@ namespace Innovation_Uniform_Editor.UI
             this.buttonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnWarnings = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.divide1 = new System.Windows.Forms.Label();
             this.btnManageHolsters = new System.Windows.Forms.Button();
             this.btnManageArmbands = new System.Windows.Forms.Button();
             this.btnManageGloves = new System.Windows.Forms.Button();
@@ -286,7 +286,7 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.buttonsLayoutPanel);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.divide1);
             this.flowLayoutPanel1.Controls.Add(this.btnManageHolsters);
             this.flowLayoutPanel1.Controls.Add(this.btnManageArmbands);
             this.flowLayoutPanel1.Controls.Add(this.btnManageGloves);
@@ -300,13 +300,13 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 212);
             this.flowLayoutPanel1.TabIndex = 18;
             // 
-            // label1
+            // divide1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(3, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 2);
-            this.label1.TabIndex = 18;
+            this.divide1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.divide1.Location = new System.Drawing.Point(3, 34);
+            this.divide1.Name = "divide1";
+            this.divide1.Size = new System.Drawing.Size(190, 2);
+            this.divide1.TabIndex = 18;
             // 
             // btnManageHolsters
             // 
@@ -450,7 +450,7 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.Button btnWarnings;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnDrawDetail;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label divide1;
         private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shirtsToolStripMenuItem;

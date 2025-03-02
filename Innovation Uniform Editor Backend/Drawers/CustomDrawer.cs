@@ -54,7 +54,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             {
                 new BackgroundDrawer(assets.Background),
                 new TextureDrawer(assets.Textures),
-                new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer),
+                new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer, assets.Textures),
 
                 _shadingDrawer,
 

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
@@ -22,36 +23,27 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         private List<MaskImage> _masks;
         private int currentDrawerIndex = 0;
 
+        private MaskImage textureMask;
+
         private float _transparency = 1f;
 
         private int repeat = 2;
 
         private List<ComponentDrawerBase> colorDrawerItems;
 
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading, List<Bitmap> texture)
         {
-            _colors = colors;
-            _masks = ImageHelper.BitmapToBoolean(Selections);
-            _shadingDrawer = shading;
-            colorDrawerItems = Drawers;
+            Initialize(colors, Selections, Drawers, Point.Empty, shading, texture, 1f);
         }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading, float transparency)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture)
         {
-            _colors = colors;
-            _masks = ImageHelper.BitmapToBoolean(Selections);
-            _shadingDrawer = shading;
-            colorDrawerItems = Drawers;
-            _transparency = transparency;
+            Initialize(colors, Selections, Drawers, location, shading, texture, 1f);
         }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading)
+        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture, float transparency)
         {
-            _colors = colors;
-            _masks = ImageHelper.BitmapToBoolean(Selections);
-            _location = location;
-            _shadingDrawer = shading;
-            colorDrawerItems = Drawers;
+            Initialize(colors, Selections, Drawers, location, shading, texture, transparency);
         }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, float transparency)
+        private void Initialize(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture, float transparency)
         {
             _colors = colors;
             _masks = ImageHelper.BitmapToBoolean(Selections);
@@ -59,6 +51,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             _shadingDrawer = shading;
             colorDrawerItems = Drawers;
             _transparency = transparency;
+            if (texture != null)
+                textureMask = ImageHelper.BitmapToSingleBoolean(texture);
         }
         public override bool HasAsset()
         {
@@ -152,10 +146,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
                             int drawIndex = x + _location.X + ((y + _location.Y) * width);
 
-                            if (shading != null)
+                            //TODO: Texture mask if texture is supplied.
+                            if (shading != null && (textureMask == null || textureMask.mask[i]))
                                 shading.ChangePixelColorAtIndex(drawIndex, ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex));
-
-                            
 
                             currentDrawItem.Draw(
                                 _colors[maskIndex],

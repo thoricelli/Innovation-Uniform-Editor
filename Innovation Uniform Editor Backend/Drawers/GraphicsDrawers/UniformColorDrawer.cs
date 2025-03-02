@@ -20,11 +20,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
             new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.Overlay),
         };
 
-        public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading) : base(colors, Selections, colorDrawerItems, shading)
+        public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading, List<Bitmap> texture) : base(colors, Selections, colorDrawerItems, shading, texture)
         {
         }
 
-        public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location, ShadingDrawer shading) : base(colors, Selections, colorDrawerItems, location, shading)
+        public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location, ShadingDrawer shading, List<Bitmap> texture) : base(colors, Selections, colorDrawerItems, location, shading, texture)
         {
         }
     }

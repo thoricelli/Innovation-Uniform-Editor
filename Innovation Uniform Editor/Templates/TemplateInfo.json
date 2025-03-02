@@ -21,10 +21,9 @@
       "CreatorId": 40545786,
       "ShoeId": "b081fbf3-0b51-48b7-af5c-44fcd19aeba4",
       "Colors": [
-        { "Colors": [ "120,120,150" ] },
-        { "Colors": [ "130,130,195" ] },
-        { "Colors": [ "56,56,118" ] },
-        { "Colors": [ "56,56,118" ] }
+        { "Colors": ["120,120,150"] },
+        { "Colors": ["130,130,195"] },
+        { "Colors": ["56,56,118"] }
       ]
     },
     {
@@ -32,10 +31,7 @@
       "Name": "Innovation Security Arctic Task Force Pants",
       "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
-      "Colors": [
-        { "Colors": [ "110,120,150" ] },
-        { "Colors": [ "110, 115, 130" ] }
-      ]
+      "Colors": [{ "Colors": ["110,120,150"] }, { "Colors": ["110, 115, 130"] }]
     },
     {
       "Id": 368658944,
@@ -84,20 +80,14 @@
       "Name": "Innovation Security Guardsman's Trousers",
       "CreatorId": 127780,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
-      "Colors": [
-        { "Colors": [ "70,70,70" ] },
-        { "Colors": [ "127,127,127" ] }
-      ]
+      "Colors": [{ "Colors": ["70,70,70"] }, { "Colors": ["127,127,127"] }]
     },
     {
       "Id": 6914640997,
       "Name": "Innovation Lightweight Armour Pants",
       "CreatorId": 40545786,
       "ShoeId": "9743d2ef-0c36-47a9-bc25-1b583402e816",
-      "Colors": [
-        { "Colors": [ "90,96,147" ] },
-        { "Colors": [ "90,96,147" ] }
-      ]
+      "Colors": [{ "Colors": ["90,96,147"] }, { "Colors": ["90,96,147"] }]
     },
     {
       "Id": 368659714,
@@ -188,13 +178,14 @@
       "ArmbandId": "e9f46544-5221-440c-9ab2-bd67b8b46611",
       "LogoIds": [
         {
-          "LogoId": 0,
-          "Location": "394, 380"
+          "LogoId": 7,
+          "Location": "251, 165",
+          "Transparency": 0.5
         },
         {
           "LogoId": 6,
           "Location": "399, 160",
-          "Transparency": 0.5
+          "Transparency": 0.75
         },
         {
           "LogoId": 7,
@@ -202,9 +193,8 @@
           "Transparency": 0.5
         },
         {
-          "LogoId": 7,
-          "Location": "251, 165",
-          "Transparency": 0.5
+          "LogoId": 0,
+          "Location": "394, 380"
         }
       ],
       "Colors": [{ "Colors": ["110,120,150"] }, { "Colors": ["110, 115, 130"] }]
@@ -257,6 +247,7 @@
       "Name": "Innovation Security Dark (Premium 1)",
       "CreatorId": 127780,
       "ArmbandId": "30a054ff-bd6e-4a79-b09d-3c374c6849d7",
+      "CanBeCustomized": false,
       "LogoIds": [
         {
           "LogoId": 5,
@@ -268,7 +259,7 @@
           "Location": "395, 370"
         }
       ],
-      "Colors": [{ "Colors": ["90,96,147"] }]
+      "Colors": [{ "Colors": ["100,110,150"] }]
     },
     {
       "Id": 1572085245,
@@ -278,8 +269,9 @@
       "ArmbandId": "4414023a-8c1e-4541-9011-4d66a198e3d5",
       "LogoIds": [
         {
-          "LogoId": 0,
-          "Location": "395, 370"
+          "LogoId": 7,
+          "Location": "251, 165",
+          "Transparency": 0.5
         },
         {
           "LogoId": 7,
@@ -287,9 +279,8 @@
           "Transparency": 0.5
         },
         {
-          "LogoId": 7,
-          "Location": "251, 165",
-          "Transparency": 0.5
+          "LogoId": 0,
+          "Location": "395, 370"
         }
       ],
       "Colors": [
@@ -332,17 +323,17 @@
       "LogoIds": [
         {
           "LogoId": 7,
-          "Location": "460, 179",
-          "Transparency": 0.5
-        },
-        {
-          "LogoId": 7,
           "Location": "251, 165",
           "Transparency": 0.5
         },
         {
           "LogoId": 6,
           "Location": "399, 160",
+          "Transparency": 0.75
+        },
+        {
+          "LogoId": 7,
+          "Location": "460, 179",
           "Transparency": 0.5
         },
         {
@@ -360,17 +351,17 @@
       "LogoIds": [
         {
           "LogoId": 7,
-          "Location": "460, 179",
-          "Transparency":  0.5
-        },
-        {
-          "LogoId": 7,
           "Location": "251, 165",
           "Transparency": 0.5
         },
         {
           "LogoId": 6,
           "Location": "399, 160",
+          "Transparency": 0.75
+        },
+        {
+          "LogoId": 7,
+          "Location": "460, 179",
           "Transparency": 0.5
         },
         {
@@ -387,13 +378,13 @@
       "ArmbandId": "db0c8f99-184b-4bb1-a416-7be3b3aae012",
       "LogoIds": [
         {
-          "LogoId": 0,
-          "Location": "396, 371"
-        },
-        {
           "LogoId": 3,
           "Location": "482, 123",
           "Transparency": 0.5
+        },
+        {
+          "LogoId": 0,
+          "Location": "396, 371"
         }
       ],
       "Colors": [{ "Colors": ["90,96,147"] }]
@@ -406,12 +397,12 @@
       "ArmbandId": "a4239cea-dfac-4051-88fa-dc2a22dd6346",
       "LogoIds": [
         {
-          "LogoId": 8,
-          "Location": "395, 374"
-        },
-        {
           "LogoId": 10,
           "Location": "486, 143"
+        },
+        {
+          "LogoId": 8,
+          "Location": "395, 374"
         }
       ],
       "Colors": [{ "Colors": ["90,96,147"] }, { "Colors": ["90,96,147"] }]
@@ -423,13 +414,13 @@
       "ArmbandId": "5cee9d71-9e16-409b-af37-3b6eea22cf7b",
       "LogoIds": [
         {
-          "LogoId": 0,
-          "Location": "395, 370"
-        },
-        {
           "LogoId": 5,
           "Location": "486, 140",
           "Transparency": 0.5
+        },
+        {
+          "LogoId": 0,
+          "Location": "395, 370"
         }
       ],
       "Colors": [{ "Colors": ["90,96,147"] }, { "Colors": ["90,96,147"] }]
@@ -441,13 +432,13 @@
       "ArmbandId": "5cee9d71-9e16-409b-af37-3b6eea22cf7b",
       "LogoIds": [
         {
-          "LogoId": 0,
-          "Location": "395, 370"
-        },
-        {
           "LogoId": 5,
           "Location": "486, 140",
           "Transparency": 0.5
+        },
+        {
+          "LogoId": 0,
+          "Location": "395, 370"
         }
       ],
       "Colors": [{ "Colors": ["90,96,147"] }]
@@ -478,15 +469,6 @@
       "ArmbandId": "4e695282-c663-4e4f-a7cb-113bc8c3ab7e",
       "LogoIds": [
         {
-          "LogoId": 1,
-          "Location": "172, 370",
-          "PresetGuid": "b3652a2e-7a4f-4585-92f4-90b3c0f68f8c"
-        },
-        {
-          "LogoId": 1,
-          "Location": "395, 370"
-        },
-        {
           "LogoId": 7,
           "Location": "243, 141",
           "Transparency": 0.5
@@ -500,6 +482,15 @@
           "LogoId": 9,
           "Location": "520, 171",
           "Transparency": 0.5
+        },
+        {
+          "LogoId": 1,
+          "Location": "172, 370",
+          "PresetGuid": "b3652a2e-7a4f-4585-92f4-90b3c0f68f8c"
+        },
+        {
+          "LogoId": 1,
+          "Location": "395, 370"
         }
       ],
       "Colors": [{ "Colors": ["90,96,147"] }]
@@ -526,7 +517,7 @@
       "Id": 1,
       "Name": "[TRAINER+ ONLY] Innovation Security Trenchoat Shirt",
       "CreatorId": 135955170,
-      "ArmbandId": "51ef14bf-3533-4ef9-86d3-91147c487422",
+      "ArmbandId": "51ef14bf-3533-4ef9-86d3-91147c487422"
     }
   ]
 }

@@ -250,6 +250,21 @@ namespace Innovation_Uniform_Editor.UI
 
         private void SetupColors()
         {
+            if (custom.UniformBasedOn.CanBeCustomized)
+            {
+                //divide1.Visible = true;
+                btnManageHolsters.Visible = true;
+                btnManageArmbands.Visible = true;
+                btnManageGloves.Visible = true;
+                btnManageShoes.Visible = true;
+            } else
+            {
+                btnManageHolsters.Visible = false;
+                btnManageArmbands.Visible = false;
+                btnManageGloves.Visible = false;
+                btnManageShoes.Visible = false;
+            }
+
             int indexStart = 0;
             for (int i = buttonsLayoutPanel.Controls.Count - 1; i >= 1; i--)
             {

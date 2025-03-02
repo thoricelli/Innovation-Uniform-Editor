@@ -65,11 +65,39 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
                     alphas[i] = editor.GetPixelColorAtIndex(i).A == 0;
                 }
 
-                bools.Add(new MaskImage(editor.GetWidth(), editor.GetHeight(), alphas));
-
                 ((BitmapEditor)editor).CloseImage();
+
+                bools.Add(new MaskImage(editor.GetWidth(), editor.GetHeight(), alphas));
             }
             return bools;
         }
+
+        public static MaskImage BitmapToSingleBoolean(List<Bitmap> images)
+        {
+            if (images != null && images.Count > 0)
+            {
+                IImageEditor editor = new BitmapEditor(images[0]);
+
+                int totalSize = editor.GetTotalSize();
+                bool[] alphas = new bool[totalSize];
+
+                ((BitmapEditor)editor).CloseImage();
+
+                foreach (Bitmap image in images)
+                {
+                    editor = new BitmapEditor(image);
+
+                    for (int i = 0; i < totalSize; i++)
+                    {
+                        alphas[i] |= editor.GetPixelColorAtIndex(i).A == 0;
+                    }
+
+                    ((BitmapEditor)editor).CloseImage();
+                }
+
+                return new MaskImage(editor.GetWidth(), editor.GetHeight(), alphas);
+            }
+            return null;
+        } 
     }
 }
