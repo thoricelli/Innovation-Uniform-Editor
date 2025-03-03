@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorsView));
             this.btnDone = new System.Windows.Forms.Button();
             this.mainLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.presetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.presetsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.presetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDone
@@ -61,10 +62,6 @@
             this.mainLayoutPanel.Size = new System.Drawing.Size(378, 102);
             this.mainLayoutPanel.TabIndex = 21;
             // 
-            // presetBindingSource
-            // 
-            this.presetBindingSource.DataSource = typeof(Innovation_Uniform_Editor_Backend.Models.Preset);
-            // 
             // presetsLayoutPanel
             // 
             this.presetsLayoutPanel.AutoSize = true;
@@ -86,6 +83,10 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(372, 29);
             this.flowLayoutPanel1.TabIndex = 19;
             // 
+            // presetBindingSource
+            // 
+            this.presetBindingSource.DataSource = typeof(Innovation_Uniform_Editor_Backend.Models.Preset);
+            // 
             // ColorsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,13 +95,14 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(393, 133);
             this.Controls.Add(this.mainLayoutPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ColorsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ColorsView";
             this.mainLayoutPanel.ResumeLayout(false);
             this.mainLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.presetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

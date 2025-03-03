@@ -285,6 +285,7 @@
     <EmbeddedResource Include="UI\Selector.resx">
       <DependentUpon>Selector.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="InstallerScripts\install.vbs" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Innovation_Uniform_Editor.Classes.Uniform.datasource" />
     <None Include="Properties\DataSources\Innovation_Uniform_Editor_Backend.Models.Preset.datasource" />

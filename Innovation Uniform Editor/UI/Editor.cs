@@ -232,9 +232,10 @@ namespace Innovation_Uniform_Editor.UI
 
         private void downloadToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            saveCustom.ShowDialog();
+            DialogResult result = saveCustom.ShowDialog();
 
-            custom.ExportUniform(saveCustom.FileName);
+            if (result == DialogResult.OK)
+                custom.ExportUniform(saveCustom.FileName);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

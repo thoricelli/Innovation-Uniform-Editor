@@ -35,7 +35,7 @@ namespace Innovation_Uniform_Editor_Backend.Updater
 
         public UpdaterVersioningResult CheckVersioning()
         {
-            if (Hash == hashHandler.GetNewHash() || Hash == string.Empty)
+            if (Hash == hashHandler.GetNewHash())
                 return UpdaterVersioningResult.NO_UPDATE_NEEDED;
 
             TemplateVersioning templateVersioningNet = null;

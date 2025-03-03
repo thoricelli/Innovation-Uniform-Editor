@@ -101,21 +101,28 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             //Download zip file from the internet.
             UpdaterVersioningResult result = updaterVersioning.CheckVersioning();
 
-            if (result != UpdaterVersioningResult.NOT_COMPATIBLE && result != UpdaterVersioningResult.SOMETHING_WENT_WRONG)
+            if (result == UpdaterVersioningResult.OUT_OF_DATE)
+            {
                 zipHandler.DownloadZipFile($"{githubURL}{EditorPaths.ZipName}", EditorPaths.ZipTempPath);
-            else
-                return TemplateUpdateStatus.UP_TO_DATE;
 
-            //Create backup in case of corruption
-            corruptionHandler.BackupCreate(EditorPaths.TemplatePath);
+                //Create backup in case of corruption
+                corruptionHandler.BackupCreate(EditorPaths.TemplatePath);
 
-            //Extract the zip file to the templates directory.
-            TemplateUpdateStatus status = zipHandler.ExtractToFolder(EditorPaths.ZipTempPath, EditorPaths.TemplatePath);
+                //Extract the zip file to the templates directory.
+                TemplateUpdateStatus status = zipHandler.ExtractToFolder(EditorPaths.ZipTempPath, EditorPaths.TemplatePath);
 
-            //Delete the downloaded zip file.
-            File.Delete(EditorPaths.ZipTempPath);
+                //Delete the downloaded zip file.
+                File.Delete(EditorPaths.ZipTempPath);
 
-            return status;
+                return status;
+            }
+            else if (result == UpdaterVersioningResult.SOMETHING_WENT_WRONG || result == UpdaterVersioningResult.NOT_COMPATIBLE)
+            {
+                corruptionHandler.OfflineSetup();
+                return TemplateUpdateStatus.SUCCESS;
+            }
+            
+            return TemplateUpdateStatus.UP_TO_DATE;
         }
 
         public void CheckInstallationFiles()

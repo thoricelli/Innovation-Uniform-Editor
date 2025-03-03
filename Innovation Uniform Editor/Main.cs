@@ -294,10 +294,13 @@ namespace Innovation_Uniform_Editor
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            exportCustom.ShowDialog();
-            Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
-            custom.ExportUniform(exportCustom.FileName);
+            DialogResult result = exportCustom.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
+                Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
+                custom.ExportUniform(exportCustom.FileName);
+            }
         }
 
         //Two customs can't be the same position though...
@@ -370,19 +373,27 @@ namespace Innovation_Uniform_Editor
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DialogResult result = openCustomDialogue.ShowDialog();
 
+            if (result == DialogResult.OK)
+                PreviewFile(openCustomDialogue.FileName, true);
         }
 
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openCustomDialogue.ShowDialog();
+            DialogResult result = openCustomDialogue.ShowDialog();
 
-            PreviewFile(openCustomDialogue.FileName);
+            if (result == DialogResult.OK)
+                PreviewFile(openCustomDialogue.FileName);
         }
 
-        private void PreviewFile(string path)
+        private void PreviewFile(string path, bool add = false)
         {
             Custom custom = CustomsLoader.LoadFromFile(path);
+
+            if (add && EditorMain.Customs.FindBy(custom.Id) == null)
+                EditorMain.Customs.Add(custom);
+
             if (custom != null)
                 LaunchEditor(custom);
         }

@@ -52,7 +52,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
             }
         }
         public ulong UniformBasedOnId { get; set; }
-        public List<Guid> LogoPresets { get;set; }
+        public Guid[] LogoPresets { get; set; }
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
         public Guid? ShoeId { get; set; }
@@ -71,7 +71,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                         if (LogoPresets == null)
                             _presets = EditorMain.PresetsLoader.FindAllBy(UniformBasedOn.LogoIds.Select(x => x.Preset.Id).ToList());
                         else
-                            _presets = EditorMain.PresetsLoader.FindAllBy(LogoPresets);
+                            _presets = EditorMain.PresetsLoader.FindAllBy(LogoPresets.ToList());
                     }
                     else
                         _presets = new List<Preset>();
@@ -262,6 +262,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
                 UnsavedChanges = true;
 
+                Colors = new List<CustomColor>();
+
+                this.LogoPresets = null;
+
                 Initialize();
             }
         }
@@ -274,20 +278,21 @@ namespace Innovation_Uniform_Editor_Backend.Models
             _result = null;
             UnsavedChanges = true;
 
+            UnsavedChanges = true;
             Initialize();
         }
         public void ChangeLogoPresetAtIndex(int index, Preset preset)
         {
-            //
-
             Guid security = EditorMain.PresetsLoader.FindBy(new Guid("ae418e5f-65ba-4f00-84f1-a69ea34d568e")).Id;
 
             if (LogoPresets == null)
-                LogoPresets = UniformBasedOn.LogoIds.Select(x => x.PresetGuid.HasValue ? x.PresetGuid.Value : security).ToList();
+                LogoPresets = UniformBasedOn.LogoIds.Select(x => x.PresetGuid.HasValue ? x.PresetGuid.Value : security).ToArray();
 
             LogoPresets[index] = preset.Id;
 
             _presets[index] = preset;
+
+            UnsavedChanges = true;
         }
         //This is terrible, change this with an array please :(
         public void ChangeHolster(Holster holster)
@@ -297,11 +302,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
             else
                 ClearHolster();
 
+            UnsavedChanges = true;
             Initialize();
         }
         public void ClearHolster()
         {
             this.HolsterId = null;
+
+            UnsavedChanges = true;
             Initialize();
         }
         public void ChangeArmband(Armband armband)
@@ -311,11 +319,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
             else
                 ClearArmband();
 
+            UnsavedChanges = true;
             Initialize();
         }
         public void ClearArmband()
         {
             this.ArmbandId = null;
+
+            UnsavedChanges = true;
             Initialize();
         }
         public void ChangeShoe(Shoe shoe)
@@ -325,11 +336,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
             else
                 ClearShoe();
 
+            UnsavedChanges = true;
             Initialize();
         }
         public void ClearShoe()
         {
             this.ShoeId = null;
+
+            UnsavedChanges = true;
             Initialize();
         }
 
@@ -340,11 +354,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
             else
                 ClearGlove();
 
+            UnsavedChanges = true;
             Initialize();
         }
         public void ClearGlove()
         {
             this.GloveId = null;
+
+            UnsavedChanges = true;
             Initialize();
         }
         private void UpdateBackground()
@@ -385,7 +402,6 @@ namespace Innovation_Uniform_Editor_Backend.Models
             this._shoe = null;
             this._armband = null;
             this._holster = null;
-            this.LogoPresets = null;
 
             _assets = UniformAssetsLoader.GetAssetsForUniform(UniformBasedOn);
 
@@ -396,7 +412,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             UpdateBackground();
 
-            if (UniformBasedOn.Colors != null)
+            if (UniformBasedOn.Colors != null && Colors.Count <= 0)
                 Colors = new List<CustomColor>(UniformBasedOn.Colors);
             else
             {

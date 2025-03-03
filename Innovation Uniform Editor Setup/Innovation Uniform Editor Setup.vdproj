@@ -16,8 +16,14 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
-        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
+        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -29,12 +35,6 @@
         "Entry"
         {
         "MsmKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -88,6 +88,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DBE13AD70F04406697BCE0405F8C0DA7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DC736EFFF0EC4FACA9D5158798FBA291"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -101,7 +107,7 @@
         "Entry"
         {
         "MsmKey" = "8:_E134A454D92AC058B8B4A7D5F526FDDC"
-        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
+        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -113,13 +119,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
+        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -218,6 +224,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_66C064F71D0040C58B8CFDD809E73930"
+            {
+            "Name" = "8:install.vbs"
+            "Condition" = "8:"
+            "Object" = "8:_DBE13AD70F04406697BCE0405F8C0DA7"
+            "FileType" = "3:4"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_EF12CF73_4645_4167_A76E_74A4B4D22477"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -241,6 +261,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_02F97DE712F8483F66884675818F79C9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=0.7.0.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_02F97DE712F8483F66884675818F79C9"
+                    {
+                    "Name" = "8:Innovation Uniform Editor Backend.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D89C451E73C2C0F7112480848AC1DE5"
             {
             "AssemblyRegister" = "3:1"
@@ -286,37 +337,6 @@
                     }
                 }
             "SourcePath" = "8:Cyotek.Windows.Forms.ColorPicker.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_29A5CD7E2A732E3A535C30207ED05DE6"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=0.7.0.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_29A5CD7E2A732E3A535C30207ED05DE6"
-                    {
-                    "Name" = "8:Innovation Uniform Editor Backend.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
@@ -496,6 +516,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DBE13AD70F04406697BCE0405F8C0DA7"
+            {
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\InstallerScripts\\install.vbs"
+            "TargetName" = "8:install.vbs"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DC736EFFF0EC4FACA9D5158798FBA291"
             {
             "SourcePath" = "8:..\\Innovation Uniform Editor\\StartBatFiles\\StartShortcut.bat"
@@ -600,9 +640,9 @@
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_CEE4617C93094F539CB78A4E1E5F3BFE"
                     {
                     "Name" = "8:thoricelli"
-                    "AlwaysCreate" = "11:FALSE"
+                    "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
+                    "Transitive" = "11:TRUE"
                     "Property" = "8:_7928223B398D474BAFBBB9D04C6C5EEE"
                         "Folders"
                         {
@@ -649,7 +689,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
         "ProductCode" = "8:{E5D36F94-AF41-46D4-94F2-8112648BC730}"
-        "PackageCode" = "8:{CB70F344-B255-4104-8AA2-BE2DF668E836}"
+        "PackageCode" = "8:{5DC95D90-A9EE-4187-A3AC-C884E11D8203}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1454,7 +1494,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_34212E02F8724DDE9132776DA0AC43F5"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Release\\Innovation Uniform Editor.exe"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\x64\\Debug\\Innovation Uniform Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"

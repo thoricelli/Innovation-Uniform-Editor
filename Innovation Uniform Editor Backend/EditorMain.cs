@@ -15,7 +15,7 @@ namespace Innovation_Uniform_Editor_Backend
     {
         #region VERSIONING
         public static string ToolName { get; } = "Thoricelli's Uniform Editor";
-        public static Version Version { get; } = new Version(0, 8, 0, 0);
+        public static Version Version { get; } = new Version(1, 0, 0, 0);
         private static string VersionToString(Version version)
         {
             return $"{Version.Major}.{Version.Minor}.{Version.Build}";
@@ -26,7 +26,7 @@ namespace Innovation_Uniform_Editor_Backend
             VersionToString(Version) : 
             $"{VersionToString(Version)} ({VersionType} BUILD)";
 
-        private static bool isPortable = true;
+        private static bool isPortable = false;
 
         public static bool Portable = VersionType == VersionType.Development && !isPortable ? true : isPortable;
         
