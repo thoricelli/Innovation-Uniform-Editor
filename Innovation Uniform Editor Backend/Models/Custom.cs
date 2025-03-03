@@ -229,7 +229,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             //Save custom class to JSON file inside folder
             Directory.CreateDirectory($"{EditorPaths.CustomsPath}/" + Id);
-            SaveJsonToFile($"{EditorPaths.CustomsPath}/{Id}info.json");
+            SaveJsonToFile($"{EditorPaths.CustomsPath}/{Id}/info.json");
 
             Image downSized = ImageHelper.resizeImage(Result, new Size(293, 280));
             downSized.Save($"{EditorPaths.CustomsPath}/" + Id + "/result.png", ImageFormat.Png);
@@ -273,6 +273,8 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             _result = null;
             UnsavedChanges = true;
+
+            Initialize();
         }
         public void ChangeLogoPresetAtIndex(int index, Preset preset)
         {
@@ -355,11 +357,13 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public void ClearBackground()
         {
             _backgroundImage = null;
-            BackgroundImageGuid = new Guid();
+            BackgroundImageGuid = null;
             _assets.Background = null;
 
             _result = null;
             UnsavedChanges = true;
+
+            Initialize();
         }
         #endregion
         public Custom()

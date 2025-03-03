@@ -20,12 +20,16 @@ namespace Innovation_Uniform_Editor_Backend
         {
             return $"{Version.Major}.{Version.Minor}.{Version.Build}";
         }
-        public static VersionType VersionType { get; } = VersionType.Development;
+        public static VersionType VersionType { get; } = VersionType.Bugtest;
         public static string VersionString { get; } = 
             VersionType == VersionType.Release ?
             VersionToString(Version) : 
             $"{VersionToString(Version)} ({VersionType} BUILD)";
-        public static bool Portable = VersionType == VersionType.Development ? true : false;
+
+        private static bool isPortable = true;
+
+        public static bool Portable = VersionType == VersionType.Development && !isPortable ? true : isPortable;
+        
         #endregion
         public static TemplateUpdater TemplateUpdater { get; set; }
         public static BackgroundsLoader Backgrounds { get; set; }

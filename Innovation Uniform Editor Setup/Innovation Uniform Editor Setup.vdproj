@@ -16,14 +16,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_02F97DE712F8483F66884675818F79C9"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
-        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -35,6 +29,12 @@
         "Entry"
         {
         "MsmKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -58,13 +58,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8F6AB0378C5C480AA56EDD065ED22522"
+        "MsmKey" = "8:_86D6972266D04C638F53EC80BD8D1023"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_973CA3C3C67C4E2ABD3D19C219731A74"
+        "MsmKey" = "8:_8F6AB0378C5C480AA56EDD065ED22522"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -101,7 +101,7 @@
         "Entry"
         {
         "MsmKey" = "8:_E134A454D92AC058B8B4A7D5F526FDDC"
-        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -113,13 +113,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+        "OwnerKey" = "8:_29A5CD7E2A732E3A535C30207ED05DE6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,7 +190,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -241,37 +241,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_02F97DE712F8483F66884675818F79C9"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=0.7.0.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_02F97DE712F8483F66884675818F79C9"
-                    {
-                    "Name" = "8:Innovation Uniform Editor Backend.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D89C451E73C2C0F7112480848AC1DE5"
             {
             "AssemblyRegister" = "3:1"
@@ -334,6 +303,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_29A5CD7E2A732E3A535C30207ED05DE6"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=0.7.0.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_29A5CD7E2A732E3A535C30207ED05DE6"
+                    {
+                    "Name" = "8:Innovation Uniform Editor Backend.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_59FFE7149E3002382754D8D9C2ACB7C1"
             {
             "AssemblyRegister" = "3:1"
@@ -372,12 +372,32 @@
             "Tag" = "8:"
             "Folder" = "8:_CEE4617C93094F539CB78A4E1E5F3BFE"
             "Condition" = "8:"
-            "Transitive" = "11:FALSE"
+            "Transitive" = "11:TRUE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:TRUE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86D6972266D04C638F53EC80BD8D1023"
+            {
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\freshinstall"
+            "TargetName" = "8:freshinstall"
+            "Tag" = "8:"
+            "Folder" = "8:_CEE4617C93094F539CB78A4E1E5F3BFE"
+            "Condition" = "8:"
+            "Transitive" = "11:TRUE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
@@ -398,26 +418,6 @@
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_973CA3C3C67C4E2ABD3D19C219731A74"
-            {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\freshinstall"
-            "TargetName" = "8:freshinstall"
-            "Tag" = "8:"
-            "Folder" = "8:_CEE4617C93094F539CB78A4E1E5F3BFE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
@@ -483,7 +483,7 @@
             "Tag" = "8:"
             "Folder" = "8:_CEE4617C93094F539CB78A4E1E5F3BFE"
             "Condition" = "8:"
-            "Transitive" = "11:FALSE"
+            "Transitive" = "11:TRUE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
@@ -648,15 +648,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
-        "ProductCode" = "8:{69FFA576-ECE3-4AE7-A056-E4FA6681DB55}"
-        "PackageCode" = "8:{C5759328-BBF6-4C1D-B452-9034398C836F}"
+        "ProductCode" = "8:{E5D36F94-AF41-46D4-94F2-8112648BC730}"
+        "PackageCode" = "8:{CB70F344-B255-4104-8AA2-BE2DF668E836}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.8.1"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Thoricelli"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1310,7 +1310,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1454,7 +1454,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_34212E02F8724DDE9132776DA0AC43F5"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Debug\\Innovation Uniform Editor.exe"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Release\\Innovation Uniform Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
