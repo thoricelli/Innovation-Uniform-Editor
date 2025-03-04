@@ -8,6 +8,7 @@ using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI
@@ -165,7 +166,7 @@ namespace Innovation_Uniform_Editor.UI
 
         private void Editor_Load(object sender, EventArgs e)
         {
-
+            ButtonsVisibleCheck();
         }
         private void Editor_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -251,20 +252,7 @@ namespace Innovation_Uniform_Editor.UI
 
         private void SetupColors()
         {
-            if (custom.UniformBasedOn.CanBeCustomized)
-            {
-                //divide1.Visible = true;
-                btnManageHolsters.Visible = true;
-                btnManageArmbands.Visible = true;
-                btnManageGloves.Visible = true;
-                btnManageShoes.Visible = true;
-            } else
-            {
-                btnManageHolsters.Visible = false;
-                btnManageArmbands.Visible = false;
-                btnManageGloves.Visible = false;
-                btnManageShoes.Visible = false;
-            }
+            ButtonsVisibleCheck();
 
             int indexStart = 0;
             for (int i = buttonsLayoutPanel.Controls.Count - 1; i >= 1; i--)
@@ -281,6 +269,53 @@ namespace Innovation_Uniform_Editor.UI
             {
                 buttonsLayoutPanel.Controls.Add(CreateButton(i));
             }
+        }
+
+        private void ButtonsVisibleCheck()
+        {
+
+            divide1.Visible = true;
+
+            Control[] customize = new[]
+            {
+                btnManageHolsters,
+                btnManageArmbands,
+                btnManageGloves,
+                btnManageShoes,
+                btnLogoColors,
+            };
+
+            foreach (Control control in customize)
+            {
+                control.Visible = true;
+            }
+
+            switch (custom.UniformBasedOn.part)
+            {
+                case ClothingPart.Pants:
+                    btnManageArmbands.Visible = false;
+                    btnManageGloves.Visible = false;
+                    break;
+                case ClothingPart.Shirts:
+                    btnManageHolsters.Visible = false;
+                    btnManageShoes.Visible = false;
+                    break;
+            }
+
+
+            if (!custom.UniformBasedOn.CanBeCustomized)
+            {
+                btnManageHolsters.Visible = false;
+                btnManageArmbands.Visible = false;
+                btnManageGloves.Visible = false;
+                btnManageShoes.Visible = false;
+            }
+
+            if (custom.Presets.Count <= 0)
+                btnLogoColors.Visible = false;
+
+            if (customize.All(e => !e.Visible))
+                divide1.Visible = false;
         }
         private void btnWarnings_Click(object sender, EventArgs e)
         {

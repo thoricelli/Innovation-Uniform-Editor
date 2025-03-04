@@ -412,7 +412,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
             UpdateBackground();
 
-            if (UniformBasedOn.Colors != null && Colors.Count <= 0)
+            if (UniformBasedOn.Colors != null && Colors.Count <= 0 && UniformBasedOn.Colors.Count() > 0)
                 Colors = new List<CustomColor>(UniformBasedOn.Colors);
             else
             {

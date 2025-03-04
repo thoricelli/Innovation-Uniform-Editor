@@ -20,7 +20,7 @@ namespace Innovation_Uniform_Editor_Backend
         {
             return $"{Version.Major}.{Version.Minor}.{Version.Build}";
         }
-        public static VersionType VersionType { get; } = VersionType.Bugtest;
+        public static VersionType VersionType { get; } = VersionType.Development;
         public static string VersionString { get; } = 
             VersionType == VersionType.Release ?
             VersionToString(Version) : 
