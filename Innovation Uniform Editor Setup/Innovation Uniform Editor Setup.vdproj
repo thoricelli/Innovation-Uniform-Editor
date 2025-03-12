@@ -16,24 +16,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_02F97DE712F8483F66884675818F79C9"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
-        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
-        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
         "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
@@ -107,7 +89,25 @@
         "Entry"
         {
         "MsmKey" = "8:_E134A454D92AC058B8B4A7D5F526FDDC"
-        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_F1746E11CA72672DBB8CD76B0523C90C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E6821E7F169DE19E37ACB508C404EBF4"
+        "OwnerKey" = "8:_F1746E11CA72672DBB8CD76B0523C90C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E6821E7F169DE19E37ACB508C404EBF4"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F1746E11CA72672DBB8CD76B0523C90C"
+        "OwnerKey" = "8:_34212E02F8724DDE9132776DA0AC43F5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -119,7 +119,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_02F97DE712F8483F66884675818F79C9"
+        "OwnerKey" = "8:_F1746E11CA72672DBB8CD76B0523C90C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -131,7 +131,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0D89C451E73C2C0F7112480848AC1DE5"
+        "OwnerKey" = "8:_E6821E7F169DE19E37ACB508C404EBF4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -261,68 +261,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_02F97DE712F8483F66884675818F79C9"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_02F97DE712F8483F66884675818F79C9"
-                    {
-                    "Name" = "8:Innovation Uniform Editor Backend.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D89C451E73C2C0F7112480848AC1DE5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0D89C451E73C2C0F7112480848AC1DE5"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
             {
             "AssemblyRegister" = "3:1"
@@ -587,6 +525,68 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E6821E7F169DE19E37ACB508C404EBF4"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E6821E7F169DE19E37ACB508C404EBF4"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F1746E11CA72672DBB8CD76B0523C90C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F1746E11CA72672DBB8CD76B0523C90C"
+                    {
+                    "Name" = "8:Innovation Uniform Editor Backend.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Innovation Uniform Editor Backend.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -688,15 +688,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
-        "ProductCode" = "8:{3F40729A-B0FC-4AA3-A762-E2A0B1719600}"
-        "PackageCode" = "8:{F4FB4E39-DC55-4076-BF97-DE3812FA43C6}"
+        "ProductCode" = "8:{84302BAA-B72E-4520-A48D-E0C34F841E44}"
+        "PackageCode" = "8:{BB7752C5-E2E6-4E76-A32B-E668CD444342}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:Thoricelli"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1494,7 +1494,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_34212E02F8724DDE9132776DA0AC43F5"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Debug\\Innovation Uniform Editor.exe"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Release\\Innovation Uniform Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"
