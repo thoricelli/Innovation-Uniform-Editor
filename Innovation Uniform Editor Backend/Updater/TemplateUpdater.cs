@@ -3,6 +3,7 @@ using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
@@ -23,7 +24,6 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             set
             {
                 templateVersion = value;
-                JsonUtils.SaveToFile(value, EditorPaths.TemplateVersioningPath);
             }
         }
         private CorruptionHandler corruptionHandler;
@@ -58,7 +58,10 @@ namespace Innovation_Uniform_Editor_Backend.Updater
                 if (status == TemplateUpdateStatus.SUCCESS)
                 {
                     if (updaterVersioning.CachedNewVersioning != null)
+                    {
+                        JsonUtils.SaveToFile(updaterVersioning.CachedNewVersioning, EditorPaths.TemplateVersioningPath);
                         TemplateVersion = updaterVersioning.CachedNewVersioning.TemplateVersion;
+                    }
 
                     updaterVersioning.UpdateHash(hashTemplate);
                     hashHandler.WriteNewHash(hashTemplate);

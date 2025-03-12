@@ -1,12 +1,4 @@
 {
-  "MinimumToolVersion": {
-    "MajorVersion": 0,
-    "MinorVersion": 8,
-    "PatchVersion": 0
-  },
-  "TemplateVersion": {
-    "MajorVersion": 0,
-    "MinorVersion": 0,
-    "PatchVersion": 0
-  }
+  "MinimumToolVersion": "1.0.0",
+  "TemplateVersion": "0.0.0"
 }
