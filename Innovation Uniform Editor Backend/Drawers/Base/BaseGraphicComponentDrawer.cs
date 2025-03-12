@@ -69,9 +69,12 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
             {
                 BaseGraphicsDrawer drawer = GraphicsDrawers[i];
 
-                Bitmap result = drawer.GetResult();
+                if (drawer != null)
+                {
+                    Bitmap result = drawer.GetResult();
 
-                result.Save($"{path}/{i} - {drawer.Name}.png");
+                    result.Save($"{path}/{i} - {drawer.Name}.png");
+                }
             }
         }
     }
