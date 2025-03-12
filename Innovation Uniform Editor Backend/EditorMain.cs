@@ -8,9 +8,6 @@ namespace Innovation_Uniform_Editor_Backend
 {
     public static class EditorMain
     {
-        #region VERSIONING
-        public static string ToolName { get; } = "Thoricelli's Uniform Editor";
-        #endregion
         public static TemplateUpdater TemplateUpdater { get; set; }
         public static BackgroundsLoader Backgrounds { get; set; }
         public static UniformsLoader Uniforms { get; set; }

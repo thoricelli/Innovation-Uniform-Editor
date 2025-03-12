@@ -6,6 +6,7 @@ namespace Innovation_Uniform_Editor_Backend
 {
     public static class Versioning
     {
+
 #if INSTALLER
         public static bool Portable = false;
 #else
@@ -21,6 +22,14 @@ namespace Innovation_Uniform_Editor_Backend
 #else
         public static VersionType VersionType = VersionType.Development;
 #endif
+        private static string toolName;
+        public static string ToolName {
+            get
+            {
+                return Assembly.GetEntryAssembly().GetName().Name;
+            }
+        }
+
         public static string VersionString { get; } =
         VersionType == VersionType.Release ?
         VersionToString(Version) :

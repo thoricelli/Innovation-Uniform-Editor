@@ -201,7 +201,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 {
                     Bitmap Capybara = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Capybara.png");
 
-                    byte[] value = Encoding.ASCII.GetBytes($"{EditorMain.ToolName} - {Versioning.VersionString}");
+                    byte[] value = Encoding.ASCII.GetBytes($"{Versioning.ToolName} - {Versioning.VersionString}");
 
                     PropertyItem prop = Capybara.GetPropertyItem(305);
                     prop.Len = value.Length;
