@@ -49,7 +49,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.Base
 
                     foreach (BaseGraphicsDrawer drawer in GraphicsDrawers)
                     {
-                        drawer.DrawToGraphics(g, bitmap);
+                        if (drawer != null)
+                            drawer.DrawToGraphics(g, bitmap);
                     }
                 }
                 return (T)(object)bitmap;

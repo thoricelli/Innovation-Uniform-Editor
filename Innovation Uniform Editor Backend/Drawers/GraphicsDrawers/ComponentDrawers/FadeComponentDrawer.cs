@@ -16,13 +16,18 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
         {
         }
 
-        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress, float transparency)
+        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, IImageEditor texture, int index, double progress, float transparency)
         {
-            Color fade = Overlay(FadePixel(current, progress), lowerImage.GetPixelColorAtIndex(index));
+            Color textureColor = texture.GetPixelColorAtIndex(index);
+
+            Color fade = FadePixel(current, progress);
+
+            if (textureColor.A != 0)
+                fade = Overlay(fade, lowerImage.GetPixelColorAtIndex(index));
 
             upperImage.ChangePixelColorAtIndex(index, fade);
 
-            base.Draw(current, upperImage, lowerImage, index, progress, transparency);
+            base.Draw(current, upperImage, lowerImage, texture, index, progress, transparency);
         }
 
         private Color FadePixel(CustomColor color, double progress)

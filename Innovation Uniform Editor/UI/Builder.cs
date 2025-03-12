@@ -44,7 +44,7 @@ namespace Innovation_Uniform_Editor.UI
             {
                 BaseGraphicsDrawer drawer = _customDrawer.GraphicsDrawers[i];
 
-                if (drawer.HasAsset())
+                if (drawer != null && drawer.HasAsset())
                 {
                     // 
                     // lblName

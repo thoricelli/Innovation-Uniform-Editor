@@ -15,9 +15,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
     {
         private static List<ComponentDrawerBase> colorDrawerItems = new List<ComponentDrawerBase>()
         {
-            new ColorComponentDrawer(0.26, ColorDrawerTypes.SOLID, ColorType.FirstColor, BlendMode.Overlay),
-            new FadeComponentDrawer(0.72, ColorDrawerTypes.FADE, BlendMode.Overlay),
-            new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.Overlay),
+            new ColorComponentDrawer(0.26, ColorDrawerTypes.SOLID, ColorType.FirstColor, BlendMode.None),
+            new FadeComponentDrawer(0.72, ColorDrawerTypes.FADE, BlendMode.None),
+            new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.None),
         };
 
         public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading, List<Bitmap> texture) : base(colors, Selections, colorDrawerItems, shading, texture)

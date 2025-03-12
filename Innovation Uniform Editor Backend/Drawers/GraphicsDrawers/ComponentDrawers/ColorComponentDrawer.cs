@@ -20,7 +20,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
             this.colorType = colorType;
         }
 
-        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress, float transparency)
+        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, IImageEditor texture, int index, double progress, float transparency)
         {
             // Overlay pixel with color from lower layer.
             if (current.Colors == null)
@@ -43,6 +43,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
             Color lowerImageColor = lowerImage.GetPixelColorAtIndex(index);
             Color resultColor = currentColor;
 
+            if (resultColor.A == 0)
+                resultColor = lowerImageColor;
+
             switch (blendMode)
             {
                 case BlendMode.Overlay:
@@ -59,13 +62,21 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
                     break;
             }
 
+            Color textureColor = texture.GetPixelColorAtIndex(index);
+
+            if (textureColor.A != 0)
+                resultColor = Overlay(
+                        currentColor,
+                        lowerImageColor
+                    );
+
             // Change pixel on result image.
             if (transparency != 1f)
                 resultColor = Color.FromArgb((int)(transparency * 255), resultColor.R, resultColor.G, resultColor.B);
 
             upperImage.ChangePixelColorAtIndex(index, resultColor);
 
-            base.Draw(current, upperImage, lowerImage, index, progress, transparency);
+            base.Draw(current, upperImage, lowerImage, texture, index, progress, transparency);
         }
     }
 }

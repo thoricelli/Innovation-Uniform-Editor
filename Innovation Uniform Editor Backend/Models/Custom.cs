@@ -266,6 +266,18 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
                 this.LogoPresets = null;
 
+                this.GloveId = null;
+                this._glove = null;
+
+                this.GloveId = null;
+                this._shoe = null;
+
+                this.ArmbandId = null;
+                this._armband = null;
+
+                this.HolsterId = null;
+                this._holster = null;
+
                 Initialize();
             }
         }
@@ -298,12 +310,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public void ChangeHolster(Holster holster)
         {
             if (holster != null)
+            {
                 this.HolsterId = holster.Id;
+                Initialize();
+            }
             else
                 ClearHolster();
 
             UnsavedChanges = true;
-            Initialize();
         }
         public void ClearHolster()
         {
@@ -315,12 +329,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public void ChangeArmband(Armband armband)
         {
             if (armband != null)
+            {
                 this.ArmbandId = armband.Id;
+                Initialize();
+            }
             else
                 ClearArmband();
 
             UnsavedChanges = true;
-            Initialize();
         }
         public void ClearArmband()
         {
@@ -332,12 +348,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public void ChangeShoe(Shoe shoe)
         {
             if (shoe != null)
+            {
                 this.ShoeId = shoe.Id;
+                Initialize();
+            }
             else
                 ClearShoe();
 
             UnsavedChanges = true;
-            Initialize();
         }
         public void ClearShoe()
         {
@@ -350,12 +368,14 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public void ChangeGlove(Glove glove)
         {
             if (glove != null)
+            {
                 this.GloveId = glove.Id;
+                Initialize();
+            }
             else
                 ClearGlove();
 
             UnsavedChanges = true;
-            Initialize();
         }
         public void ClearGlove()
         {

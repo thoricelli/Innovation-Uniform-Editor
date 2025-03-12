@@ -10,7 +10,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDra
         public EmptyComponentDrawer(double endPercentage) : base(endPercentage, ColorDrawerTypes.EMPTY, BlendMode.None)
         {
         }
-        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, int index, double progress, float transparency)
+        public override void Draw(CustomColor current, IImageEditor upperImage, IImageEditor lowerImage, IImageEditor texture, int index, double progress, float transparency)
         {
             //Do nothing lol
         }

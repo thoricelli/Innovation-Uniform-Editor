@@ -23,11 +23,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         private List<MaskImage> _masks;
         private int currentDrawerIndex = 0;
 
+        private Bitmap texturesMerged;
         private MaskImage textureMask;
 
         private float _transparency = 1f;
 
         private int repeat = 2;
+        private int shadingRepeat = 1;
 
         private List<ComponentDrawerBase> colorDrawerItems;
 
@@ -51,8 +53,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             _shadingDrawer = shading;
             colorDrawerItems = Drawers;
             _transparency = transparency;
-            if (texture != null)
+            if (texture != null && texture.Count > 0)
+            {
+                texturesMerged = ImageHelper.Merge(texture);
                 textureMask = ImageHelper.BitmapToSingleBoolean(texture);
+            }
         }
         public override bool HasAsset()
         {
@@ -101,6 +106,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
             BitmapEditor resultLooper = new BitmapEditor(result);
 
+            BitmapEditor texture;
+
+            if (texturesMerged != null)
+                texture = new BitmapEditor(texturesMerged);
+            else
+                texture = new BitmapEditor(new Bitmap(resultLooper.GetWidth(), resultLooper.GetHeight()));
+
             ImageEditorBase<Bitmap> shading = null;
 
             if (_shadingDrawer != null)
@@ -148,12 +160,23 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
                             //TODO: Texture mask if texture is supplied.
                             if (shading != null && (textureMask == null || textureMask.mask[i]))
-                                shading.ChangePixelColorAtIndex(drawIndex, ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex));
+                            {
+                                Color originalShadingColor = ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex);
+                                Color shadingColor = ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex);
+
+                                for (int rep = 0; rep < shadingRepeat - 1; rep++)
+                                {
+                                    shadingColor = Blend(shadingColor, shadingColor);
+                                }
+
+                                shading.ChangePixelColorAtIndex(drawIndex, shadingColor);
+                            }
 
                             currentDrawItem.Draw(
                                 _colors[maskIndex],
                                 colorsResultLooper,
                                 resultLooper,
+                                texture,
                                 drawIndex,
                                 GetCurrentProgressForComponent(progressWithRepeat),
                                 _transparency
@@ -168,9 +191,40 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             if (shading != null)
                 _shadingDrawer.ChangeAsset(shading.Result);
 
+            texture.CloseImage();
+
             resultLooper.CloseImage();
 
             DrawImageToGraphics(graphics, colorsResultLooper.Result);
+        }
+
+        private Color Blend(Color ForeGround, Color BackGround)
+        {
+            if (ForeGround.A == 0)
+                return BackGround;
+            if (BackGround.A == 0)
+                return ForeGround;
+            if (ForeGround.A == 255)
+                return ForeGround;
+
+            int Alpha = ForeGround.A + 1;
+            int A = ForeGround.A;
+
+            int B = Alpha * ForeGround.B + (255 - Alpha) * BackGround.B >> 8;
+            int G = Alpha * ForeGround.G + (255 - Alpha) * BackGround.G >> 8;
+            int R = Alpha * ForeGround.R + (255 - Alpha) * BackGround.R >> 8;
+
+
+            if (BackGround.A == 255)
+                A = 255;
+            if (R > 255)
+                R = 255;
+            if (G > 255)
+                G = 255;
+            if (B > 255)
+                B = 255;
+
+            return Color.FromArgb(Math.Abs(A), Math.Abs(R), Math.Abs(G), Math.Abs(B));
         }
     }
 }

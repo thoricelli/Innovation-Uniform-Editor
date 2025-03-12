@@ -52,6 +52,8 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
+                custom.UniformBasedOn.GloveId == null ? new GloveDrawer(assets.Glove) : null,
+
                 new BackgroundDrawer(assets.Background),
                 new TextureDrawer(assets.Textures),
                 new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer, assets.Textures),
@@ -59,6 +61,11 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 _shadingDrawer,
 
                 new OverlayDrawer(assets.Overlay),
+                
+                
+                //When original uniform has glove, that means the color will extend to the fully, which means we want to draw it ABOVE.
+                custom.UniformBasedOn.GloveId != null ? new GloveDrawer(assets.Glove) : null,
+                new ShoeDrawer(assets.Shoe),
 
                 //Logo's.
                 _logoDrawer,
@@ -67,9 +74,6 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
                 new ArmbandDrawer(assets.Armband),
                 new HolsterDrawer(assets.Holster),
-
-                new GloveDrawer(assets.Glove),
-                new ShoeDrawer(assets.Shoe),
         
                 //new UsernameDrawer(),
 

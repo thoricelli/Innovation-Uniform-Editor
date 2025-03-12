@@ -1,6 +1,7 @@
 ﻿using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -19,6 +20,26 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
             g.Dispose();
             return b;
         }
+
+        public static Bitmap Merge(List<Bitmap> images)
+        {
+            int singleWidth = images[0].Width;
+            int singleHeight = images[0].Height;
+
+            Bitmap mergedImage = new Bitmap(singleWidth * images.Count, singleHeight);
+
+            using (Graphics g = Graphics.FromImage(mergedImage))
+            {
+                for (int i = 0; i < images.Count; i++)
+                {
+                    Rectangle destRect = new Rectangle(i * singleWidth, 0, singleWidth, singleHeight);
+                    g.DrawImage(images[i], destRect);
+                }
+            }
+
+            return mergedImage;
+        }
+
         public static Image SetOpacity(this Image image, float opacity)
         {
             var colorMatrix = new ColorMatrix();
