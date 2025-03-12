@@ -20,7 +20,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 
                 var solidBrush = new SolidBrush(Color.FromArgb(0, 0, 0));
 
-                graphics.DrawString(EditorMain.VersionString, font, solidBrush, new PointF(430, 487));
+                graphics.DrawString(Versioning.VersionString, font, solidBrush, new PointF(430, 487));
             }
         }
     }

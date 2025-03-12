@@ -48,7 +48,7 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             CachedNewVersioning = templateVersioningNet;
 
             //Check if the online template version is compatible with this tool version.
-            if (templateVersioningNet.MinimumToolVersion.CompareTo(EditorMain.Version) <= -1)
+            if (templateVersioningNet.MinimumToolVersion.CompareTo(Versioning.Version) <= -1)
                 return UpdaterVersioningResult.NOT_COMPATIBLE;
 
             //Check if the current template version is higher.

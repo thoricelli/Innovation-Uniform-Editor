@@ -6,11 +6,11 @@ namespace Innovation_Uniform_Editor_Backend.Globals
 {
     public static class EditorPaths
     {
-        private static string dataPathBaseUrl = EditorMain.Portable
+        private static string dataPathBaseUrl = Versioning.Portable
             ? Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) :
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        public static string DataPathName = EditorMain.Portable ? String.Empty : "thoricelli";
+        public static string DataPathName = Versioning.Portable ? String.Empty : "thoricelli";
         public static string DataPath = dataPathBaseUrl + "/" + DataPathName;
 
         public static string HashName = "templateshash.txt";

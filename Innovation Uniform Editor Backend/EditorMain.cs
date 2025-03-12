@@ -1,12 +1,7 @@
 ﻿using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Loaders.OverlayAssets;
-using Innovation_Uniform_Editor_Backend.Models;
-using Innovation_Uniform_Editor_Backend.Models.Enums;
 using Innovation_Uniform_Editor_Backend.Updater;
-using System;
-using System.Drawing;
-using System.Drawing.Text;
 using System.IO;
 
 namespace Innovation_Uniform_Editor_Backend
@@ -15,21 +10,6 @@ namespace Innovation_Uniform_Editor_Backend
     {
         #region VERSIONING
         public static string ToolName { get; } = "Thoricelli's Uniform Editor";
-        public static Version Version { get; } = new Version(1, 0, 0, 0);
-        private static string VersionToString(Version version)
-        {
-            return $"{Version.Major}.{Version.Minor}.{Version.Build}";
-        }
-        public static VersionType VersionType { get; } = VersionType.Development;
-        public static string VersionString { get; } = 
-            VersionType == VersionType.Release ?
-            VersionToString(Version) : 
-            $"{VersionToString(Version)} ({VersionType} BUILD)";
-
-        private static bool isPortable = false;
-
-        public static bool Portable = VersionType == VersionType.Development && !isPortable ? true : isPortable;
-        
         #endregion
         public static TemplateUpdater TemplateUpdater { get; set; }
         public static BackgroundsLoader Backgrounds { get; set; }

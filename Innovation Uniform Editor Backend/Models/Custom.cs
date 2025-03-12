@@ -57,7 +57,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public Guid? ArmbandId { get; set; }
         public Guid? ShoeId { get; set; }
         public Guid? GloveId { get; set; }
-        public Version MinimumVersion { get; set; } = EditorMain.Version;
+        public Version MinimumVersion { get; set; } = Versioning.Version;
         private List<Preset> _presets { get; set; }
         [JsonIgnore]
         public List<Preset> Presets 
@@ -201,7 +201,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 {
                     Bitmap Capybara = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Capybara.png");
 
-                    byte[] value = Encoding.ASCII.GetBytes($"{EditorMain.ToolName} - {EditorMain.VersionString}");
+                    byte[] value = Encoding.ASCII.GetBytes($"{EditorMain.ToolName} - {Versioning.VersionString}");
 
                     PropertyItem prop = Capybara.GetPropertyItem(305);
                     prop.Len = value.Length;

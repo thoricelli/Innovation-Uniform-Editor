@@ -101,7 +101,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         }
         private static bool AskForOutdatedLoad(Version version)
         {
-            if (version.CompareTo(EditorMain.Version) <= -1)
+            if (version.CompareTo(Versioning.Version) <= -1)
             {
                 DialogResult result = MessageBox.Show($"This custom was made with an older version ({version}).\nAre you sure you want to load this file?", "Outdated custom", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
