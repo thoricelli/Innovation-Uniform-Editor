@@ -40,7 +40,7 @@ namespace Innovation_Uniform_Editor.UI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportLayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shirtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,13 +57,16 @@ namespace Innovation_Uniform_Editor.UI
             this.buttonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnWarnings = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnNewTab = new System.Windows.Forms.Button();
+            this.divide1 = new System.Windows.Forms.Label();
             this.btnManageHolsters = new System.Windows.Forms.Button();
             this.btnManageArmbands = new System.Windows.Forms.Button();
-            this.btnManageBottoms = new System.Windows.Forms.Button();
-            this.btnDrawDetail = new System.Windows.Forms.Button();
+            this.btnManageGloves = new System.Windows.Forms.Button();
+            this.btnManageShoes = new System.Windows.Forms.Button();
+            this.btnLogoColors = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDrawDetail = new System.Windows.Forms.Button();
+            this.saveToFile = new System.Windows.Forms.SaveFileDialog();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUniform)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uniformBindingSource)).BeginInit();
@@ -127,7 +130,7 @@ namespace Innovation_Uniform_Editor.UI
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.downloadToolStripMenuItem1,
-            this.exportLayersToolStripMenuItem});
+            this.exportToFile});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.exportToolStripMenuItem.Text = "Export";
@@ -135,17 +138,16 @@ namespace Innovation_Uniform_Editor.UI
             // downloadToolStripMenuItem1
             // 
             this.downloadToolStripMenuItem1.Name = "downloadToolStripMenuItem1";
-            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.downloadToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.downloadToolStripMenuItem1.Text = "Download";
             this.downloadToolStripMenuItem1.Click += new System.EventHandler(this.downloadToolStripMenuItem1_Click);
             // 
-            // exportLayersToolStripMenuItem
+            // exportToFile
             // 
-            this.exportLayersToolStripMenuItem.Name = "exportLayersToolStripMenuItem";
-            this.exportLayersToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.exportLayersToolStripMenuItem.Text = "Export layers";
-            this.exportLayersToolStripMenuItem.Visible = false;
-            this.exportLayersToolStripMenuItem.Click += new System.EventHandler(this.exportLayersToolStripMenuItem_Click);
+            this.exportToFile.Name = "exportToFile";
+            this.exportToFile.Size = new System.Drawing.Size(128, 22);
+            this.exportToFile.Text = "To file";
+            this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
             // 
             // newTabToolStripMenuItem
             // 
@@ -270,7 +272,7 @@ namespace Innovation_Uniform_Editor.UI
             // btnWarnings
             // 
             this.btnWarnings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWarnings.Location = new System.Drawing.Point(644, 516);
+            this.btnWarnings.Location = new System.Drawing.Point(642, 486);
             this.btnWarnings.Name = "btnWarnings";
             this.btnWarnings.Size = new System.Drawing.Size(88, 23);
             this.btnWarnings.TabIndex = 17;
@@ -284,41 +286,31 @@ namespace Innovation_Uniform_Editor.UI
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.buttonsLayoutPanel);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.btnNewTab);
+            this.flowLayoutPanel1.Controls.Add(this.divide1);
             this.flowLayoutPanel1.Controls.Add(this.btnManageHolsters);
             this.flowLayoutPanel1.Controls.Add(this.btnManageArmbands);
-            this.flowLayoutPanel1.Controls.Add(this.btnManageBottoms);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageGloves);
+            this.flowLayoutPanel1.Controls.Add(this.btnManageShoes);
+            this.flowLayoutPanel1.Controls.Add(this.btnLogoColors);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.btnDrawDetail);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(538, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 183);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 212);
             this.flowLayoutPanel1.TabIndex = 18;
             // 
-            // label1
+            // divide1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(3, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 2);
-            this.label1.TabIndex = 18;
-            // 
-            // btnNewTab
-            // 
-            this.btnNewTab.Location = new System.Drawing.Point(3, 39);
-            this.btnNewTab.Name = "btnNewTab";
-            this.btnNewTab.Size = new System.Drawing.Size(189, 23);
-            this.btnNewTab.TabIndex = 16;
-            this.btnNewTab.Text = "New tab";
-            this.btnNewTab.UseVisualStyleBackColor = true;
-            this.btnNewTab.Visible = false;
-            this.btnNewTab.Click += new System.EventHandler(this.btnSwitchType_Click);
+            this.divide1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.divide1.Location = new System.Drawing.Point(3, 34);
+            this.divide1.Name = "divide1";
+            this.divide1.Size = new System.Drawing.Size(190, 2);
+            this.divide1.TabIndex = 18;
             // 
             // btnManageHolsters
             // 
-            this.btnManageHolsters.Location = new System.Drawing.Point(3, 68);
+            this.btnManageHolsters.Location = new System.Drawing.Point(3, 39);
             this.btnManageHolsters.Name = "btnManageHolsters";
             this.btnManageHolsters.Size = new System.Drawing.Size(189, 23);
             this.btnManageHolsters.TabIndex = 19;
@@ -328,7 +320,7 @@ namespace Innovation_Uniform_Editor.UI
             // 
             // btnManageArmbands
             // 
-            this.btnManageArmbands.Location = new System.Drawing.Point(3, 97);
+            this.btnManageArmbands.Location = new System.Drawing.Point(3, 68);
             this.btnManageArmbands.Name = "btnManageArmbands";
             this.btnManageArmbands.Size = new System.Drawing.Size(189, 23);
             this.btnManageArmbands.TabIndex = 20;
@@ -336,19 +328,47 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageArmbands.UseVisualStyleBackColor = true;
             this.btnManageArmbands.Click += new System.EventHandler(this.btnManageArmbands_Click);
             // 
-            // btnManageBottoms
+            // btnManageGloves
             // 
-            this.btnManageBottoms.Location = new System.Drawing.Point(3, 126);
-            this.btnManageBottoms.Name = "btnManageBottoms";
-            this.btnManageBottoms.Size = new System.Drawing.Size(189, 23);
-            this.btnManageBottoms.TabIndex = 21;
-            this.btnManageBottoms.Text = "Bottoms";
-            this.btnManageBottoms.UseVisualStyleBackColor = true;
-            this.btnManageBottoms.Click += new System.EventHandler(this.btnManageBottoms_Click);
+            this.btnManageGloves.Location = new System.Drawing.Point(3, 97);
+            this.btnManageGloves.Name = "btnManageGloves";
+            this.btnManageGloves.Size = new System.Drawing.Size(189, 23);
+            this.btnManageGloves.TabIndex = 23;
+            this.btnManageGloves.Text = "Gloves";
+            this.btnManageGloves.UseVisualStyleBackColor = true;
+            this.btnManageGloves.Click += new System.EventHandler(this.btnManageGloves_Click);
+            // 
+            // btnManageShoes
+            // 
+            this.btnManageShoes.Location = new System.Drawing.Point(3, 126);
+            this.btnManageShoes.Name = "btnManageShoes";
+            this.btnManageShoes.Size = new System.Drawing.Size(189, 23);
+            this.btnManageShoes.TabIndex = 21;
+            this.btnManageShoes.Text = "Shoes";
+            this.btnManageShoes.UseVisualStyleBackColor = true;
+            this.btnManageShoes.Click += new System.EventHandler(this.btnManageShoes_Click);
+            // 
+            // btnLogoColors
+            // 
+            this.btnLogoColors.Location = new System.Drawing.Point(3, 155);
+            this.btnLogoColors.Name = "btnLogoColors";
+            this.btnLogoColors.Size = new System.Drawing.Size(189, 23);
+            this.btnLogoColors.TabIndex = 24;
+            this.btnLogoColors.Text = "Logo colors";
+            this.btnLogoColors.UseVisualStyleBackColor = true;
+            this.btnLogoColors.Click += new System.EventHandler(this.btnLogoColors_Click);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(3, 181);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(190, 2);
+            this.label2.TabIndex = 22;
             // 
             // btnDrawDetail
             // 
-            this.btnDrawDetail.Location = new System.Drawing.Point(3, 157);
+            this.btnDrawDetail.Location = new System.Drawing.Point(3, 186);
             this.btnDrawDetail.Name = "btnDrawDetail";
             this.btnDrawDetail.Size = new System.Drawing.Size(188, 23);
             this.btnDrawDetail.TabIndex = 17;
@@ -356,19 +376,28 @@ namespace Innovation_Uniform_Editor.UI
             this.btnDrawDetail.UseVisualStyleBackColor = true;
             this.btnDrawDetail.Click += new System.EventHandler(this.btnDrawDetail_Click);
             // 
-            // label2
+            // saveToFile
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(3, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 2);
-            this.label2.TabIndex = 22;
+            this.saveToFile.DefaultExt = "iue";
+            this.saveToFile.FileName = "Custom";
+            // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFolder.Location = new System.Drawing.Point(641, 515);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(88, 23);
+            this.btnOpenFolder.TabIndex = 19;
+            this.btnOpenFolder.Text = "Open folder";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 571);
+            this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnWarnings);
             this.Controls.Add(this.idLabel);
@@ -420,16 +449,19 @@ namespace Innovation_Uniform_Editor.UI
         private System.Windows.Forms.FlowLayoutPanel buttonsLayoutPanel;
         private System.Windows.Forms.Button btnWarnings;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnNewTab;
         private System.Windows.Forms.Button btnDrawDetail;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label divide1;
         private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shirtsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportLayersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToFile;
         private System.Windows.Forms.Button btnManageHolsters;
         private System.Windows.Forms.Button btnManageArmbands;
-        private System.Windows.Forms.Button btnManageBottoms;
+        private System.Windows.Forms.Button btnManageShoes;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnManageGloves;
+        private System.Windows.Forms.Button btnLogoColors;
+        private System.Windows.Forms.SaveFileDialog saveToFile;
+        private System.Windows.Forms.Button btnOpenFolder;
     }
 }

@@ -29,7 +29,7 @@
         protected override void InitializeComponent()
         {
             base.InitializeComponent();
-            this.Text = "BackgroundSelector";
+            this.Text = "Background Selector";
             // 
             // btnBackground
             // 

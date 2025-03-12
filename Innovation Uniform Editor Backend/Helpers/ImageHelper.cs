@@ -1,5 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.ImageEditors;
 using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
+using Innovation_Uniform_Editor_Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -19,6 +20,26 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
             g.Dispose();
             return b;
         }
+
+        public static Bitmap Merge(List<Bitmap> images)
+        {
+            int singleWidth = images[0].Width;
+            int singleHeight = images[0].Height;
+
+            Bitmap mergedImage = new Bitmap(singleWidth * images.Count, singleHeight);
+
+            using (Graphics g = Graphics.FromImage(mergedImage))
+            {
+                for (int i = 0; i < images.Count; i++)
+                {
+                    Rectangle destRect = new Rectangle(i * singleWidth, 0, singleWidth, singleHeight);
+                    g.DrawImage(images[i], destRect);
+                }
+            }
+
+            return mergedImage;
+        }
+
         public static Image SetOpacity(this Image image, float opacity)
         {
             var colorMatrix = new ColorMatrix();
@@ -49,9 +70,9 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
         /// </summary>
         /// <param name="images"></param>
         /// <returns>A list of alpha values mapped as boolean</returns>
-        public unsafe static List<bool[]> BitmapToBoolean(List<Bitmap> images)
+        public static List<MaskImage> BitmapToBoolean(List<Bitmap> images)
         {
-            List<bool[]> bools = new List<bool[]>();
+            List<MaskImage> bools = new List<MaskImage>();
 
             foreach (Bitmap item in images)
             {
@@ -65,11 +86,39 @@ namespace Innovation_Uniform_Editor_Backend.Helpers
                     alphas[i] = editor.GetPixelColorAtIndex(i).A == 0;
                 }
 
-                bools.Add(alphas);
-
                 ((BitmapEditor)editor).CloseImage();
+
+                bools.Add(new MaskImage(editor.GetWidth(), editor.GetHeight(), alphas));
             }
             return bools;
         }
+
+        public static MaskImage BitmapToSingleBoolean(List<Bitmap> images)
+        {
+            if (images != null && images.Count > 0)
+            {
+                IImageEditor editor = new BitmapEditor(images[0]);
+
+                int totalSize = editor.GetTotalSize();
+                bool[] alphas = new bool[totalSize];
+
+                ((BitmapEditor)editor).CloseImage();
+
+                foreach (Bitmap image in images)
+                {
+                    editor = new BitmapEditor(image);
+
+                    for (int i = 0; i < totalSize; i++)
+                    {
+                        alphas[i] |= editor.GetPixelColorAtIndex(i).A == 0;
+                    }
+
+                    ((BitmapEditor)editor).CloseImage();
+                }
+
+                return new MaskImage(editor.GetWidth(), editor.GetHeight(), alphas);
+            }
+            return null;
+        } 
     }
 }

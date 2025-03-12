@@ -1,7 +1,9 @@
-﻿using Innovation_Uniform_Editor_Backend.Models;
+﻿using Innovation_Uniform_Editor_Backend.Loaders.Base;
+using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor_Backend.Loaders
 {
@@ -65,6 +67,53 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
             }*/
 
             Sort();
+        }
+        public static Custom LoadFromFile(string path)
+        {
+            using (StreamReader r = new StreamReader(path))
+            {
+                string json = r.ReadToEnd();
+
+                using (var stringReader = new StringReader(json))
+                using (var jsonReader = new JsonTextReader(stringReader))
+                {
+                    jsonReader.Read();
+                    var serializer = new JsonSerializer();
+
+                    //Get versioning without extra data, otherwise we might get an error parsing.
+                    CustomVersioning customVersioning = serializer.Deserialize<CustomVersioning>(jsonReader);
+
+                    if (AskForOutdatedLoad(customVersioning.MinimumVersion))
+                    {
+                        using (var stringReader2 = new StringReader(json))
+                        using (var jsonReader2 = new JsonTextReader(stringReader2))
+                        {
+                            jsonReader2.Read();
+
+                            //Get versioning without extra data, otherwise we might get an error parsing.
+                            return serializer.Deserialize<Custom>(jsonReader2);
+                        }
+                    }
+                    
+                    return null;
+                }
+            }
+        }
+        private static bool AskForOutdatedLoad(Version version)
+        {
+            if (version.CompareTo(Versioning.Version) <= -1)
+            {
+                DialogResult result = MessageBox.Show($"This custom was made with an older version ({version}).\nAre you sure you want to load this file?", "Outdated custom", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                return result == DialogResult.Yes;
+            }
+            return true;
+        }
+        public override void DeleteBy(Guid id)
+        {
+            Directory.Delete($"{_path}/{id}", true);
+
+            base.DeleteBy(id);
         }
 
         public override Custom FindBy(Guid id)

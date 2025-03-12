@@ -1,9 +1,11 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.ComponentDrawers.Bases;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.ComponentDrawers.Bases;
 using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.ImageEditors;
+using Innovation_Uniform_Editor_Backend.Loaders.Base;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Updater;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,17 +28,17 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         {
             if (!File.Exists($"{EditorPaths.TemplateMiscPath}/Background_Mask.png"))
             {
-                TemplateUpdater.CheckForUpdates(true);
+                EditorMain.TemplateUpdater.CorruptionSignal();
                 return;
             }
             if (!File.Exists($"{EditorPaths.TemplateMiscPath}/Watermark.png"))
             {
-                TemplateUpdater.CheckForUpdates(true);
+                EditorMain.TemplateUpdater.CorruptionSignal();
                 return;
             }
             if (!File.Exists($"{EditorPaths.TemplatePath}/TemplateInfo.json"))
             {
-                TemplateUpdater.CheckForUpdates(true);
+                EditorMain.TemplateUpdater.CorruptionSignal();
                 return;
             }
 

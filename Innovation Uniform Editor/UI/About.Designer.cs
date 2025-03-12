@@ -79,19 +79,19 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(510, 28);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Original templates by Skyfall_Epsilon and R_issin";
+            this.label2.Text = "Original templates by Skyfall_Epsilon, R_issin, SneakyRedSnake and JustyZorua";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkTemplates
             // 
             this.linkTemplates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkTemplates.AutoSize = true;
-            this.linkTemplates.Location = new System.Drawing.Point(466, 234);
+            this.linkTemplates.Location = new System.Drawing.Point(473, 9);
             this.linkTemplates.Name = "linkTemplates";
             this.linkTemplates.Size = new System.Drawing.Size(56, 13);
             this.linkTemplates.TabIndex = 5;

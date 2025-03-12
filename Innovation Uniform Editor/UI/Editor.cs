@@ -2,9 +2,13 @@
 using Innovation_Uniform_Editor.UI.OverlayAssets;
 using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
 using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor.UI
@@ -162,7 +166,7 @@ namespace Innovation_Uniform_Editor.UI
 
         private void Editor_Load(object sender, EventArgs e)
         {
-
+            ButtonsVisibleCheck();
         }
         private void Editor_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -229,9 +233,10 @@ namespace Innovation_Uniform_Editor.UI
 
         private void downloadToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            saveCustom.ShowDialog();
+            DialogResult result = saveCustom.ShowDialog();
 
-            custom.ExportUniform(saveCustom.FileName);
+            if (result == DialogResult.OK)
+                custom.ExportUniform(saveCustom.FileName);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,6 +252,8 @@ namespace Innovation_Uniform_Editor.UI
 
         private void SetupColors()
         {
+            ButtonsVisibleCheck();
+
             int indexStart = 0;
             for (int i = buttonsLayoutPanel.Controls.Count - 1; i >= 1; i--)
             {
@@ -262,6 +269,53 @@ namespace Innovation_Uniform_Editor.UI
             {
                 buttonsLayoutPanel.Controls.Add(CreateButton(i));
             }
+        }
+
+        private void ButtonsVisibleCheck()
+        {
+
+            divide1.Visible = true;
+
+            Control[] customize = new[]
+            {
+                btnManageHolsters,
+                btnManageArmbands,
+                btnManageGloves,
+                btnManageShoes,
+                btnLogoColors,
+            };
+
+            foreach (Control control in customize)
+            {
+                control.Visible = true;
+            }
+
+            switch (custom.UniformBasedOn.part)
+            {
+                case ClothingPart.Pants:
+                    btnManageArmbands.Visible = false;
+                    btnManageGloves.Visible = false;
+                    break;
+                case ClothingPart.Shirts:
+                    btnManageHolsters.Visible = false;
+                    btnManageShoes.Visible = false;
+                    break;
+            }
+
+
+            if (!custom.UniformBasedOn.CanBeCustomized)
+            {
+                btnManageHolsters.Visible = false;
+                btnManageArmbands.Visible = false;
+                btnManageGloves.Visible = false;
+                btnManageShoes.Visible = false;
+            }
+
+            if (custom.Presets.Count <= 0)
+                btnLogoColors.Visible = false;
+
+            if (customize.All(e => !e.Visible))
+                divide1.Visible = false;
         }
         private void btnWarnings_Click(object sender, EventArgs e)
         {
@@ -294,9 +348,11 @@ namespace Innovation_Uniform_Editor.UI
             selector.Show();
         }
 
-        private void exportLayersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportToFile_Click(object sender, EventArgs e)
         {
+            saveToFile.ShowDialog();
 
+            custom.SaveJsonToFile(saveToFile.FileName);
         }
 
         private void btnManageHolsters_Click(object sender, EventArgs e)
@@ -319,8 +375,8 @@ namespace Innovation_Uniform_Editor.UI
         {
             ArmbandSelector selector;
 
-            if (custom.UniformBasedOn.HolsterId.HasValue)
-                selector = new ArmbandSelector(custom.ArmbandId ?? custom.UniformBasedOn.BottomId.Value);
+            if (custom.UniformBasedOn.ArmbandId.HasValue)
+                selector = new ArmbandSelector(custom.ArmbandId ?? custom.UniformBasedOn.ArmbandId.Value);
             else
                 selector = new ArmbandSelector();
 
@@ -331,20 +387,59 @@ namespace Innovation_Uniform_Editor.UI
             RefreshImage();
         }
 
-        private void btnManageBottoms_Click(object sender, EventArgs e)
+        private void btnManageShoes_Click(object sender, EventArgs e)
         {
-            BottomSelector selector;
+            ShoeSelector selector;
 
-            if (custom.UniformBasedOn.HolsterId.HasValue)
-                selector = new BottomSelector(custom.BottomId ?? custom.UniformBasedOn.BottomId.Value);
+            if (custom.UniformBasedOn.ShoeId.HasValue)
+                selector = new ShoeSelector(custom.ShoeId ?? custom.UniformBasedOn.ShoeId.Value);
             else
-                selector = new BottomSelector();
+                selector = new ShoeSelector();
 
             selector.ShowDialog();
 
-            custom.ChangeBottom(selector.item);
+            custom.ChangeShoe(selector.item);
 
             RefreshImage();
+        }
+
+        private void btnManageGloves_Click(object sender, EventArgs e)
+        {
+            GloveSelector selector;
+
+            if (custom.UniformBasedOn.GloveId.HasValue)
+                selector = new GloveSelector(custom.GloveId ?? custom.UniformBasedOn.GloveId.Value);
+            else
+                selector = new GloveSelector();
+
+            selector.ShowDialog();
+
+            custom.ChangeGlove(selector.item);
+
+            RefreshImage();
+        }
+
+        private void btnLogoColors_Click(object sender, EventArgs e)
+        {
+            ColorsView colorsView = new ColorsView(custom);
+
+            colorsView.PresetChanged += ColorsView_PresetChanged;
+
+            colorsView.Show();
+        }
+
+        private void ColorsView_PresetChanged(object sender, Preset e)
+        {
+            int index = NamePressHelper.Get(sender, "comboPreset");
+
+            custom.ChangeLogoPresetAtIndex(index, e);
+
+            RefreshImage();
+        }
+
+        private void btnOpenFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start(custom.UniformBasedOn.Path);
         }
     }
 }

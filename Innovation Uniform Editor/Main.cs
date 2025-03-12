@@ -1,10 +1,12 @@
 ﻿using Innovation_Uniform_Editor.UI;
 using Innovation_Uniform_Editor_Backend;
 using Innovation_Uniform_Editor_Backend.Enums;
-using Innovation_Uniform_Editor_Backend.Helpers;
-using Innovation_Uniform_Editor_Backend.Helpers.Enums;
+using Innovation_Uniform_Editor_Backend.Loaders;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Updater;
 using System;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 using MenuItem = Innovation_Uniform_Editor_Backend.Models.MenuItem;
 
@@ -12,19 +14,32 @@ namespace Innovation_Uniform_Editor
 {
     public partial class Main : Form
     {
-        public Main()
+        private string _customPath;
+        public Main(string customPath = "")
         {
             InitializeComponent();
+
+            _customPath = customPath;
         }
         private void Main_Load(object sender, EventArgs e)
         {
             EditorMain.Initialize();
 
-            LoadCustomsAndGroups();
+            string updateStr = "Check for updates";
 
-            /*bool updates = TemplateUpdater.CheckForUpdates();
-            if (updates)
-                MessageBox.Show("Templates have been updated to the latest version!", "Templates", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+
+            backgroundWorker.DoWork += new DoWorkEventHandler(
+            delegate (object o, DoWorkEventArgs args)
+            {
+                //BackgroundWorker b = o as BackgroundWorker;
+
+                updateTemplatesToolStripMenuItem.Text = EditorMain.TemplateUpdater.IsOutdated() ? updateStr + " (1)" : updateStr;
+            });
+
+            backgroundWorker.RunWorkerAsync();
+
+            LoadCustomsAndGroups();
         }
 
         public void LoadCustomsAndGroups()
@@ -239,17 +254,14 @@ namespace Innovation_Uniform_Editor
 
         private void LaunchEditor(Panel panel)
         {
-            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
-
+            LaunchEditor(EditorMain.Customs.FindBy(new Guid(panel.Name)));
+        }
+        private void LaunchEditor(Custom custom)
+        {
             editor = new Editor(custom, this);
-
-            PictureBox picture = ((PictureBox)panel.Controls[1]);
 
             this.Hide();
             editor.Show();
-
-            picture.Image = custom.PreviewImage;
-            picture.Refresh();
         }
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -282,10 +294,13 @@ namespace Innovation_Uniform_Editor
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            exportCustom.ShowDialog();
-            Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
-            Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
-            custom.ExportUniform(exportCustom.FileName);
+            DialogResult result = exportCustom.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Panel panel = (Panel)(editToolStripMenuItem.Owner as ContextMenuStrip).SourceControl;
+                Custom custom = EditorMain.Customs.FindBy(new Guid(panel.Name));
+                custom.ExportUniform(exportCustom.FileName);
+            }
         }
 
         //Two customs can't be the same position though...
@@ -323,11 +338,12 @@ namespace Innovation_Uniform_Editor
             DialogResult dialogResult = MessageBox.Show("Would you like to update the uniform templates?", "Template updating", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                TemplateUpdateStatus result = TemplateUpdater.CheckForUpdates();
+                TemplateUpdateStatus result = EditorMain.TemplateUpdater.CheckAndUpdate();
 
                 switch (result)
                 {
                     case TemplateUpdateStatus.SUCCESS:
+                        EditorMain.Initialize();
                         MessageBox.Show("Templates have been updated.", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     case TemplateUpdateStatus.UP_TO_DATE:
@@ -355,9 +371,37 @@ namespace Innovation_Uniform_Editor
             this.Hide();
         }
 
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DialogResult result = openCustomDialogue.ShowDialog();
 
+            if (result == DialogResult.OK)
+                PreviewFile(openCustomDialogue.FileName, true);
+        }
+
+        private void previewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openCustomDialogue.ShowDialog();
+
+            if (result == DialogResult.OK)
+                PreviewFile(openCustomDialogue.FileName);
+        }
+
+        private void PreviewFile(string path, bool add = false)
+        {
+            Custom custom = CustomsLoader.LoadFromFile(path);
+
+            if (add && EditorMain.Customs.FindBy(custom.Id) == null)
+                EditorMain.Customs.Add(custom);
+
+            if (custom != null)
+                LaunchEditor(custom);
+        }
+
+        private void Main_Shown(object sender, EventArgs e)
+        {
+            if (_customPath != string.Empty)
+                PreviewFile(_customPath);
         }
     }
 }

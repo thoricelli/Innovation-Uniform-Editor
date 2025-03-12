@@ -2,6 +2,8 @@
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Models.Assets;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -77,6 +79,21 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
 
             return images;
         }
+
+        private static List<UniformDataLogo> getLogos(UniformDataLogo[] logos)
+        {
+            if (logos == null)
+                return new List<UniformDataLogo>();
+
+            foreach (UniformDataLogo logoData in logos)
+            {
+                Logo logo = EditorMain.LogosLoader.FindBy(logoData.LogoId);
+                logoData.Logo = logo;
+            }
+
+            return logos.ToList();
+        }
+
         public static UniformAssets GetAssetsForUniform(Uniform uniform)
         {
             string basePath = pathBuilder(uniform.part, uniform.Id);
@@ -88,6 +105,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
                 Selections = getSelectionTemplates(basePath),
                 Textures = getListFromPath(basePath, "texture*.png"),
                 Top = getListFromPath(basePath, "top*.png"),
+                Logos = getLogos(uniform.LogoIds)
             };
         }
     }

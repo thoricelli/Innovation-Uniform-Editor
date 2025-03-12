@@ -106,9 +106,6 @@
     <Reference Include="Cyotek.Windows.Forms.ColorPicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=58daa28b0b2de221, processorArchitecture=MSIL">
       <HintPath>..\packages\Cyotek.Windows.Forms.ColorPicker.1.7.2\lib\net35\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -148,11 +145,20 @@
     <Compile Include="UI\ColorDetail.Designer.cs">
       <DependentUpon>ColorDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ColorsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ColorsView.Designer.cs">
+      <DependentUpon>ColorsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Generic\GenericSelector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Generic\GenericSelector.Designer.cs">
       <DependentUpon>GenericSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Generic\GenericWithNameSelector.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Help.cs">
       <SubType>Form</SubType>
@@ -184,23 +190,23 @@
     <Compile Include="UI\Issues.Designer.cs">
       <DependentUpon>Issues.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\MainSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\MainSettings.Designer.cs">
-      <DependentUpon>MainSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\NewGroup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\NewGroup.Designer.cs">
       <DependentUpon>NewGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\OverlayAssets\BottomSelector.cs">
+    <Compile Include="UI\OverlayAssets\GloveSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\OverlayAssets\BottomSelector.Designer.cs">
-      <DependentUpon>BottomSelector.cs</DependentUpon>
+    <Compile Include="UI\OverlayAssets\GloveSelector.Designer.cs">
+      <DependentUpon>GloveSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OverlayAssets\ShoeSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OverlayAssets\ShoeSelector.Designer.cs">
+      <DependentUpon>ShoeSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\OverlayAssets\ArmbandSelector.cs">
       <SubType>Form</SubType>
@@ -226,12 +232,6 @@
     <Compile Include="UI\Selector.Designer.cs">
       <DependentUpon>Selector.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TextureCreator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\TextureCreator.Designer.cs">
-      <DependentUpon>TextureCreator.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="DraggablePanel.resx">
       <DependentUpon>DraggablePanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +254,12 @@
     <EmbeddedResource Include="UI\ColorDetail.resx">
       <DependentUpon>ColorDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ColorsView.resx">
+      <DependentUpon>ColorsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Generic\GenericSelector.resx">
+      <DependentUpon>GenericSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,9 +276,6 @@
     <EmbeddedResource Include="UI\Issues.resx">
       <DependentUpon>Issues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\MainSettings.resx">
-      <DependentUpon>MainSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\NewGroup.resx">
       <DependentUpon>NewGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,8 +285,10 @@
     <EmbeddedResource Include="UI\Selector.resx">
       <DependentUpon>Selector.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="InstallerScripts\install.vbs" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Innovation_Uniform_Editor.Classes.Uniform.datasource" />
+    <None Include="Properties\DataSources\Innovation_Uniform_Editor_Backend.Models.Preset.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -295,121 +300,23 @@
     </Compile>
     <None Include="StartBatFiles\StartMenuShortcut.bat" />
     <None Include="StartBatFiles\StartShortcut.bat" />
-    <None Include="Templates\TemplateInfo.json" />
+    <None Include="TemplateVersioning.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="freshinstall" />
+    <Content Include="Templates\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="150x150.ico" />
     <Content Include="XP_150.ico" />
     <None Include="Icons\620x300.png" />
-    <Content Include="Templates\Misc\Shading_Template.png" />
-    <Content Include="Templates\Normal\Pants\368659381\Original.png" />
-    <Content Include="Templates\Normal\Pants\368659381\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368659381\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\3933922179\Original.png" />
-    <Content Include="Templates\Normal\Pants\3933922179\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\3933922179\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\6914637973\Original.png" />
-    <Content Include="Templates\Normal\Pants\6914637973\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\6914637973\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Original.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368728509\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\368658944\Original.png" />
-    <Content Include="Templates\Normal\Pants\368658944\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368658944\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368662298\Original.png" />
-    <Content Include="Templates\Normal\Pants\368662298\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368662298\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368660897\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368660897\Original.png" />
-    <Content Include="Templates\Normal\Pants\368660897\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\1572086257\Original.png" />
-    <Content Include="Templates\Normal\Pants\1572086257\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\1572086257\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Original.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\747915880\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Original.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\747917741\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Original.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\6914640997\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Pants\368659714\Original.png" />
-    <Content Include="Templates\Normal\Pants\368659714\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368659714\Selection_Template.png" />
-    <Content Include="Templates\Normal\Pants\368660060\Original.png" />
-    <Content Include="Templates\Normal\Pants\368660060\Overlay.png" />
-    <Content Include="Templates\Normal\Pants\368660060\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Original.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914629942\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\3933916736\Original.png" />
-    <Content Include="Templates\Normal\Shirts\3933916736\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\3933916736\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368717072\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\368715486\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368715486\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368715486\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368664950\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368664950\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368664950\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368658202\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368658202\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368658202\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368662637\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368662637\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368662637\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\1572085245\Original.png" />
-    <Content Include="Templates\Normal\Shirts\1572085245\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\1572085245\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Original.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\747914884\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Original.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\747916816\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\368664191\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368664191\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368664191\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368665973\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368665973\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368665973\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368657559\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368657559\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368657559\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Original.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\6914634595\Selection_Template_Secondary.png" />
-    <Content Include="Templates\Normal\Shirts\6914646133\Original.png" />
-    <Content Include="Templates\Normal\Shirts\6914646133\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\6914646133\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368663056\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368663056\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368663056\Selection_Template.png" />
-    <Content Include="Templates\Normal\Shirts\368666564\Original.png" />
-    <Content Include="Templates\Normal\Shirts\368666564\Overlay.png" />
-    <Content Include="Templates\Normal\Shirts\368666564\Selection_Template.png" />
-    <Content Include="Templates\Trench\Pants\Selection Templates\Trench Shirt Selection Template.png" />
-    <Content Include="Templates\Trench\Pants\Trench Pants Overlay.png" />
-    <Content Include="Templates\Trench\Pants\Trench Pants.png" />
-    <Content Include="Templates\Trench\Shirt\Selection Templates\Trench Shirt Selection Template.png" />
-    <Content Include="Templates\Trench\Shirt\Trench Shirt Overlay.png" />
-    <Content Include="Templates\Trench\Shirt\Trench Shirt.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -436,14 +343,9 @@
 copy templateshash.txt "$(SolutionDir)"
 
 cd "$(SolutionDir)Innovation Uniform Editor"
+copy TemplateVersioning.json "$(SolutionDir)"
 del Templates.zip
 powershell Compress-Archive -Path Templates/* -CompressionLevel Optimal -DestinationPath Templates.zip
-move Templates.zip ../Templates.zip
-
-cd %25appdata%25
-mkdir thoricelli
-cd thoricelli
-rmdir /s /q Templates
-xcopy "$(SolutionDir)Innovation Uniform Editor/Templates" Templates /e /q /I</PostBuildEvent>
+move Templates.zip ../Templates.zip</PostBuildEvent>
   </PropertyGroup>
 </Project>

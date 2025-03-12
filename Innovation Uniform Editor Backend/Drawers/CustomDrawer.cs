@@ -1,117 +1,103 @@
-﻿using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy;
+﻿using Innovation_Uniform_Editor_Backend.Drawers.Base;
+using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers;
 using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
-using Innovation_Uniform_Editor_Backend.Drawers.Interfaces;
-using Innovation_Uniform_Editor_Backend.ImageEditors;
-using Innovation_Uniform_Editor_Backend.ImageEditors.Factory;
-using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
 using Innovation_Uniform_Editor_Backend.Models;
-using System;
+using Innovation_Uniform_Editor_Backend.Models.Assets;
+using Innovation_Uniform_Editor_Backend.Models.Base;
+using Innovation_Uniform_Editor_Backend.Models.Interfaces;
+using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace Innovation_Uniform_Editor_Backend.Drawers
 {
-    public class CustomDrawer<T> : IDrawable<T>
+    /// <summary>
+    /// Draws an Innovation Security custom.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class CustomDrawer<T> : BaseGraphicComponentDrawer<T>
     {
-        private readonly Point DIMENSIONS = new Point(585, 559);
-
-        private T asset;
-
-        private IImageEditor _result;
-
-        //I hate GDI
-        private Bitmap bitmap;
-
-        private UniformAssets _assets;
-
-        private List<CustomColor> _colors = new List<CustomColor>();
-
-        public List<BaseGraphicsDrawer> GraphicsDrawers;
-
-        public CustomDrawer(UniformAssets assets, List<CustomColor> colors)
+        private LogoDrawer _logoDrawer;
+        private Custom _custom;
+        private ShadingDrawer _shadingDrawer;
+        public CustomDrawer(UniformAssets assets, Custom custom)
         {
-            if (typeof(T) == typeof(Bitmap))
-                bitmap = new Bitmap(DIMENSIONS.X, DIMENSIONS.Y);
+            /*
+            How a custom is built up: (back to front)
+            - Background
 
-            _result = ImageFactory.CreateImageEditor<T>(DIMENSIONS.X, DIMENSIONS.Y);
+            - Textures (if any)
+            (Textures can be shaded already if no source exists = add no shading to color)
 
-            _assets = assets;
-            
-            _colors = colors;
+            - Color(s) as OVERLAY -> separately masked.
 
-            Initialize();
-        }
+            - Shading masked on top of the colored and/or textured layers
+            (Since the vest is already shaded)
 
-        /*
-        How a custom is built up: (back to front)
-        - Background
+            - Overlay
+            */
 
-        - Textures (if any)
-        (Textures can be shaded already if no source exists = add no shading to color)
+            _custom = custom;
 
-        - Color(s) as OVERLAY -> separately masked.
+            _logoDrawer = new LogoDrawer(assets.Logos, custom);
+            _shadingDrawer = new ShadingDrawer();
 
-        - Shading masked on top of the colored and/or textured layers
-        (Since the vest is already shaded)
+            List<Creator> creators = new List<Creator>() { custom.UniformBasedOn.Creator };
 
-        - Overlay
-        */
-        private void Initialize()
-        {
+            AddIfCreditNotExists(custom.Holster, creators);
+            AddIfCreditNotExists(custom.Armband, creators);
+            AddIfCreditNotExists(custom.Glove, creators);
+            AddIfCreditNotExists(custom.Shoe, creators);
+
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
-                new BackgroundDrawer(_assets.Background),
-                new TextureDrawer(_assets.Textures),
-                new ColorDrawer(_colors, _assets.Selections),
-                new OverlayDrawer(_assets.Overlay),
-                
-                //Logo's
+                custom.UniformBasedOn.GloveId == null ? new GloveDrawer(assets.Glove) : null,
 
-                new ArmbandDrawer(_assets.Armband),
-                new BottomDrawer(_assets.Bottom),
-                new HolsterDrawer(_assets.Holster),
+                new BackgroundDrawer(assets.Background),
+                new TextureDrawer(assets.Textures),
+                new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer, assets.Textures),
 
-                new TopDrawer(_assets.Top),
+                _shadingDrawer,
+
+                new OverlayDrawer(assets.Overlay),
                 
+                
+                //When original uniform has glove, that means the color will extend to the fully, which means we want to draw it ABOVE.
+                custom.UniformBasedOn.GloveId != null ? new GloveDrawer(assets.Glove) : null,
+                new ShoeDrawer(assets.Shoe),
+
+                //Logo's.
+                _logoDrawer,
+
+                new TopDrawer(assets.Top),
+
+                new ArmbandDrawer(assets.Armband),
+                new HolsterDrawer(assets.Holster),
+        
                 //new UsernameDrawer(),
+
+                new CreditsDrawer(creators),
+
+                new LineTemplateDrawer(2, Color.Black, DashStyle.Solid),
 
                 new WatermarkDrawer(EditorMain.Uniforms.waterMark)
             };
         }
-        public T Draw()
+
+        public void AddIfCreditNotExists(IHasCreators item, List<Creator> creators)
         {
-            Type typeOfT = typeof(T);
+            if (item == null)
+                return;
 
-            if (typeOfT == typeof(Bitmap))
+            //If credit already exists, ignore.
+            if (creators.Exists(x => item.Creators.Exists(y => x.Id == y.Id)))
+                return;
+
+            foreach (Creator itemCreators in item.Creators)
             {
-                using (Graphics g = Graphics.FromImage(bitmap))
-                {
-                    g.SmoothingMode = SmoothingMode.AntiAlias;
-                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-
-                    g.Clear(Color.Transparent);
-
-                    foreach (BaseGraphicsDrawer drawer in GraphicsDrawers)
-                    {
-                        drawer.DrawToGraphics(g, bitmap);
-                    }
-                }
-                return (T)(object)bitmap;
-            }
-
-            return default(T);
-        }
-        public void ExportLayered(string path)
-        {
-            for (int i = 0; i < GraphicsDrawers.Count; i++)
-            {
-                BaseGraphicsDrawer drawer = GraphicsDrawers[i];
-
-                Bitmap result = drawer.GetResult();
-
-                result.Save($"{path}/{i} - {drawer.Name}.png");
+                if (item != null && !creators.Exists(x => x.Id == itemCreators.Id))
+                    creators.Add(itemCreators);
             }
         }
     }

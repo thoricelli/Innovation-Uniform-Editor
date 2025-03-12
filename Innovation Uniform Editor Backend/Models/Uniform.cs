@@ -1,8 +1,7 @@
 ﻿using Innovation_Uniform_Editor_Backend.Enums;
+using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using System;
-using System.ComponentModel;
-using System.Drawing;
 
 namespace Innovation_Uniform_Editor_Backend.Models
 {
@@ -10,7 +9,17 @@ namespace Innovation_Uniform_Editor_Backend.Models
     {
         public ulong Id { get; set; }
         public string Name { get; set; }
-        public string Creator { get; set; }
+        public int CreatorId { get; set; }
+        private Creator _creator;
+        public Creator Creator
+        {
+            get
+            {
+                if (_creator == null)
+                    _creator = EditorMain.CreatorLoader.FindBy(CreatorId);
+                return _creator;
+            }
+        }
         public ClothingPart part { get; set; }
         #region Customization
         /*
@@ -20,8 +29,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public bool CanBeCustomized { get; set; } = true;
         public Guid? HolsterId { get; set; }
         public Guid? ArmbandId { get; set; }
-        public Guid? BottomId { get; set; }
-        //TODO logo's!!
+        public Guid? ShoeId { get; set; }
+        public Guid? GloveId { get; set; }
+        public UniformDataLogo[] LogoIds { get; set; } 
+        public CustomColor[] Colors { get; set; }
         #region USERNAMES
         //This should probably be presets instead.
         /*public PointF UsernamePosition { get; set; } = new PointF(471,124);
@@ -30,6 +41,13 @@ namespace Innovation_Uniform_Editor_Backend.Models
 
         #endregion
         #endregion
+        public string Path 
+        { 
+            get
+            {
+                return $"{EditorPaths.TemplateNormalPath}/{part.ToString()}/{Id}";
+            } 
+        }
 
     }
 }

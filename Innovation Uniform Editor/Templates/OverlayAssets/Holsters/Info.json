@@ -1,22 +1,27 @@
 [
   {
     "Id": "5bd4edc4-fb80-4b23-bfcd-ce588eb21fb7",
-    "Name": ".40 Pistol"
+    "Name": ".40 Pistol",
+    "CreatorIds": [127780]
   },
   {
     "Id": "83115c76-d8a9-443a-b00f-5972b8fabd40",
-    "Name": "Chromatic Signature"
+    "Name": "Chromatic Signature",
+    "CreatorIds": [127780]
   },
   {
     "Id": "d62e48f4-635c-485c-a7cb-63144b8c925f",
-    "Name": "Early Response Unit"
+    "Name": "Early Response Unit",
+    "CreatorIds": [135955170]
   },
   {
     "Id": "aa34f503-d1cd-4eba-81f3-f57708c3c840",
-    "Name": "Energized Pistol Holster"
+    "Name": "Energized Pistol Holster",
+    "CreatorIds": [176598467]
   },
   {
     "Id": "cae2bcdc-9512-4ade-b7e6-4831323b3abd",
-    "Name": "Standard Pants"
+    "Name": "Standard Pants",
+    "CreatorIds": [127780]
   }
 ]

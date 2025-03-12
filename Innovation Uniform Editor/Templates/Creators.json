@@ -1,0 +1,27 @@
+[
+  {
+    "Id": 127780,
+    "Name": "Chromatic_Death",
+    "Text": "CHROMATIC\nDEATH",
+    "FontName": "Metal_Lord"
+  },
+  {
+    "Id": 135955170,
+    "Name": "SardiTime",
+    "Text": "SardiTime",
+    "FontName": "segoe-ui-black"
+  },
+  {
+    "Id": 40545786,
+    "Name": "DarkBoltex",
+    "Text": "DARKBOLTEX",
+    "FontName": "segoe-ui-black"
+  },
+  {
+    "Id": 176598467,
+    "Name": "Skyfall_Epsilon",
+    "Text": "Skyfall\nEpsilon",
+    "FontName": "paladins",
+    "FontStyle": "Italic"
+  }
+]

@@ -1,12 +1,6 @@
 ﻿using Innovation_Uniform_Editor_Backend.ImageEditors.Base;
-using Innovation_Uniform_Editor_Backend.ImageEditors.Interface;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Innovation_Uniform_Editor_Backend.ImageEditors
 {
@@ -15,13 +9,13 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
         private Bitmap original;
         private BitmapData data;
 
-        public override Bitmap Result 
-        { 
-            get 
+        public override Bitmap Result
+        {
+            get
             {
                 CloseImage();
-                return original; 
-            } 
+                return original;
+            }
         }
 
         public BitmapEditor(Bitmap result)
@@ -73,12 +67,18 @@ namespace Innovation_Uniform_Editor_Backend.ImageEditors
 
         public override int GetWidth()
         {
-            return data.Stride;
+            return data.Stride / 4;
         }
 
         public override int GetHeight()
         {
             return data.Height;
+        }
+
+        ~BitmapEditor()
+        {
+            //ugh...
+            //CloseImage();
         }
     }
 }
