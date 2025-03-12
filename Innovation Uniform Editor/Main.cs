@@ -345,6 +345,7 @@ namespace Innovation_Uniform_Editor
                     case TemplateUpdateStatus.SUCCESS:
                         EditorMain.Initialize();
                         MessageBox.Show("Templates have been updated.", "Updated.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.updateTemplatesToolStripMenuItem.Text = "Check for updates";
                         break;
                     case TemplateUpdateStatus.UP_TO_DATE:
                         MessageBox.Show("Templates are already up-to-date!", "Up-to-date", MessageBoxButtons.OK, MessageBoxIcon.Information);
