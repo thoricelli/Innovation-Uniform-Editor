@@ -173,7 +173,7 @@
     {
       "Id": 368717072,
       "Name": "Innovation Security Arctic Task Force Vest",
-      "CreatorId": 40545786,
+      "CreatorId": 127780,
       "CanBeCustomized": false,
       "GloveId": "1436b29a-2583-4fae-818b-7c44c3999dad",
       "ArmbandId": "e9f46544-5221-440c-9ab2-bd67b8b46611",
@@ -198,7 +198,10 @@
           "Location": "394, 380"
         }
       ],
-      "Colors": [{ "Colors": ["110,120,150"] }, { "Colors": ["110, 115, 130"] }]
+      "Colors": [
+        { "Colors": [ "110,120,150" ] },
+        { "Colors": [ "110, 115, 130" ] }
+      ]
     },
     {
       "Id": 368715486,
