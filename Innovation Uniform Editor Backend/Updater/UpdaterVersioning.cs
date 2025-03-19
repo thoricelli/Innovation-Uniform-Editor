@@ -63,13 +63,13 @@ namespace Innovation_Uniform_Editor_Backend.Updater
         }
         public bool IsOutOfDate()
         {
-            /*try
-            {*/
+            try
+            {
                 return CheckVersioning() == UpdaterVersioningResult.OUT_OF_DATE;
-            /*} catch(Exception e)
+            } catch(Exception e)
             {
                 return false;
-            }*/
+            }
         }
         public void UpdateHash(string newHash)
         {
