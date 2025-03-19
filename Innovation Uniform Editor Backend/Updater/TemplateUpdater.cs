@@ -17,8 +17,22 @@ namespace Innovation_Uniform_Editor_Backend.Updater
         public Version TemplateVersion { 
             get
             {
-                if (templateVersion == null && File.Exists(EditorPaths.TemplateVersioningPath))
-                    templateVersion = JsonUtils.Load<TemplateVersioning>(File.ReadAllText(EditorPaths.TemplateVersioningPath)).TemplateVersion;
+                bool fileExists = File.Exists(EditorPaths.TemplateVersioningPath);
+
+                if (templateVersion == null)
+                {
+                    try
+                    {
+                        templateVersion = JsonUtils.Load<TemplateVersioning>(File.ReadAllText(EditorPaths.TemplateVersioningPath)).TemplateVersion;
+                    } catch(ArgumentOutOfRangeException _)
+                    {
+                        //I'm tired of these stupid error messages.
+                        File.Delete(EditorPaths.TemplateVersioningPath);
+                        return new Version(0, 0, 0, 0);
+                    }
+                } else if (!fileExists)
+                    return new Version(0, 0, 0, 0);
+
                 return templateVersion;
             }
             set

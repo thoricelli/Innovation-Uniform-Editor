@@ -48,7 +48,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>5</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -339,13 +339,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)DirHash.exe" "$(SolutionDir)Innovation Uniform Editor/Templates" -quiet -t templateshash.txt -overwrite -nowait -nologo
-copy templateshash.txt "$(SolutionDir)"
-
-cd "$(SolutionDir)Innovation Uniform Editor"
-copy TemplateVersioning.json "$(SolutionDir)"
-del Templates.zip
-powershell Compress-Archive -Path Templates/* -CompressionLevel Optimal -DestinationPath Templates.zip
-move Templates.zip ../Templates.zip</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
