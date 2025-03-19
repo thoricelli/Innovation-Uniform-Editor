@@ -80,6 +80,11 @@ namespace Innovation_Uniform_Editor_Backend.Updater
                 //No internet, start offline setup.
                 return corruptionHandler.OfflineSetup();
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("An unexpected error occured.");
+                return TemplateUpdateStatus.FAILURE;
+            }
         }
         /// <summary>
         /// Call when corrupt.

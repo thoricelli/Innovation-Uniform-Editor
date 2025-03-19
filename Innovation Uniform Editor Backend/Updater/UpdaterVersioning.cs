@@ -2,6 +2,7 @@
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
+using System;
 using System.IO;
 using System.Net;
 using System.Security.Policy;
@@ -62,7 +63,13 @@ namespace Innovation_Uniform_Editor_Backend.Updater
         }
         public bool IsOutOfDate()
         {
-            return CheckVersioning() == UpdaterVersioningResult.OUT_OF_DATE;
+            /*try
+            {*/
+                return CheckVersioning() == UpdaterVersioningResult.OUT_OF_DATE;
+            /*} catch(Exception e)
+            {
+                return false;
+            }*/
         }
         public void UpdateHash(string newHash)
         {
