@@ -8,6 +8,7 @@ using Innovation_Uniform_Editor_Backend.Models.Assets;
 using Innovation_Uniform_Editor_Backend.Models.Base;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
 using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
+using Innovation_Uniform_Editor_Backend.Updater;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -201,7 +202,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
                 {
                     Bitmap Capybara = FileToBitmap.Convert($"{EditorPaths.TemplateMiscPath}/Capybara.png");
 
-                    byte[] value = Encoding.ASCII.GetBytes($"{Versioning.ToolName} - {Versioning.VersionString}");
+                    byte[] value = Encoding.ASCII.GetBytes($"{Versioning.ToolName} - {Versioning.VersionString} - {TemplateUpdater.TemplateVersion}");
 
                     PropertyItem prop = Capybara.GetPropertyItem(305);
                     prop.Len = value.Length;
