@@ -339,7 +339,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)DirHash.exe" "$(SolutionDir)Innovation Uniform Editor/Templates" -quiet -t templateshash.txt -overwrite -nowait -nologo
+copy templateshash.txt "$(SolutionDir)"
+
+cd "$(SolutionDir)Innovation Uniform Editor"
+copy TemplateVersioning.json "$(SolutionDir)"
+del Templates.zip
+powershell Compress-Archive -Path Templates/* -CompressionLevel Optimal -DestinationPath Templates.zip
+move Templates.zip ../Templates.zip</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -30,6 +30,7 @@
       "Id": 368728509,
       "Name": "Innovation Security Arctic Task Force Pants",
       "CreatorId": 127780,
+      "CanBeCustomized": false,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "Colors": [{ "Colors": ["110,120,150"] }, { "Colors": ["110, 115, 130"] }]
     },
@@ -44,9 +45,10 @@
       "Id": 368662298,
       "Name": "Chromatic's Signature Elite Pants (Guardsman+)",
       "CreatorId": 127780,
+      "CanBeCustomized": false,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "HolsterId": "83115c76-d8a9-443a-b00f-5972b8fabd40",
-      "Colors": [{ "Colors": ["90,96,147"] }]
+      "Colors": [{ "Colors": ["98,102,136"] }]
     },
     {
       "Id": 368660897,
@@ -60,6 +62,7 @@
       "Id": 1572086257,
       "Name": "Innovation Security Digital Camo Uniform Pants",
       "CreatorId": 40545786,
+      "CanBeCustomized": false,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "Colors": [
         { "Colors": ["50,70,90"] },
@@ -100,8 +103,9 @@
       "Id": 368660060,
       "Name": "Innovation Security Standard Pants",
       "CreatorId": 127780,
+      "HolsterId": "cae2bcdc-9512-4ade-b7e6-4831323b3abd",
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
-      "Colors": [{ "Colors": ["90,96,147"] }]
+      "Colors": [ { "Colors": [ "90,96,147" ] } ]
     },
     {
       "Id": 17402073986,
@@ -198,10 +202,7 @@
           "Location": "394, 380"
         }
       ],
-      "Colors": [
-        { "Colors": [ "110,120,150" ] },
-        { "Colors": [ "110, 115, 130" ] }
-      ]
+      "Colors": [{ "Colors": ["110,120,150"] }, { "Colors": ["110, 115, 130"] }]
     },
     {
       "Id": 368715486,
@@ -311,10 +312,6 @@
           "LogoId": 5,
           "Location": "486, 140",
           "Transparency": 0.5
-        },
-        {
-          "LogoId": 0,
-          "Location": "395, 370"
         }
       ],
       "Colors": [{ "Colors": ["167,167,167"] }, { "Colors": ["68,68,68"] }]
@@ -397,6 +394,7 @@
       "Id": 6914634595,
       "Name": "Innovation Lightweight Armour Shirt",
       "CreatorId": 40545786,
+      "CanBeCustomized": false,
       "GloveId": "dbaac83d-f5e6-446e-bf2a-a205292c3bc0",
       "ArmbandId": "a4239cea-dfac-4051-88fa-dc2a22dd6346",
       "LogoIds": [

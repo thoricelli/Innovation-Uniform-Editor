@@ -55,21 +55,21 @@ namespace Innovation_Uniform_Editor_Backend.Updater
                 return UpdaterVersioningResult.NOT_COMPATIBLE;
 
             //Check if the current template version is higher or the hash doesn't match and the version is not lower.
-            if (templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) >= 1
-                || (Hash != newHash && templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) <= 0))
+            if (templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) <= -1
+                || (Hash != newHash && templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) >= 0))
                 return UpdaterVersioningResult.OUT_OF_DATE;
 
             return UpdaterVersioningResult.NO_UPDATE_NEEDED;
         }
         public bool IsOutOfDate()
         {
-            /*try
-            {*/
+            try
+            {
                 return CheckVersioning() == UpdaterVersioningResult.OUT_OF_DATE;
-            /*} catch(Exception e)
+            } catch(Exception e)
             {
                 return false;
-            }*/
+            }
         }
         public void UpdateHash(string newHash)
         {
