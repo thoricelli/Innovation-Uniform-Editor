@@ -13,8 +13,8 @@ namespace Innovation_Uniform_Editor_Backend.Updater
 {
     public class TemplateUpdater
     {
-        private static Version templateVersion;
-        public static Version TemplateVersion { 
+        private Version templateVersion;
+        public Version TemplateVersion { 
             get
             {
                 bool fileExists = File.Exists(EditorPaths.TemplateVersioningPath);
