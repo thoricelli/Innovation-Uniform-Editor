@@ -11,10 +11,10 @@ namespace Innovation_Uniform_Editor_Backend.Models
         /// <summary>
         /// Minimum version the editor has to be to use these templates.
         /// </summary>
-        public Version MinimumToolVersion;
+        public Version MinimumToolVersion { get; set; }
         /// <summary>
         /// The template version itself.
         /// </summary>
-        public Version TemplateVersion;
+        public Version TemplateVersion { get; set; }
     }
 }

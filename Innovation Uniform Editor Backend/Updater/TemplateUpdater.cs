@@ -3,6 +3,7 @@ using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
@@ -16,14 +17,27 @@ namespace Innovation_Uniform_Editor_Backend.Updater
         public Version TemplateVersion { 
             get
             {
-                if (templateVersion == null && File.Exists(EditorPaths.TemplateVersioningPath))
-                    templateVersion = JsonUtils.Load<TemplateVersioning>(File.ReadAllText(EditorPaths.TemplateVersioningPath)).TemplateVersion;
+                bool fileExists = File.Exists(EditorPaths.TemplateVersioningPath);
+
+                if (templateVersion == null)
+                {
+                    try
+                    {
+                        templateVersion = JsonUtils.Load<TemplateVersioning>(File.ReadAllText(EditorPaths.TemplateVersioningPath)).TemplateVersion;
+                    } catch(ArgumentOutOfRangeException _)
+                    {
+                        //I'm tired of these stupid error messages.
+                        File.Delete(EditorPaths.TemplateVersioningPath);
+                        return new Version(0, 0, 0, 0);
+                    }
+                } else if (!fileExists)
+                    return new Version(0, 0, 0, 0);
+
                 return templateVersion;
             }
             set
             {
                 templateVersion = value;
-                JsonUtils.SaveToFile(value, EditorPaths.TemplateVersioningPath);
             }
         }
         private CorruptionHandler corruptionHandler;
@@ -58,7 +72,10 @@ namespace Innovation_Uniform_Editor_Backend.Updater
                 if (status == TemplateUpdateStatus.SUCCESS)
                 {
                     if (updaterVersioning.CachedNewVersioning != null)
+                    {
+                        JsonUtils.SaveToFile(updaterVersioning.CachedNewVersioning, EditorPaths.TemplateVersioningPath);
                         TemplateVersion = updaterVersioning.CachedNewVersioning.TemplateVersion;
+                    }
 
                     updaterVersioning.UpdateHash(hashTemplate);
                     hashHandler.WriteNewHash(hashTemplate);
@@ -76,6 +93,11 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             {
                 //No internet, start offline setup.
                 return corruptionHandler.OfflineSetup();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An unexpected error occured.");
+                return TemplateUpdateStatus.FAILURE;
             }
         }
         /// <summary>

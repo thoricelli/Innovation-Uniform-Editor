@@ -70,9 +70,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 //Logo's.
                 _logoDrawer,
 
+                new ArmbandDrawer(assets.Armband),
+
                 new TopDrawer(assets.Top),
 
-                new ArmbandDrawer(assets.Armband),
                 new HolsterDrawer(assets.Holster),
         
                 //new UsernameDrawer(),

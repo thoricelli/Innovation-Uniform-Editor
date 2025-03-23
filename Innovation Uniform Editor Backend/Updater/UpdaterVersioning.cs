@@ -2,6 +2,7 @@
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
+using System;
 using System.IO;
 using System.Net;
 using System.Security.Policy;
@@ -35,7 +36,9 @@ namespace Innovation_Uniform_Editor_Backend.Updater
 
         public UpdaterVersioningResult CheckVersioning()
         {
-            if (Hash == hashHandler.GetNewHash())
+            string newHash = hashHandler.GetNewHash();
+
+            if (Hash == newHash)
                 return UpdaterVersioningResult.NO_UPDATE_NEEDED;
 
             TemplateVersioning templateVersioningNet = null;
@@ -48,18 +51,25 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             CachedNewVersioning = templateVersioningNet;
 
             //Check if the online template version is compatible with this tool version.
-            if (templateVersioningNet.MinimumToolVersion.CompareTo(Versioning.Version) <= -1)
+            if (templateVersioningNet.MinimumToolVersion.CompareTo(Versioning.Version) >= 1)
                 return UpdaterVersioningResult.NOT_COMPATIBLE;
 
-            //Check if the current template version is higher.
-            if (templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) >= 1)
+            //Check if the current template version is higher or the hash doesn't match and the version is not lower.
+            if (templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) <= -1
+                || (Hash != newHash && templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) >= 0))
                 return UpdaterVersioningResult.OUT_OF_DATE;
 
             return UpdaterVersioningResult.NO_UPDATE_NEEDED;
         }
         public bool IsOutOfDate()
         {
-            return CheckVersioning() == UpdaterVersioningResult.OUT_OF_DATE;
+            try
+            {
+                return CheckVersioning() == UpdaterVersioningResult.OUT_OF_DATE;
+            } catch(Exception e)
+            {
+                return false;
+            }
         }
         public void UpdateHash(string newHash)
         {
@@ -75,7 +85,8 @@ namespace Innovation_Uniform_Editor_Backend.Updater
                 using (var content = response.GetResponseStream())
                 using (var reader = new StreamReader(content))
                 {
-                    versioning = JsonUtils.Load<TemplateVersioning>(reader.ReadToEnd().Replace("\n", ""));
+                    string result = reader.ReadToEnd().Replace("\n", "");
+                    versioning = JsonUtils.Load<TemplateVersioning>(result);
                     return (response as HttpWebResponse).StatusCode;
                 }
             } catch (WebException e)
