@@ -3,9 +3,7 @@ using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers;
 using Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases;
 using Innovation_Uniform_Editor_Backend.Models;
 using Innovation_Uniform_Editor_Backend.Models.Assets;
-using Innovation_Uniform_Editor_Backend.Models.Base;
 using Innovation_Uniform_Editor_Backend.Models.Interfaces;
-using Innovation_Uniform_Editor_Backend.Models.OverlayAssets;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -62,7 +60,6 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
 
                 new OverlayDrawer(assets.Overlay),
                 
-                
                 //When original uniform has glove, that means the color will extend to the fully, which means we want to draw it ABOVE.
                 custom.UniformBasedOn.GloveId != null ? new GloveDrawer(assets.Glove) : null,
                 new ShoeDrawer(assets.Shoe),
@@ -86,20 +83,32 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             };
         }
 
-        public void AddIfCreditNotExists(IHasCreators item, List<Creator> creators)
+        private void AddIfCreditNotExists(IHasCreators item, List<Creator> creators)
         {
             if (item == null)
+                return;
+
+            if (creators.Count <= 0)
                 return;
 
             //If credit already exists, ignore.
             if (creators.Exists(x => item.Creators.Exists(y => x.Id == y.Id)))
                 return;
 
-            foreach (Creator itemCreators in item.Creators)
+            Creator creatorToAdd = null;
+            int index = 0;
+
+            do
             {
-                if (item != null && !creators.Exists(x => x.Id == itemCreators.Id))
-                    creators.Add(itemCreators);
-            }
+                //Let's only add one name, we don't need all of them one there as credit.
+                if (item != null && !creators.Exists(x => x.Id == item.Creators[index].Id))
+                    creatorToAdd = item.Creators[index];
+
+                index++;
+            } while (item.Creators.Count > index && creatorToAdd != null);
+
+            if (creatorToAdd != null)
+                creators.Add(creatorToAdd);
         }
     }
 }

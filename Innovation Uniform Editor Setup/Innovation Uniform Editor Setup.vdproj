@@ -119,13 +119,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F1746E11CA72672DBB8CD76B0523C90C"
+        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1553721BCDEBA6AF7E2C8EA43AFBF58D"
+        "OwnerKey" = "8:_F1746E11CA72672DBB8CD76B0523C90C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -688,15 +688,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
-        "ProductCode" = "8:{9C3EE7E1-6E35-40A4-AA5B-EB4992E14AC9}"
-        "PackageCode" = "8:{FF587495-E35A-4DD5-BB22-20B77339DF40}"
+        "ProductCode" = "8:{945497D3-1BF7-4A69-94D6-6DC5DFC65168}"
+        "PackageCode" = "8:{27488CE7-7009-4DD2-B0AE-0B3F47F64602}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.15"
+        "ProductVersion" = "8:1.0.17"
         "Manufacturer" = "8:Thoricelli"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1494,7 +1494,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_34212E02F8724DDE9132776DA0AC43F5"
             {
-            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Release\\Innovation Uniform Editor.exe"
+            "SourcePath" = "8:..\\Innovation Uniform Editor\\obj\\Debug\\Innovation Uniform Editor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_29957FFB451840C8858F9E27BDCE9D2E"

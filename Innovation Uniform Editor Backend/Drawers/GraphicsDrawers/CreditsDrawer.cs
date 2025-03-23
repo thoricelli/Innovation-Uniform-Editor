@@ -18,21 +18,36 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 
         public CreditsDrawer(List<Creator> creators)
         {
+            if (creators.Count <= 0)
+                return;
+
             int size = 30;
-
             int x = 105;
-            int y = 45;
 
-            foreach (Creator creator in creators)
+            AddCreator(creators[0], x, 10, size);
+
+            if (creators.Count <= 1)
+                return;
+
+            //Default size for the remainder of the credits. (not the top one basically)
+            x = 75;
+            size = 21;
+
+            int y = 75;
+
+            for (int i = 1; i < creators.Count; i++)
             {
-                textDrawerBases.Add(
-                    new TextDrawerBase(creator.Text, new PointF(x, y), creator.FontFamily, size, Color.Red, creator.FontStyle, StringAlignment.Center, StringAlignment.Center)
-                );
+                AddCreator(creators[i], x, y, size);
 
                 y += 45;
-                x = 75;
-                size = 21;
             }
+        }
+
+        private void AddCreator(Creator creator, int x, int y, int size)
+        {
+            textDrawerBases.Add(
+                new TextDrawerBase(creator.Text, new PointF(x, y), creator.FontFamily, size, Color.Red, creator.FontStyle, StringAlignment.Center, StringAlignment.Near)
+            );
         }
 
         public override bool HasAsset()

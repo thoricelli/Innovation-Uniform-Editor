@@ -17,7 +17,7 @@
   {
     "Id": "4414023a-8c1e-4541-9011-4d66a198e3d5",
     "Name": "Innovation Text Armband",
-    "CreatorIds": [127780, 40545786]
+    "CreatorIds": [40545786, 127780]
   },
   {
     "Id": "51ef14bf-3533-4ef9-86d3-91147c487422",
@@ -77,7 +77,7 @@
   {
     "Id": "e9f46544-5221-440c-9ab2-bd67b8b46611",
     "Name": "Arctic Task Force Armband",
-    "CreatorIds": [127780, 40545786]
+    "CreatorIds": [127780]
   },
   {
     "Id": "a4239cea-dfac-4051-88fa-dc2a22dd6346",
