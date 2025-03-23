@@ -86,13 +86,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
         { 
             get
             {
-                Guid? holsterId = this.HolsterId.HasValue ? this.HolsterId : this.UniformBasedOn.HolsterId;
-
-                if (!holsterId.HasValue)
+                if (!HolsterId.HasValue)
                     return null;
 
                 if (_holster == null)
-                    _holster = EditorMain.HolstersLoader.FindBy(holsterId.Value);
+                    _holster = EditorMain.HolstersLoader.FindBy(HolsterId.Value);
                 return _holster;
             } 
         }
@@ -102,13 +100,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             get
             {
-                Guid? armbandId = this.ArmbandId.HasValue ? this.ArmbandId : this.UniformBasedOn.ArmbandId;
-
-                if (!armbandId.HasValue)
+                if (!ArmbandId.HasValue)
                     return null;
 
                 if (_armband == null)
-                    _armband = EditorMain.ArmbandsLoader.FindBy(armbandId.Value);
+                    _armband = EditorMain.ArmbandsLoader.FindBy(ArmbandId.Value);
                 return _armband;
             }
         }
@@ -118,13 +114,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             get
             {
-                Guid? gloveId = this.GloveId.HasValue ? this.GloveId : this.UniformBasedOn.GloveId;
-
-                if (!gloveId.HasValue)
+                if (!GloveId.HasValue)
                     return null;
 
                 if (_glove == null)
-                    _glove = EditorMain.GlovesLoader.FindBy(gloveId.Value);
+                    _glove = EditorMain.GlovesLoader.FindBy(GloveId.Value);
                 return _glove;
             }
         }
@@ -134,13 +128,11 @@ namespace Innovation_Uniform_Editor_Backend.Models
         {
             get
             {
-                Guid? shoeId = this.ShoeId.HasValue ? this.ShoeId : this.UniformBasedOn.ShoeId;
-
-                if (!shoeId.HasValue)
+                if (!ShoeId.HasValue)
                     return null;
 
                 if (_shoe == null)
-                    _shoe = EditorMain.ShoesLoader.FindBy(shoeId.Value);
+                    _shoe = EditorMain.ShoesLoader.FindBy(ShoeId.Value);
                 return _shoe;
             }
         }
