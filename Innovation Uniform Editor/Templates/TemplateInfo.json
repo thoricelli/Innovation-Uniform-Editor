@@ -89,7 +89,7 @@
       "Id": 6914640997,
       "Name": "Innovation Lightweight Armour Pants",
       "CreatorId": 40545786,
-      "ShoeId": "9743d2ef-0c36-47a9-bc25-1b583402e816",
+      "ShoeId": "1d01c564-e317-4635-b90e-fdb05d2fb660",
       "Colors": [{ "Colors": ["90,96,147"] }, { "Colors": ["90,96,147"] }]
     },
     {
@@ -105,7 +105,7 @@
       "CreatorId": 127780,
       "HolsterId": "cae2bcdc-9512-4ade-b7e6-4831323b3abd",
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
-      "Colors": [ { "Colors": [ "90,96,147" ] } ]
+      "Colors": [{ "Colors": ["90,96,147"] }]
     },
     {
       "Id": 17402073986,
