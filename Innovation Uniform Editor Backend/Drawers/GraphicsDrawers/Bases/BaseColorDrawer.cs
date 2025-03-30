@@ -65,25 +65,33 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         }
         private ComponentDrawerBase GetCurrentComponent(double Yprogress)
         {
-            //this code is shit.
-
-            ComponentDrawerBase drawer = null;
-
-            if (currentDrawerIndex < colorDrawerItems.Count)
+            for (int i = currentDrawerIndex; i < colorDrawerItems.Count; i++)
             {
-                if (Yprogress < colorDrawerItems.First().EndYPercentage)
-                    currentDrawerIndex = 0;
+                // Does our Yprogress fall below our current find? If so, this might be the current component.
+                if (colorDrawerItems[i].EndYPercentage >= Yprogress)
+                {
+                    /* Is there no component behind us? skip.
+                       Otherwise check if it also falls above the previous component.
+                       Eg:
 
-                if (colorDrawerItems[currentDrawerIndex].EndYPercentage < Yprogress)
-                    if (currentDrawerIndex < colorDrawerItems.Count - 1)
-                        currentDrawerIndex++;
-                    else
-                        return null;
-
-                drawer = colorDrawerItems[currentDrawerIndex];
+                       Current: 0.6
+                       (before us) EndYPercentage: 0.5,
+                       (in front of us) EndYPercentage: 0.75
+                        
+                       Yes, that's between those two!
+                    */
+                    if (i <= 0 || colorDrawerItems[i - 1].EndYPercentage < Yprogress)
+                    {
+                        currentDrawerIndex = i;
+                        return colorDrawerItems[i];
+                    }
+                }
             }
 
-            return drawer;
+            //Seems like none matches, this means Yprogress got reset back to 0, start back from square 0!
+            //TODO: Will this cause a recursion bug?
+            currentDrawerIndex = 0;
+            return GetCurrentComponent(Yprogress);
         }
 
         private double GetCurrentProgressForComponent(double yProgress)
@@ -136,6 +144,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
                         //The amount of times it has to be repeated. Defaults to 2.
                         double progressRepeat = yProgress * repeat;
+                        //double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
                         double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
 
                         //progressWithRepeat is corresponds to the current index of the current drawing component.
