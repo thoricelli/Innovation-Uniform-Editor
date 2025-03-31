@@ -33,10 +33,6 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public Guid? GloveId { get; set; }
         public UniformDataLogo[] LogoIds { get; set; } 
         public CustomColor[] Colors { get; set; }
-        /// <summary>
-        /// Forces shading for uniforms with textures.
-        /// </summary>
-        public bool ForceShading { get; set; } = false;
         #region USERNAMES
         //This should probably be presets instead.
         /*public PointF UsernamePosition { get; set; } = new PointF(471,124);

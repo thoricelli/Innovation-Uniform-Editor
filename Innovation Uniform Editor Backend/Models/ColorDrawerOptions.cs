@@ -17,6 +17,5 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public List<Bitmap> Texture { get; set; } = null;
         public Point Location { get; set; } = Point.Empty;
         public float Transparency { get; set; } = 1f;
-        public bool ForceShading { get; set; } = false;
     }
 }

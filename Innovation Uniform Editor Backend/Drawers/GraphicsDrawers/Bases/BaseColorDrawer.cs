@@ -40,7 +40,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             _shadingDrawer = options.ShadingDrawer;
             colorDrawerItems = options.ColorDrawerItems;
             _transparency = options.Transparency;
-            if (options.Texture != null && options.Texture.Count > 0 && !options.ForceShading)
+            if (options.Texture != null && options.Texture.Count > 0)
             {
                 texturesMerged = ImageHelper.Merge(options.Texture);
                 textureMask = ImageHelper.BitmapToSingleBoolean(options.Texture);

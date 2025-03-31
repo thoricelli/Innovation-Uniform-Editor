@@ -62,7 +62,6 @@
       "Id": 1572086257,
       "Name": "Innovation Security Digital Camo Uniform Pants",
       "CreatorId": 40545786,
-      "ForceShading": true,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
       "Colors": [
         { "Colors": [ "50,70,90" ] },
@@ -270,7 +269,6 @@
       "Id": 1572085245,
       "Name": "Innovation Security Digital Camo Uniform Shirt",
       "CreatorId": 40545786,
-      "ForceShading": true,
       "GloveId": "772c8317-ddb1-4805-a543-d65f5d422fb1",
       "ArmbandId": "4414023a-8c1e-4541-9011-4d66a198e3d5",
       "LogoIds": [

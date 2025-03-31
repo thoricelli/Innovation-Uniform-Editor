@@ -54,7 +54,6 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
                 Selections = assets.Selections,
                 ShadingDrawer = _shadingDrawer,
                 Texture = assets.Textures,
-                ForceShading = custom.UniformBasedOn.ForceShading
             };
 
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
