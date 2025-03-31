@@ -48,13 +48,22 @@ namespace Innovation_Uniform_Editor_Backend.Drawers
             AddIfCreditNotExists(custom.Glove, creators);
             AddIfCreditNotExists(custom.Shoe, creators);
 
+            ColorDrawerOptions options = new ColorDrawerOptions
+            {
+                Colors = custom.Colors,
+                Selections = assets.Selections,
+                ShadingDrawer = _shadingDrawer,
+                Texture = assets.Textures,
+                ForceShading = custom.UniformBasedOn.ForceShading
+            };
+
             GraphicsDrawers = new List<BaseGraphicsDrawer>()
             {
                 custom.UniformBasedOn.GloveId == null ? new GloveDrawer(assets.Glove) : null,
 
                 new BackgroundDrawer(assets.Background),
                 new TextureDrawer(assets.Textures),
-                new UniformColorDrawer(custom.Colors, assets.Selections, _shadingDrawer, assets.Textures),
+                new UniformColorDrawer(options),
 
                 _shadingDrawer,
 

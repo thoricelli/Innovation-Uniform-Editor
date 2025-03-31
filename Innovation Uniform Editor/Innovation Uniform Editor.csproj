@@ -315,6 +315,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="150x150.ico" />
+    <Content Include="Templates\Normal\Pants\1572086257\Selection_Template_4.png" />
     <Content Include="Templates\OverlayAssets\Shoes\1d01c564-e317-4635-b90e-fdb05d2fb660.png" />
     <Content Include="XP_150.ico" />
     <None Include="Icons\620x300.png" />

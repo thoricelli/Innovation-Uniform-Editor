@@ -39,15 +39,13 @@ namespace Innovation_Uniform_Editor
 
             backgroundWorker.RunWorkerAsync();
 
+            EditorMain.Customs.Load();
             LoadCustomsAndGroups();
         }
 
         public void LoadCustomsAndGroups()
         {
             flowMain.Controls.Clear();
-
-            //TODO: This should be replaced by only loading the uniform that was changed.
-            EditorMain.Customs.Load();
 
             foreach (MenuItem item in EditorMain.Customs.GetAll())
             {
@@ -160,6 +158,8 @@ namespace Innovation_Uniform_Editor
             Custom custom = EditorMain.Customs.FindBy(new Guid(textBox.Parent.Name));
             custom.Name = textBox.Text;
             custom.SaveUniform();
+
+            LoadCustomsAndGroups();
         }
 
         private void TextBox_MouseLeave(object sender, EventArgs e)
@@ -289,6 +289,7 @@ namespace Innovation_Uniform_Editor
         public void ShowWLoad()
         {
             Visible = true;
+            EditorMain.Customs.Load();
             LoadCustomsAndGroups();
         }
 

@@ -7,8 +7,7 @@ namespace Innovation_Uniform_Editor_Backend.Loaders.Base
 {
     public abstract class Loader<TType, TId> : IFindable<TType, TId> where TType : IIdentifier<TId>
     {
-        //private List<TType> _items = new List<TType>();
-        private Dictionary<TId, TType> _items = new Dictionary<TId, TType>();
+        protected Dictionary<TId, TType> _items = new Dictionary<TId, TType>();
         protected string _path;
 
         protected Loader(string path)

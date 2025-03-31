@@ -32,31 +32,18 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         private int shadingRepeat = 1;
 
         private List<ComponentDrawerBase> colorDrawerItems;
-
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading, List<Bitmap> texture)
+        public BaseColorDrawer(ColorDrawerOptions options)
         {
-            Initialize(colors, Selections, Drawers, Point.Empty, shading, texture, 1f);
-        }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture)
-        {
-            Initialize(colors, Selections, Drawers, location, shading, texture, 1f);
-        }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture, float transparency)
-        {
-            Initialize(colors, Selections, Drawers, location, shading, texture, transparency);
-        }
-        private void Initialize(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture, float transparency)
-        {
-            _colors = colors;
-            _masks = ImageHelper.BitmapToBoolean(Selections);
-            _location = location;
-            _shadingDrawer = shading;
-            colorDrawerItems = Drawers;
-            _transparency = transparency;
-            if (texture != null && texture.Count > 0)
+            _colors = options.Colors;
+            _masks = ImageHelper.BitmapToBoolean(options.Selections);
+            _location = options.Location;
+            _shadingDrawer = options.ShadingDrawer;
+            colorDrawerItems = options.ColorDrawerItems;
+            _transparency = options.Transparency;
+            if (options.Texture != null && options.Texture.Count > 0 && !options.ForceShading)
             {
-                texturesMerged = ImageHelper.Merge(texture);
-                textureMask = ImageHelper.BitmapToSingleBoolean(texture);
+                texturesMerged = ImageHelper.Merge(options.Texture);
+                textureMask = ImageHelper.BitmapToSingleBoolean(options.Texture);
             }
         }
         public override bool HasAsset()
