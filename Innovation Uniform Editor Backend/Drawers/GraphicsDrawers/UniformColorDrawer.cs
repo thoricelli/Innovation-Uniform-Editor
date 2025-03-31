@@ -20,12 +20,16 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
             new ColorComponentDrawer(1, ColorDrawerTypes.SOLID, ColorType.LastColor, BlendMode.None),
         };
 
-        public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, ShadingDrawer shading, List<Bitmap> texture) : base(colors, Selections, colorDrawerItems, shading, texture)
+        public UniformColorDrawer(ColorDrawerOptions options)
+            : base(ModifyOptions(options))
         {
         }
 
-        public UniformColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, Point location, ShadingDrawer shading, List<Bitmap> texture) : base(colors, Selections, colorDrawerItems, location, shading, texture)
+        private static ColorDrawerOptions ModifyOptions(ColorDrawerOptions options)
         {
+            options.ColorDrawerItems = colorDrawerItems;
+
+            return options;
         }
     }
 }

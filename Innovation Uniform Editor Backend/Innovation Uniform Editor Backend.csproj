@@ -129,6 +129,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\JsonUtils.cs" />
     <Compile Include="Helpers\NamePressHelper.cs" />
+    <Compile Include="Models\ColorDrawerOptions.cs" />
     <Compile Include="Models\CustomVersioning.cs" />
     <Compile Include="Models\TemplateVersioning.cs" />
     <Compile Include="Updater\TemplateUpdater.cs" />

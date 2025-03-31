@@ -42,8 +42,16 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers
 
                     List<CustomColor> colors = _custom.Presets[i].Colors;
 
-                    //Not great, oh well.
-                    ColorDrawer drawer = new ColorDrawer(colors, item.Logo.Selections, componentDrawers, item.Location, null, null, item.Transparency);
+                    ColorDrawerOptions options = new ColorDrawerOptions
+                    {
+                        Colors = colors,
+                        Selections = item.Logo.Selections,
+                        ColorDrawerItems = componentDrawers,
+                        Location = item.Location,
+                        Transparency = item.Transparency
+                    };
+
+                    ColorDrawer drawer = new ColorDrawer(options);
 
                     drawer.DrawToGraphics(graphics, result);
 

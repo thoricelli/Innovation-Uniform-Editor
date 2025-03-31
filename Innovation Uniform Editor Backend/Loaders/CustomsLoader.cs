@@ -2,7 +2,9 @@
 using Innovation_Uniform_Editor_Backend.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor_Backend.Loaders
@@ -98,6 +100,10 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
                     return null;
                 }
             }
+        }
+        public override List<Custom> GetAll()
+        {
+            return _items.OrderBy(x => x.Value.Name).Select(x => x.Value).ToList();
         }
         private static bool AskForOutdatedLoad(Version version)
         {

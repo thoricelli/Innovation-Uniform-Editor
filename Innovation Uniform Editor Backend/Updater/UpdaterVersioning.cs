@@ -54,9 +54,12 @@ namespace Innovation_Uniform_Editor_Backend.Updater
             if (templateVersioningNet.MinimumToolVersion.CompareTo(Versioning.Version) >= 1)
                 return UpdaterVersioningResult.NOT_COMPATIBLE;
 
-            //Check if the current template version is higher or the hash doesn't match and the version is not lower.
-            if (templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) <= -1
-                || (Hash != newHash && templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) >= 0))
+            //Check if the online version is not behind our local one.
+            if (templateVersioningNet.TemplateVersion.CompareTo(EditorMain.TemplateUpdater.TemplateVersion) <= -1)
+                return UpdaterVersioningResult.NO_UPDATE_NEEDED;
+
+            //Finally, our local version is NOT behind the online version so we check if the hash matches, if not we update!
+            if (Hash != newHash)
                 return UpdaterVersioningResult.OUT_OF_DATE;
 
             return UpdaterVersioningResult.NO_UPDATE_NEEDED;

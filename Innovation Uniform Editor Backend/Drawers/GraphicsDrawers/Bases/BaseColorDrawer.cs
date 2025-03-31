@@ -32,31 +32,18 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         private int shadingRepeat = 1;
 
         private List<ComponentDrawerBase> colorDrawerItems;
-
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, ShadingDrawer shading, List<Bitmap> texture)
+        public BaseColorDrawer(ColorDrawerOptions options)
         {
-            Initialize(colors, Selections, Drawers, Point.Empty, shading, texture, 1f);
-        }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture)
-        {
-            Initialize(colors, Selections, Drawers, location, shading, texture, 1f);
-        }
-        public BaseColorDrawer(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture, float transparency)
-        {
-            Initialize(colors, Selections, Drawers, location, shading, texture, transparency);
-        }
-        private void Initialize(List<CustomColor> colors, List<Bitmap> Selections, List<ComponentDrawerBase> Drawers, Point location, ShadingDrawer shading, List<Bitmap> texture, float transparency)
-        {
-            _colors = colors;
-            _masks = ImageHelper.BitmapToBoolean(Selections);
-            _location = location;
-            _shadingDrawer = shading;
-            colorDrawerItems = Drawers;
-            _transparency = transparency;
-            if (texture != null && texture.Count > 0)
+            _colors = options.Colors;
+            _masks = ImageHelper.BitmapToBoolean(options.Selections);
+            _location = options.Location;
+            _shadingDrawer = options.ShadingDrawer;
+            colorDrawerItems = options.ColorDrawerItems;
+            _transparency = options.Transparency;
+            if (options.Texture != null && options.Texture.Count > 0)
             {
-                texturesMerged = ImageHelper.Merge(texture);
-                textureMask = ImageHelper.BitmapToSingleBoolean(texture);
+                texturesMerged = ImageHelper.Merge(options.Texture);
+                textureMask = ImageHelper.BitmapToSingleBoolean(options.Texture);
             }
         }
         public override bool HasAsset()
@@ -65,25 +52,33 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         }
         private ComponentDrawerBase GetCurrentComponent(double Yprogress)
         {
-            //this code is shit.
-
-            ComponentDrawerBase drawer = null;
-
-            if (currentDrawerIndex < colorDrawerItems.Count)
+            for (int i = currentDrawerIndex; i < colorDrawerItems.Count; i++)
             {
-                if (Yprogress < colorDrawerItems.First().EndYPercentage)
-                    currentDrawerIndex = 0;
+                // Does our Yprogress fall below our current find? If so, this might be the current component.
+                if (colorDrawerItems[i].EndYPercentage >= Yprogress)
+                {
+                    /* Is there no component behind us? skip.
+                       Otherwise check if it also falls above the previous component.
+                       Eg:
 
-                if (colorDrawerItems[currentDrawerIndex].EndYPercentage < Yprogress)
-                    if (currentDrawerIndex < colorDrawerItems.Count - 1)
-                        currentDrawerIndex++;
-                    else
-                        return null;
-
-                drawer = colorDrawerItems[currentDrawerIndex];
+                       Current: 0.6
+                       (before us) EndYPercentage: 0.5,
+                       (in front of us) EndYPercentage: 0.75
+                        
+                       Yes, that's between those two!
+                    */
+                    if (i <= 0 || colorDrawerItems[i - 1].EndYPercentage < Yprogress)
+                    {
+                        currentDrawerIndex = i;
+                        return colorDrawerItems[i];
+                    }
+                }
             }
 
-            return drawer;
+            //Seems like none matches, this means Yprogress got reset back to 0, start back from square 0!
+            //TODO: Will this cause a recursion bug?
+            currentDrawerIndex = 0;
+            return GetCurrentComponent(Yprogress);
         }
 
         private double GetCurrentProgressForComponent(double yProgress)
@@ -136,6 +131,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
                         //The amount of times it has to be repeated. Defaults to 2.
                         double progressRepeat = yProgress * repeat;
+                        //double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
                         double progressWithRepeat = progressRepeat - Math.Truncate(progressRepeat);
 
                         //progressWithRepeat is corresponds to the current index of the current drawing component.
