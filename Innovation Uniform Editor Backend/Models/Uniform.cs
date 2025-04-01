@@ -33,6 +33,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
         public Guid? GloveId { get; set; }
         public UniformDataLogo[] LogoIds { get; set; } 
         public CustomColor[] Colors { get; set; }
+        public int ShadingAmount { get; set; } = 1;
         #region USERNAMES
         //This should probably be presets instead.
         /*public PointF UsernamePosition { get; set; } = new PointF(471,124);
