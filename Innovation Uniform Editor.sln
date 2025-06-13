@@ -145,16 +145,6 @@ Global
 		{19179F13-702A-4317-B992-DF900DB3EED7}.Development|x64.Build.0 = Debug
 		{19179F13-702A-4317-B992-DF900DB3EED7}.Development|x86.ActiveCfg = Debug
 		{19179F13-702A-4317-B992-DF900DB3EED7}.Development|x86.Build.0 = Debug
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|Any CPU.ActiveCfg = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|Any CPU.Build.0 = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|ARM.ActiveCfg = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|ARM.Build.0 = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|ARM64.ActiveCfg = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|ARM64.Build.0 = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|x64.ActiveCfg = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|x64.Build.0 = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|x86.ActiveCfg = Release
-		{19179F13-702A-4317-B992-DF900DB3EED7}.Portable (Release)|x86.Build.0 = Release
 		{19179F13-702A-4317-B992-DF900DB3EED7}.Preview|Any CPU.ActiveCfg = Release
 		{19179F13-702A-4317-B992-DF900DB3EED7}.Preview|Any CPU.Build.0 = Release
 		{19179F13-702A-4317-B992-DF900DB3EED7}.Preview|ARM.ActiveCfg = Release

@@ -1,0 +1,50 @@
+name: CD Release
+permissions:
+  contents: write
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: .NET environment setup
+        uses: ./.github/actions/setup/dotnet
+
+      # BUILDING THE PORTABLE VERSION
+      - name: Build portable
+        uses: ./.github/actions/build/default
+        with:
+          configuration: "Portable (Release)"
+          assembly: Innovation Uniform Editor
+
+      - name: "ZIP Portable"
+        shell: pwsh
+        run: |
+          Compress-Archive "./Innovation Uniform Editor/bin/Release/**" "Uniform-Editor-PORTABLE-${{ github.ref_name }}.zip"
+      # END
+      # BUILDING THE INSTALLER
+      - name: Setup VDPROJ environment
+        uses: ./.github/actions/setup/vdproj
+
+      - name: Build installer
+        uses: ./.github/actions/build/vdproj
+      # END
+      - name: Release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+          "Uniform-Editor-PORTABLE-${{ github.ref_name }}.zip" \
+          "Innovation Uniform Editor Setup/Release/Innovation Uniform Editor Setup.msi" \
+          --repo="$GITHUB_REPOSITORY" \
+          --title="${tag#v}" \
+          --generate-notes

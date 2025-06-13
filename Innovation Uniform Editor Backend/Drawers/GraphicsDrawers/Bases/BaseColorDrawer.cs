@@ -16,30 +16,20 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 {
     public abstract class BaseColorDrawer : BaseGraphicsDrawer
     {
-        private Point _location;
-        private ShadingDrawer _shadingDrawer;
-
-        private List<CustomColor> _colors;
         private List<MaskImage> _masks;
         private int currentDrawerIndex = 0;
 
         private Bitmap texturesMerged;
         private MaskImage textureMask;
 
-        private float _transparency = 1f;
-
         private int repeat = 2;
-        private int shadingRepeat = 1;
 
-        private List<ComponentDrawerBase> colorDrawerItems;
+        private ColorDrawerOptions options;
+
         public BaseColorDrawer(ColorDrawerOptions options)
         {
-            _colors = options.Colors;
+            this.options = options;
             _masks = ImageHelper.BitmapToBoolean(options.Selections);
-            _location = options.Location;
-            _shadingDrawer = options.ShadingDrawer;
-            colorDrawerItems = options.ColorDrawerItems;
-            _transparency = options.Transparency;
             if (options.Texture != null && options.Texture.Count > 0)
             {
                 texturesMerged = ImageHelper.Merge(options.Texture);
@@ -48,14 +38,14 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         }
         public override bool HasAsset()
         {
-            return _colors.Count > 0 && _masks.Count > 0;
+            return options.Colors.Count > 0 && _masks.Count > 0;
         }
         private ComponentDrawerBase GetCurrentComponent(double Yprogress)
         {
-            for (int i = currentDrawerIndex; i < colorDrawerItems.Count; i++)
+            for (int i = currentDrawerIndex; i < options.ColorDrawerItems.Count; i++)
             {
                 // Does our Yprogress fall below our current find? If so, this might be the current component.
-                if (colorDrawerItems[i].EndYPercentage >= Yprogress)
+                if (options.ColorDrawerItems[i].EndYPercentage >= Yprogress)
                 {
                     /* Is there no component behind us? skip.
                        Otherwise check if it also falls above the previous component.
@@ -67,10 +57,10 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                         
                        Yes, that's between those two!
                     */
-                    if (i <= 0 || colorDrawerItems[i - 1].EndYPercentage < Yprogress)
+                    if (i <= 0 || options.ColorDrawerItems[i - 1].EndYPercentage < Yprogress)
                     {
                         currentDrawerIndex = i;
-                        return colorDrawerItems[i];
+                        return options.ColorDrawerItems[i];
                     }
                 }
             }
@@ -85,9 +75,9 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
         {
             double previousEndPercentage =
                 currentDrawerIndex > 0 ?
-                colorDrawerItems[currentDrawerIndex - 1].EndYPercentage
+                options.ColorDrawerItems[currentDrawerIndex - 1].EndYPercentage
                 : 0;
-            double currentEndPercentage = colorDrawerItems[currentDrawerIndex].EndYPercentage;
+            double currentEndPercentage = options.ColorDrawerItems[currentDrawerIndex].EndYPercentage;
 
             // 0 - 100% becomes a scale of X% - Y% (mainly used by fades)
             return (yProgress - previousEndPercentage) * (1 / (currentEndPercentage - previousEndPercentage));
@@ -110,7 +100,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
             ImageEditorBase<Bitmap> shading = null;
 
-            if (_shadingDrawer != null)
+            if (options.ShadingDrawer != null)
                 shading = new BitmapEditor(new Bitmap(ComponentDrawerBase.shading.GetWidth(), ComponentDrawerBase.shading.GetHeight()));
 
             int totalSize = colorsResultLooper.GetTotalSize();
@@ -152,15 +142,14 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                             int y = i / maskImage.Width;
                             int x = i % maskImage.Width;
 
-                            int drawIndex = x + _location.X + ((y + _location.Y) * width);
+                            int drawIndex = x + options.Location.X + ((y + options.Location.Y) * width);
 
                             //TODO: Texture mask if texture is supplied.
                             if (shading != null && (textureMask == null || textureMask.mask[i]))
                             {
-                                Color originalShadingColor = ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex);
                                 Color shadingColor = ComponentDrawerBase.shading.GetPixelColorAtIndex(drawIndex);
 
-                                for (int rep = 0; rep < shadingRepeat - 1; rep++)
+                                for (int rep = 0; rep < options.ShadingAmount - 1; rep++)
                                 {
                                     shadingColor = Blend(shadingColor, shadingColor);
                                 }
@@ -169,13 +158,13 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
                             }
 
                             currentDrawItem.Draw(
-                                _colors[maskIndex],
+                                options.Colors[maskIndex],
                                 colorsResultLooper,
                                 resultLooper,
                                 texture,
                                 drawIndex,
                                 GetCurrentProgressForComponent(progressWithRepeat),
-                                _transparency
+                                options.Transparency
                              );
                         }
                     }
@@ -185,7 +174,7 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
             currentDrawerIndex = 0;
 
             if (shading != null)
-                _shadingDrawer.ChangeAsset(shading.Result);
+                options.ShadingDrawer.ChangeAsset(shading.Result);
 
             texture.CloseImage();
 
@@ -196,31 +185,20 @@ namespace Innovation_Uniform_Editor_Backend.Drawers.GraphicsDrawers.Legacy.Bases
 
         private Color Blend(Color ForeGround, Color BackGround)
         {
-            if (ForeGround.A == 0)
-                return BackGround;
-            if (BackGround.A == 0)
-                return ForeGround;
-            if (ForeGround.A == 255)
-                return ForeGround;
+            float fgAlpha = ForeGround.A / 255f;
+            float bgAlpha = BackGround.A / 255f;
+            float outAlpha = fgAlpha + bgAlpha * (1 - fgAlpha);
 
-            int Alpha = ForeGround.A + 1;
-            int A = ForeGround.A;
+            if (outAlpha == 0)
+                return Color.FromArgb(0, 0, 0, 0);
 
-            int B = Alpha * ForeGround.B + (255 - Alpha) * BackGround.B >> 8;
-            int G = Alpha * ForeGround.G + (255 - Alpha) * BackGround.G >> 8;
-            int R = Alpha * ForeGround.R + (255 - Alpha) * BackGround.R >> 8;
+            int R = (int)((ForeGround.R * fgAlpha + BackGround.R * bgAlpha * (1 - fgAlpha)) / outAlpha);
+            int G = (int)((ForeGround.G * fgAlpha + BackGround.G * bgAlpha * (1 - fgAlpha)) / outAlpha);
+            int B = (int)((ForeGround.B * fgAlpha + BackGround.B * bgAlpha * (1 - fgAlpha)) / outAlpha);
+            int A = (int)(outAlpha * 255);
 
-
-            if (BackGround.A == 255)
-                A = 255;
-            if (R > 255)
-                R = 255;
-            if (G > 255)
-                G = 255;
-            if (B > 255)
-                B = 255;
-
-            return Color.FromArgb(Math.Abs(A), Math.Abs(R), Math.Abs(G), Math.Abs(B));
+            return Color.FromArgb(A, R, G, B);
         }
+
     }
 }

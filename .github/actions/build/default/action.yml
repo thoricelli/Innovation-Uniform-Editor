@@ -1,0 +1,28 @@
+name: .NET Main build
+description: "Builds and tests solution."
+
+inputs:
+  configuration:
+    description: "What configuration to build."
+    required: false
+    default: Release
+
+runs:
+  using: composite
+
+  steps:
+    - name: Restore packages
+      shell: pwsh
+      run: msbuild /t:restore /p:RestorePackagesConfig=true /p:Configuration=$env:Configuration
+      env:
+        Configuration: ${{ inputs.configuration }}
+
+    - name: Build solution
+      shell: pwsh
+      run: msbuild $env:Solution_Name /t:Build /p:Configuration=$env:Configuration
+      env:
+        Configuration: ${{ inputs.configuration }}
+
+    - name: Execute unit tests
+      shell: pwsh
+      run: dotnet test

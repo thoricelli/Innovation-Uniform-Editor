@@ -1,0 +1,23 @@
+name: Visual Studio Installer Project env setup
+description: Sets up the environment for building for the Visual Studio Installer Project
+
+runs:
+  using: composite
+
+  steps:
+    - name: Download InstallerProjects.vsix
+      shell: pwsh
+      run: |
+        curl -Lo InstallerProjects.vsix https://marketplace.visualstudio.com/_apis/public/gallery/publishers/microsoft/vsextensions/installerprojects/2022.12.0/vsextension
+
+    - name: Install Microsoft VS Installer Projects
+      shell: pwsh
+      run: |
+        Start-Process -FilePath "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe" -ArgumentList "/quiet", "InstallerProjects.vsix" -Wait
+
+    # Fixes race condition that causes build failure.
+    - name: DisableOutOfProcBuild
+      shell: pwsh
+      run: |
+        & "./Common7/IDE/CommonExtensions/Microsoft/VSI/DisableOutOfProcBuild/DisableOutOfProcBuild.exe"
+      working-directory: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\ 

@@ -63,11 +63,12 @@
       "Name": "Innovation Security Digital Camo Uniform Pants",
       "CreatorId": 40545786,
       "ShoeId": "292c7c19-90db-479b-bb59-20667cf64cc6",
+      "ShadingAmount": 2,
       "Colors": [
-        { "Colors": [ "50,70,90" ] },
-        { "Colors": [ "22,22,22" ] },
-        { "Colors": [ "115,139,164" ] },
-        { "Colors": [ "70,90,115" ] }
+        { "Colors": ["50,70,90"] },
+        { "Colors": ["22,22,22"] },
+        { "Colors": ["115,139,164"] },
+        { "Colors": ["70,90,115"] }
       ]
     },
     {
@@ -269,6 +270,7 @@
       "Id": 1572085245,
       "Name": "Innovation Security Digital Camo Uniform Shirt",
       "CreatorId": 40545786,
+      "ShadingAmount": 2,
       "GloveId": "772c8317-ddb1-4805-a543-d65f5d422fb1",
       "ArmbandId": "4414023a-8c1e-4541-9011-4d66a198e3d5",
       "LogoIds": [
@@ -477,7 +479,8 @@
         {
           "LogoId": 7,
           "Location": "271, 141",
-          "Transparency": 0.5
+          "Transparency": 0.5,
+          "PresetGuid": "b3652a2e-7a4f-4585-92f4-90b3c0f68f8c"
         },
         {
           "LogoId": 9,
