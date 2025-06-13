@@ -1,0 +1,19 @@
+name: Visual Studio Installer Project build
+description: Builds the MSI installer.
+
+inputs:
+  configuration:
+    description: "What configuration to build."
+    required: false
+    default: Release (Installer)
+
+runs:
+  using: composite
+
+  steps:
+    - name: Build setup
+      shell: pwsh
+      run: |
+        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.com" "Innovation Uniform Editor.sln" /Rebuild $env:Configuration /Project "Innovation Uniform Editor Setup\Innovation Uniform Editor Setup.vdproj"
+      env:
+        Configuration: ${{ inputs.configuration }}

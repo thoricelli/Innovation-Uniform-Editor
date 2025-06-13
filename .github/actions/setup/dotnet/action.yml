@@ -1,0 +1,12 @@
+name: Setup .NET environment
+description: Sets up .NET and MSBuild
+
+runs:
+  using: composite
+  
+  steps:
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v2
