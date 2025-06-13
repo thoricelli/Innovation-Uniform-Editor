@@ -3,7 +3,7 @@ description: Builds the MSI installer.
 
 inputs:
   configuration:
-    description: "What configuration to build."
+    description: What configuration to build
     required: false
     default: Release (Installer)
 
