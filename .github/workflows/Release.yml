@@ -4,6 +4,7 @@ permissions:
 on:
   push:
     tags: ["v*"]
+    branches: ["master"]
 
 jobs:
   release:
