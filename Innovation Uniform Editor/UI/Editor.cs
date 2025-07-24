@@ -5,9 +5,11 @@ using Innovation_Uniform_Editor_Backend.Enums;
 using Innovation_Uniform_Editor_Backend.Globals;
 using Innovation_Uniform_Editor_Backend.Helpers;
 using Innovation_Uniform_Editor_Backend.Models;
+using Innovation_Uniform_Editor_Backend.Models.Enums;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -439,7 +441,10 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnOpenFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(custom.UniformBasedOn.Path);
+            if (Versioning.VersionType == VersionType.Development)
+                Process.Start(Path.GetFullPath($"{AppDomain.CurrentDomain.BaseDirectory}/../../Templates/Normal/{custom.UniformBasedOn.part.ToString()}/{custom.UniformBasedOn.Id}/"));
+            else
+                Process.Start(custom.UniformBasedOn.Path);
         }
     }
 }
