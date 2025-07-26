@@ -22,7 +22,6 @@ jobs:
         uses: ./.github/actions/build/default
         with:
           configuration: "Portable (Release)"
-          assembly: Innovation Uniform Editor
 
       - name: "ZIP Portable"
         shell: pwsh
