@@ -19,8 +19,7 @@ jobs:
       - name: Build portable
         uses: ./.github/actions/build/default
         with:
-          configuration: Portable (Release)
-          assembly: Innovation Uniform Editor
+          configuration: Bugtest
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
