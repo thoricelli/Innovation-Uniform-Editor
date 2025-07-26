@@ -21,3 +21,14 @@ jobs:
         with:
           configuration: Portable (Release)
           assembly: Innovation Uniform Editor
+
+      - name: ZIP Bugtest
+        shell: pwsh
+        run: |
+          Compress-Archive "./Innovation Uniform Editor/bin/Release/**" "Uniform-Editor-BUGTEST-${{ github.ref_name }}.zip"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "Bugtest build"
+          path: "Uniform-Editor-BUGTEST-${{ github.ref_name }}.zip"
