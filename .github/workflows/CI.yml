@@ -22,13 +22,8 @@ jobs:
           configuration: Portable (Release)
           assembly: Innovation Uniform Editor
 
-      - name: ZIP Bugtest
-        shell: pwsh
-        run: |
-          Compress-Archive "./Innovation Uniform Editor/bin/Release/**" "Uniform-Editor-BUGTEST-PR.zip"
-
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "Bugtest build"
-          path: "Uniform-Editor-BUGTEST-PR.zip"
+          name: "Uniform-Editor-BUGTEST-PR"
+          path: "./Innovation Uniform Editor/bin/Release/**"
