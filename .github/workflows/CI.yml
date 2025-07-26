@@ -25,10 +25,10 @@ jobs:
       - name: ZIP Bugtest
         shell: pwsh
         run: |
-          Compress-Archive "./Innovation Uniform Editor/bin/Release/**" "Uniform-Editor-BUGTEST-${{ github.ref_name }}.zip"
+          Compress-Archive "./Innovation Uniform Editor/bin/Release/**" "Uniform-Editor-BUGTEST-PR.zip"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: "Bugtest build"
-          path: "Uniform-Editor-BUGTEST-${{ github.ref_name }}.zip"
+          path: "Uniform-Editor-BUGTEST-PR.zip"
