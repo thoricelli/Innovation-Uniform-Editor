@@ -144,12 +144,12 @@
       "ArmbandId": "94c1a8f6-d40f-4a29-9d89-6481f299c1ce",
       "LogoIds": [
         {
-          "LogoId": 1,
+          "LogoId": 2,
           "Location": "172, 398",
           "PresetGuid": "b3652a2e-7a4f-4585-92f4-90b3c0f68f8c"
         },
         {
-          "LogoId": 1,
+          "LogoId": 2,
           "Location": "395, 398"
         }
       ],
