@@ -852,9 +852,6 @@
     <Content Include="Templates\OverlayAssets\Armbands\51ef14bf-3533-4ef9-86d3-91147c487422.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\OverlayAssets\Armbands\5443daf8-2d31-4d4e-bab1-433f830c9b20.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Templates\OverlayAssets\Armbands\5cee9d71-9e16-409b-af37-3b6eea22cf7b.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
