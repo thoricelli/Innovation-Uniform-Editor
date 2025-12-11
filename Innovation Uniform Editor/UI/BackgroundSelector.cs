@@ -16,6 +16,15 @@ namespace Innovation_Uniform_Editor.UI
         {
         }
 
+        protected override Control CreateItemControl(BackgroundImage bg, int i)
+        {
+            var item = base.CreateItemControl(bg, i);
+
+            item.ContextMenuStrip = this.menuStrip;
+
+            return item;
+        }
+
         private void btnBackground_Click(object sender, EventArgs e)
         {
             backgroundDialog.ShowDialog();
@@ -24,6 +33,8 @@ namespace Innovation_Uniform_Editor.UI
             {
                 ((BackgroundsLoader)_loader).Add(backgroundDialog.FileName);
             }
+
+            Initialize();
         }
     }
 }

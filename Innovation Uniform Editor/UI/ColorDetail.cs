@@ -160,9 +160,12 @@ namespace Innovation_Uniform_Editor.UI
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            _color.Colors.Add(Color.Transparent);
-            onChanged?.Invoke(this, null);
-            Initialize();
+            if (_color.Colors.Count < 2)
+            {
+                _color.Colors.Add(Color.Transparent);
+                onChanged?.Invoke(this, null);
+                Initialize();
+            }
         }
 
         private void btnDone_Click(object sender, EventArgs e)

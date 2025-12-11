@@ -33,6 +33,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
             InitializeComponent();
             Initialize();
         }
+
         public virtual void Initialize()
         {
             this.flowLayoutBackgrounds.Controls.Clear();

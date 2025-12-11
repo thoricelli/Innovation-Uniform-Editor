@@ -9,7 +9,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        protected System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -32,6 +32,7 @@ namespace Innovation_Uniform_Editor.UI.Generic
         /// </summary>
         protected virtual void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenericSelector<TType, TId>));
             this.flowLayoutBackgrounds = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBGTemplate = new System.Windows.Forms.PictureBox();

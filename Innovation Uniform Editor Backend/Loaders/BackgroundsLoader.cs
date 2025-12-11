@@ -5,6 +5,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Innovation_Uniform_Editor_Backend.Loaders
 {
@@ -45,9 +46,15 @@ namespace Innovation_Uniform_Editor_Backend.Loaders
         public void Add(string path)
         {
             FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read);
-            Image resizedBackground = ImageHelper.resizeImage(Image.FromStream(fs), new Size(585, 559));
+            try
+            {
+                Image resizedBackground = ImageHelper.resizeImage(Image.FromStream(fs), new Size(585, 559));
+                Add(resizedBackground);
+            } catch(ArgumentException e)
+            {
+                MessageBox.Show("Invalid image. Make sure the file you select is an image.", "Image error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             fs.Close();
-            Add(resizedBackground);
         }
 
         public override void DeleteBy(Guid guid)

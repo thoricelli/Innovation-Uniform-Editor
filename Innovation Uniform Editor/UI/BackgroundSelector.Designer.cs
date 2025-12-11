@@ -2,24 +2,6 @@
 {
     partial class BackgroundSelector
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -30,6 +12,7 @@
         {
             base.InitializeComponent();
             this.Text = "Background Selector";
+            this.menuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             // 
             // btnBackground
             // 
@@ -44,9 +27,22 @@
             this.btnBackground.Click += new System.EventHandler(this.btnBackground_Click);
             this.Controls.Add(this.btnBackground);
             this.backgroundDialog = new System.Windows.Forms.OpenFileDialog();
+
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { deleteToolStripMenuItem });
+            this.menuStrip.Name = "menuStripItem";
+            this.menuStrip.Size = new System.Drawing.Size(156, 158);
         }
 
+        protected System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         protected System.Windows.Forms.Button btnBackground;
+        protected System.Windows.Forms.ContextMenuStrip menuStrip;
         protected System.Windows.Forms.OpenFileDialog backgroundDialog;
         #endregion
     }
