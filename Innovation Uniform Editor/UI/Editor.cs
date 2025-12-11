@@ -280,10 +280,10 @@ namespace Innovation_Uniform_Editor.UI
 
             Control[] customize = new[]
             {
-                btnManageHolsters,
+                //btnManageHolsters,
                 btnManageArmbands,
-                btnManageGloves,
-                btnManageShoes,
+                //btnManageGloves,
+                //btnManageShoes,
                 btnLogoColors,
             };
 

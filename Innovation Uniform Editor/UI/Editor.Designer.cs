@@ -132,7 +132,7 @@ namespace Innovation_Uniform_Editor.UI
             this.downloadToolStripMenuItem1,
             this.exportToFile});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // downloadToolStripMenuItem1
@@ -316,6 +316,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageHolsters.TabIndex = 19;
             this.btnManageHolsters.Text = "Holsters";
             this.btnManageHolsters.UseVisualStyleBackColor = true;
+            this.btnManageHolsters.Visible = false;
             this.btnManageHolsters.Click += new System.EventHandler(this.btnManageHolsters_Click);
             // 
             // btnManageArmbands
@@ -326,6 +327,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageArmbands.TabIndex = 20;
             this.btnManageArmbands.Text = "Armbands";
             this.btnManageArmbands.UseVisualStyleBackColor = true;
+            this.btnManageArmbands.Visible = false;
             this.btnManageArmbands.Click += new System.EventHandler(this.btnManageArmbands_Click);
             // 
             // btnManageGloves
@@ -336,6 +338,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageGloves.TabIndex = 23;
             this.btnManageGloves.Text = "Gloves";
             this.btnManageGloves.UseVisualStyleBackColor = true;
+            this.btnManageGloves.Visible = false;
             this.btnManageGloves.Click += new System.EventHandler(this.btnManageGloves_Click);
             // 
             // btnManageShoes
@@ -346,6 +349,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnManageShoes.TabIndex = 21;
             this.btnManageShoes.Text = "Shoes";
             this.btnManageShoes.UseVisualStyleBackColor = true;
+            this.btnManageShoes.Visible = false;
             this.btnManageShoes.Click += new System.EventHandler(this.btnManageShoes_Click);
             // 
             // btnLogoColors
@@ -356,6 +360,7 @@ namespace Innovation_Uniform_Editor.UI
             this.btnLogoColors.TabIndex = 24;
             this.btnLogoColors.Text = "Logo colors";
             this.btnLogoColors.UseVisualStyleBackColor = true;
+            this.btnLogoColors.Visible = false;
             this.btnLogoColors.Click += new System.EventHandler(this.btnLogoColors_Click);
             // 
             // label2
