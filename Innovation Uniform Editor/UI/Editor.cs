@@ -282,7 +282,7 @@ namespace Innovation_Uniform_Editor.UI
             {
                 //btnManageHolsters,
                 btnManageArmbands,
-                //btnManageGloves,
+                btnManageGloves,
                 //btnManageShoes,
                 btnLogoColors,
             };
