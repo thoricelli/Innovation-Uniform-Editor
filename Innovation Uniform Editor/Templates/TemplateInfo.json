@@ -134,6 +134,31 @@
       "Id": 0,
       "Name": "[TRAINER+ ONLY] Innovation Security Trenchoat Pants",
       "CreatorId": 135955170
+    },
+    {
+      "Id": 88358421187338,
+      "Name": "(ETG+) Innovation Security ETG Special Ops Pants",
+      "CreatorId": 176598467,
+      "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda",
+      "Colors": [
+        { "Colors": [ "57,63,79" ] },
+        { "Colors": [ "30,30,30" ] },
+        { "Colors": [ "141,122,59" ] },
+        { "Colors": [ "40,40,40" ] },
+        { "Colors": [ "150,150,150" ] }
+      ]
+    },
+    {
+      "Id": 128559015286435,
+      "Name": "(TIER 1+) Innovation Guardsmen Special Ops Pants",
+      "CreatorId": 176598467,
+      "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda",
+      "Colors": [
+        { "Colors": [ "255,255,255" ] },
+        { "Colors": [ "59,59,59" ] },
+        { "Colors": [ "40,40,40" ] },
+        { "Colors": [ "150,150,150" ] }
+      ]
     }
   ],
   "Shirts": [
@@ -521,6 +546,57 @@
       "Name": "[TRAINER+ ONLY] Innovation Security Trenchoat Shirt",
       "CreatorId": 135955170,
       "ArmbandId": "51ef14bf-3533-4ef9-86d3-91147c487422"
+    },
+    {
+      "Id": 96333411291078,
+      "Name": "(ETG+) Innovation Security ETG Special Ops Jacket",
+      "CanBeCustomized": false,
+      "CreatorId": 176598467,
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location": "172, 364",
+          "PresetGuid": "7e31a4a6-3b6f-4069-88d7-e65d350b1aa5"
+        },
+        {
+          "LogoId": 0,
+          "Location": "395, 364"
+        }
+      ],
+      "Colors": [
+        { "Colors": [ "150,150,150" ] },
+        { "Colors": [ "55,60,77" ] },
+        { "Colors": [ "50,50,50" ] },
+        { "Colors": [ "60,60,60" ] },
+        { "Colors": [ "150,125,65" ] }
+      ]
+    },
+    {
+      "Id": 85089572817810,
+      "Name": "(TIER 1+) Innovation Guardsmen Special Ops Top",
+      "CanBeCustomized": false,
+      "CreatorId": 176598467,
+      "LogoIds": [
+        {
+          "LogoId": 0,
+          "Location": "172, 364",
+          "PresetGuid": "7e31a4a6-3b6f-4069-88d7-e65d350b1aa5"
+        },
+        {
+          "LogoId": 0,
+          "Location": "395, 364"
+        },
+        {
+          "LogoId": 11,
+          "Location": "315, 103"
+        }
+      ],
+      "Colors": [
+        { "Colors": [ "150,150,150" ] },
+        { "Colors": [ "220,220,220" ] },
+        { "Colors": [ "40,40,40" ] },
+        { "Colors": [ "50,50,50" ] }
+      ]
     }
   ]
 }
