@@ -57,8 +57,6 @@ namespace Innovation_Uniform_Editor.UI
 
             //int savedIndex = handler.currentUniform;
 
-            SetupColors();
-
             _pickerDialogue = CreateDialog();
 
             dropdownUniforms.DataSource = Handler.uniforms;
@@ -69,6 +67,8 @@ namespace Innovation_Uniform_Editor.UI
             RefreshImage();
 
             doneLoading = true;
+
+            SetupColors();
         }
 
         private ColorPickerDialog CreateDialog()
@@ -89,7 +89,7 @@ namespace Innovation_Uniform_Editor.UI
             RefreshImage();
         }
 
-        private FlowLayoutPanel CreateButton(int index)
+        private FlowLayoutPanel CreateButton(int index, CustomColor color)
         {
             FlowLayoutPanel panel = new FlowLayoutPanel();
 
@@ -109,7 +109,7 @@ namespace Innovation_Uniform_Editor.UI
             btnColor.Name = "color_" + index;
             btnColor.Size = new System.Drawing.Size(157, 25);
             btnColor.TabIndex = 11;
-            btnColor.Text = "Color " + index;
+            btnColor.Text = color.Name ?? "Color " + index;
             btnColor.UseVisualStyleBackColor = true;
 
             btnColor.MouseClick += btnColor_Click;
@@ -262,14 +262,18 @@ namespace Innovation_Uniform_Editor.UI
                 if (i > custom.Colors.Count)
                     buttonsLayoutPanel.Controls.RemoveAt(i);
                 else
+                {
                     if (indexStart == 0)
-                    indexStart = i;
+                        indexStart = i;
+
+                    buttonsLayoutPanel.Controls[i].Controls[0].Text = custom.Colors[i-1].Name ?? "Color " + (i-1);
+                }
 
             }
             //Setting up the buttons.
             for (int i = indexStart; i < custom.Colors.Count; i++)
             {
-                buttonsLayoutPanel.Controls.Add(CreateButton(i));
+                buttonsLayoutPanel.Controls.Add(CreateButton(i, custom.Colors[i]));
             }
         }
 

@@ -45,6 +45,7 @@ namespace Innovation_Uniform_Editor_Backend.Models
             if (Colors == null || Colors.Count <= 0)
                 Colors = new List<Color>() { Color.Transparent };
         }
+        public string Name { get; set; }
         public List<Color> Colors { get; set; }
         /// <summary>
         /// How many times to repeat the fade.
