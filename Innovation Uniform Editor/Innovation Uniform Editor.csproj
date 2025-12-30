@@ -891,6 +891,9 @@
     <Content Include="Templates\Normal\Shirts\85089572817810\Selection_Template_4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Normal\Shirts\85089572817810\Selection_Template_5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Normal\Shirts\85089572817810\Selection_Template_Secondary.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -913,6 +916,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Normal\Shirts\96333411291078\Selection_Template_5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Normal\Shirts\96333411291078\Selection_Template_6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Normal\Shirts\96333411291078\Selection_Template_Secondary.png">
