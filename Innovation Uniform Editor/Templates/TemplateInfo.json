@@ -142,9 +142,9 @@
       "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda",
       "Colors": [
         { "Colors": [ "57,63,79" ] },
-        { "Colors": [ "30,30,30" ] },
-        { "Colors": [ "141,122,59" ] },
-        { "Colors": [ "40,40,40" ] },
+        { "Name": "Strip", "Colors": [ "30,30,30" ] },
+        { "Name": "Lines" ,"Colors": [ "141,122,59" ] },
+        { "Name": "Dots", "Colors": [ "40,40,40" ] },
         { "Colors": [ "150,150,150" ] }
       ]
     },
@@ -155,8 +155,8 @@
       "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda",
       "Colors": [
         { "Colors": [ "255,255,255" ] },
-        { "Colors": [ "59,59,59" ] },
-        { "Colors": [ "40,40,40" ] },
+        { "Name": "Strip", "Colors": [ "59,59,59" ] },
+        { "Name": "Dots", "Colors": [ "40,40,40" ] },
         { "Colors": [ "150,150,150" ] }
       ]
     }
@@ -195,8 +195,8 @@
       ],
       "Colors": [
         { "Colors": ["120,120,150"] },
-        { "Colors": ["130,130,195"] },
-        { "Colors": ["56,56,118"] }
+        { "Name": "Camo", "Colors": ["130,130,195"] },
+        { "Name": "Vest lights", "Colors": ["56,56,118"] }
       ]
     },
     {
@@ -227,7 +227,7 @@
           "Location": "394, 380"
         }
       ],
-      "Colors": [{ "Colors": ["110,120,150"] }, { "Colors": ["110, 115, 130"] }]
+      "Colors": [{ "Colors": ["110,120,150"] }, { "Name": "Camo", "Colors": ["110, 115, 130"] }]
     },
     {
       "Id": 368715486,
@@ -315,9 +315,9 @@
       ],
       "Colors": [
         { "Colors": ["50,70,90"] },
-        { "Colors": ["22,22,22"] },
-        { "Colors": ["115,139,164"] },
-        { "Colors": ["70,90,115"] }
+        { "Name": "Camo 1", "Colors": ["22,22,22"] },
+        { "Name": "Camo 2", "Colors": ["115,139,164"] },
+        { "Name": "Camo 3", "Colors": ["70,90,115"] }
       ]
     },
     {
@@ -450,7 +450,7 @@
           "Location": "395, 370"
         }
       ],
-      "Colors": [{ "Colors": ["90,96,147"] }, { "Colors": ["90,96,147"] }]
+      "Colors": [{ "Colors": ["90,96,147"] }, { "Name": "Shoulder + sides arm", "Colors": ["90,96,147"] }]
     },
     {
       "Id": 368663056,
@@ -486,7 +486,7 @@
           "Location": "395, 370"
         }
       ],
-      "Colors": [{ "Colors": ["90,96,147"] }, { "Colors": ["170,135,85"] }]
+      "Colors": [{ "Colors": ["90,96,147"] }, { "Name": "Satchel", "Colors": ["170,135,85"] }]
     },
     {
       "Id": 17402056919,
@@ -566,9 +566,10 @@
       "Colors": [
         { "Colors": [ "150,150,150" ] },
         { "Colors": [ "55,60,77" ] },
-        { "Colors": [ "50,50,50" ] },
-        { "Colors": [ "60,60,60" ] },
-        { "Colors": [ "150,125,65" ] }
+        { "Name": "Strip", "Colors": [ "50,50,50" ] },
+        { "Name": "Dots", "Colors": [ "60,60,60" ] },
+        { "Name": "Lines", "Colors": [ "150,125,65" ] },
+        { "Name": "Guardsman text", "Colors": [ "140,140,140" ] }
       ]
     },
     {
@@ -594,8 +595,9 @@
       "Colors": [
         { "Colors": [ "150,150,150" ] },
         { "Colors": [ "220,220,220" ] },
-        { "Colors": [ "40,40,40" ] },
-        { "Colors": [ "50,50,50" ] }
+        { "Name": "Strips", "Colors": [ "40,40,40" ] },
+        { "Name": "Dots", "Colors": [ "50,50,50" ] },
+        { "Name": "Guardsman text", "Colors": [ "30,30,30" ] }
       ]
     }
   ]
