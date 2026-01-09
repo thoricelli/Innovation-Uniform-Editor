@@ -79,12 +79,12 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(510, 28);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Original templates by Skyfall_Epsilon, R_issin, SneakyRedSnake and JustyZorua";
+            this.label2.Text = "Thanks to the Innovation Customs Hub community for providing the templates for this tool.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkTemplates
