@@ -154,10 +154,16 @@
       "CreatorId": 176598467,
       "ShoeId": "038c1d6d-505f-49d2-9ae2-a39eaae81dda",
       "Colors": [
+        { "Colors": [ "150,150,150" ] },
         { "Colors": [ "255,255,255" ] },
-        { "Name": "Strip", "Colors": [ "59,59,59" ] },
-        { "Name": "Dots", "Colors": [ "40,40,40" ] },
-        { "Colors": [ "150,150,150" ] }
+        {
+          "Name": "Strip",
+          "Colors": [ "59,59,59" ]
+        },
+        {
+          "Name": "Dots",
+          "Colors": [ "40,40,40" ]
+        }
       ]
     }
   ],
@@ -579,7 +585,7 @@
         {
           "LogoId": 0,
           "Location": "172, 364",
-          "PresetGuid": "7e31a4a6-3b6f-4069-88d7-e65d350b1aa5"
+          "PresetGuid": "b3652a2e-7a4f-4585-92f4-90b3c0f68f8c"
         },
         {
           "LogoId": 0,
