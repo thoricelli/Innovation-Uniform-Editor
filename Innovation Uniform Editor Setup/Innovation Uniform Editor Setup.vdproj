@@ -265,7 +265,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=1.0.7.3, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Innovation Uniform Editor Backend, Version=1.0.7.4, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_02F97DE712F8483F66884675818F79C9"
@@ -688,15 +688,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Innovation Uniform Editor"
-        "ProductCode" = "8:{BC0C9D2A-B205-4545-8EA5-B670808D3AE7}"
-        "PackageCode" = "8:{BB47095E-BB76-4EDE-8D67-23190C8609B7}"
+        "ProductCode" = "8:{52B5FF43-A9D6-42F9-8B86-855FA2D20F5D}"
+        "PackageCode" = "8:{6637FB58-551C-4239-90D8-218F45A9CB8E}"
         "UpgradeCode" = "8:{9E808FC2-4378-466D-B997-0BF2A444DFA1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.74"
+        "ProductVersion" = "8:1.0.75"
         "Manufacturer" = "8:Thoricelli"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
