@@ -279,10 +279,6 @@
         {
           "LogoId": 3,
           "Location": "321, 95"
-        },
-        {
-          "LogoId": 4,
-          "Location": "398, 374"
         }
       ],
       "Colors": [{ "Colors": ["90,96,147"] }]
